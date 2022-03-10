@@ -1,13 +1,15 @@
 import React from 'react'
 import { Income } from 'components'
 import './main.sass'
+import { Accounts } from 'components/accounts'
 
 export const Main: React.FC = () => {
   return (
     <main className='main'>
       <div className='wrapper'>
         <Income/>
-        </div>
+        <Accounts/>
+      </div>
     </main>
   )
 }
