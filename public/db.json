@@ -1,0 +1,39 @@
+{
+  "user": {
+    "id": "",
+    "name": "",
+    "image": ""
+  },
+  "incomes": [
+    {
+      "id": "",
+      "name": "",
+      "icon": "",
+      "color": "",
+      "value": ""
+    }
+  ],
+  "accounts": [
+    {
+      "id": "",
+      "name": "",
+      "icon": "",
+      "color": "",
+      "value": ""
+    }
+  ],
+  "expenses": [
+    {
+      "id": "",
+      "name": "",
+      "icon": "",
+      "value": ""
+    }
+  ],
+  "total": {
+    "expenses": "",
+    "income": "",
+    "balance": ""
+  }
+
+}
