@@ -17,7 +17,6 @@ export const Expenses: React.FC = () => {
         <Card/>
         <Card/>
         <Card/>
-        <Card/>
       </div>
     </div>
   )
