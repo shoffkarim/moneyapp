@@ -6,7 +6,7 @@
   },
   "incomes": [
     {
-      "id": "1",
+      "id": "213214",
       "name": "Зарплата",
       "icon": "default",
       "color": "black",
@@ -15,19 +15,19 @@
   ],
   "accounts": [
     {
-      "id": "",
-      "name": "",
-      "icon": "",
-      "color": "",
-      "value": ""
+      "id": "13241234",
+      "name": "Тинькофф",
+      "icon": "default",
+      "color": "black",
+      "value": "234054"
     }
   ],
   "expenses": [
     {
-      "id": "",
-      "name": "",
-      "icon": "",
-      "value": ""
+      "id": "5469034",
+      "name": "Продукты",
+      "icon": "default",
+      "value": "909435"
     }
   ],
   "total": {
