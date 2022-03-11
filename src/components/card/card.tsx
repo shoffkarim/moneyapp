@@ -1,5 +1,7 @@
 import React from 'react'
 import './card.sass'
+import { BiRuble } from 'react-icons/bi'
+import { formatMoney } from 'components/utils/format';
 
 export interface ICard {
   id: number,
@@ -9,7 +11,10 @@ export interface ICard {
   value: number
 }
 
+
 export const Card: React.FC<ICard> = ({id, name, icon, color, value}) => {
+  const money: string = formatMoney(value);
+
   return (
     <div className='card'>
       <div className='card-wrapper'>
@@ -17,7 +22,10 @@ export const Card: React.FC<ICard> = ({id, name, icon, color, value}) => {
         <div className='card-icon'>
           <img src="" alt="" />
         </div>
-        <p className='card-value'>{value}</p>
+        <div className='card-value'>
+          <span>{money}</span>
+          <BiRuble/>
+        </div>
       </div>
     </div>
   )
