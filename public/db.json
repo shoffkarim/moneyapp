@@ -16,7 +16,7 @@
       "id": 213344,
       "name": "Зарплата",
       "icon": "default",
-      "color": "black",
+      "color": "blue",
       "value": 343342
     }
   ],
@@ -25,7 +25,7 @@
       "id": 13241234,
       "name": "Тинькофф",
       "icon": "default",
-      "color": "black",
+      "color": "yellow",
       "value": 234054
     }
   ],
