@@ -6,11 +6,11 @@
   },
   "incomes": [
     {
-      "id": "",
-      "name": "",
-      "icon": "",
-      "color": "",
-      "value": ""
+      "id": "1",
+      "name": "Зарплата",
+      "icon": "default",
+      "color": "black",
+      "value": "343 342"
     }
   ],
   "accounts": [

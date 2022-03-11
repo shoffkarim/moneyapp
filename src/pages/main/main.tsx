@@ -2,7 +2,6 @@ import React from 'react'
 import { Income, Accounts, Expenses, Menu } from 'components'
 import './main.sass'
 
-
 export const Main: React.FC = () => {
 
   return (

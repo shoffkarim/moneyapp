@@ -12,10 +12,10 @@ export const Accounts: React.FC = () => {
   return (
     <div className='accounts-container'>
       <div className='accounts-wrapper'>
+        {/* <Card/>
         <Card/>
         <Card/>
-        <Card/>
-        <Card/>
+        <Card/> */}
       </div>
     </div>
   )

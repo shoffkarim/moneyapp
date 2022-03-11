@@ -13,6 +13,7 @@ export const Expenses: React.FC = () => {
   return (
     <div className='expenses-container'>
       <div className='expenses-wrapper'>
+        {/* <Card/>
         <Card/>
         <Card/>
         <Card/>
@@ -22,8 +23,7 @@ export const Expenses: React.FC = () => {
         <Card/>
         <Card/>
         <Card/>
-        <Card/>
-        <Card/>
+        <Card/> */}
       </div>
     </div>
   )
