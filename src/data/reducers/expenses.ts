@@ -1,16 +1,12 @@
-import { SET_EXPENSES } from './../constants';
+import { SET_EXPENSES, InitState } from './../constants';
 import { AnyAction } from "redux";
-const InitState = {
-  expenses: {},
-  isLoaded: false
-}
 
 const Expenses = (state = InitState, action: AnyAction ) => {
   switch(action.type){
     case SET_EXPENSES :
       return {
         ...state,
-        expenses: action.payload,
+        items: action.payload,
         isLoaded: true
       }
     default:

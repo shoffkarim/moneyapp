@@ -1,11 +1,8 @@
-import { SET_TOTAL } from './../constants';
+import { SET_TOTAL, InitStateTotal } from './../constants';
 import { AnyAction } from "redux";
-const InitState = {
-  total: {},
-  isLoaded: false
-}
 
-const Total = (state = InitState, action: AnyAction ) => {
+
+const Total = (state = InitStateTotal, action: AnyAction ) => {
   switch(action.type){
     case SET_TOTAL :
       return {

@@ -1,11 +1,7 @@
-import { SET_USER } from './../constants';
+import { SET_USER, InitStateUser } from './../constants';
 import { AnyAction } from "redux";
-const InitState = {
-  user: {},
-  isLoaded: false
-}
 
-const User = (state = InitState, action: AnyAction ) => {
+const User = (state = InitStateUser, action: AnyAction ) => {
   switch(action.type){
     case SET_USER :
       return {
