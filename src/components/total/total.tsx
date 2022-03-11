@@ -1,7 +1,14 @@
 import React from 'react'
 import './total.sass'
+import { useDispatch } from 'react-redux';
+import { fetchTotal } from 'data/actions/total';
 
 export const Total: React.FC = () => {
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(fetchTotal());
+  }, [dispatch]);
+
   return (
     <div className='total'>
       <div className='total-item'>
