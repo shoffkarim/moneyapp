@@ -20,6 +20,7 @@ export const Accounts: React.FC = () => {
       <div className='accounts-wrapper'>
       {isLoaded && items.map((item: ICard) =>
           <Card
+            key={item.id}
             id={item.id}
             name={item.name}
             icon={item.icon}

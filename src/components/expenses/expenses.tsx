@@ -20,6 +20,7 @@ export const Expenses: React.FC = () => {
       <div className='expenses-wrapper'>
       {isLoaded && items.map((item: ICard) =>
           <Card
+            key={item.id}
             id={item.id}
             name={item.name}
             icon={item.icon}

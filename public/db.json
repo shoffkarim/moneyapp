@@ -1,39 +1,46 @@
 {
   "user": {
     "id": "",
-    "name": "",
+    "name": "Карим Шарафутдинов",
     "image": ""
   },
   "incomes": [
     {
-      "id": "213214",
+      "id": 213214,
       "name": "Зарплата",
       "icon": "default",
       "color": "black",
-      "value": "343 342"
+      "value": 343342
+    },
+    {
+      "id": 213344,
+      "name": "Зарплата",
+      "icon": "default",
+      "color": "black",
+      "value": 343342
     }
   ],
   "accounts": [
     {
-      "id": "13241234",
+      "id": 13241234,
       "name": "Тинькофф",
       "icon": "default",
       "color": "black",
-      "value": "234054"
+      "value": 234054
     }
   ],
   "expenses": [
     {
-      "id": "5469034",
+      "id": 5469034,
       "name": "Продукты",
       "icon": "default",
-      "value": "909435"
+      "value": 909435
     }
   ],
   "total": {
-    "expenses": "",
-    "income": "",
-    "balance": ""
+    "expenses": 213546,
+    "income": 123546,
+    "balance": 123456
   }
 
 }
