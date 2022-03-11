@@ -1,8 +1,9 @@
+import { SET_TOTAL } from './../constants';
 import Axios from "axios";
 import { AppDispatch } from "data/store";
 
 export const setTotal = (user: any) => ({
-  type: "SET_TOTAL",
+  type: SET_TOTAL,
   payload: user
 });
 

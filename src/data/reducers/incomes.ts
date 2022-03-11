@@ -1,3 +1,4 @@
+import { SET_INCOMES } from './../constants';
 import { AnyAction } from "redux";
 const InitState = {
   incomes: {},
@@ -6,7 +7,7 @@ const InitState = {
 
 const Incomes = (state = InitState, action: AnyAction ) => {
   switch(action.type){
-    case "SET_INCOMES" :
+    case SET_INCOMES :
       return {
         ...state,
         incomes: action.payload,

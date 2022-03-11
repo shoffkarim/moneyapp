@@ -1,8 +1,9 @@
+import { SET_EXPENSES } from './../constants';
 import Axios from "axios";
 import { AppDispatch } from "data/store";
 
 export const setExpenses = (user: any) => ({
-  type: "SET_EXPENSES",
+  type: SET_EXPENSES,
   payload: user
 });
 

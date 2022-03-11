@@ -1,8 +1,9 @@
+import { SET_ACCOUNTS } from './../constants';
 import Axios from "axios";
 import { AppDispatch } from "data/store";
 
 export const setAccounts = (user: any) => ({
-  type: "SET_ACCOUNTS",
+  type: SET_ACCOUNTS,
   payload: user
 });
 

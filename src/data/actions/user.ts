@@ -1,8 +1,9 @@
+import { SET_USER } from './../constants';
 import Axios from "axios";
 import { AppDispatch } from "data/store";
 
 export const setUser = (user: any) => ({
-  type: "SET_USER",
+  type: SET_USER,
   payload: user
 });
 

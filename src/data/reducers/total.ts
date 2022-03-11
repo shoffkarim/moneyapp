@@ -1,3 +1,4 @@
+import { SET_TOTAL } from './../constants';
 import { AnyAction } from "redux";
 const InitState = {
   total: {},
@@ -6,7 +7,7 @@ const InitState = {
 
 const Total = (state = InitState, action: AnyAction ) => {
   switch(action.type){
-    case "SET_TOTAL" :
+    case SET_TOTAL :
       return {
         ...state,
         total: action.payload,

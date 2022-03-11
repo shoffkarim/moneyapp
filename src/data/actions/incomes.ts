@@ -1,8 +1,9 @@
+import { SET_INCOMES } from './../constants';
 import Axios from "axios";
 import { AppDispatch } from "data/store";
 
 export const setIncomes = (user: any) => ({
-  type: "SET_INCOMES",
+  type: SET_INCOMES,
   payload: user
 });
 
