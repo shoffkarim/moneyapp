@@ -8,14 +8,14 @@
     {
       "id": 213214,
       "name": "Зарплата",
-      "icon": "default",
+      "icon": "bank",
       "color": "black",
       "value": 343342
     },
     {
       "id": 213344,
       "name": "Зарплата",
-      "icon": "default",
+      "icon": "bank",
       "color": "blue",
       "value": 343342
     }
@@ -24,7 +24,7 @@
     {
       "id": 13241234,
       "name": "Тинькофф",
-      "icon": "default",
+      "icon": "bank",
       "color": "yellow",
       "value": 234054
     }
@@ -33,7 +33,7 @@
     {
       "id": 5469034,
       "name": "Продукты",
-      "icon": "default",
+      "icon": "cash",
       "value": 909435
     }
   ],
