@@ -15,15 +15,15 @@ interface IObjectKeys {
 }
 
 export const colors: IObjectKeys = {
-  black : "#000000",
-  gray : "#c4c4c4",
-  white : "#ffffff",
-  yellow : "#FFFF00",
-  teal : "#008080",
-  red : "#FF0000",
-  purple : "#800080",
-  blue : "#0000FF",
-  pink : "#FF00FF",
-  green : "#008000",
-  navy : "#000080",
+  black,
+  gray,
+  white,
+  yellow,
+  teal,
+  red,
+  purple,
+  blue,
+  pink,
+  green,
+  navy,
 };
