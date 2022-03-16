@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { BiRuble } from "react-icons/bi";
 import classNames from "classnames";
 import "./editPopup.sass";
-import { iconsPackArray } from "components/iconsPack";
+import { iconsPack } from "components/iconsPack";
 import { icons } from "components/utils/icons";
 
 interface IEditPopup {
@@ -26,6 +26,7 @@ export const EditPopup: React.FC<IEditPopup> = ({
   const [activeMoney, setActiveMoney] = useState(value);
   const [activeColor, setActiveColor] = useState(color);
   const [activeIcon, setActiveIcon] = useState(iconName);
+  const [visibleIcons, setVisibleIcons] = useState(false);
   const MainIcon: IMainIconObj = icons(activeIcon);
 
   const handleChangeMoney = (str: string) => {
@@ -39,6 +40,7 @@ export const EditPopup: React.FC<IEditPopup> = ({
         <div
           className="edit-popup__icon"
           style={{ backgroundColor: activeColor }}
+          onClick={() => setVisibleIcons(!visibleIcons)}
         >
           <MainIcon.Icon {...iconProps} />
         </div>
@@ -75,23 +77,25 @@ export const EditPopup: React.FC<IEditPopup> = ({
           </div>
         </div>
       </div>
-      <div className="icon-selector__container">
-        {iconsPackArray.map((ItemIcon) => {
-          const newIconProps = {
-            ...iconProps,
-            color: activeIcon === ItemIcon.iconName ? "white" : "black",
-          };
-          return (
-            <div
-              className="icon-selector__item"
-              key={ItemIcon.iconName}
-              onClick={() => setActiveIcon(ItemIcon.iconName)}
-            >
-              <ItemIcon.Icon {...newIconProps} />
-            </div>
-          );
-        })}
-      </div>
+      {visibleIcons && (
+        <div className="icon-selector__container">
+          {iconsPack.map((ItemIcon) => {
+            const newIconProps = {
+              ...iconProps,
+              color: activeIcon === ItemIcon.iconName ? "white" : "black",
+            };
+            return (
+              <div
+                className="icon-selector__item"
+                key={ItemIcon.iconName}
+                onClick={() => setActiveIcon(ItemIcon.iconName)}
+              >
+                <ItemIcon.Icon {...newIconProps} />
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

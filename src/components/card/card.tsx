@@ -31,18 +31,19 @@ const iconProps = {
 };
 
 export const Card: React.FC<ICard> = ({ id, name, icon, color, value }) => {
-  const [editVisible, setEditVisible] = useState(false);
+  const [visibleEdit, setVisibleEdit] = useState(false);
+  const [visiblePopup, setVisiblePopup] = useState(false);
 
   const money: string = formatMoney(value);
   const theme: string = themeColor(color);
   const MainIcon: IMainIconObj = icons(icon);
-  console.log(2);
+
   return (
     <>
       <div
         className="card"
-        onMouseEnter={() => setEditVisible(!editVisible)}
-        onMouseLeave={() => setEditVisible(!editVisible)}
+        onMouseEnter={() => setVisibleEdit(!visibleEdit)}
+        onMouseLeave={() => setVisibleEdit(!visibleEdit)}
       >
         <div className="card-wrapper">
           <p className="card-name">{name}</p>
@@ -54,19 +55,24 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value }) => {
             <BiRuble />
           </div>
         </div>
-        {editVisible ? (
-          <div className="edit-container">
+        {visibleEdit && (
+          <div
+            className="edit-container"
+            onClick={() => setVisiblePopup(!visiblePopup)}
+          >
             <GrFormEdit size="25px" />
           </div>
-        ) : null}
+        )}
       </div>
-      <EditPopup
-        iconName={icon}
-        iconProps={iconProps}
-        color={theme}
-        name={name}
-        value={value}
-      />
+      {visiblePopup && (
+        <EditPopup
+          iconName={icon}
+          iconProps={iconProps}
+          color={theme}
+          name={name}
+          value={value}
+        />
+      )}
     </>
   );
 };
