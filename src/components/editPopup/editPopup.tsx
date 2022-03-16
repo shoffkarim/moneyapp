@@ -8,8 +8,7 @@ import { iconsPackArray } from "components/iconsPack";
 import { icons } from "components/utils/icons";
 
 interface IEditPopup {
-  Icon: React.FC<IMainIcon>;
-  iconName: string
+  iconName: string;
   iconProps: IMainIcon;
   color: string;
   name: string;
@@ -17,7 +16,6 @@ interface IEditPopup {
 }
 
 export const EditPopup: React.FC<IEditPopup> = ({
-  Icon,
   iconName,
   iconProps,
   color,
@@ -28,7 +26,7 @@ export const EditPopup: React.FC<IEditPopup> = ({
   const [activeMoney, setActiveMoney] = useState(value);
   const [activeColor, setActiveColor] = useState(color);
   const [activeIcon, setActiveIcon] = useState(iconName);
-  const MainIcon: IMainIconObj = icons(activeIcon)
+  const MainIcon: IMainIconObj = icons(activeIcon);
 
   const handleChangeMoney = (str: string) => {
     setActiveMoney(parseInt(str));
@@ -79,20 +77,20 @@ export const EditPopup: React.FC<IEditPopup> = ({
       </div>
       <div className="icon-selector__container">
         {iconsPackArray.map((ItemIcon) => {
-          console.log(activeIcon, ItemIcon.iconName)
           const newIconProps = {
             ...iconProps,
-            color: activeIcon === ItemIcon.iconName ? "black" : "white"
-          }
+            color: activeIcon === ItemIcon.iconName ? "white" : "black",
+          };
           return (
-          <div
-            className="icon-selector__item"
-            key={ItemIcon.iconName}
-            onClick={() => setActiveIcon(ItemIcon.iconName)}
-          >
-            <ItemIcon.Icon {...newIconProps}  />
-          </div>
-        )})}
+            <div
+              className="icon-selector__item"
+              key={ItemIcon.iconName}
+              onClick={() => setActiveIcon(ItemIcon.iconName)}
+            >
+              <ItemIcon.Icon {...newIconProps} />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
