@@ -2,6 +2,7 @@ import { IMainIcon } from 'components/card/card'
 import { colorsArray } from 'components/constants'
 import React, { useState } from 'react'
 import { BiRuble } from 'react-icons/bi'
+import classNames from "classnames";
 import "./editPopup.sass"
 
 interface IEditPopup {
@@ -17,6 +18,7 @@ export const EditPopup: React.FC<IEditPopup> = ({
 }) => {
   const [activeName, setActiveName] = useState(name)
   const [activeMoney, setActiveMoney] = useState(value)
+  const [activeColor, setActiveColor] = useState(color)
 
   const handleChangeMoney = (str: string) => {
     setActiveMoney(parseInt(str))
@@ -26,7 +28,7 @@ export const EditPopup: React.FC<IEditPopup> = ({
     <div className="edit-popup">
         <div className="edit-popup__overlay"></div>
         <div className="edit-popup__container">
-          <div className="edit-popup__icon" style={{"backgroundColor": color}}>
+          <div className="edit-popup__icon" style={{"backgroundColor": activeColor}}>
             <Icon {...iconProps}/>
           </div>
           <div className="edit-popup__wrapper">
@@ -44,8 +46,16 @@ export const EditPopup: React.FC<IEditPopup> = ({
               <BiRuble fontSize={"26px"}/>
             </div>
             <div className="edit-popup__color">
-              {colorsArray.map((item) =>
-                <div className="color-item" style={{"backgroundColor": item}}/>
+              {colorsArray.map((item) => {
+                return (
+                  <div
+                  className={classNames('color-item', activeColor === item ? "active" : "")}
+                  key={item}
+                  style={{"backgroundColor": item}}
+                  onClick={() => setActiveColor(item)}
+                  />
+                )
+              }
               )}
             </div>
           </div>
