@@ -20,6 +20,11 @@ export interface IMainIcon {
   color: string,
 }
 
+export interface IMainIconObj{
+  Icon: React.FC<IMainIcon>
+  iconName: string
+}
+
 const iconProps = {
   size: "50px",
   color: "white"
@@ -33,7 +38,7 @@ export const Card: React.FC<ICard> = ({
 
   const money: string = formatMoney(value);
   const theme: string = themeColor(color)
-  const MainIcon: React.FC<IMainIcon> = icons(icon)
+  const MainIcon: IMainIconObj = icons(icon)
 
   return (
     <div
@@ -44,7 +49,7 @@ export const Card: React.FC<ICard> = ({
       <div className='card-wrapper'>
         <p className='card-name'>{name}</p>
         <div className='card-icon' style={{"backgroundColor": theme}}>
-          <MainIcon {...iconProps}/>
+          <MainIcon.Icon {...iconProps}/>
         </div>
         <div className='card-value'>
           <span>{money}</span>
@@ -58,7 +63,8 @@ export const Card: React.FC<ICard> = ({
         : null
       }
       <EditPopup
-        Icon={MainIcon}
+        Icon={MainIcon.Icon}
+        iconName={MainIcon.iconName}
         iconProps={iconProps}
         color={theme}
         name={name}

@@ -10,3 +10,14 @@ export const iconsPack: IObjectKeys = {
   bank,
   cash
 }
+
+export const iconsPackArray = [
+  {
+    iconName: "bank",
+    Icon: bank,
+  },
+  {
+    iconName: "cash",
+    Icon: cash,
+  },
+]
