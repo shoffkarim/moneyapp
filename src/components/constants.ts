@@ -27,3 +27,15 @@ export const colors: IObjectKeys = {
   green,
   navy,
 };
+
+export const colorsArray = [
+  black,
+  yellow,
+  teal,
+  red,
+  purple,
+  blue,
+  pink,
+  green,
+  navy,
+]

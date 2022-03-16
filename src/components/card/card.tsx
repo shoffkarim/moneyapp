@@ -5,6 +5,7 @@ import { GrFormEdit } from "react-icons/gr"
 import { formatMoney } from 'components/utils/format';
 import { themeColor } from 'components/utils/color';
 import { icons } from 'components/utils/icons';
+import { EditPopup } from 'components/editPopup';
 
 export interface ICard {
   id: number,
@@ -14,7 +15,7 @@ export interface ICard {
   value: number
 }
 
-interface IMainIcon {
+export interface IMainIcon {
   size: string,
   color: string,
 }
@@ -24,7 +25,9 @@ const iconProps = {
   color: "white"
 }
 
-export const Card: React.FC<ICard> = ({id, name, icon, color, value}) => {
+export const Card: React.FC<ICard> = ({
+  id, name, icon, color, value
+}) => {
 
   const [editVisible, setEditVisible] = useState(false)
 
@@ -54,6 +57,13 @@ export const Card: React.FC<ICard> = ({id, name, icon, color, value}) => {
         </div>)
         : null
       }
+      <EditPopup
+        Icon={MainIcon}
+        iconProps={iconProps}
+        color={theme}
+        name={name}
+        value={value}
+      />
     </div>
   )
 }
