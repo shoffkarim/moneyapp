@@ -66,6 +66,7 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value }) => {
       </div>
       {visiblePopup && (
         <EditPopup
+          id={id}
           iconName={icon}
           iconProps={iconProps}
           color={theme}

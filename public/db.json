@@ -18,6 +18,20 @@
       "icon": "bank",
       "color": "blue",
       "value": 343342
+    },
+    {
+      "id": 155,
+      "name": "Зарплата2",
+      "icon": "cash",
+      "color": "#008080",
+      "value": 3433423
+    },
+    {
+      "id": 156,
+      "name": "Зарплата3",
+      "icon": "google",
+      "color": "#008080",
+      "value": 343
     }
   ],
   "accounts": [
@@ -43,5 +57,4 @@
     "income": 123546,
     "balance": 123456
   }
-
 }
