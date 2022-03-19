@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchIncomes } from 'data/actions/incomes';
 import { RootState } from 'data/store';
 import { ICard } from 'components/card/card';
+import { NewCard } from 'components/newCard';
 
 export const Income: React.FC = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ export const Income: React.FC = () => {
             value={item.value}
           />
         )}
+        <NewCard type={"income"}/>
       </div>
     </div>
   )

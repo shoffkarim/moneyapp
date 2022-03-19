@@ -1,12 +1,23 @@
-import { BsBank, BsCashCoin, BsFillBagCheckFill, BsFillBasketFill, BsFillMusicPlayerFill, BsBriefcaseFill, BsGoogle, BsTrophyFill } from "react-icons/bs"
-const bank = BsBank
-const cash = BsCashCoin
-const bag = BsFillBagCheckFill
-const basket = BsFillBasketFill
-const music = BsFillMusicPlayerFill
-const briefcase = BsBriefcaseFill
-const google = BsGoogle
-const trophy = BsTrophyFill
+import {
+  BsBank,
+  BsCashCoin,
+  BsFillBagCheckFill,
+  BsFillBasketFill,
+  BsFillMusicPlayerFill,
+  BsBriefcaseFill,
+  BsGoogle,
+  BsTrophyFill,
+  BsPlusCircle,
+} from "react-icons/bs";
+const bank = BsBank;
+const cash = BsCashCoin;
+const bag = BsFillBagCheckFill;
+const basket = BsFillBasketFill;
+const music = BsFillMusicPlayerFill;
+const briefcase = BsBriefcaseFill;
+const google = BsGoogle;
+const trophy = BsTrophyFill;
+const plus = BsPlusCircle;
 
 export const iconsPack = [
   {
@@ -41,4 +52,8 @@ export const iconsPack = [
     iconName: "trophy",
     Icon: trophy,
   },
-]
+  {
+    iconName: "plus",
+    Icon: plus
+  }
+];
