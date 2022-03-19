@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import { BiRuble } from "react-icons/bi";
 import classNames from "classnames";
 import "./editPopup.sass";
-import { iconsPack } from "components/iconsPack";
 import { icons } from "components/utils/icons";
 import axios from "axios";
+import { EditPopupIcons } from "./editPopupIcons";
 
 interface IEditPopup {
   id: number;
@@ -103,23 +103,7 @@ export const EditPopup: React.FC<IEditPopup> = ({
         </div>
       </div>
       {visibleIcons && (
-        <div className="icon-selector__container">
-          {iconsPack.map((ItemIcon) => {
-            const newIconProps = {
-              ...iconProps,
-              color: activeIcon === ItemIcon.iconName ? "white" : "black",
-            };
-            return (
-              <div
-                className="icon-selector__item"
-                key={ItemIcon.iconName}
-                onClick={() => setActiveIcon(ItemIcon.iconName)}
-              >
-                <ItemIcon.Icon {...newIconProps} />
-              </div>
-            );
-          })}
-        </div>
+        <EditPopupIcons iconProps={iconProps} activeIcon={activeIcon} changeIcon={setActiveIcon}/>
       )}
     </div>
   );
