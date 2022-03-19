@@ -2,13 +2,13 @@ import React from "react";
 import { iconsPack } from "components/iconsPack";
 import { IMainIcon } from "components/card/card";
 
-interface IEditPopupIcons {
+interface IIconsPopup {
   iconProps: IMainIcon,
   activeIcon: string,
   changeIcon: Function
 }
 
-export const EditPopupIcons: React.FC<IEditPopupIcons> = ({
+export const IconsPopup: React.FC<IIconsPopup> = ({
   iconProps, activeIcon, changeIcon
 }) => {
   return (

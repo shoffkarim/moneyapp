@@ -1,6 +1,7 @@
 import { IMainIconObj } from 'components/card/card';
+import { CreatePopup } from 'components/createPopup';
 import { icons } from 'components/utils/icons';
-import React from 'react'
+import React, { useState } from 'react'
 
 export interface INewCard {
   type: string;
@@ -13,11 +14,14 @@ const iconProps = {
 
 export const NewCard: React.FC<INewCard> = ({ type }) => {
 
+  const [visiblePopup, setVisiblePopup] = useState(false)
+
   const MainIcon: IMainIconObj = icons("plus");
   return (
     <>
       <div
         className="card"
+        onClick={() => setVisiblePopup(true)}
       >
         <div className="card-wrapper">
           <p className="card-name">Добавить</p>
@@ -26,6 +30,7 @@ export const NewCard: React.FC<INewCard> = ({ type }) => {
           </div>
         </div>
       </div>
+      {visiblePopup && <CreatePopup iconProps={iconProps}/>}
     </>
   )
 }

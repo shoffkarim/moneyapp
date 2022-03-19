@@ -3,34 +3,23 @@ import { colorsArray } from "components/constants";
 import React, { useState } from "react";
 import { BiRuble } from "react-icons/bi";
 import classNames from "classnames";
-import "./editPopup.sass";
 import { icons } from "components/utils/icons";
 import axios from "axios";
 import { IconsPopup } from "components/iconsPopup";
 
 
-interface IEditPopup {
-  id: number;
-  iconName: string;
+interface ICreatePopup {
   iconProps: IMainIcon;
-  color: string;
-  name: string;
-  value: number;
 }
 
-export const EditPopup: React.FC<IEditPopup> = ({
-  id,
-  iconName,
-  iconProps,
-  color,
-  name,
-  value,
+export const CreatePopup: React.FC<ICreatePopup> = ({
+  iconProps
 }) => {
 
-  const [activeName, setActiveName] = useState(name);
-  const [activeMoney, setActiveMoney] = useState(value);
-  const [activeColor, setActiveColor] = useState(color);
-  const [activeIcon, setActiveIcon] = useState(iconName);
+  const [activeName, setActiveName] = useState("");
+  const [activeMoney, setActiveMoney] = useState(0);
+  const [activeColor, setActiveColor] = useState("black");
+  const [activeIcon, setActiveIcon] = useState("bank");
   const [visibleIcons, setVisibleIcons] = useState(false);
   const MainIcon: IMainIconObj = icons(activeIcon);
 
@@ -40,7 +29,7 @@ export const EditPopup: React.FC<IEditPopup> = ({
 
   const handleSubmit = () => {
     const item = JSON.stringify({
-      "id": 157,
+      "id": 158,
       "name": activeName,
       "icon": activeIcon,
       "color": activeColor,
@@ -99,7 +88,7 @@ export const EditPopup: React.FC<IEditPopup> = ({
           </div>
         </div>
         <div className="edit-popup__button">
-          <button onClick={() => handleSubmit()}>Изменить</button>
+          <button onClick={() => handleSubmit()}>Создать</button>
         </div>
       </div>
       {visibleIcons && (
