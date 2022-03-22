@@ -1,6 +1,7 @@
 import React from 'react'
 import { Income, Accounts, Expenses, Menu } from 'components'
 import './main.sass'
+import { Operation } from 'components/operation'
 
 export const Main: React.FC = () => {
 
@@ -12,6 +13,7 @@ export const Main: React.FC = () => {
           <Accounts/>
           <Expenses/>
         </div>
+        <Operation/>
       </main>
       <Menu/>
     </div>
