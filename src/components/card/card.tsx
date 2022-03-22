@@ -6,6 +6,7 @@ import { formatMoney } from "components/utils/format";
 import { themeColor } from "components/utils/color";
 import { icons } from "components/utils/icons";
 import { EditPopup } from "components/editPopup";
+import { useDrag, useDrop } from "react-dnd";
 
 export interface ICard {
   id: number;
@@ -25,6 +26,10 @@ export interface IMainIconObj {
   iconName: string;
 }
 
+interface dndItem {
+  id: number
+}
+
 const iconProps = {
   size: "50px",
   color: "white",
@@ -34,6 +39,26 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value }) => {
   const [visibleEdit, setVisibleEdit] = useState(false);
   const [visiblePopup, setVisiblePopup] = useState(false);
 
+  const [{isDragging}, drag] = useDrag(() => ({
+    type: "card",
+    item: {id: id},
+    collect: (monitor) => ({
+      isDragging: !!monitor.isDragging()
+    })
+  }))
+
+  const [{isOver}, drop] = useDrop(() => ({
+    accept: "card",
+    drop: (item: dndItem) => dndHandler(item.id),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    })
+  }))
+
+  const dndHandler = (id: number) => {
+    console.log(id)
+  }
+
   const money: string = formatMoney(value);
   const theme: string = themeColor(color);
   const MainIcon: IMainIconObj = icons(icon);
@@ -41,11 +66,13 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value }) => {
   return (
     <>
       <div
+        ref={drag}
         className="card"
         onMouseEnter={() => setVisibleEdit(!visibleEdit)}
         onMouseLeave={() => setVisibleEdit(!visibleEdit)}
+        style={{border: isDragging ? "5px solid pink" : "0px solid"}}
       >
-        <div className="card-wrapper">
+        <div className="card-wrapper" ref={drop}>
           <p className="card-name">{name}</p>
           <div className="card-icon" style={{ backgroundColor: theme }}>
             <MainIcon.Icon {...iconProps} />

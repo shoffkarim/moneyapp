@@ -26,7 +26,7 @@ export const CreatePopup: React.FC<ICreatePopup> = ({
   const handleChangeMoney = (str: string) => {
     setActiveMoney(parseInt(str));
   };
-
+  
   const handleSubmit = () => {
     const item = JSON.stringify({
       "id": 158,
