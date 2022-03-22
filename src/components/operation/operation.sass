@@ -22,9 +22,35 @@
     background-color: #c4c4c4
     z-index: 12
     padding: 15px
+  &-wrapper
+    margin-bottom: 20px
   &-title
     font-size: 24px
     background-color: #fff
   &-card-wrapper
     display: flex
     flex-wrap: wrap
+  &-tags
+    list-style: none
+    padding: 0
+    margin: 0
+    display: flex
+    flex-wrap: wrap
+    &__item
+      padding: 3px 5px
+      background-color: #fff
+      border-radius: 25px
+      margin-right: 5px
+      cursor: pointer
+      &:last-child
+        margin-right: 0px
+
+.check-container
+  position: absolute
+  top: 40px
+  right: 0
+  width: 30px
+  height: 30px
+  display: flex
+  justify-content: center
+  align-items: center
