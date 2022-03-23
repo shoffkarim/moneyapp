@@ -37,7 +37,7 @@ export const OperationCard: React.FC<IOperationCard> = ({ id, name, icon, color,
   const money: string = formatMoney(value);
   const theme: string = themeColor(color);
   const MainIcon: IMainIconObj = icons(icon);
-
+ 
   return (
     <>
       <div
