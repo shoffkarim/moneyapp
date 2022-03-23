@@ -28,6 +28,7 @@ export const Expenses: React.FC = () => {
               icon={item.icon}
               color={item.color}
               value={item.value}
+              type={"expenses"}
             />
           ))}
         <NewCard type={"expenses"} />

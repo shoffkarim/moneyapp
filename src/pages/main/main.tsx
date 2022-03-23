@@ -13,7 +13,7 @@ export const Main: React.FC = () => {
           <Accounts/>
           <Expenses/>
         </div>
-        <Operation/>
+        {/* <Operation/> */}
       </main>
       <Menu/>
     </div>

@@ -6,7 +6,7 @@ import { formatMoney } from "components/utils/format";
 import { themeColor } from "components/utils/color";
 import { icons } from "components/utils/icons";
 import { EditPopup } from "components/editPopup";
-import { useDrag, useDrop } from "react-dnd";
+import { DropTargetMonitor, useDrag, useDrop } from "react-dnd";
 
 export interface ICard {
   id: number;
@@ -14,6 +14,7 @@ export interface ICard {
   icon: string;
   color: string;
   value: number;
+  type: string;
 }
 
 export interface IMainIcon {
@@ -27,7 +28,8 @@ export interface IMainIconObj {
 }
 
 interface dndItem {
-  id: number
+  id: number,
+  type: string
 }
 
 const iconProps = {
@@ -35,25 +37,39 @@ const iconProps = {
   color: "white",
 };
 
-export const Card: React.FC<ICard> = ({ id, name, icon, color, value }) => {
+export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type }) => {
   const [visibleEdit, setVisibleEdit] = useState(false);
   const [visiblePopup, setVisiblePopup] = useState(false);
 
   const [{isDragging}, drag] = useDrag(() => ({
     type: "card",
-    item: {id: id},
+    item: {id: id, type: type},
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging()
     })
   }))
 
-  const [{isOver}, drop] = useDrop(() => ({
+  const [{isOver, canDrop}, drop] = useDrop(() => ({
     accept: "card",
+    canDrop: (item: dndItem) => dndCanDrop(item, id, type),
     drop: (item: dndItem) => dndHandler(item.id),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
+      canDrop: !!monitor.canDrop(),
     })
   }))
+
+  const dndCanDrop = (item: dndItem, id: number, type: string) => {
+    if(item.type === type) {
+      return false
+    } else if(item.type === "income" && type === "accounts") {
+      return true
+    } else if(item.type === "accounts" && type === "expenses") {
+      return true
+    } else {
+      return false
+    }
+  }
 
   const dndHandler = (id: number) => {
     console.log(id)
