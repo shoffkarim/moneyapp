@@ -17,7 +17,7 @@ export const Cards: React.FC<ICards> = ({
   cardFromType,
   cardWhereType,
 }) => {
-  console.log(cardFromType, cardWhereType);
+
   const itemsFrom = useSelector((state: RootState) => {
     if (cardFromType === "incomes") {
       return state.Incomes.items;
