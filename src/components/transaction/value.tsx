@@ -2,8 +2,8 @@ import React from "react";
 
 export const Value = () => {
   return (
-    <div className="operation-wrapper">
-      <div className="operation-value">
+    <div className="transaction-wrapper">
+      <div className="transaction-value">
         <input autoFocus placeholder="Сумма" />
       </div>
     </div>

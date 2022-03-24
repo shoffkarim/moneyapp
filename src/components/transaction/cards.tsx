@@ -1,6 +1,6 @@
 import React from "react";
-import { OperationCard } from "components/operationCard";
-import { IOperationCard } from "components/operationCard/operationCard";
+import { TransactionCard } from "components/transactionCard";
+import { ITransactionCard } from "components/transactionCard/transactionCard";
 import { RootState } from "data/store";
 import { useSelector } from "react-redux";
 
@@ -41,12 +41,12 @@ export const Cards: React.FC<ICards> = ({
 
   return (
     <>
-      <div className="operation-wrapper">
-        <p className="operation-title">Откуда</p>
-        <div className="operation-card-wrapper">
+      <div className="transaction-wrapper">
+        <p className="transaction-title">Откуда</p>
+        <div className="transaction-card-wrapper">
           {FromIsLoaded &&
-            itemsFrom.map((item: IOperationCard) => (
-              <OperationCard
+            itemsFrom.map((item: ITransactionCard) => (
+              <TransactionCard
                 key={item.id}
                 id={item.id}
                 name={item.name}
@@ -58,12 +58,12 @@ export const Cards: React.FC<ICards> = ({
             ))}
         </div>
       </div>
-      <div className="operation-wrapper">
-        <p className="operation-title">Куда</p>
-        <div className="operation-card-wrapper">
+      <div className="transaction-wrapper">
+        <p className="transaction-title">Куда</p>
+        <div className="transaction-card-wrapper">
           {WhereIsLoaded &&
-            itemsWhere.map((item: IOperationCard) => (
-              <OperationCard
+            itemsWhere.map((item: ITransactionCard) => (
+              <TransactionCard
                 key={item.id}
                 id={item.id}
                 name={item.name}

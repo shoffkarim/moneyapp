@@ -8,10 +8,10 @@ import { ICard } from "components/card/card";
 import { NewCard } from "components/newCard";
 
 interface IExpenses {
-  operationOpen: Function
+  transactionOpen: Function
 }
 
-export const Expenses: React.FC<IExpenses> = ({operationOpen}) => {
+export const Expenses: React.FC<IExpenses> = ({transactionOpen}) => {
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(fetchExpenses());
@@ -33,7 +33,7 @@ export const Expenses: React.FC<IExpenses> = ({operationOpen}) => {
               color={item.color}
               value={item.value}
               type={"expenses"}
-              operOpen={operationOpen}
+              operOpen={transactionOpen}
             />
           ))}
         <NewCard type={"expenses"} />

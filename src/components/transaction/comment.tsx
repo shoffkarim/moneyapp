@@ -2,8 +2,8 @@ import React from "react";
 
 export const Comment = () => {
   return (
-    <div className="operation-wrapper">
-      <div className="operation-comment">
+    <div className="transaction-wrapper">
+      <div className="transaction-comment">
         <input placeholder="Комментарий" />
       </div>
     </div>

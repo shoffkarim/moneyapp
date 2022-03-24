@@ -8,10 +8,10 @@ import { ICard } from "components/card/card";
 import { NewCard } from "components/newCard";
 
 interface IIncome {
-  operationOpen: Function
+  transactionOpen: Function
 }
 
-export const Income: React.FC<IIncome> = ({operationOpen}) => {
+export const Income: React.FC<IIncome> = ({transactionOpen}) => {
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(fetchIncomes());
@@ -34,7 +34,7 @@ export const Income: React.FC<IIncome> = ({operationOpen}) => {
               color={item.color}
               value={item.value}
               type={"incomes"}
-              operOpen={operationOpen}
+              operOpen={transactionOpen}
             />
           ))}
         <NewCard type={"incomes"} />

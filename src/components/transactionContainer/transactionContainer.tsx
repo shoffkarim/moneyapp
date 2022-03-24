@@ -1,5 +1,5 @@
 import React from "react";
-import { Operation } from "components/operation";
+import { Transaction } from "components/transaction";
 import { useSelector } from "react-redux";
 import { RootState } from "data/store";
 
@@ -11,7 +11,7 @@ export const TransactionContainer: React.FC = () => {
   return (
     <>
       {open && (
-        <Operation
+        <Transaction
           cardFrom={item.idFrom}
           cardWhere={item.idWhere}
           cardFromType={item.typeFrom}

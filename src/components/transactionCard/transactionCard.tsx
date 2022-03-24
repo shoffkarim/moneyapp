@@ -5,7 +5,7 @@ import { themeColor } from "components/utils/color";
 import { icons } from "components/utils/icons";
 import { BsCheckCircleFill } from "react-icons/bs";
 
-export interface IOperationCard {
+export interface ITransactionCard {
   id: number;
   name: string;
   icon: string;
@@ -24,15 +24,20 @@ export interface IMainIconObj {
   iconName: string;
 }
 
-
 const iconProps = {
   size: "50px",
   color: "white",
 };
 
-export const OperationCard: React.FC<IOperationCard> = ({ id, name, icon, color, value, check }) => {
-
-  const [visibleCheck, setVisibleCheck] = useState(check)
+export const TransactionCard: React.FC<ITransactionCard> = ({
+  id,
+  name,
+  icon,
+  color,
+  value,
+  check,
+}) => {
+  const [visibleCheck, setVisibleCheck] = useState(check);
 
   const money: string = formatMoney(value);
   const theme: string = themeColor(color);
@@ -40,9 +45,7 @@ export const OperationCard: React.FC<IOperationCard> = ({ id, name, icon, color,
 
   return (
     <>
-      <div
-        className="card"
-      >
+      <div className="card">
         <div className="card-wrapper">
           <p className="card-name">{name}</p>
           <div className="card-icon" style={{ backgroundColor: theme }}>
@@ -53,9 +56,11 @@ export const OperationCard: React.FC<IOperationCard> = ({ id, name, icon, color,
             <BiRuble />
           </div>
         </div>
-        { visibleCheck && <div className="check-container">
-          <BsCheckCircleFill size="25px" color={"green"} />
-        </div>}
+        {visibleCheck && (
+          <div className="check-container">
+            <BsCheckCircleFill size="25px" color={"green"} />
+          </div>
+        )}
       </div>
     </>
   );

@@ -1,23 +1,23 @@
 import { Cards } from "./cards";
 import { Comment } from "./comment";
 import { Date } from "./date";
-import "./operation.sass";
+import "./transaction.sass";
 import { Tags } from "./tags";
 import { Value } from "./value";
 
-interface IOperation {
+interface ITransaction {
   cardFrom: number,
   cardWhere: number,
   cardFromType: string,
   cardWhereType: string
 }
 
-export const Operation: React.FC<IOperation> = ({cardFrom, cardWhere, cardFromType, cardWhereType}) => {
+export const Transaction: React.FC<ITransaction> = ({cardFrom, cardWhere, cardFromType, cardWhereType}) => {
 
   return (
-    <div className="operation">
-      <div className="operation-overlay"></div>
-      <div className="operation-container">
+    <div className="transaction">
+      <div className="transaction-overlay"></div>
+      <div className="transaction-container">
         <Cards cardFrom={cardFrom} cardWhere={cardWhere} cardFromType={cardFromType} cardWhereType={cardWhereType}/>
         <Value/>
         <Date/>

@@ -17,9 +17,9 @@ export const CardsContainer: React.FC = () => {
   };
   return (
     <>
-      <Income operationOpen={transactionHandler} />
-      <Accounts operationOpen={transactionHandler} />
-      <Expenses operationOpen={transactionHandler} />
+      <Income transactionOpen={transactionHandler} />
+      <Accounts transactionOpen={transactionHandler} />
+      <Expenses transactionOpen={transactionHandler} />
     </>
   );
 };
