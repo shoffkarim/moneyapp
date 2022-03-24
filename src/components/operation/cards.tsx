@@ -5,28 +5,47 @@ import { RootState } from "data/store";
 import { useSelector } from "react-redux";
 
 interface ICards {
-  cardFrom: number,
-  cardWhere: number,
+  cardFrom: number;
+  cardWhere: number;
+  cardFromType: string;
+  cardWhereType: string;
 }
 
-export const Cards: React.FC<ICards> = ({cardFrom, cardWhere}) => {
-
-  const IncomeItems = useSelector((state: RootState) => state.Incomes.items);
-  const IncomeIsLoaded = useSelector(
-    (state: RootState) => state.Incomes.isLoaded
-  );
-  const AccountsItems = useSelector((state: RootState) => state.Accounts.items);
-  const AccountsIsLoaded = useSelector(
-    (state: RootState) => state.Accounts.isLoaded
-  );
+export const Cards: React.FC<ICards> = ({
+  cardFrom,
+  cardWhere,
+  cardFromType,
+  cardWhereType,
+}) => {
+  console.log(cardFromType, cardWhereType);
+  const itemsFrom = useSelector((state: RootState) => {
+    if (cardFromType === "incomes") {
+      return state.Incomes.items;
+    } else return state.Accounts.items;
+  });
+  const FromIsLoaded = useSelector((state: RootState) => {
+    if (cardFromType === "incomes") {
+      return state.Incomes.isLoaded;
+    } else return state.Accounts.isLoaded;
+  });
+  const itemsWhere = useSelector((state: RootState) => {
+    if (cardWhereType === "accounts") {
+      return state.Accounts.items;
+    } else return state.Expenses.items;
+  });
+  const WhereIsLoaded = useSelector((state: RootState) => {
+    if (cardWhereType === "accounts") {
+      return state.Accounts.isLoaded;
+    } else return state.Expenses.isLoaded;
+  });
 
   return (
     <>
       <div className="operation-wrapper">
         <p className="operation-title">Откуда</p>
         <div className="operation-card-wrapper">
-          {IncomeIsLoaded &&
-            IncomeItems.map((item: IOperationCard) => (
+          {FromIsLoaded &&
+            itemsFrom.map((item: IOperationCard) => (
               <OperationCard
                 key={item.id}
                 id={item.id}
@@ -42,8 +61,8 @@ export const Cards: React.FC<ICards> = ({cardFrom, cardWhere}) => {
       <div className="operation-wrapper">
         <p className="operation-title">Куда</p>
         <div className="operation-card-wrapper">
-          {AccountsIsLoaded &&
-            AccountsItems.map((item: IOperationCard) => (
+          {WhereIsLoaded &&
+            itemsWhere.map((item: IOperationCard) => (
               <OperationCard
                 key={item.id}
                 id={item.id}

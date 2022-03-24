@@ -33,7 +33,7 @@ export const Income: React.FC<IIncome> = ({operationOpen}) => {
               icon={item.icon}
               color={item.color}
               value={item.value}
-              type={"income"}
+              type={"incomes"}
               operOpen={operationOpen}
             />
           ))}

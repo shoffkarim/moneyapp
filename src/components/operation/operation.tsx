@@ -7,16 +7,18 @@ import { Value } from "./value";
 
 interface IOperation {
   cardFrom: number,
-  cardWhere: number
+  cardWhere: number,
+  cardFromType: string,
+  cardWhereType: string
 }
 
-export const Operation: React.FC<IOperation> = ({cardFrom, cardWhere}) => {
+export const Operation: React.FC<IOperation> = ({cardFrom, cardWhere, cardFromType, cardWhereType}) => {
 
   return (
     <div className="operation">
       <div className="operation-overlay"></div>
       <div className="operation-container">
-        <Cards cardFrom={cardFrom} cardWhere={cardWhere}/>
+        <Cards cardFrom={cardFrom} cardWhere={cardWhere} cardFromType={cardFromType} cardWhereType={cardWhereType}/>
         <Value/>
         <Date/>
         <Comment/>

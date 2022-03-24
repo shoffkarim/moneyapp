@@ -55,7 +55,7 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type, oper
   const [{isOver, canDrop}, drop] = useDrop(() => ({
     accept: "card",
     canDrop: (item: dndItem) => dndCanDrop(item, id, type),
-    drop: (item: dndItem) => dndHandler(item.id, id),
+    drop: (item: dndItem) => dndHandler(item.id, id, item.type, type),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
       canDrop: !!monitor.canDrop(),
@@ -65,7 +65,7 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type, oper
   const dndCanDrop = (item: dndItem, id: number, type: string) => {
     if(item.type === type) {
       return false
-    } else if(item.type === "income" && type === "accounts") {
+    } else if(item.type === "incomes" && type === "accounts") {
       return true
     } else if(item.type === "accounts" && type === "expenses") {
       return true
@@ -74,8 +74,8 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type, oper
     }
   }
 
-  const dndHandler = (idFrom: number, idWhere: number) => {
-    operOpen(true, idFrom, idWhere)
+  const dndHandler = (idFrom: number, idWhere: number, typeFrom: string, typeWhere: string) => {
+    operOpen(true, idFrom, idWhere, typeFrom, typeWhere)
   }
 
   const money: string = formatMoney(value);
