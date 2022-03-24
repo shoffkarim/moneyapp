@@ -55,7 +55,7 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type, oper
   const [{isOver, canDrop}, drop] = useDrop(() => ({
     accept: "card",
     canDrop: (item: dndItem) => dndCanDrop(item, id, type),
-    drop: (item: dndItem) => dndHandler(item.id),
+    drop: (item: dndItem) => dndHandler(item.id, id),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
       canDrop: !!monitor.canDrop(),
@@ -74,8 +74,8 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type, oper
     }
   }
 
-  const dndHandler = (id: number) => {
-    operOpen(true)
+  const dndHandler = (idFrom: number, idWhere: number) => {
+    operOpen(true, idFrom, idWhere)
   }
 
   const money: string = formatMoney(value);

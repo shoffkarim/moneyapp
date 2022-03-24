@@ -37,7 +37,7 @@ export const OperationCard: React.FC<IOperationCard> = ({ id, name, icon, color,
   const money: string = formatMoney(value);
   const theme: string = themeColor(color);
   const MainIcon: IMainIconObj = icons(icon);
- 
+
   return (
     <>
       <div
@@ -53,9 +53,9 @@ export const OperationCard: React.FC<IOperationCard> = ({ id, name, icon, color,
             <BiRuble />
           </div>
         </div>
-        <div className="check-container">
+        { visibleCheck && <div className="check-container">
           <BsCheckCircleFill size="25px" color={"green"} />
-        </div>
+        </div>}
       </div>
     </>
   );

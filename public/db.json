@@ -18,6 +18,13 @@
       "icon": "bank",
       "color": "blue",
       "value": 343342
+    },
+    {
+      "id": 158,
+      "name": "adsf",
+      "icon": "bank",
+      "color": "black",
+      "value": 213
     }
   ],
   "accounts": [
@@ -27,6 +34,13 @@
       "icon": "bank",
       "color": "yellow",
       "value": 234054
+    },
+    {
+      "id": 31334,
+      "name": "Наличные",
+      "icon": "cash",
+      "color": "pink",
+      "value": 213
     }
   ],
   "expenses": [

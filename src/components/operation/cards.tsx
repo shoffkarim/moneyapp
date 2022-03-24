@@ -4,7 +4,12 @@ import { IOperationCard } from "components/operationCard/operationCard";
 import { RootState } from "data/store";
 import { useSelector } from "react-redux";
 
-export const Cards = () => {
+interface ICards {
+  cardFrom: number,
+  cardWhere: number,
+}
+
+export const Cards: React.FC<ICards> = ({cardFrom, cardWhere}) => {
 
   const IncomeItems = useSelector((state: RootState) => state.Incomes.items);
   const IncomeIsLoaded = useSelector(
@@ -29,7 +34,7 @@ export const Cards = () => {
                 icon={item.icon}
                 color={item.color}
                 value={item.value}
-                check={true}
+                check={item.id === cardFrom ? true : false}
               />
             ))}
         </div>
@@ -46,7 +51,7 @@ export const Cards = () => {
                 icon={item.icon}
                 color={item.color}
                 value={item.value}
-                check={true}
+                check={item.id === cardWhere ? true : false}
               />
             ))}
         </div>

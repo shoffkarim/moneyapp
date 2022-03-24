@@ -6,8 +6,12 @@ import { Operation } from 'components/operation'
 export const Main: React.FC = () => {
 
   const [visibleOperation, setVisibleOperation] = useState(false)
+  const [operationCardFrom, setOperationCardFrom] = useState(0)
+  const [operationCardWhere, setOperationCardWhere] = useState(0)
 
-  const transactionHandler = (open: boolean) => {
+  const transactionHandler = (open: boolean, idFrom: number, idWhere: number) => {
+    setOperationCardFrom(idFrom)
+    setOperationCardWhere(idWhere)
     setVisibleOperation(open)
   }
 
@@ -19,7 +23,7 @@ export const Main: React.FC = () => {
           <Accounts operationOpen={transactionHandler}/>
           <Expenses operationOpen={transactionHandler}/>
         </div>
-        {visibleOperation && <Operation/>}
+        {visibleOperation && <Operation cardFrom={operationCardFrom} cardWhere={operationCardWhere}/>}
       </main>
       <Menu/>
     </div>
