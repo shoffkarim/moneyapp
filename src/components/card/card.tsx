@@ -15,6 +15,7 @@ export interface ICard {
   color: string;
   value: number;
   type: string;
+  operOpen: Function
 }
 
 export interface IMainIcon {
@@ -37,7 +38,7 @@ const iconProps = {
   color: "white",
 };
 
-export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type }) => {
+export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type, operOpen }) => {
   const [visibleEdit, setVisibleEdit] = useState(false);
   const [visiblePopup, setVisiblePopup] = useState(false);
 
@@ -48,6 +49,8 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type }) =>
       isDragging: !!monitor.isDragging()
     })
   }))
+
+
 
   const [{isOver, canDrop}, drop] = useDrop(() => ({
     accept: "card",
@@ -72,7 +75,7 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type }) =>
   }
 
   const dndHandler = (id: number) => {
-    console.log(id)
+    operOpen(true)
   }
 
   const money: string = formatMoney(value);

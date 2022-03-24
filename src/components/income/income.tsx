@@ -7,11 +7,17 @@ import { RootState } from "data/store";
 import { ICard } from "components/card/card";
 import { NewCard } from "components/newCard";
 
-export const Income: React.FC = () => {
+interface IIncome {
+  operationOpen: Function
+}
+
+export const Income: React.FC<IIncome> = ({operationOpen}) => {
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(fetchIncomes());
   }, [dispatch]);
+
+
 
   const items = useSelector((state: RootState) => state.Incomes.items);
   const isLoaded = useSelector((state: RootState) => state.Incomes.isLoaded);
@@ -28,6 +34,7 @@ export const Income: React.FC = () => {
               color={item.color}
               value={item.value}
               type={"income"}
+              operOpen={operationOpen}
             />
           ))}
         <NewCard type={"income"} />

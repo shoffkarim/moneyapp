@@ -7,7 +7,11 @@ import { RootState } from "data/store";
 import { ICard } from "components/card/card";
 import { NewCard } from "components/newCard";
 
-export const Expenses: React.FC = () => {
+interface IExpenses {
+  operationOpen: Function
+}
+
+export const Expenses: React.FC<IExpenses> = ({operationOpen}) => {
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(fetchExpenses());
@@ -29,6 +33,7 @@ export const Expenses: React.FC = () => {
               color={item.color}
               value={item.value}
               type={"expenses"}
+              operOpen={operationOpen}
             />
           ))}
         <NewCard type={"expenses"} />
