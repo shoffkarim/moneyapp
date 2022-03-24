@@ -10,10 +10,12 @@ import { IconsPopup } from "components/iconsPopup";
 
 interface ICreatePopup {
   iconProps: IMainIcon;
+  type: string;
 }
 
 export const CreatePopup: React.FC<ICreatePopup> = ({
-  iconProps
+  iconProps,
+  type
 }) => {
 
   const [activeName, setActiveName] = useState("");
@@ -26,16 +28,16 @@ export const CreatePopup: React.FC<ICreatePopup> = ({
   const handleChangeMoney = (str: string) => {
     setActiveMoney(parseInt(str));
   };
-  
+
   const handleSubmit = () => {
     const item = JSON.stringify({
-      "id": 158,
+      "id": 154,
       "name": activeName,
       "icon": activeIcon,
       "color": activeColor,
       "value": activeMoney
     });
-    axios.post(`http://localhost:3001/incomes`, JSON.parse(item))
+    axios.post(`http://localhost:3001/${type}`, JSON.parse(item))
       .then(res => {
         console.log("success")
       })

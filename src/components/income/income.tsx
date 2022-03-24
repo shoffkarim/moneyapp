@@ -37,7 +37,7 @@ export const Income: React.FC<IIncome> = ({operationOpen}) => {
               operOpen={operationOpen}
             />
           ))}
-        <NewCard type={"income"} />
+        <NewCard type={"incomes"} />
       </div>
     </div>
   );

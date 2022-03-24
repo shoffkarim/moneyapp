@@ -30,7 +30,7 @@ export const NewCard: React.FC<INewCard> = ({ type }) => {
           </div>
         </div>
       </div>
-      {visiblePopup && <CreatePopup iconProps={iconProps}/>}
+      {visiblePopup && <CreatePopup iconProps={iconProps} type={type}/>}
     </>
   )
 }
