@@ -4,6 +4,8 @@ import { Date } from "./date";
 import "./transaction.sass";
 import { Tags } from "./tags";
 import { Value } from "./value";
+import { useDispatch } from "react-redux";
+import { closePopupTransaction } from "data/actions/transaction";
 
 interface ITransaction {
   cardFrom: number,
@@ -14,6 +16,12 @@ interface ITransaction {
 
 export const Transaction: React.FC<ITransaction> = ({cardFrom, cardWhere, cardFromType, cardWhereType}) => {
 
+  const dispatch = useDispatch()
+
+  const handlerClose = () => {
+    dispatch(closePopupTransaction(false))
+  }
+
   return (
     <div className="transaction">
       <div className="transaction-overlay"></div>
@@ -23,6 +31,7 @@ export const Transaction: React.FC<ITransaction> = ({cardFrom, cardWhere, cardFr
         <Date/>
         <Comment/>
         <Tags/>
+        <div className="btn-close" onClick={() => handlerClose()}></div>
       </div>
     </div>
   );

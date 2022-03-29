@@ -1,4 +1,5 @@
 import {
+  CLOSE_POPUP_TRANSACTION,
   InitStateTransaction,
   OPEN_POPUP_TRANSACTION,
   SET_TRANSACTION,
@@ -16,7 +17,12 @@ const Transaction = (state = InitStateTransaction, action: AnyAction) => {
     case OPEN_POPUP_TRANSACTION:
       return {
         ...state,
-        open: action.payload
+        open: action.payload,
+      };
+    case CLOSE_POPUP_TRANSACTION:
+      return {
+        ...state,
+        open: action.payload,
       };
     default:
       return state;

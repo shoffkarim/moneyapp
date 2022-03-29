@@ -4,13 +4,12 @@ import { useSelector } from "react-redux";
 import { RootState } from "data/store";
 
 export const TransactionContainer: React.FC = () => {
-
-  const open = useSelector((state: RootState) => state.Transaction.open);
-  const item = useSelector((state: RootState) => state.Transaction.item);
+  const transaction = useSelector((state: RootState) => state.Transaction);
+  const item = transaction.item;
 
   return (
     <>
-      {open && (
+      {transaction.open && (
         <Transaction
           cardFrom={item.idFrom}
           cardWhere={item.idWhere}

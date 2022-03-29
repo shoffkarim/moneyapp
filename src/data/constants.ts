@@ -5,6 +5,7 @@ export const SET_EXPENSES = "SET_EXPENSES"
 export const SET_TOTAL = "SET_TOTAL"
 export const SET_TRANSACTION = "SET_TRANSACTION"
 export const OPEN_POPUP_TRANSACTION = "OPEN_POPUP_TRANSACTION"
+export const CLOSE_POPUP_TRANSACTION = "CLOSE_POPUP_TRANSACTION"
 
 export const InitState = {
   items: [],
