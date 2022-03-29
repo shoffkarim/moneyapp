@@ -16,6 +16,7 @@ interface IEditPopup {
   color: string;
   name: string;
   value: number;
+  handlerClose: Function
 }
 
 export const EditPopup: React.FC<IEditPopup> = ({
@@ -25,6 +26,7 @@ export const EditPopup: React.FC<IEditPopup> = ({
   color,
   name,
   value,
+  handlerClose
 }) => {
 
   const [activeName, setActiveName] = useState(name);
@@ -101,6 +103,7 @@ export const EditPopup: React.FC<IEditPopup> = ({
         <div className="edit-popup__button">
           <button onClick={() => handleSubmit()}>Изменить</button>
         </div>
+        <div className="btn-close" onClick={() => handlerClose(false)}></div>
       </div>
       {visibleIcons && (
         <IconsPopup iconProps={iconProps} activeIcon={activeIcon} changeIcon={setActiveIcon}/>

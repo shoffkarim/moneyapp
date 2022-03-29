@@ -11,11 +11,13 @@ import { IconsPopup } from "components/iconsPopup";
 interface ICreatePopup {
   iconProps: IMainIcon;
   type: string;
+  handlerClose: Function
 }
 
 export const CreatePopup: React.FC<ICreatePopup> = ({
   iconProps,
-  type
+  type,
+  handlerClose
 }) => {
 
   const [activeName, setActiveName] = useState("");
@@ -92,6 +94,7 @@ export const CreatePopup: React.FC<ICreatePopup> = ({
         <div className="edit-popup__button">
           <button onClick={() => handleSubmit()}>Создать</button>
         </div>
+        <div className="btn-close" onClick={() => handlerClose(false)}></div>
       </div>
       {visibleIcons && (
         <IconsPopup iconProps={iconProps} activeIcon={activeIcon} changeIcon={setActiveIcon}/>

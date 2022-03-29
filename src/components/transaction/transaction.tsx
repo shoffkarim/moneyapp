@@ -18,8 +18,8 @@ export const Transaction: React.FC<ITransaction> = ({cardFrom, cardWhere, cardFr
 
   const dispatch = useDispatch()
 
-  const handlerClose = () => {
-    dispatch(closePopupTransaction(false))
+  const handlerClose = (close: boolean) => {
+    dispatch(closePopupTransaction(close))
   }
 
   return (
@@ -31,7 +31,7 @@ export const Transaction: React.FC<ITransaction> = ({cardFrom, cardWhere, cardFr
         <Date/>
         <Comment/>
         <Tags/>
-        <div className="btn-close" onClick={() => handlerClose()}></div>
+        <div className="btn-close" onClick={() => handlerClose(false)}></div>
       </div>
     </div>
   );
