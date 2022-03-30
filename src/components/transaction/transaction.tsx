@@ -7,14 +7,8 @@ import { Value } from "./value";
 import { useDispatch } from "react-redux";
 import { closePopupTransaction } from "data/actions/transaction";
 
-interface ITransaction {
-  cardFrom: number,
-  cardWhere: number,
-  cardFromType: string,
-  cardWhereType: string
-}
 
-export const Transaction: React.FC<ITransaction> = ({cardFrom, cardWhere, cardFromType, cardWhereType}) => {
+export const Transaction: React.FC = () => {
 
   const dispatch = useDispatch()
 
@@ -26,7 +20,7 @@ export const Transaction: React.FC<ITransaction> = ({cardFrom, cardWhere, cardFr
     <div className="transaction">
       <div className="transaction-overlay"></div>
       <div className="transaction-container">
-        <Cards cardFrom={cardFrom} cardWhere={cardWhere} cardFromType={cardFromType} cardWhereType={cardWhereType}/>
+        <Cards/>
         <Value/>
         <Date/>
         <Comment/>

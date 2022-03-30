@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BiRuble } from "react-icons/bi";
 import { formatMoney } from "components/utils/format";
 import { themeColor } from "components/utils/color";
@@ -11,7 +11,8 @@ export interface ITransactionCard {
   icon: string;
   color: string;
   value: number;
-  check: boolean;
+  check: number;
+  handlerClick: Function;
 }
 
 export interface IMainIcon {
@@ -36,8 +37,8 @@ export const TransactionCard: React.FC<ITransactionCard> = ({
   color,
   value,
   check,
+  handlerClick,
 }) => {
-  const [visibleCheck, setVisibleCheck] = useState(check);
 
   const money: string = formatMoney(value);
   const theme: string = themeColor(color);
@@ -45,7 +46,12 @@ export const TransactionCard: React.FC<ITransactionCard> = ({
 
   return (
     <>
-      <div className="card">
+      <div
+        className="card"
+        onClick={() => {
+          handlerClick(id);
+        }}
+      >
         <div className="card-wrapper">
           <p className="card-name">{name}</p>
           <div className="card-icon" style={{ backgroundColor: theme }}>
@@ -56,7 +62,7 @@ export const TransactionCard: React.FC<ITransactionCard> = ({
             <BiRuble />
           </div>
         </div>
-        {visibleCheck && (
+        {id === check && (
           <div className="check-container">
             <BsCheckCircleFill size="25px" color={"green"} />
           </div>

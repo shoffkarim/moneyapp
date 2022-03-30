@@ -6,6 +6,8 @@ export const SET_TOTAL = "SET_TOTAL"
 export const SET_TRANSACTION = "SET_TRANSACTION"
 export const OPEN_POPUP_TRANSACTION = "OPEN_POPUP_TRANSACTION"
 export const CLOSE_POPUP_TRANSACTION = "CLOSE_POPUP_TRANSACTION"
+export const SET_CARD_ID_FROM = "SET_CARD_ID_FROM"
+export const SET_CARD_ID_WHERE = "SET_CARD_ID_WHERE"
 
 export const InitState = {
   items: [],
@@ -23,12 +25,10 @@ export const InitStateUser = {
 }
 
 export const InitStateTransaction = {
-  item: {
-    idFrom: 0,
-    typeFrom: "",
-    idWhere: 0,
-    typeWhere: "",
-    isLoaded: false,
-  },
+  idFrom: 0,
+  typeFrom: "",
+  idWhere: 0,
+  typeWhere: "",
+  isLoaded: false,
   open: false
 }

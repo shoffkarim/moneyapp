@@ -2,41 +2,31 @@ import React from "react";
 import { TransactionCard } from "components/transactionCard";
 import { ITransactionCard } from "components/transactionCard/transactionCard";
 import { RootState } from "data/store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setCardIdFrom, setCardIdWhere } from "data/actions/transaction";
+import { ACCOUNTS, INCOMES } from "components/constants";
 
-interface ICards {
-  cardFrom: number;
-  cardWhere: number;
-  cardFromType: string;
-  cardWhereType: string;
-}
+export const Cards: React.FC = () => {
+  const dispatch = useDispatch();
+  const handlerCardIdFrom = (id: number) => {
+    dispatch(setCardIdFrom(id));
+  };
+  const handlerCardIdWhere = (id: number) => {
+    dispatch(setCardIdWhere(id));
+  };
 
-export const Cards: React.FC<ICards> = ({
-  cardFrom,
-  cardWhere,
-  cardFromType,
-  cardWhereType,
-}) => {
+  const transaction = useSelector((state: RootState) => state.Transaction);
 
   const itemsFrom = useSelector((state: RootState) => {
-    if (cardFromType === "incomes") {
-      return state.Incomes.items;
-    } else return state.Accounts.items;
+    if (transaction.typeFrom === INCOMES) {
+      return state.Incomes;
+    } else return state.Accounts;
   });
-  const FromIsLoaded = useSelector((state: RootState) => {
-    if (cardFromType === "incomes") {
-      return state.Incomes.isLoaded;
-    } else return state.Accounts.isLoaded;
-  });
+
   const itemsWhere = useSelector((state: RootState) => {
-    if (cardWhereType === "accounts") {
-      return state.Accounts.items;
-    } else return state.Expenses.items;
-  });
-  const WhereIsLoaded = useSelector((state: RootState) => {
-    if (cardWhereType === "accounts") {
-      return state.Accounts.isLoaded;
-    } else return state.Expenses.isLoaded;
+    if (transaction.typeWhere === ACCOUNTS) {
+      return state.Accounts;
+    } else return state.Expenses;
   });
 
   return (
@@ -44,8 +34,8 @@ export const Cards: React.FC<ICards> = ({
       <div className="transaction-wrapper">
         <p className="transaction-title">Откуда</p>
         <div className="transaction-card-wrapper">
-          {FromIsLoaded &&
-            itemsFrom.map((item: ITransactionCard) => (
+          {itemsFrom.isLoaded &&
+            itemsFrom.items.map((item: ITransactionCard) => (
               <TransactionCard
                 key={item.id}
                 id={item.id}
@@ -53,7 +43,8 @@ export const Cards: React.FC<ICards> = ({
                 icon={item.icon}
                 color={item.color}
                 value={item.value}
-                check={item.id === cardFrom ? true : false}
+                check={transaction.idFrom}
+                handlerClick={handlerCardIdFrom}
               />
             ))}
         </div>
@@ -61,8 +52,8 @@ export const Cards: React.FC<ICards> = ({
       <div className="transaction-wrapper">
         <p className="transaction-title">Куда</p>
         <div className="transaction-card-wrapper">
-          {WhereIsLoaded &&
-            itemsWhere.map((item: ITransactionCard) => (
+          {itemsWhere.isLoaded &&
+            itemsWhere.items.map((item: ITransactionCard) => (
               <TransactionCard
                 key={item.id}
                 id={item.id}
@@ -70,7 +61,8 @@ export const Cards: React.FC<ICards> = ({
                 icon={item.icon}
                 color={item.color}
                 value={item.value}
-                check={item.id === cardWhere ? true : false}
+                check={transaction.idWhere}
+                handlerClick={handlerCardIdWhere}
               />
             ))}
         </div>
