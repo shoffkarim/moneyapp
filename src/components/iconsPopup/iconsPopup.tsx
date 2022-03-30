@@ -1,6 +1,6 @@
 import React from "react";
 import { iconsPack } from "components/iconsPack";
-import { IMainIcon } from "components/card/card";
+import { IMainIcon } from "components/interfaces";
 
 interface IIconsPopup {
   iconProps: IMainIcon,

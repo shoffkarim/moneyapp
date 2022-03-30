@@ -6,32 +6,11 @@ import { formatMoney } from "components/utils/format";
 import { themeColor } from "components/utils/color";
 import { icons } from "components/utils/icons";
 import { EditPopup } from "components/editPopup";
-import { DropTargetMonitor, useDrag, useDrop } from "react-dnd";
+import { useDrag, useDrop } from "react-dnd";
+import { dndCanDrop } from "components/utils/dnd";
+import { dndItem, ICard, IMainIconObj } from "components/interfaces";
 
-export interface ICard {
-  id: number;
-  name: string;
-  icon: string;
-  color: string;
-  value: number;
-  type: string;
-  operOpen: Function
-}
 
-export interface IMainIcon {
-  size: string;
-  color: string;
-}
-
-export interface IMainIconObj {
-  Icon: React.FC<IMainIcon>;
-  iconName: string;
-}
-
-interface dndItem {
-  id: number,
-  type: string
-}
 
 const iconProps = {
   size: "50px",
@@ -51,32 +30,18 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type, oper
   }))
 
 
-
   const [{isOver, canDrop}, drop] = useDrop(() => ({
     accept: "card",
     canDrop: (item: dndItem) => dndCanDrop(item, id, type),
-    drop: (item: dndItem) => dndHandler(item.id, id, item.type, type),
+    drop: (item: dndItem) => operOpen(true, item.id, id, item.type, type),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
       canDrop: !!monitor.canDrop(),
     })
   }))
 
-  const dndCanDrop = (item: dndItem, id: number, type: string) => {
-    if(item.type === type) {
-      return false
-    } else if(item.type === "incomes" && type === "accounts") {
-      return true
-    } else if(item.type === "accounts" && type === "expenses") {
-      return true
-    } else {
-      return false
-    }
-  }
 
-  const dndHandler = (idFrom: number, idWhere: number, typeFrom: string, typeWhere: string) => {
-    operOpen(true, idFrom, idWhere, typeFrom, typeWhere)
-  }
+
 
   const money: string = formatMoney(value);
   const theme: string = themeColor(color);

@@ -10,6 +10,10 @@ export const pink = "#FF00FF";
 export const green = "#008000";
 export const navy = "#000080";
 
+export const ACCOUNTS = "accounts"
+export const INCOMES = "incomes"
+export const EXPENSES = "expenses"
+
 interface IObjectKeys {
   [key: string]: string;
 }

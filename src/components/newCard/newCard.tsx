@@ -1,4 +1,4 @@
-import { IMainIconObj } from 'components/card/card';
+import { IMainIconObj } from 'components/interfaces';
 import { CreatePopup } from 'components/createPopup';
 import { icons } from 'components/utils/icons';
 import React, { useState } from 'react'

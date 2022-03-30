@@ -1,4 +1,4 @@
-import { IMainIcon, IMainIconObj } from "components/card/card";
+import { IMainIcon, IMainIconObj } from "components/interfaces";
 import { colorsArray } from "components/constants";
 import React, { useState } from "react";
 import { BiRuble } from "react-icons/bi";

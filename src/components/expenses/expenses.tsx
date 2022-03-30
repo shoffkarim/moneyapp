@@ -4,7 +4,7 @@ import { Card } from "../card";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchExpenses } from "data/actions/expenses";
 import { RootState } from "data/store";
-import { ICard } from "components/card/card";
+import { ICard } from "components/interfaces";
 import { NewCard } from "components/newCard";
 
 interface IExpenses {
