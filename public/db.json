@@ -9,15 +9,22 @@
       "id": 213214,
       "name": "Зарплата",
       "icon": "cash",
-      "color": "black",
-      "value": 343342
+      "color": "#000000",
+      "value": "343342"
     },
     {
       "id": 213344,
       "name": "Зарплата",
       "icon": "bank",
-      "color": "blue",
+      "color": "#0000FF",
       "value": 343342
+    },
+    {
+      "id": 154,
+      "name": "asdASD",
+      "icon": "trophy",
+      "color": "#008080",
+      "value": 1
     }
   ],
   "accounts": [
@@ -25,14 +32,21 @@
       "id": 13241234,
       "name": "Тинькофф",
       "icon": "bank",
-      "color": "yellow",
+      "color": "#FFFF00",
       "value": 234054
     },
     {
       "id": 31334,
       "name": "Наличные",
       "icon": "cash",
-      "color": "pink",
+      "color": "#FF00FF",
+      "value": 213
+    },
+    {
+      "id": 154,
+      "name": "asdfsd",
+      "icon": "bag",
+      "color": "#FFFF00",
       "value": 213
     }
   ],
@@ -41,49 +55,49 @@
       "id": 5469034,
       "name": "Продукты",
       "icon": "cash",
-      "color": "black",
+      "color": "#000000",
       "value": 909435
     },
     {
       "id": 5469034,
       "name": "Продукты",
       "icon": "cash",
-      "color": "black",
+      "color": "#000000",
       "value": 909435
     },
     {
       "id": 5469034,
       "name": "Продукты",
       "icon": "cash",
-      "color": "black",
+      "color": "#000000",
       "value": 909435
     },
     {
       "id": 5469034,
       "name": "Продукты",
       "icon": "cash",
-      "color": "black",
+      "color": "#000000",
       "value": 909435
     },
     {
       "id": 5469034,
       "name": "Продукты",
       "icon": "cash",
-      "color": "black",
+      "color": "#000000",
       "value": 909435
     },
     {
       "id": 5469034,
       "name": "Продукты",
       "icon": "cash",
-      "color": "black",
+      "color": "#000000",
       "value": 909435
     },
     {
       "id": 5469034,
       "name": "Продукты",
       "icon": "cash",
-      "color": "black",
+      "color": "#000000",
       "value": 909435
     }
   ],

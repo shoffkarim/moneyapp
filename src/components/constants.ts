@@ -32,7 +32,7 @@ export const colors: IObjectKeys = {
   navy,
 };
 
-export const colorsArray = [
+export const colorsArray: string[] = [
   black,
   yellow,
   teal,

@@ -1,11 +1,7 @@
 import { iconsPack } from 'components/iconsPack';
+import { IMainIconObj } from 'components/interfaces';
 
-export const icons =  (iconName: string) => {
-  let icon = iconsPack[0]
-  iconsPack.forEach((item) => {
-    if (item.iconName === iconName) {
-      icon = item
-    }
-  })
-  return icon
+export const icons =  (iconName: string) : IMainIconObj => {
+  const icon = iconsPack.find((item) => item.iconName === iconName)
+  return icon ? icon : iconsPack[0]
 }

@@ -1,10 +1,6 @@
-import { colors } from "components/constants"
+import { colorsArray } from "components/constants"
 
-export const themeColor = (color: string) => {
-  for (const key in colors) {
-    if(key === color) {
-      return colors[key]
-    }
-  }
-  return colors[0]
+export const themeColor = (colorName: string) : string => {
+  const color = colorsArray.find((el: string) => el === colorName)
+  return color ? color : colorsArray[0]
 }
