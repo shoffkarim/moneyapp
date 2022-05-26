@@ -3,27 +3,36 @@ import { colorsArray } from "components/constants";
 import React, { useState } from "react";
 import { BiRuble } from "react-icons/bi";
 import classNames from "classnames";
+import "./editPopup.sass";
 import { icons } from "components/utils/icons";
 import axios from "axios";
-import { IconsPopup } from "components/iconsPopup";
+import { IconsPopup } from "components/popups/iconsPopup";
 
 
-interface ICreatePopup {
+interface IEditPopup {
+  id: number;
+  iconName: string;
   iconProps: IMainIcon;
-  type: string;
+  color: string;
+  name: string;
+  value: number;
   handlerClose: Function
 }
 
-export const CreatePopup: React.FC<ICreatePopup> = ({
+export const EditPopup: React.FC<IEditPopup> = ({
+  id,
+  iconName,
   iconProps,
-  type,
+  color,
+  name,
+  value,
   handlerClose
 }) => {
 
-  const [activeName, setActiveName] = useState("");
-  const [activeMoney, setActiveMoney] = useState(0);
-  const [activeColor, setActiveColor] = useState("black");
-  const [activeIcon, setActiveIcon] = useState("bank");
+  const [activeName, setActiveName] = useState(name);
+  const [activeMoney, setActiveMoney] = useState(value);
+  const [activeColor, setActiveColor] = useState(color);
+  const [activeIcon, setActiveIcon] = useState(iconName);
   const [visibleIcons, setVisibleIcons] = useState(false);
   const MainIcon: IMainIconObj = icons(activeIcon);
 
@@ -33,13 +42,13 @@ export const CreatePopup: React.FC<ICreatePopup> = ({
 
   const handleSubmit = () => {
     const item = JSON.stringify({
-      "id": 154,
+      "id": 157,
       "name": activeName,
       "icon": activeIcon,
       "color": activeColor,
       "value": activeMoney
     });
-    axios.post(`http://localhost:3001/${type}`, JSON.parse(item))
+    axios.post(`http://localhost:3001/incomes`, JSON.parse(item))
       .then(res => {
         console.log("success")
       })
@@ -92,7 +101,7 @@ export const CreatePopup: React.FC<ICreatePopup> = ({
           </div>
         </div>
         <div className="edit-popup__button">
-          <button onClick={() => handleSubmit()}>Создать</button>
+          <button onClick={() => handleSubmit()}>Изменить</button>
         </div>
         <div className="btn-close" onClick={() => handlerClose(false)}></div>
       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Transaction } from "components/transaction";
+import { Transaction } from "components/transactionContainer/transaction";
 import { useSelector } from "react-redux";
 import { RootState } from "data/store";
 

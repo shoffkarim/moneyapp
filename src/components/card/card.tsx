@@ -5,7 +5,7 @@ import { GrFormEdit } from "react-icons/gr";
 import { formatMoney } from "components/utils/format";
 import { themeColor } from "components/utils/color";
 import { icons } from "components/utils/icons";
-import { EditPopup } from "components/editPopup";
+import { EditPopup } from "components/popups/editPopup";
 import { useDrag, useDrop } from "react-dnd";
 import { dndCanDrop } from "components/utils/dnd";
 import { dndItem, ICard, IMainIconObj } from "components/interfaces";

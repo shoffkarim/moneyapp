@@ -1,5 +1,5 @@
 import { IMainIconObj } from 'components/interfaces';
-import { CreatePopup } from 'components/createPopup';
+import { CreatePopup } from 'components/popups/createPopup';
 import { icons } from 'components/utils/icons';
 import React, { useState } from 'react'
 

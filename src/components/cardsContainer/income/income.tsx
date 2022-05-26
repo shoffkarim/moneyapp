@@ -1,28 +1,29 @@
 import React from "react";
-import "./accounts.sass";
-import { Card } from "../card";
+import "./income.sass";
+import { Card } from "../../card";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAccounts } from "data/actions/accounts";
+import { fetchIncomes } from "data/actions/incomes";
 import { RootState } from "data/store";
 import { ICard } from "components/interfaces";
-import { NewCard } from "components/newCard";
+import { NewCard } from "components/cardsContainer/newCard";
 
-interface IAccounts {
+interface IIncome {
   transactionOpen: Function
 }
 
-export const Accounts: React.FC<IAccounts> = ({transactionOpen}) => {
+export const Income: React.FC<IIncome> = ({transactionOpen}) => {
   const dispatch = useDispatch();
   React.useEffect(() => {
-    dispatch(fetchAccounts());
+    dispatch(fetchIncomes());
   }, [dispatch]);
 
-  const items = useSelector((state: RootState) => state.Accounts.items);
-  const isLoaded = useSelector((state: RootState) => state.Accounts.isLoaded);
 
+
+  const items = useSelector((state: RootState) => state.Incomes.items);
+  const isLoaded = useSelector((state: RootState) => state.Incomes.isLoaded);
   return (
-    <div className="accounts-container">
-      <div className="accounts-wrapper">
+    <div className="income-container">
+      <div className="income-wrapper">
         {isLoaded &&
           items.map((item: ICard) => (
             <Card
@@ -32,11 +33,11 @@ export const Accounts: React.FC<IAccounts> = ({transactionOpen}) => {
               icon={item.icon}
               color={item.color}
               value={item.value}
-              type={"accounts"}
+              type={"incomes"}
               operOpen={transactionOpen}
             />
           ))}
-        <NewCard type={"accounts"}/>
+        <NewCard type={"incomes"} />
       </div>
     </div>
   );

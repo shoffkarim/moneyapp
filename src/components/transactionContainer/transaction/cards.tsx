@@ -1,6 +1,6 @@
 import React from "react";
-import { TransactionCard } from "components/transactionCard";
-import { ITransactionCard } from "components/transactionCard/transactionCard";
+import { TransactionCard } from "components/transactionContainer/transactionCard";
+import { ITransactionCard } from "components/transactionContainer/transactionCard/transactionCard";
 import { RootState } from "data/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setCardIdFrom, setCardIdWhere } from "data/actions/transaction";
