@@ -7,13 +7,17 @@ import { Provider } from 'react-redux';
 import store from 'data/store';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { ThemeProvider } from '@mui/material';
+import { theme } from 'theme';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <DndProvider backend={HTML5Backend}>
-        <App />
-      </DndProvider>
+      <ThemeProvider theme={theme}>
+        <DndProvider backend={HTML5Backend}>
+          <App />
+        </DndProvider>
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

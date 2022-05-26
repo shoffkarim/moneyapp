@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import { IMainIconObj } from 'components/interfaces';
 import { CreatePopup } from 'components/popups/createPopup';
 import { icons } from 'components/utils/icons';
@@ -24,7 +25,7 @@ export const NewCard: React.FC<INewCard> = ({ type }) => {
         onClick={() => setVisiblePopup(true)}
       >
         <div className="card-wrapper">
-          <p className="card-name">Добавить</p>
+        <Typography variant="body1" mb={'10px'}>Добавить</Typography>
           <div className="card-icon" style={{ backgroundColor: "black" }}>
             <MainIcon.Icon {...iconProps} />
           </div>
