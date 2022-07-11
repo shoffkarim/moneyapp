@@ -5,6 +5,7 @@ import { fetchTotal } from 'data/actions/total';
 import { RootState } from 'data/store';
 import { BiRuble } from 'react-icons/bi';
 import { formatMoney } from 'components/utils/format';
+import { Typography } from '@mui/material';
 
 export const Total: React.FC = () => {
   const dispatch = useDispatch();
@@ -22,23 +23,23 @@ export const Total: React.FC = () => {
     isLoaded && totalItems && (
       <div className='total'>
         <div className='total-item'>
-          <p className='total-item__text'>Расходы</p>
+          <Typography variant="h6">Расходы</Typography>
           <div className='total-item__wrapper'>
-            <p className="total-item__value">{expensesFormat}</p>
+            <Typography variant="h6">{expensesFormat}</Typography>
             <BiRuble fontSize={24}/>
           </div>
         </div>
         <div className='total-item'>
-          <p className='total-item__text'>Доходы</p>
+          <Typography variant="h6">Доходы</Typography>
           <div className='total-item__wrapper'>
-            <p className="total-item__value">{incomeFormat}</p>
+            <Typography variant="h6">{incomeFormat}</Typography>
             <BiRuble fontSize={24}/>
           </div>
         </div>
         <div className='total-item'>
-          <p className='total-item__text'>Баланс</p>
+          <Typography variant="h6">Баланс</Typography>
           <div className='total-item__wrapper'>
-            <p className="total-item__value">{balanceFormat}</p>
+            <Typography variant="h6">{balanceFormat}</Typography>
             <BiRuble fontSize={24}/>
           </div>
         </div>

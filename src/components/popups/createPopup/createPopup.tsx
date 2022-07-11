@@ -33,7 +33,7 @@ export const CreatePopup: React.FC<ICreatePopup> = ({
 
   const handleSubmit = () => {
     const item = JSON.stringify({
-      "id": 154,
+      "id": Math.random(),
       "name": activeName,
       "icon": activeIcon,
       "color": activeColor,

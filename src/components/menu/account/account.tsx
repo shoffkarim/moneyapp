@@ -3,6 +3,7 @@ import './account.sass'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser } from 'data/actions/user';
 import { RootState } from "data/store";
+import { Typography } from "@mui/material";
 
 export const Account: React.FC = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ export const Account: React.FC = () => {
         <div className="lk-photo">
           <img src="" alt="" />
         </div>
-        <p className="lk-name">{userItem.name}</p>
+        <Typography variant="h5">{userItem.name}</Typography>
       </div>
     )
   );

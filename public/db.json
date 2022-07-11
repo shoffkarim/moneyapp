@@ -25,6 +25,13 @@
       "icon": "trophy",
       "color": "#008080",
       "value": 1
+    },
+    {
+      "id": 0.6720595226822066,
+      "name": "dsaf",
+      "icon": "bank",
+      "color": "black",
+      "value": 0
     }
   ],
   "accounts": [
@@ -48,53 +55,60 @@
       "icon": "bag",
       "color": "#FFFF00",
       "value": 213
+    },
+    {
+      "id": 1543,
+      "name": "сбер",
+      "icon": "google",
+      "color": "#008000",
+      "value": 0
     }
   ],
   "expenses": [
     {
-      "id": 5469034,
+      "id": 1213,
       "name": "Продукты",
       "icon": "cash",
       "color": "#000000",
       "value": 909435
     },
     {
-      "id": 5469034,
+      "id": 12432,
       "name": "Продукты",
       "icon": "cash",
       "color": "#000000",
       "value": 909435
     },
     {
-      "id": 5469034,
+      "id": 546322139034,
       "name": "Продукты",
       "icon": "cash",
       "color": "#000000",
       "value": 909435
     },
     {
-      "id": 5469034,
+      "id": 521345469034,
       "name": "Продукты",
       "icon": "cash",
       "color": "#000000",
       "value": 909435
     },
     {
-      "id": 5469034,
+      "id": 54543569034,
       "name": "Продукты",
       "icon": "cash",
       "color": "#000000",
       "value": 909435
     },
     {
-      "id": 5469034,
+      "id": 54690435434,
       "name": "Продукты",
       "icon": "cash",
       "color": "#000000",
       "value": 909435
     },
     {
-      "id": 5469034,
+      "id": 5461239034,
       "name": "Продукты",
       "icon": "cash",
       "color": "#000000",

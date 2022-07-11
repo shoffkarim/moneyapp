@@ -17,10 +17,9 @@ export const Income: React.FC<IIncome> = ({transactionOpen}) => {
     dispatch(fetchIncomes());
   }, [dispatch]);
 
-
-
   const items = useSelector((state: RootState) => state.Incomes.items);
   const isLoaded = useSelector((state: RootState) => state.Incomes.isLoaded);
+
   return (
     <div className="income-container">
       <div className="income-wrapper">
