@@ -16,6 +16,7 @@ interface IEditPopup {
   color: string;
   name: string;
   value: number;
+  type: string;
   handlerClose: Function
 }
 
@@ -26,6 +27,7 @@ export const EditPopup: React.FC<IEditPopup> = ({
   color,
   name,
   value,
+  type,
   handlerClose
 }) => {
 
@@ -42,15 +44,24 @@ export const EditPopup: React.FC<IEditPopup> = ({
 
   const handleSubmit = () => {
     const item = JSON.stringify({
-      "id": 157,
+      "id": id,
       "name": activeName,
       "icon": activeIcon,
       "color": activeColor,
       "value": activeMoney
     });
-    axios.post(`http://localhost:3001/incomes`, JSON.parse(item))
+    axios.put(`http://localhost:3001/${type}/${id}`, JSON.parse(item))
       .then(res => {
-        console.log("success")
+        console.log("success", res)
+      })
+      .catch(error => {console.error('There was an error!', error)
+      });
+  }
+
+  const handleDelete = () => {
+    axios.delete(`http://localhost:3001/${type}/${id}`)
+      .then(res => {
+        console.log("success", res)
       })
       .catch(error => {console.error('There was an error!', error)
       });
@@ -102,6 +113,7 @@ export const EditPopup: React.FC<IEditPopup> = ({
         </div>
         <div className="edit-popup__button">
           <button onClick={() => handleSubmit()}>Изменить</button>
+          <button onClick={() => handleDelete()}>Удалить</button>
         </div>
         <div className="btn-close" onClick={() => handlerClose(false)}></div>
       </div>

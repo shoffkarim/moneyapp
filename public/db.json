@@ -13,18 +13,25 @@
       "value": "343342"
     },
     {
-      "id": 213344,
-      "name": "Зарплата",
+      "id": 1673942953633,
+      "name": "1232",
       "icon": "bank",
-      "color": "#0000FF",
-      "value": 343342
+      "color": "#000000",
+      "value": 231
     },
     {
-      "id": 154,
-      "name": "asdASD",
-      "icon": "trophy",
+      "id": 1673942959918,
+      "name": "gege§122",
+      "icon": "bank",
       "color": "#008080",
-      "value": 1
+      "value": 0
+    },
+    {
+      "id": 1673944234038,
+      "name": "kek2",
+      "icon": "trophy",
+      "color": "#800080",
+      "value": 12311
     }
   ],
   "accounts": [
@@ -59,46 +66,11 @@
       "value": 909435
     },
     {
-      "id": 5469034,
-      "name": "Продукты",
-      "icon": "cash",
-      "color": "#000000",
-      "value": 909435
-    },
-    {
-      "id": 5469034,
-      "name": "Продукты",
-      "icon": "cash",
-      "color": "#000000",
-      "value": 909435
-    },
-    {
-      "id": 5469034,
-      "name": "Продукты",
-      "icon": "cash",
-      "color": "#000000",
-      "value": 909435
-    },
-    {
-      "id": 5469034,
-      "name": "Продукты",
-      "icon": "cash",
-      "color": "#000000",
-      "value": 909435
-    },
-    {
-      "id": 5469034,
-      "name": "Продукты",
-      "icon": "cash",
-      "color": "#000000",
-      "value": 909435
-    },
-    {
-      "id": 5469034,
-      "name": "Продукты",
-      "icon": "cash",
-      "color": "#000000",
-      "value": 909435
+      "id": 154,
+      "name": "werwe",
+      "icon": "bank",
+      "color": "black",
+      "value": 0
     }
   ],
   "total": {

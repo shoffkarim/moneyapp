@@ -1,5 +1,5 @@
 import { IMainIcon, IMainIconObj } from "components/interfaces";
-import { colorsArray } from "components/constants";
+import { black, colorsArray } from "components/constants";
 import React, { useState } from "react";
 import { BiRuble } from "react-icons/bi";
 import classNames from "classnames";
@@ -22,7 +22,7 @@ export const CreatePopup: React.FC<ICreatePopup> = ({
 
   const [activeName, setActiveName] = useState("");
   const [activeMoney, setActiveMoney] = useState(0);
-  const [activeColor, setActiveColor] = useState("black");
+  const [activeColor, setActiveColor] = useState(black);
   const [activeIcon, setActiveIcon] = useState("bank");
   const [visibleIcons, setVisibleIcons] = useState(false);
   const MainIcon: IMainIconObj = icons(activeIcon);
@@ -33,7 +33,7 @@ export const CreatePopup: React.FC<ICreatePopup> = ({
 
   const handleSubmit = () => {
     const item = JSON.stringify({
-      "id": 154,
+      "id": Date.now(),
       "name": activeName,
       "icon": activeIcon,
       "color": activeColor,

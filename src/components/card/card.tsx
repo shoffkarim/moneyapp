@@ -83,6 +83,7 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type, oper
           color={theme}
           name={name}
           value={value}
+          type={type}
           handlerClose={setVisiblePopup}
         />
       )}
