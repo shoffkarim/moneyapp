@@ -5,11 +5,11 @@ import { formatMoney } from "components/utils/format";
 import { themeColor } from "components/utils/color";
 import { icons } from "components/utils/icons";
 import { EditPopup } from "components/popups/editPopup";
-import { useDrag, useDrop } from "react-dnd";
-import { dndCanDrop } from "components/utils/dnd";
-import { dndItem, ICard, IMainIconObj } from "components/interfaces";
+import { DragPreviewImage, useDrag } from "react-dnd";
+import { ICard, IMainIconObj } from "components/interfaces";
 import { Typography } from "@mui/material";
 import { CurrencyRuble } from "@mui/icons-material";
+import classNames from "classnames";
 
 
 
@@ -22,7 +22,7 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type, oper
   const [visibleEdit, setVisibleEdit] = useState(false);
   const [visiblePopup, setVisiblePopup] = useState(false);
 
-  const [{isDragging}, drag] = useDrag(() => ({
+  const [{isDragging}, drag, preview] = useDrag(() => ({
     type: "card",
     item: {id: id, type: type},
     collect: (monitor) => ({
@@ -30,35 +30,26 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type, oper
     })
   }))
 
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [{isOver, canDrop}, drop] = useDrop(() => ({
-    accept: "card",
-    canDrop: (item: dndItem) => dndCanDrop(item, id, type),
-    drop: (item: dndItem) => operOpen(true, item.id, id, item.type, type),
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
-      canDrop: !!monitor.canDrop(),
-    })
-  }))
-
-
   const money: string = formatMoney(value);
   const theme: string = themeColor(color);
   const MainIcon: IMainIconObj = icons(icon);
 
+
   return (
     <>
       <div
-        ref={drag}
-        className="card"
+        className={classNames("card", isDragging ? "card_dragging" : "")}
         onMouseEnter={() => setVisibleEdit(!visibleEdit)}
         onMouseLeave={() => setVisibleEdit(!visibleEdit)}
-        style={{border: isDragging ? "5px solid pink" : "0px solid"}}
       >
-        <div className="card-wrapper" ref={drop}>
+        <div className={classNames("card-wrapper")} >
           <Typography variant="body1" mb={'10px'}>{name}</Typography>
-          <div className="card-icon" style={{ backgroundColor: theme }}>
+          <div
+            ref={drag}
+            className={classNames("card-icon")}
+            style={{ backgroundColor: theme }}
+            >
+            <DragPreviewImage connect={preview} src="moneySvg.svg"/>
             <MainIcon.Icon {...iconProps} />
           </div>
           <div className="card-value">

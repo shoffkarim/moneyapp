@@ -52,7 +52,7 @@ export const EditPopup: React.FC<IEditPopup> = ({
     });
     axios.put(`http://localhost:3001/${type}/${id}`, JSON.parse(item))
       .then(res => {
-        console.log("success", res)
+        console.log("success")
       })
       .catch(error => {console.error('There was an error!', error)
       });
@@ -61,7 +61,7 @@ export const EditPopup: React.FC<IEditPopup> = ({
   const handleDelete = () => {
     axios.delete(`http://localhost:3001/${type}/${id}`)
       .then(res => {
-        console.log("success", res)
+        console.log("success")
       })
       .catch(error => {console.error('There was an error!', error)
       });
