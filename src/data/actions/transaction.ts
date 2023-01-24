@@ -1,9 +1,12 @@
+import { TransactionData } from "components/interfaces";
 import {
   CLOSE_POPUP_TRANSACTION,
   OPEN_POPUP_TRANSACTION,
   SET_TRANSACTION,
   SET_CARD_ID_FROM,
   SET_CARD_ID_WHERE,
+  SET_TRANSACTION_VALUE,
+  SET_TRANSACTION_DATA,
 } from "./../constants";
 
 export const setTransaction = (item: any) => ({
@@ -30,3 +33,13 @@ export const setCardIdWhere = (id: number) => ({
   type: SET_CARD_ID_WHERE,
   payload: id,
 });
+
+export const setTransactionValue = (value: number) => ({
+  type: SET_TRANSACTION_VALUE,
+  payload: value
+})
+
+export const setTransactionData = (data: TransactionData) => ({
+  type: SET_TRANSACTION_DATA,
+  payload: data
+})
