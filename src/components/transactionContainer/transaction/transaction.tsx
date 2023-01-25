@@ -4,10 +4,11 @@ import { TransactionDate } from "./transactionDate";
 import "./transaction.sass";
 import { Tags } from "./tags";
 import { Value } from "./value";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addNewTransaction, closePopupTransaction, setTransactionData } from "__data__/actions/transaction";
 import { useState } from "react";
 import { Tag } from "components/interfaces";
+import { RootState } from "__data__/store";
 
 type TransactionData = {
   id: string,
@@ -29,6 +30,8 @@ export const Transaction: React.FC = () => {
   const [data, setData] = useState<TransactionData>(initTransactionData)
 
   const dispatch = useDispatch()
+
+  const { idFrom, typeFrom, idWhere, typeWhere } = useSelector((state: RootState) => state.Transaction)
 
   const handlerClose = (close: boolean) => {
     dispatch(closePopupTransaction(close))
@@ -54,7 +57,11 @@ export const Transaction: React.FC = () => {
     dispatch(setTransactionData(data))
     const item = JSON.stringify({
       ...data,
-      id: String(Date.now())
+      id: String(Date.now()),
+      idFrom,
+      typeFrom,
+      idWhere,
+      typeWhere
     })
     addNewTransaction(item)
     handlerClose(false)

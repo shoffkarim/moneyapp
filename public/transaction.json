@@ -1,16 +1,28 @@
 {
   "transactions": [
     {
-      "id": "1674628621436",
-      "value": 12312,
-      "date": "2023-01-19",
-      "comment": "sadsa",
+      "id": "1674633680875",
+      "value": 21312,
+      "date": "2023-01-27",
+      "comment": "sdafdf",
       "tags": [
+        {
+          "id": "1",
+          "text": "Business lunch"
+        },
         {
           "id": "2",
           "text": "Bank"
+        },
+        {
+          "id": "3",
+          "text": "Coffee"
         }
-      ]
+      ],
+      "idFrom": 213214,
+      "typeFrom": "incomes",
+      "idWhere": 13241234,
+      "typeWhere": "accounts"
     }
   ]
 }
