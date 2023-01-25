@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-interface DateProps {
+interface TransactionDateProps {
   handlerTransaction: (date: string) => void
 }
 
-export const Date: React.FC<DateProps> = ({handlerTransaction}) => {
+export const TransactionDate: React.FC<TransactionDateProps> = ({handlerTransaction}) => {
   const [date, setDate] = useState('')
 
   const handlerDate = (date: string) => {

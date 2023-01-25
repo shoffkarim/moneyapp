@@ -1,3 +1,4 @@
+import axios from "axios";
 import { TransactionData } from "components/interfaces";
 import {
   CLOSE_POPUP_TRANSACTION,
@@ -43,3 +44,12 @@ export const setTransactionData = (data: TransactionData) => ({
   type: SET_TRANSACTION_DATA,
   payload: data
 })
+
+export const addNewTransaction = (item: string) => {
+  axios.post(`http://localhost:3002/transactions`, JSON.parse(item))
+      .then(res => {
+        console.log("success")
+      })
+      .catch(error => {console.error('There was an error!', error)
+      });
+}

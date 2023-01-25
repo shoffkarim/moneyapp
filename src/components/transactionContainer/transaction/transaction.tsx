@@ -1,15 +1,16 @@
 import { Cards } from "./cards";
 import { Comment } from "./comment";
-import { Date } from "./date";
+import { TransactionDate } from "./transactionDate";
 import "./transaction.sass";
 import { Tags } from "./tags";
 import { Value } from "./value";
 import { useDispatch } from "react-redux";
-import { closePopupTransaction, setTransactionData } from "__data__/actions/transaction";
+import { addNewTransaction, closePopupTransaction, setTransactionData } from "__data__/actions/transaction";
 import { useState } from "react";
 import { Tag } from "components/interfaces";
 
 type TransactionData = {
+  id: string,
   value: number,
   date: string,
   comment: string,
@@ -17,6 +18,7 @@ type TransactionData = {
 }
 
 const initTransactionData: TransactionData = {
+  id: "",
   value: 0,
   date: "",
   comment: "",
@@ -49,8 +51,12 @@ export const Transaction: React.FC = () => {
   }
 
   const handlerDone = () => {
-    console.log("Done", data)
     dispatch(setTransactionData(data))
+    const item = JSON.stringify({
+      ...data,
+      id: String(Date.now())
+    })
+    addNewTransaction(item)
     handlerClose(false)
   }
 
@@ -60,7 +66,7 @@ export const Transaction: React.FC = () => {
       <div className="transaction-container">
         <Cards/>
         <Value handlerTransaction={handlerTransactionValue}/>
-        <Date handlerTransaction={handlerTransactionDate}/>
+        <TransactionDate handlerTransaction={handlerTransactionDate}/>
         <Comment handlerTransaction={handlerTransactionComment}/>
         <Tags handlerTransaction={handlerTransactionTags}/>
         <button onClick={handlerDone}>Done</button>

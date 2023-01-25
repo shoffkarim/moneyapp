@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import { BiRuble } from "react-icons/bi";
 import classNames from "classnames";
 import { icons } from "components/utils/icons";
-import axios from "axios";
 import { IconsPopup } from "components/popups/iconsPopup";
+import { addNewCard } from "__data__/actions/createCard";
 
 
 interface ICreatePopup {
@@ -33,18 +33,14 @@ export const CreatePopup: React.FC<ICreatePopup> = ({
 
   const handleSubmit = () => {
     const item = JSON.stringify({
-      "id": Date.now(),
+      "id": String(Date.now()),
       "name": activeName,
       "icon": activeIcon,
       "color": activeColor,
       "value": activeMoney
     });
-    axios.post(`http://localhost:3001/${type}`, JSON.parse(item))
-      .then(res => {
-        console.log("success")
-      })
-      .catch(error => {console.error('There was an error!', error)
-      });
+
+    addNewCard(type, item)
   }
 
   return (

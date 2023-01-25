@@ -1,15 +1,16 @@
 {
   "transactions": [
     {
-      "id": "",
-      "idFrom": "",
-      "typeFrom": "",
-      "idWhere": "",
-      "typeWhere": "",
-      "value": "",
-      "date": "",
-      "comment": "",
-      "tags": []
+      "id": "1674628621436",
+      "value": 12312,
+      "date": "2023-01-19",
+      "comment": "sadsa",
+      "tags": [
+        {
+          "id": "2",
+          "text": "Bank"
+        }
+      ]
     }
   ]
 }
