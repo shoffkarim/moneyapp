@@ -7,8 +7,10 @@ export const setIncomes = (history: any) => ({
   payload: history
 });
 
+
 export const fetchHistory = () => (dispatch: AppDispatch) => {
   Axios.get(`http://localhost:3002/transactions`)
-  .then(({data}) =>
-  dispatch(setIncomes(data)));
+  .then(({data}) => {
+    dispatch(setIncomes(data));
+  })
 };

@@ -1,11 +1,17 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import { fetchHistory } from '__data__/actions/history'
 import { HistoryTransaction } from '../historyTransaction'
+import { mapStateToProps } from '../utils'
 
 import './historyContainer.sass'
 
-export const HistoryContainer: React.FC = () => {
+interface HistoryContainerProps {
+  data?: string
+}
+
+const HistoryContainer: React.FC<HistoryContainerProps> = ({data}) => {
+  console.log("data", data)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchHistory())
@@ -21,3 +27,5 @@ export const HistoryContainer: React.FC = () => {
     </div>
   )
 }
+
+export default connect(mapStateToProps)(HistoryContainer)

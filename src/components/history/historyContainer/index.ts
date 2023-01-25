@@ -1,1 +1,6 @@
-export { HistoryContainer } from './historyContainer'
+import History from './historyContainer'
+
+
+export {
+  History
+}
