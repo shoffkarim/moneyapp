@@ -4,6 +4,7 @@ import "./main.sass";
 
 import { CardsContainer } from "components/cardsContainer";
 import { TransactionContainer } from "components/transactionContainer";
+import { HistoryContainer } from "components/history";
 
 
 export const Main: React.FC = () => {
@@ -12,9 +13,10 @@ export const Main: React.FC = () => {
     <div className="container">
       <main className="main">
         <div className="wrapper">
-        <CardsContainer/>
+          <CardsContainer/>
         </div>
         <TransactionContainer/>
+        <HistoryContainer/>
       </main>
       <Menu />
     </div>
