@@ -5,7 +5,7 @@ import "./transaction.sass";
 import { Tags } from "./tags";
 import { Value } from "./value";
 import { useDispatch } from "react-redux";
-import { closePopupTransaction, setTransactionData } from "data/actions/transaction";
+import { closePopupTransaction, setTransactionData } from "__data__/actions/transaction";
 import { useState } from "react";
 import { Tag } from "components/interfaces";
 

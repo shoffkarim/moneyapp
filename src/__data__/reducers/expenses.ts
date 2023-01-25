@@ -1,4 +1,4 @@
-import { SET_EXPENSES, InitState } from './../constants';
+import { SET_EXPENSES, InitState } from '../constants';
 import { AnyAction } from "redux";
 
 const Expenses = (state = InitState, action: AnyAction ) => {

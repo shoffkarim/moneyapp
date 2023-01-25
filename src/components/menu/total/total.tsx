@@ -1,8 +1,8 @@
 import React from 'react'
 import './total.sass'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTotal } from 'data/actions/total';
-import { RootState } from 'data/store';
+import { fetchTotal } from '__data__/actions/total';
+import { RootState } from '__data__/store';
 import { BiRuble } from 'react-icons/bi';
 import { formatMoney } from 'components/utils/format';
 

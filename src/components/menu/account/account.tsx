@@ -1,8 +1,8 @@
 import React from "react";
 import './account.sass'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser } from 'data/actions/user';
-import { RootState } from "data/store";
+import { fetchUser } from '__data__/actions/user';
+import { RootState } from "__data__/store";
 
 export const Account: React.FC = () => {
   const dispatch = useDispatch();

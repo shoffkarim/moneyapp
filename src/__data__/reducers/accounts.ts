@@ -1,9 +1,9 @@
-import { SET_INCOMES, InitState } from './../constants';
+import { SET_ACCOUNTS, InitState } from '../constants';
 import { AnyAction } from "redux";
 
-const Incomes = (state = InitState, action: AnyAction ) => {
+const Accounts = (state = InitState, action: AnyAction ) => {
   switch(action.type){
-    case SET_INCOMES :
+    case SET_ACCOUNTS :
       return {
         ...state,
         items: action.payload,
@@ -14,4 +14,4 @@ const Incomes = (state = InitState, action: AnyAction ) => {
   }
 };
 
-export default Incomes;
+export default Accounts;

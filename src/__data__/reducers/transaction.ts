@@ -7,7 +7,7 @@ import {
   SET_TRANSACTION,
   SET_TRANSACTION_DATA,
   SET_TRANSACTION_VALUE,
-} from "data/constants";
+} from "__data__/constants";
 import { AnyAction } from "redux";
 
 const Transaction = (state = InitStateTransaction, action: AnyAction) => {

@@ -1,9 +1,9 @@
 import React from "react";
 import { TransactionCard } from "components/transactionContainer/transactionCard";
 import { ITransactionCard } from "components/transactionContainer/transactionCard/transactionCard";
-import { RootState } from "data/store";
+import { RootState } from "__data__/store";
 import { useDispatch, useSelector } from "react-redux";
-import { setCardIdFrom, setCardIdWhere } from "data/actions/transaction";
+import { setCardIdFrom, setCardIdWhere } from "__data__/actions/transaction";
 import { ACCOUNTS, INCOMES } from "components/constants";
 
 export const Cards: React.FC = () => {

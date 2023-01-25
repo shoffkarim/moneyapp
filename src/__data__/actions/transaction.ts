@@ -7,7 +7,7 @@ import {
   SET_CARD_ID_WHERE,
   SET_TRANSACTION_VALUE,
   SET_TRANSACTION_DATA,
-} from "./../constants";
+} from "../constants";
 
 export const setTransaction = (item: any) => ({
   type: SET_TRANSACTION,

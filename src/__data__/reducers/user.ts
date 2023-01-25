@@ -1,4 +1,4 @@
-import { SET_USER, InitStateUser } from './../constants';
+import { SET_USER, InitStateUser } from '../constants';
 import { AnyAction } from "redux";
 
 const User = (state = InitStateUser, action: AnyAction ) => {
