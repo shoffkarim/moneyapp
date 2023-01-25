@@ -1,0 +1,15 @@
+{
+  "transactions": [
+    {
+      "id": "",
+      "idFrom": "",
+      "typeFrom": "",
+      "idWhere": "",
+      "typeWhere": "",
+      "value": "",
+      "date": "",
+      "comment": "",
+      "tags": []
+    }
+  ]
+}
