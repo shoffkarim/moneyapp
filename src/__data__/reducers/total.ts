@@ -1,4 +1,4 @@
-import { SET_TOTAL, InitStateTotal } from './../constants';
+import { SET_TOTAL, InitStateTotal } from '../constants';
 import { AnyAction } from "redux";
 
 

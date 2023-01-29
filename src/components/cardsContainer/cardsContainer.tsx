@@ -1,8 +1,7 @@
 import React from "react";
 import { Income, Accounts, Expenses } from "components";
 import { useDispatch } from "react-redux";
-import { openPopupTransaction, setTransaction } from "data/actions/transaction";
-
+import { openPopupTransaction, setTransaction } from "__data__/actions/transaction";
 
 export const CardsContainer: React.FC = () => {
   const dispatch = useDispatch();

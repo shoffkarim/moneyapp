@@ -1,9 +1,9 @@
-import { SET_ACCOUNTS, InitState } from './../constants';
+import { InitState, SET_HISTORY } from '../constants';
 import { AnyAction } from "redux";
 
-const Accounts = (state = InitState, action: AnyAction ) => {
+const History = (state = InitState, action: AnyAction ) => {
   switch(action.type){
-    case SET_ACCOUNTS :
+    case SET_HISTORY :
       return {
         ...state,
         items: action.payload,
@@ -14,4 +14,4 @@ const Accounts = (state = InitState, action: AnyAction ) => {
   }
 };
 
-export default Accounts;
+export default History;

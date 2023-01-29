@@ -5,7 +5,9 @@ import {
   SET_CARD_ID_FROM,
   SET_CARD_ID_WHERE,
   SET_TRANSACTION,
-} from "data/constants";
+  SET_TRANSACTION_DATA,
+  SET_TRANSACTION_VALUE,
+} from "__data__/constants";
 import { AnyAction } from "redux";
 
 const Transaction = (state = InitStateTransaction, action: AnyAction) => {
@@ -36,6 +38,16 @@ const Transaction = (state = InitStateTransaction, action: AnyAction) => {
         ...state,
         idWhere: action.payload,
       };
+    case SET_TRANSACTION_VALUE:
+      return {
+        ...state,
+        value: action.payload,
+      };
+    case SET_TRANSACTION_DATA:
+      return {
+        ...state,
+        ...action.payload
+      }
     default:
       return state;
   }

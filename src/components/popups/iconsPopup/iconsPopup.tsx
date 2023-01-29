@@ -1,6 +1,7 @@
 import React from "react";
 import { iconsPack } from "components/iconsPack";
 import { IMainIcon } from "components/interfaces";
+import { black, white } from "components/constants";
 
 interface IIconsPopup {
   iconProps: IMainIcon,
@@ -16,7 +17,7 @@ export const IconsPopup: React.FC<IIconsPopup> = ({
       {iconsPack.map((ItemIcon) => {
         const newIconProps = {
           ...iconProps,
-          color: activeIcon === ItemIcon.iconName ? "white" : "black",
+          color: activeIcon === ItemIcon.iconName ? white : black,
         };
         return (
           <div

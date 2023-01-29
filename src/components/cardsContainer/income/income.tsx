@@ -1,11 +1,12 @@
 import React from "react";
 import "./income.sass";
-import { Card } from "../../card";
+// import { Card } from "../../card";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchIncomes } from "data/actions/incomes";
-import { RootState } from "data/store";
+import { fetchIncomes } from "__data__/actions/incomes";
+import { RootState } from "__data__/store";
 import { ICard } from "components/interfaces";
 import { NewCard } from "components/cardsContainer/newCard";
+import { CardDropWrapper } from "components/card/cardDropWrapper";
 
 interface IIncome {
   transactionOpen: Function
@@ -25,7 +26,7 @@ export const Income: React.FC<IIncome> = ({transactionOpen}) => {
       <div className="income-wrapper">
         {isLoaded &&
           items.map((item: ICard) => (
-            <Card
+            <CardDropWrapper
               key={item.id}
               id={item.id}
               name={item.name}

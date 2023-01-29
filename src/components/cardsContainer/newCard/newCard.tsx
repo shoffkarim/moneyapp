@@ -26,7 +26,7 @@ export const NewCard: React.FC<INewCard> = ({ type }) => {
       >
         <div className="card-wrapper">
         <Typography variant="body1" mb={'10px'}>Добавить</Typography>
-          <div className="card-icon" style={{ backgroundColor: "black" }}>
+          <div className="card-icon" style={{ backgroundColor: "#000000" }}>
             <MainIcon.Icon {...iconProps} />
           </div>
         </div>

@@ -1,11 +1,12 @@
 import React from "react";
 import "./expenses.sass";
-import { Card } from "../../card";
+// import { Card } from "../../card";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchExpenses } from "data/actions/expenses";
-import { RootState } from "data/store";
+import { fetchExpenses } from "__data__/actions/expenses";
+import { RootState } from "__data__/store";
 import { ICard } from "components/interfaces";
 import { NewCard } from "components/cardsContainer/newCard";
+import { CardDropWrapper } from "components/card/cardDropWrapper";
 
 interface IExpenses {
   transactionOpen: Function
@@ -25,7 +26,7 @@ export const Expenses: React.FC<IExpenses> = ({transactionOpen}) => {
       <div className="expenses-wrapper">
         {isLoaded &&
           items.map((item: ICard) => (
-            <Card
+            <CardDropWrapper
               key={item.id}
               id={item.id}
               name={item.name}

@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
-export const Comment = () => {
+interface CommentProps {
+  handlerTransaction: (text: string) => void
+}
+
+export const Comment: React.FC<CommentProps> = ({handlerTransaction}) => {
+  const [comment, setComment] = useState('')
+
+  const handlerComment = (text: string) => {
+    setComment(text)
+    handlerTransaction(text)
+  }
+
   return (
     <div className="transaction-wrapper">
       <div className="transaction-comment">
-        <input placeholder="Комментарий" />
+        <input value={comment} onChange={(e) => handlerComment(e.target.value)} placeholder="Comment" />
       </div>
     </div>
   );

@@ -22,3 +22,15 @@ export interface dndItem {
   id: number,
   type: string
 }
+
+export type Tag = {
+  id: string,
+  text: string
+}
+
+export type TransactionData = {
+  value: number,
+  date: string,
+  comment: string,
+  tags: Array<Tag | undefined>
+}

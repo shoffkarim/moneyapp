@@ -1,11 +1,12 @@
 import React from "react";
 import "./accounts.sass";
-import { Card } from "../../card";
+// import { Card } from "../../card";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAccounts } from "data/actions/accounts";
-import { RootState } from "data/store";
+import { fetchAccounts } from "__data__/actions/accounts";
+import { RootState } from "__data__/store";
 import { ICard } from "components/interfaces";
 import { NewCard } from "components/cardsContainer/newCard";
+import { CardDropWrapper } from "components/card/cardDropWrapper";
 
 interface IAccounts {
   transactionOpen: Function
@@ -25,7 +26,7 @@ export const Accounts: React.FC<IAccounts> = ({transactionOpen}) => {
       <div className="accounts-wrapper">
         {isLoaded &&
           items.map((item: ICard) => (
-            <Card
+            <CardDropWrapper
               key={item.id}
               id={item.id}
               name={item.name}
