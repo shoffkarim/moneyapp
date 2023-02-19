@@ -84,5 +84,58 @@
     "expenses": 213546,
     "income": 123546,
     "balance": 123456
-  }
+  },
+  "transactions": [
+    {
+      "id": "1674633680875",
+      "value": 21312,
+      "date": "2023-01-27",
+      "comment": "sdafdf",
+      "tags": [
+        {
+          "id": "1",
+          "text": "Business lunch"
+        },
+        {
+          "id": "2",
+          "text": "Bank"
+        },
+        {
+          "id": "3",
+          "text": "Coffee"
+        }
+      ],
+      "idFrom": 213214,
+      "typeFrom": "incomes",
+      "idWhere": 13241234,
+      "typeWhere": "accounts"
+    },
+    {
+      "id": "1674644377997",
+      "value": 21312,
+      "date": "2023-01-06",
+      "comment": "ыфав",
+      "tags": [
+        {
+          "id": "1",
+          "text": "Business lunch"
+        }
+      ],
+      "idFrom": 1673944234038,
+      "typeFrom": "incomes",
+      "idWhere": 31334,
+      "typeWhere": "accounts"
+    },
+    {
+      "id": "1676809564351",
+      "value": 12,
+      "date": "",
+      "comment": "",
+      "tags": [],
+      "idFrom": 213214,
+      "typeFrom": "incomes",
+      "idWhere": 13241234,
+      "typeWhere": "accounts"
+    }
+  ]
 }

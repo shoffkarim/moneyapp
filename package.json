@@ -38,7 +38,6 @@
     "eject": "react-scripts eject",
     "server": "nodemon src/server/app.js",
     "json-server-db": "json-server --watch public/db.json --port=3001",
-    "json-server-tr": "json-server --watch public/transaction.json --port=3002",
     "dev": "concurrently \"npm run server\" \"npm run start\""
   },
 
