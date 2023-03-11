@@ -1,8 +1,6 @@
 import React from "react";
 import "./expenses.sass";
-// import { Card } from "../../card";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchExpenses } from "__data__/actions/expenses";
+import { useSelector } from "react-redux";
 import { RootState } from "__data__/store";
 import { ICard } from "components/interfaces";
 import { NewCard } from "components/cardsContainer/newCard";
@@ -10,21 +8,17 @@ import { CardDropWrapper } from "components/card/cardDropWrapper";
 
 interface IExpenses {
   transactionOpen: Function
+  items?: any
 }
 
-export const Expenses: React.FC<IExpenses> = ({transactionOpen}) => {
-  const dispatch = useDispatch();
-  React.useEffect(() => {
-    dispatch(fetchExpenses());
-  }, [dispatch]);
+export const Expenses: React.FC<IExpenses> = ({transactionOpen, items}) => {
 
-  const items = useSelector((state: RootState) => state.Expenses.items);
   const isLoaded = useSelector((state: RootState) => state.Expenses.isLoaded);
 
   return (
     <div className="expenses-container">
       <div className="expenses-wrapper">
-        {isLoaded &&
+        {!isLoaded && items &&
           items.map((item: ICard) => (
             <CardDropWrapper
               key={item.id}

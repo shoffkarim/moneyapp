@@ -1,4 +1,3 @@
-import classNames from 'classnames'
 import React, { useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { fetchHistory } from '__data__/actions/history'
