@@ -46,7 +46,7 @@ export const setTransactionData = (data: TransactionData) => ({
 })
 
 export const addNewTransaction = (item: string) => {
-  axios.post(`http://localhost:3002/transactions`, JSON.parse(item))
+  axios.post(`http://localhost:3001/transactions`, JSON.parse(item))
       .then(res => {
         console.log("success")
       })

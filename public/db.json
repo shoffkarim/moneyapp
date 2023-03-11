@@ -136,6 +136,17 @@
       "typeFrom": "incomes",
       "idWhere": 13241234,
       "typeWhere": "accounts"
+    },
+    {
+      "id": "1676810569831",
+      "value": 213123,
+      "date": "",
+      "comment": "",
+      "tags": [],
+      "idFrom": 213214,
+      "typeFrom": "incomes",
+      "idWhere": 13241234,
+      "typeWhere": "accounts"
     }
   ]
 }
