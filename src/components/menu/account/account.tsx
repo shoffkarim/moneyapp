@@ -1,27 +1,19 @@
 import React from "react";
 import './account.sass'
-import { useDispatch, useSelector } from 'react-redux';
 import { Typography } from "@mui/material";
-import { fetchUser } from '__data__/actions/user';
-import { RootState } from "__data__/store";
 
-export const Account: React.FC = () => {
-  const dispatch = useDispatch();
-  React.useEffect(() => {
-    dispatch(fetchUser());
-  }, [dispatch]);
+type AccontProps = {
+  name?: string
+}
 
-  const userItem = useSelector((state: RootState) => state.User.user)
-  const isLoaded = useSelector((state: RootState) => state.User.isLoaded)
-
+export const Account: React.FC<AccontProps> = ({ name }) => {
   return (
-    isLoaded && userItem && (
       <div className="lk">
         <div className="lk-photo">
           <img src="" alt="" />
         </div>
-        <Typography variant="h5">{userItem.name}</Typography>
+        <Typography variant="h5">{name}</Typography>
       </div>
-    )
+
   );
 };

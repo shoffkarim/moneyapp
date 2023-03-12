@@ -5,9 +5,9 @@ const router = Router()
 
 router.post('/start', async (req, res) => {
   try {
-    const {name, incomes, accounts, expenses} = req.body
+    const {name, incomes, accounts, expenses, total} = req.body
 
-    const data = new Data({name, incomes, accounts, expenses})
+    const data = new Data({name, incomes, accounts, expenses, total})
     await data.save()
 
     res.status(200).json({ message: 'User created successful'})

@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Income, Accounts, Expenses } from "components";
 import { useDispatch } from "react-redux";
 import { openPopupTransaction, setTransaction } from "__data__/actions/transaction";
-import Axios from "axios";
 
-export const CardsContainer: React.FC = () => {
-  const [data, setData] = useState<{
-    accounts? :any
-    incomes?: any
-    expenses?: any
-  }>()
+export interface CardsContainerProps {
+  accounts?: any
+  expenses?: any
+  incomes?: any
+}
+export const CardsContainer: React.FC<CardsContainerProps> = ({ accounts, expenses, incomes }) => {
+
   const dispatch = useDispatch();
   const transactionHandler = (
     open: boolean,
@@ -22,35 +22,11 @@ export const CardsContainer: React.FC = () => {
    dispatch(openPopupTransaction(open))
   };
 
-  const handleData = () => {
-    try {
-
-      Axios.post('/api/accounts', {
-        method: 'POST',
-        body: JSON.stringify({}),
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Access-Control-Allow-Origin': 'http://localhost:3000',
-          'Access-Control-Allow-Credentials': 'true'
-        }
-      })
-      .then(({data}) => setData(data))
-
-    } catch (error) {
-      console.log("Request Error", error)
-    }
-  }
-
-  useEffect(() => {
-    handleData()
-  }, [])
-
   return (
     <>
-      <Income transactionOpen={transactionHandler} items={data?.incomes} />
-      <Accounts transactionOpen={transactionHandler} items={data?.accounts} />
-      <Expenses transactionOpen={transactionHandler} items={data?.expenses} />
+      <Income transactionOpen={transactionHandler} items={incomes} />
+      <Accounts transactionOpen={transactionHandler} items={accounts} />
+      <Expenses transactionOpen={transactionHandler} items={expenses} />
     </>
   );
 };

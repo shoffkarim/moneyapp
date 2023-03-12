@@ -1,26 +1,23 @@
 import React from 'react'
 import './total.sass'
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchTotal } from '__data__/actions/total';
-import { RootState } from '__data__/store';
 import { BiRuble } from 'react-icons/bi';
 import { formatMoney } from 'components/utils/format';
 import { Typography } from '@mui/material';
 
-export const Total: React.FC = () => {
-  const dispatch = useDispatch();
-  React.useEffect(() => {
-    dispatch(fetchTotal());
-  }, [dispatch]);
+type TotalProps = {
+  total?: {
+    expenses?:number
+    incomes?: number
+    balance?: number
+  }
+}
 
-  const totalItems = useSelector((state: RootState) => state.Total.total)
-  const isLoaded = useSelector((state: RootState) => state.Total.isLoaded)
-  const expensesFormat: string = formatMoney(totalItems.expenses)
-  const incomeFormat: string = formatMoney(totalItems.income)
-  const balanceFormat: string = formatMoney(totalItems.balance)
+export const Total: React.FC<TotalProps> = ({ total }) => {
+  const expensesFormat: string = formatMoney(total?.expenses)
+  const incomeFormat: string = formatMoney(total?.incomes)
+  const balanceFormat: string = formatMoney(total?.balance)
 
   return (
-    isLoaded && totalItems && (
       <div className='total'>
         <div className='total-item'>
           <Typography variant="h6">Расходы</Typography>
@@ -44,6 +41,6 @@ export const Total: React.FC = () => {
           </div>
         </div>
       </div>
-    )
+
   )
 }

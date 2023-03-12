@@ -3,11 +3,11 @@ const Data = require('../models/Data')
 
 const router = Router()
 
-router.post('/accounts', async (req, res) => {
+router.post('/data', async (req, res) => {
   try {
 
-    const accounts = await Data.findOne({name: "Karim"})
-    res.json(accounts)
+    const data = await Data.findOne({name: "Karim Sharafutdinov"})
+    res.json(data)
 
   } catch (error) {
     res.status(500).json({ message: "Something wrong, try later"})
