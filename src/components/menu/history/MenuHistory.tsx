@@ -1,3 +1,4 @@
+import { Button } from '@mui/material'
 import React from 'react'
 
 type MenuHistoryProps = {
@@ -5,6 +6,6 @@ type MenuHistoryProps = {
 }
 export const MenuHistory: React.FC<MenuHistoryProps> = ({handleOpenHistory}) => {
   return (
-    <button onClick={() => handleOpenHistory()}>history</button>
+    <Button onClick={() => handleOpenHistory()} variant="contained">history</Button>
   )
 }

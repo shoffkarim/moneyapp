@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import { fetchHistory } from '__data__/actions/history'
-import { HistoryTransaction } from '../historyTransaction'
+import { HistoryTransaction } from '../history-transaction'
 import { mapStateToProps } from '../utils'
 
 import './historyContainer.sass'
