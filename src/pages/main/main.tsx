@@ -10,7 +10,11 @@ import Axios from "axios";
 
 export const Main: React.FC = () => {
   const [data, setData] = useState<{
-    name?: string
+    user?: {
+      id: string
+      name: string
+      image: string
+    }
     accounts?: any
     incomes?: any
     expenses?: any
@@ -28,17 +32,11 @@ export const Main: React.FC = () => {
   const handleData = () => {
     try {
 
-      Axios.post('/api/data', {
-        method: 'POST',
-        body: JSON.stringify({}),
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Access-Control-Allow-Origin': 'http://localhost:3000',
-          'Access-Control-Allow-Credentials': 'true'
-        }
-      })
-      .then(({data}) => setData(data))
+      Axios.get('http://localhost:3001/db')
+      .then(({data}) => {
+        console.log(data)
+        setData(data.db)}
+        )
 
     } catch (error) {
       console.log("Request Error", error)
@@ -60,7 +58,7 @@ export const Main: React.FC = () => {
         <TransactionContainer/>
         {historyOpen && <History handleOpen={handleOpenHistory}/>}
        </main>
-       <Menu handleOpenHistory={handleOpenHistory} name={data?.name} total={data?.total}/>
+       <Menu handleOpenHistory={handleOpenHistory} name={data?.user?.name} total={data?.total}/>
     </div>
   );
 };
