@@ -34,7 +34,6 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type, oper
   const theme: string = themeColor(color);
   const MainIcon: IMainIconObj = icons(icon);
 
-  console.log(iconProps)
   return (
     <>
       <div
