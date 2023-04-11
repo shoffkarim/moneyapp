@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import "./card.sass";
 import { GrFormEdit } from "react-icons/gr";
 import { formatMoney } from "components/utils/format";
 import { themeColor } from "components/utils/color";
 import { icons } from "components/utils/icons";
-import { EditPopup } from "components/popups/editPopup";
+import { EditPopup } from "components/popups/edit-popup";
 import { DragPreviewImage, useDrag } from "react-dnd";
 import { ICard, IMainIconObj } from "components/interfaces";
 import { Typography } from "@mui/material";
 import { CurrencyRuble } from "@mui/icons-material";
-import classNames from "classnames";
+import { CardIconStyled, CardStyled, CardValueStyled, CardWrapperStyled } from "./card.styled";
+import { EditContainerStyled } from "components/popups/edit-popup/edit-popup.styled";
 
 
 
@@ -36,35 +36,34 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type, oper
 
   return (
     <>
-      <div
-        className={classNames("card", isDragging ? "card_dragging" : "")}
+      <CardStyled
+        isDragging={isDragging}
         onMouseEnter={() => setVisibleEdit(!visibleEdit)}
         onMouseLeave={() => setVisibleEdit(!visibleEdit)}
       >
-        <div className={classNames("card-wrapper")} >
+        <CardWrapperStyled >
           <Typography variant="body1" mb={'10px'}>{name}</Typography>
-          <div
+          <CardIconStyled
             ref={drag}
-            className={classNames("card-icon")}
             style={{ backgroundColor: theme }}
             >
             <DragPreviewImage connect={preview} src="moneySvg.svg"/>
             <MainIcon.Icon {...iconProps} />
-          </div>
-          <div className="card-value">
+          </CardIconStyled>
+          <CardValueStyled>
             <Typography component={'span'}>{money}</Typography>
             <CurrencyRuble sx={{fontSize: 18}} />
-          </div>
-        </div>
+          </CardValueStyled>
+        </CardWrapperStyled>
+        {/* TODO: move EditContainerStyled out of here */}
         {visibleEdit && (
-          <div
-            className="edit-container"
+          <EditContainerStyled
             onClick={() => setVisiblePopup(!visiblePopup)}
           >
             <GrFormEdit size="25px" />
-          </div>
+          </EditContainerStyled>
         )}
-      </div>
+      </CardStyled>
       {visiblePopup && (
         <EditPopup
           id={id}

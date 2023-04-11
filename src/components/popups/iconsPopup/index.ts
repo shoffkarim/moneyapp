@@ -1,1 +1,0 @@
-export { IconsPopup } from './iconsPopup'

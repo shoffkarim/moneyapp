@@ -1,0 +1,1 @@
+export { CardNew } from './card-new'

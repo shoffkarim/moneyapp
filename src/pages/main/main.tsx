@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Menu } from "components";
-import "./main.sass";
 
-import { CardsContainer } from "components/cardsContainer";
-import { TransactionContainer } from "components/transactionContainer";
-import { History } from "components/history/historyContainer";
+import { CardsContainer } from "components/cards-container";
+import { TransactionContainer } from "components/transaction-container";
+import { History } from "components/history/history-container";
 import { handleRequest } from "./sendData";
 import Axios from "axios";
+import { ContainerStyled, MainStyled, WrapperStyled } from "./main.styled";
 
 export const Main: React.FC = () => {
   const [data, setData] = useState<{
@@ -49,16 +49,16 @@ export const Main: React.FC = () => {
 
 
   return (
-    <div className="container">
+    <ContainerStyled>
       {/* <button onClick={() => handleRequest()}>{"Create new user"}</button> */}
-      <main className="main">
-        <div className="wrapper">
+      <MainStyled>
+        <WrapperStyled>
           <CardsContainer accounts={data?.accounts} expenses={data?.expenses} incomes={data?.incomes}/>
-        </div>
+        </WrapperStyled>
         <TransactionContainer/>
         {historyOpen && <History handleOpen={handleOpenHistory}/>}
-       </main>
+       </MainStyled>
        <Menu handleOpenHistory={handleOpenHistory} name={data?.user?.name} total={data?.total}/>
-    </div>
+    </ContainerStyled>
   );
 };

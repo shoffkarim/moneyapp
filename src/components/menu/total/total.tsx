@@ -1,8 +1,8 @@
 import React from 'react'
-import './total.sass'
 import { BiRuble } from 'react-icons/bi';
 import { formatMoney } from 'components/utils/format';
 import { Typography } from '@mui/material';
+import { TotalItemStyled, TotalStyled, TotalItemWrapperStyled } from './total.styled';
 
 type TotalProps = {
   total?: {
@@ -18,29 +18,29 @@ export const Total: React.FC<TotalProps> = ({ total }) => {
   const balanceFormat: string = formatMoney(total?.balance)
 
   return (
-      <div className='total'>
-        <div className='total-item'>
+      <TotalStyled>
+        <TotalItemStyled>
           <Typography variant="h6">Расходы</Typography>
-          <div className='total-item__wrapper'>
+          <TotalItemWrapperStyled>
             <Typography variant="h6">{expensesFormat}</Typography>
             <BiRuble fontSize={24}/>
-          </div>
-        </div>
-        <div className='total-item'>
+          </TotalItemWrapperStyled>
+        </TotalItemStyled>
+        <TotalItemStyled>
           <Typography variant="h6">Доходы</Typography>
-          <div className='total-item__wrapper'>
+          <TotalItemWrapperStyled>
             <Typography variant="h6">{incomeFormat}</Typography>
             <BiRuble fontSize={24}/>
-          </div>
-        </div>
-        <div className='total-item'>
+          </TotalItemWrapperStyled>
+        </TotalItemStyled>
+        <TotalItemStyled>
           <Typography variant="h6">Баланс</Typography>
-          <div className='total-item__wrapper'>
+          <TotalItemWrapperStyled>
             <Typography variant="h6">{balanceFormat}</Typography>
             <BiRuble fontSize={24}/>
-          </div>
-        </div>
-      </div>
+          </TotalItemWrapperStyled>
+        </TotalItemStyled>
+      </TotalStyled>
 
   )
 }

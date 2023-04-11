@@ -1,2 +1,2 @@
 export { Card } from './card'
-export { CardDropWrapper} from './cardDropWrapper'
+export { CardDropWrapper} from './card-drop-wrapper'

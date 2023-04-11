@@ -1,7 +1,7 @@
 import React from 'react'
 import { Account, Total } from 'components'
-import './menu.sass'
-import { MenuHistory } from './history'
+import { MenuHistory } from './menu-history'
+import { MenuContainerStyled, MenuStyled } from './menu.styled'
 
 type MenuProps = {
   handleOpenHistory: () => void
@@ -14,12 +14,12 @@ type MenuProps = {
 }
 export const Menu: React.FC<MenuProps> = ({ handleOpenHistory, name, total }) => {
   return (
-    <aside className='menu'>
-      <div className='menu-container'>
+    <MenuStyled>
+      <MenuContainerStyled>
         <Account name={name}/>
         <Total total={total}/>
         <MenuHistory handleOpenHistory={handleOpenHistory}/>
-      </div>
-    </aside>
+      </MenuContainerStyled>
+    </MenuStyled>
   )
 }

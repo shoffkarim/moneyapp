@@ -1,70 +1,64 @@
-import { TableCell, TableRow, Typography } from "@mui/material";
-import classNames from "classnames";
+import { TableCell, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { BsBank, BsFillBagCheckFill } from "react-icons/bs";
-import "./history-transaction.sass";
+import { HistoryItemCellStyled, HistoryItemIconStyled, HistoryItemStyled, HistoryItemTagListStyled, HistoryItemTagItemStyled, HistoryItemCommentStyled } from "./history-transaction.styled";
 
 export const HistoryTransactionElement: React.FC = () => {
   const [showComment, setShowComment] = useState(false);
   return (
-    <TableRow className="history-item">
+    <HistoryItemStyled>
       <TableCell>
         <Typography>12-02-2023</Typography>
       </TableCell>
       <TableCell>
-        <div className="history-item__cell">
-          <div className="history-item__icon">
+        <HistoryItemCellStyled>
+          <HistoryItemIconStyled>
             <BsBank color="white" />
-          </div>
+          </HistoryItemIconStyled>
           <Typography>Tinkoff</Typography>
-        </div>
+        </HistoryItemCellStyled>
       </TableCell>
       <TableCell>
-        <div className="history-item__cell">
-          <div className="history-item__icon">
+        <HistoryItemCellStyled>
+          <HistoryItemIconStyled>
             <BsFillBagCheckFill color="white" />
-          </div>
+          </HistoryItemIconStyled>
           <Typography>Purchases</Typography>
-        </div>
+        </HistoryItemCellStyled>
       </TableCell>
       <TableCell>
         <Typography>2000.00 P</Typography>
       </TableCell>
       <TableCell>
-        <Typography
+        <HistoryItemCommentStyled
           onClick={() => setShowComment(!showComment)}
-          className={classNames(
-            "history-item__comment",
-            showComment
-              ? "history-item__comment_show"
-              : "history-item__comment_hide"
-          )}
+          show={showComment}
           aria-label="comment comment comment comment comment comment comment comment"
           title="comment comment comment comment comment comment comment comment"
         >
           comment comment comment comment comment comment comment comment
-        </Typography>
-        <ul className="history-item__tag-list">
-          <li className="history-item__tag-item">
+        </HistoryItemCommentStyled>
+        <HistoryItemTagListStyled>
+          <HistoryItemTagItemStyled>
             <Typography fontSize="14px">Business lunch</Typography>
-          </li>
-          <li className="history-item__tag-item">
+          </HistoryItemTagItemStyled>
+          <HistoryItemTagItemStyled>
             <Typography fontSize="14px">Bank</Typography>
-          </li>
-          <li className="history-item__tag-item">
+          </HistoryItemTagItemStyled>
+          <HistoryItemTagItemStyled>
             <Typography fontSize="14px">Coffee</Typography>
-          </li>
-          <li className="history-item__tag-item">
+          </HistoryItemTagItemStyled>
+          <HistoryItemTagItemStyled>
             <Typography fontSize="14px">Bank</Typography>
-          </li>
-          <li className="history-item__tag-item">
+          </HistoryItemTagItemStyled>
+          <HistoryItemTagItemStyled>
             <Typography fontSize="14px">Coffee</Typography>
-          </li>
-          <li className="history-item__tag-item">
+          </HistoryItemTagItemStyled>
+          <HistoryItemTagItemStyled>
             <Typography fontSize="14px">Business lunch</Typography>
-          </li>
-        </ul>
+          </HistoryItemTagItemStyled>
+        </HistoryItemTagListStyled>
       </TableCell>
-    </TableRow>
+    </HistoryItemStyled>
   );
 };

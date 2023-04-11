@@ -1,6 +1,6 @@
 import React from "react";
-import './account.sass'
 import { Typography } from "@mui/material";
+import { LkPhotoStyled, LkStyled } from "./account.styled";
 
 type AccontProps = {
   name?: string
@@ -8,12 +8,12 @@ type AccontProps = {
 
 export const Account: React.FC<AccontProps> = ({ name }) => {
   return (
-      <div className="lk">
-        <div className="lk-photo">
+      <LkStyled>
+        <LkPhotoStyled>
           <img src="" alt="" />
-        </div>
+        </LkPhotoStyled>
         <Typography variant="h5">{name}</Typography>
-      </div>
+      </LkStyled>
 
   );
 };
