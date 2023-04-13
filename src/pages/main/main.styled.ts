@@ -4,15 +4,16 @@ import { css } from "@emotion/react";
 export const ContainerStyled = styled.div(() => css`
   display: grid;
   grid-template-columns: 3fr minmax(450px, 1fr);
+  grid-template-areas: 'auto aside';
+  gap: 0px 30px;
   min-height: 100vh;
+  padding-left: 30px;
 `)
 
 export const WrapperStyled = styled.div(() => css`
   display: grid;
   grid-template-rows: repeat(3, min-content);
   gap: 40px 0px;
-  padding-left: 30px;
-  padding-right: 30px;
 `)
 
 export const MainStyled = styled.main(() => css``)

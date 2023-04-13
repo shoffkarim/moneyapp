@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Menu } from "components";
-
 import { CardsContainer } from "components/cards-container";
 import { TransactionContainer } from "components/transaction-container";
-import { History } from "components/history/history-container";
-import { handleRequest } from "./sendData";
 import Axios from "axios";
-import { ContainerStyled, MainStyled, WrapperStyled } from "./main.styled";
+import { MainStyled, WrapperStyled } from "./main.styled";
 
 export const Main: React.FC = () => {
   const [data, setData] = useState<{
@@ -24,10 +20,7 @@ export const Main: React.FC = () => {
       balance?: number
     }
   }>()
-  const [historyOpen, setHistoryOpen] = useState<boolean>(false)
-  const handleOpenHistory = () => {
-    setHistoryOpen(!historyOpen)
-  }
+
 
   const handleData = () => {
     try {
@@ -46,19 +39,16 @@ export const Main: React.FC = () => {
   useEffect(() => {
     handleData()
   }, [])
-
+  {/* <button onClick={() => handleRequest()}>{"Create new user"}</button> */}
 
   return (
-    <ContainerStyled>
-      {/* <button onClick={() => handleRequest()}>{"Create new user"}</button> */}
+
+
       <MainStyled>
         <WrapperStyled>
           <CardsContainer accounts={data?.accounts} expenses={data?.expenses} incomes={data?.incomes}/>
         </WrapperStyled>
         <TransactionContainer/>
-        {historyOpen && <History handleOpen={handleOpenHistory}/>}
        </MainStyled>
-       <Menu handleOpenHistory={handleOpenHistory} name={data?.user?.name} total={data?.total}/>
-    </ContainerStyled>
   );
 };
