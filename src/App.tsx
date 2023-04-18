@@ -4,6 +4,7 @@ import { History } from 'pages/history';
 import { ContainerStyled } from 'pages/main/main.styled';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Main } from './pages';
+import { Calendar } from 'pages/calendar';
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Routes>
         <Route path='/' Component={Main}/>
         <Route path='history' Component={History}/>
+        <Route path='calendar' Component={Calendar}/>
       </Routes>
       <Menu
        name={'Пользователь П'}

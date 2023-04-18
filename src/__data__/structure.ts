@@ -50,6 +50,7 @@ export type data = {
     {
       id: string
       value: number
+      transactionDate: string
       createdDate: string
       updatedDate: string
       idFrom: string

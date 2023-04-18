@@ -20,6 +20,7 @@ export const Menu: React.FC<MenuProps> = ({ name, total }) => {
         <Total total={total}/>
         <Button component={Link} to={'/'} variant="contained">Main</Button>
         <Button component={Link} to={'/history'} variant="contained">History</Button>
+        <Button component={Link} to={'/calendar'} variant="contained">Calendar</Button>
       </MenuContainerStyled>
     </MenuStyled>
   )
