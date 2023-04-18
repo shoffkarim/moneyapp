@@ -18,8 +18,8 @@ export const Menu: React.FC<MenuProps> = ({ name, total }) => {
       <MenuContainerStyled>
         <Account name={name}/>
         <Total total={total}/>
-        <Button component={Link} to={'/history'} variant="contained">History</Button>
         <Button component={Link} to={'/'} variant="contained">Main</Button>
+        <Button component={Link} to={'/history'} variant="contained">History</Button>
       </MenuContainerStyled>
     </MenuStyled>
   )
