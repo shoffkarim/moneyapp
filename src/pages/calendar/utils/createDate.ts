@@ -9,7 +9,7 @@ export const createDate = (params?: CreateDateParams) => {
   const date = params?.date ?? new Date()
   const dayNumber = date.getDate()
   const day = date.toLocaleDateString(locale, { weekday: 'long' })
-  const dayNumberInWeek = date.getDate() + 1
+  const dayNumberInWeek = date.getDay() + 1
   const dayShort = date.toLocaleDateString(locale, { weekday: 'short' })
 
   const year = date.getFullYear()
