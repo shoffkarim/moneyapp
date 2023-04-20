@@ -1,6 +1,15 @@
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
 import React from 'react'
+import { useCalendar } from './useCalendar'
 
-export const Calendar: React.FC = () =>
-  <FullCalendar plugins={[dayGridPlugin]} initialView='dayGridMonth'/>
+interface CalendarProps {
+  locale?: string
+  selectedDate: Date
+  selectDate: (date: Date) => void
+}
+
+export const Calendar: React.FC<CalendarProps> = ({ locale = 'default', selectedDate, selectDate }) => {
+  const {} = useCalendar({ locale, selectedDate })
+  return (
+    <></>
+  )
+}
