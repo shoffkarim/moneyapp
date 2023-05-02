@@ -15,11 +15,11 @@ interface UseCalendarParams {
 
 export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekDay = 2}: UseCalendarParams) => {
   const [mode, setMode] = useState<'days' | 'monthes' | 'years'>('days')
-  const [selectedDay, setSelectedDaty] = useState(createDate({ date }))
-  const [selectedMonth, setSelectedMonth] = useState(createMonth({ locale, date: new Date(selectedDay.year, selectedDay.monthIndex) }))
-  const [selectedYear, setSelectedYear] = useState(selectedDay.year)
+  const [selectedDate, setSelectedDate] = useState(createDate({ date }))
+  const [selectedMonth, setSelectedMonth] = useState(createMonth({ locale, date: new Date(selectedDate.year, selectedDate.monthIndex) }))
+  const [selectedYear, setSelectedYear] = useState(selectedDate.year)
 
-  const [selectedYearsInterval, setSelectedYearsInterval] = useState(getYearsInterval(selectedDay.year))
+  const [selectedYearsInterval, setSelectedYearsInterval] = useState(getYearsInterval(selectedDate.year))
 
   const monthesNames = useMemo(() => getMonthesNames(locale), [locale])
   const weekDaysNames = useMemo(() => getWeekDaysNames(firstWeekDay, locale), [locale, firstWeekDay])
@@ -78,10 +78,14 @@ export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekD
       calendarDays,
       weekDaysNames,
       monthesNames,
-      selectedDay,
+      selectedDate,
       selectedMonth,
       selectedYear,
       selectedYearsInterval
+    },
+    functions: {
+      setMode,
+      setSelectedDate
     }
   }
 }
