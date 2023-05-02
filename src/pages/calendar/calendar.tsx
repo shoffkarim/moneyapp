@@ -1,4 +1,6 @@
+import { Button } from '@mui/material'
 import React from 'react'
+import { CalendarHeaderStyled, WeekDaysNameContainerStyled, WeekDayNameStyled, DaysContainerStyled, DayStyled } from './calendar.style'
 import { useCalendar } from './useCalendar'
 import { checkDateIsEqual, checkIsToday } from './utils'
 
@@ -13,50 +15,53 @@ export const Calendar: React.FC<CalendarProps> = ({ locale = 'default', selected
   const { state, functions } = useCalendar({ locale, selectedDate, firstWeekDay })
   return (
     <div>
-      <div>
+      <CalendarHeaderStyled>
       {state.mode === 'days' && (
-        <p onClick={() => functions.setMode('monthes')}>
+        <Button onClick={() => functions.setMode('monthes')}>
           {state.monthesNames[state.selectedMonth.monthIndex].month} {state.selectedYear}
-        </p>
+        </Button>
       )}
       {state.mode === 'monthes' && (
-        <p onClick={() => functions.setMode('years')}>
+        <Button onClick={() => functions.setMode('years')}>
           {state.selectedYear}
-        </p>
+        </Button>
       )}
       {state.mode === 'years' && (
-        <p onClick={() => functions.setMode('days')}>
+        <Button onClick={() => functions.setMode('days')}>
           {state.selectedYearsInterval[0]}  -  {state.selectedYearsInterval[state.selectedYearsInterval.length - 1]}
-        </p>
+        </Button>
       )}
-      </div>
-      <div>
-        {state.mode === 'days' && (
-          <div>
-            {state.weekDaysNames.map((weekDaysName) => (
-              <span key={weekDaysName.dayShort}>{weekDaysName.dayShort}</span>
+      </CalendarHeaderStyled>
+      <WeekDaysNameContainerStyled>
+        {state.mode === 'days' &&
+            state.weekDaysNames.map((weekDaysName) => (
+              <WeekDayNameStyled key={weekDaysName.dayShort}>
+                <span>{weekDaysName.dayShort}</span>
+              </WeekDayNameStyled>
             ))}
-          </div>
-        )}
-      </div>
-      <div>
+      </WeekDaysNameContainerStyled>
+      <DaysContainerStyled>
         {state.calendarDays.map((day) => {
-          const today = checkIsToday(day.date)
+          const isToday = checkIsToday(day.date)
           const isSelectedDay = checkDateIsEqual(day.date, state.selectedDate.date)
           const isAdditionalDay = day.monthIndex !== state.selectedMonth.monthIndex
           return (
-            <span
-              key={`${day.dayNumber}-${day.monthIndex}`}
+            <DayStyled key={`${day.dayNumber}-${day.monthIndex}`}
+              isAdditionalDay={isAdditionalDay}
+              isToday={isToday}
+              isSelectedDay={isSelectedDay}
               onClick={() => {
                 functions.setSelectedDate(day)
                 selectDate(day.date)
               }}
             >
-              {day.dayNumber}
-            </span>
+              <span>
+                {day.dayNumber}
+              </span>
+            </DayStyled>
           )
         })}
-      </div>
+      </DaysContainerStyled>
     </div>
   )
 }
