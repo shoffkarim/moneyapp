@@ -1,6 +1,8 @@
-import { Button } from '@mui/material'
+import { Button, IconButton } from '@mui/material'
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import React from 'react'
-import { CalendarHeaderStyled, WeekDaysNameContainerStyled, WeekDayNameStyled, DaysContainerStyled, DayStyled } from './calendar.style'
+import { CalendarHeaderStyled, CalendarHeaderWrapperStyled, WeekDaysNameContainerStyled, WeekDayNameStyled, DaysContainerStyled, DayStyled } from './calendar.style'
 import { useCalendar } from './useCalendar'
 import { checkDateIsEqual, checkIsToday } from './utils'
 
@@ -16,21 +18,29 @@ export const Calendar: React.FC<CalendarProps> = ({ locale = 'default', selected
   return (
     <div>
       <CalendarHeaderStyled>
-      {state.mode === 'days' && (
-        <Button onClick={() => functions.setMode('monthes')}>
-          {state.monthesNames[state.selectedMonth.monthIndex].month} {state.selectedYear}
-        </Button>
-      )}
-      {state.mode === 'monthes' && (
-        <Button onClick={() => functions.setMode('years')}>
-          {state.selectedYear}
-        </Button>
-      )}
-      {state.mode === 'years' && (
-        <Button onClick={() => functions.setMode('days')}>
-          {state.selectedYearsInterval[0]}  -  {state.selectedYearsInterval[state.selectedYearsInterval.length - 1]}
-        </Button>
-      )}
+        <IconButton onClick={() => functions.onClickArrow('left')}>
+          <ArrowBackIosIcon/>
+        </IconButton>
+        <CalendarHeaderWrapperStyled>
+          {state.mode === 'days' && (
+            <Button onClick={() => functions.setMode('monthes')}>
+              {state.monthesNames[state.selectedMonth.monthIndex].month} {state.selectedYear}
+            </Button>
+          )}
+          {state.mode === 'monthes' && (
+            <Button onClick={() => functions.setMode('years')}>
+              {state.selectedYear}
+            </Button>
+          )}
+          {state.mode === 'years' && (
+            <Button onClick={() => functions.setMode('days')}>
+              {state.selectedYearsInterval[0]}  -  {state.selectedYearsInterval[state.selectedYearsInterval.length - 1]}
+            </Button>
+          )}
+        </CalendarHeaderWrapperStyled>
+        <IconButton onClick={() => functions.onClickArrow('right')}>
+          <ArrowForwardIosIcon/>
+        </IconButton>
       </CalendarHeaderStyled>
       <WeekDaysNameContainerStyled>
         {state.mode === 'days' &&

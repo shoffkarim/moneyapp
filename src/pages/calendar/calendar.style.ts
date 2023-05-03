@@ -3,8 +3,13 @@ import { css } from "@emotion/react";
 
 export const CalendarHeaderStyled = styled.div(() => css`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   background-color: #c4c4c4;
+`)
+
+export const CalendarHeaderWrapperStyled = styled.div(() => css`
+  display: flex;
+  justify-content: center;
 `)
 
 export const WeekDaysNameContainerStyled = styled.div(() => css`
