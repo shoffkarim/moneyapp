@@ -13,8 +13,7 @@ export const CalendarMonthesMode: React.FC<CalendarMonthesModeProps> = ({ state,
       <MonthesContainerStyled>
         {state.monthesNames.map((month) => {
           const isCurrentMonth = new Date().getMonth() === month.monthIndex && new Date().getFullYear() === state.selectedYear
-          const isSelectedMonth = month.monthIndex === state.selectedMonth.monthIndex && state.selectedDate.year === state.selectedYear
-
+          const isSelectedMonth = state.selectedDate.year === state.selectedYear && month.monthIndex === state.selectedDate.monthIndex
           return (
             <MonthStyled
               key={`${month.monthIndex}`}

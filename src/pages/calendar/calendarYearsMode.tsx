@@ -20,7 +20,7 @@ export const CalendarYearsMode: React.FC<CalendarYearsModeProps> = ({ state, fun
         </YearStyled>
         {state.selectedYearsInterval.map((year) => {
           const isCurrentYear = new Date().getFullYear() === year
-          const isSelectedYear = year === state.selectedYear
+          const isSelectedYear = year === state.selectedDate.year
 
           return (
             <YearStyled
