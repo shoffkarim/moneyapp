@@ -1,6 +1,5 @@
 import { getYearsInterval } from './utils/getYearsInterval';
 import { getMonthNumberOfDays } from './utils/getMonthNumberOfDays';
-import { getMonthNumberOfYear } from './utils/getMonthNumberOfYear';
 import { getWeekDaysNames } from './utils/getWeekDaysNames';
 import { createDate, createMonth, getMonthesNames } from './utils';
 import { useMemo, useState } from "react"
@@ -70,7 +69,7 @@ export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekD
 
     return result
 
-  }, [selectedMonth.year, selectedMonth.monthIndex, selectedYear])
+  }, [selectedMonth.monthIndex, selectedYear, locale, days, firstWeekDay])
 
   const onClickArrow = (direction: 'right' | 'left') => {
     if(mode === 'days') {
@@ -97,6 +96,37 @@ export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekD
 
       setSelectedMonth(createMonth({ date: new Date(selectedYear, monthIndex), locale }))
     }
+
+    if(mode === 'monthes' && direction === 'left') {
+      const year = selectedYear - 1
+        setSelectedYear(year)
+        if(!selectedYearsInterval.includes(year)) {
+          setSelectedYearsInterval(getYearsInterval(year))
+        }
+        return setSelectedYear(year)
+    }
+
+    if(mode === 'monthes' && direction === 'right') {
+      const year = selectedYear + 1
+        setSelectedYear(year)
+        if(!selectedYearsInterval.includes(year)) {
+          setSelectedYearsInterval(getYearsInterval(year))
+        }
+        return setSelectedYear(year)
+    }
+
+    if(mode === 'years' && direction === 'left') {
+      return setSelectedYearsInterval(getYearsInterval(selectedYearsInterval[0] - 10))
+    }
+
+    if(mode === 'years' && direction === 'right') {
+      return setSelectedYearsInterval(getYearsInterval(selectedYearsInterval[0] + 10))
+    }
+  }
+
+
+  const setSelectedMonthByIndex = (monthIndex: number) => {
+    setSelectedMonth(createMonth({ date: new Date(selectedYear, monthIndex), locale }))
   }
 
   return {
@@ -108,12 +138,14 @@ export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekD
       selectedDate,
       selectedMonth,
       selectedYear,
-      selectedYearsInterval
+      selectedYearsInterval,
     },
     functions: {
       setMode,
       setSelectedDate,
-      onClickArrow
+      setSelectedMonthByIndex,
+      setSelectedYear,
+      onClickArrow,
     }
   }
 }
