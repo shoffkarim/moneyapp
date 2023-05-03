@@ -1,3 +1,4 @@
+import { CreateYearReturn } from './types';
 import { createMonth } from './createMonth';
 import { createDate } from './createDate';
 interface CreateYearParams {
@@ -6,7 +7,7 @@ interface CreateYearParams {
   monthNumber?: number
 }
 
-export const createYear = (params?: CreateYearParams) => {
+export const createYear = (params?: CreateYearParams): CreateYearReturn => {
   const locale = params?.locale ?? 'default'
 
   const today = createDate()
@@ -27,7 +28,8 @@ export const createYear = (params?: CreateYearParams) => {
     }
     return monthes
   }
-
+  console.log({month,
+    year})
   return {
     createYearMonthes,
     month,

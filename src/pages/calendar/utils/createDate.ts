@@ -1,9 +1,10 @@
+import { CreateDateReturn } from './types';
 import { getWeekNumber } from './getWeekNumber';
 interface CreateDateParams {
   locale?: string
   date?: Date
 }
-export const createDate = (params?: CreateDateParams) => {
+export const createDate = (params?: CreateDateParams): CreateDateReturn => {
   const locale = params?.locale ?? 'default'
 
   const date = params?.date ?? new Date()

@@ -1,13 +1,8 @@
+import { GetMonthesNamesReturn } from './types';
 import { createDate } from './createDate';
 
-export const getMonthesNames = (locale: string = 'default') => {
-  const monthesNames: {
-    month: ReturnType<typeof createDate>['month']
-    monthShort: ReturnType<typeof createDate>['monthShort']
-    monthIndex: ReturnType<typeof createDate>['monthIndex']
-    date: ReturnType<typeof createDate>['date']
-    year: ReturnType<typeof createDate>['year']
-  }[] = Array.from({length: 12})
+export const getMonthesNames = (locale: string = 'default'): Array<GetMonthesNamesReturn> => {
+  const monthesNames: Array<GetMonthesNamesReturn> = Array.from({length: 12})
 
   const today = new Date()
 

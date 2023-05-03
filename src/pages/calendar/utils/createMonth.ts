@@ -1,3 +1,4 @@
+import { CreateMonthReturn } from './types';
 import { getMonthNumberOfYear } from './getMonthNumberOfYear';
 import { createDate } from './createDate';
 interface CreateMonthParams {
@@ -5,7 +6,7 @@ interface CreateMonthParams {
   date?: Date
 }
 
-export const createMonth = (params?: CreateMonthParams) => {
+export const createMonth = (params?: CreateMonthParams): CreateMonthReturn => {
   const locale = params?.locale ?? 'default'
 
   const date = params?.date ?? new Date()

@@ -1,8 +1,6 @@
-import { getYearsInterval } from './utils/getYearsInterval';
-import { getMonthNumberOfDays } from './utils/getMonthNumberOfDays';
-import { getWeekDaysNames } from './utils/getWeekDaysNames';
-import { createDate, createMonth, getMonthesNames } from './utils';
 import { useMemo, useState } from "react"
+import { UseCalendarReturn } from './utils/types';
+import { createDate, createMonth, getMonthesNames, getWeekDaysNames, getMonthNumberOfDays, getYearsInterval } from './utils';
 
 export const DAYS_IN_WEEK = 7
 
@@ -12,7 +10,8 @@ interface UseCalendarParams {
   firstWeekDay?: number
 }
 
-export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekDay = 2}: UseCalendarParams) => {
+
+export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekDay = 2}: UseCalendarParams): UseCalendarReturn => {
   const [mode, setMode] = useState<'days' | 'monthes' | 'years'>('days')
   const [selectedDate, setSelectedDate] = useState(createDate({ date }))
   const [selectedMonth, setSelectedMonth] = useState(createMonth({ locale, date: new Date(selectedDate.year, selectedDate.monthIndex) }))

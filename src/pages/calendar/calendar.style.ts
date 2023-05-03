@@ -35,6 +35,7 @@ export type DayStyledProps = {
   isToday: boolean
   isSelectedDay: boolean
 }
+
 export const DayStyled = styled.div<DayStyledProps>(({ isToday, isAdditionalDay, isSelectedDay }) => css`
   display: flex;
   justify-content: center;
@@ -58,6 +59,7 @@ export type MonthStyledProps = {
   isCurrentMonth: boolean
   isSelectedMonth: boolean
 }
+
 export const MonthStyled = styled.div<MonthStyledProps>(({ isCurrentMonth, isSelectedMonth }) => css`
   display: flex;
   justify-content: center;
@@ -82,6 +84,7 @@ export type YearsStyledProps = {
   isSelectedYear: boolean
   isAdditionalYear: boolean
 }
+
 export const YearStyled = styled.div<YearsStyledProps>(({ isCurrentYear, isSelectedYear, isAdditionalYear }) => css`
   display: flex;
   justify-content: center;
