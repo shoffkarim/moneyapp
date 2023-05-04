@@ -1,5 +1,6 @@
+import { Typography } from '@mui/material'
 import React from 'react'
-import { CalendarWrapperModeStyled, MonthesContainerStyled, MonthStyled } from './calendar.style'
+import { CalendarItemInfoStyled, CalendarItemNumber, CalendarItemWrapperStyled, CalendarWrapperModeStyled, MonthesContainerStyled, MonthStyled } from './calendar.style'
 import { UseCalendarFuncsReturn, UseCalendarStateReturn } from './utils/types'
 
 interface CalendarMonthesModeProps {
@@ -24,9 +25,27 @@ export const CalendarMonthesMode: React.FC<CalendarMonthesModeProps> = ({ state,
                 functions.setMode('days')
               }}
             >
-              <span>
+              <CalendarItemNumber>
                 {month.monthShort}
-              </span>
+              </CalendarItemNumber>
+              <CalendarItemWrapperStyled>
+                <CalendarItemInfoStyled>
+                  <Typography>
+                    Income:
+                  </Typography>
+                  <Typography>
+                    215 534
+                  </Typography>
+                </CalendarItemInfoStyled>
+                <CalendarItemInfoStyled>
+                  <Typography>
+                    Outcome:
+                  </Typography>
+                  <Typography>
+                    152 678
+                  </Typography>
+                </CalendarItemInfoStyled>
+              </CalendarItemWrapperStyled>
             </MonthStyled>
           )
         })}

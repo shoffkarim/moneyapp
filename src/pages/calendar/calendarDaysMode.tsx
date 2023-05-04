@@ -1,5 +1,6 @@
+import { Typography } from '@mui/material'
 import React from 'react'
-import { CalendarWrapperModeStyled, DaysContainerStyled, DayStyled, WeekDayNameStyled, WeekDaysNameContainerStyled } from './calendar.style'
+import { CalendarWrapperModeStyled, DayItem, DayItemHaveMore, DayItemsList, CalendarItemNumber, DaysContainerStyled, DayStyled, WeekDayNameStyled, WeekDaysNameContainerStyled } from './calendar.style'
 import { checkDateIsEqual, checkIsToday } from './utils'
 import { UseCalendarFuncsReturn, UseCalendarStateReturn } from './utils/types'
 
@@ -34,9 +35,24 @@ export const CalendarDaysMode: React.FC<CalendarDaysModeProps> = ({ state, funct
                 selectDate(day.date)
               }}
             >
-              <span>
+              <CalendarItemNumber>
                 {day.dayNumber}
-              </span>
+              </CalendarItemNumber>
+              <DayItemsList>
+                <DayItem backgroundColor="#FF00FF">
+                  <Typography fontSize="14px">Food</Typography>
+                </DayItem>
+                <DayItem backgroundColor="#008000">
+                  <Typography fontSize="14px">Medicine</Typography>
+                </DayItem>
+                <DayItem backgroundColor="#FF00FF">
+                  <Typography fontSize="14px">Food</Typography>
+                </DayItem>
+                <DayItem backgroundColor="#008000">
+                  <Typography fontSize="14px">Medicine</Typography>
+                </DayItem>
+              </DayItemsList>
+              <DayItemHaveMore><Typography fontSize="12px">2 more...</Typography></DayItemHaveMore>
             </DayStyled>
           )
         })}

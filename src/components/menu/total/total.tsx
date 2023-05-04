@@ -20,21 +20,21 @@ export const Total: React.FC<TotalProps> = ({ total }) => {
   return (
       <TotalStyled>
         <TotalItemStyled>
-          <Typography variant="h6">Расходы</Typography>
+          <Typography variant="h6">Outcomes</Typography>
           <TotalItemWrapperStyled>
             <Typography variant="h6">{expensesFormat}</Typography>
             <BiRuble fontSize={24}/>
           </TotalItemWrapperStyled>
         </TotalItemStyled>
         <TotalItemStyled>
-          <Typography variant="h6">Доходы</Typography>
+          <Typography variant="h6">Incomes</Typography>
           <TotalItemWrapperStyled>
             <Typography variant="h6">{incomeFormat}</Typography>
             <BiRuble fontSize={24}/>
           </TotalItemWrapperStyled>
         </TotalItemStyled>
         <TotalItemStyled>
-          <Typography variant="h6">Баланс</Typography>
+          <Typography variant="h6">Balance</Typography>
           <TotalItemWrapperStyled>
             <Typography variant="h6">{balanceFormat}</Typography>
             <BiRuble fontSize={24}/>

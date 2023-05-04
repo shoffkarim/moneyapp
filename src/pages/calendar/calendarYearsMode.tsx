@@ -1,5 +1,5 @@
 import React from 'react'
-import { CalendarWrapperModeStyled, YearsContainerStyled, YearStyled } from './calendar.style'
+import { CalendarWrapperModeStyled, YearsContainerStyled, YearStyled, CalendarItemNumber } from './calendar.style'
 import { UseCalendarFuncsReturn, UseCalendarStateReturn } from './utils/types'
 
 interface CalendarYearsModeProps {
@@ -16,7 +16,9 @@ export const CalendarYearsMode: React.FC<CalendarYearsModeProps> = ({ state, fun
           isSelectedYear={false}
           isAdditionalYear
         >
-          {state.selectedYearsInterval[0] - 1}
+          <CalendarItemNumber>
+            {state.selectedYearsInterval[0] - 1}
+          </CalendarItemNumber>
         </YearStyled>
         {state.selectedYearsInterval.map((year) => {
           const isCurrentYear = new Date().getFullYear() === year
@@ -33,9 +35,9 @@ export const CalendarYearsMode: React.FC<CalendarYearsModeProps> = ({ state, fun
                 functions.setMode('monthes')
               }}
             >
-              <span>
+              <CalendarItemNumber>
                 {year}
-              </span>
+              </CalendarItemNumber>
             </YearStyled>
           )
         })}
@@ -44,7 +46,9 @@ export const CalendarYearsMode: React.FC<CalendarYearsModeProps> = ({ state, fun
           isSelectedYear={false}
           isAdditionalYear
         >
-          {state.selectedYearsInterval[state.selectedYearsInterval.length - 1] + 1}
+          <CalendarItemNumber>
+            {state.selectedYearsInterval[state.selectedYearsInterval.length - 1] + 1}
+          </CalendarItemNumber>
         </YearStyled>
       </YearsContainerStyled>
     </CalendarWrapperModeStyled>
