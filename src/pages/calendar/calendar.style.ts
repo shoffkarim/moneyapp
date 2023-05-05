@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { css } from "@emotion/react";
+import { Typography } from '@mui/material';
 
 export const CalendarHeaderStyled = styled.div(() => css`
   display: flex;
@@ -14,6 +15,7 @@ export const CalendarHeaderWrapperStyled = styled.div(() => css`
 
 export const CalendarWrapperModeStyled = styled.div(() => css`
   height: 100%;
+  position: relative;
 `)
 
 export const WeekDaysNameContainerStyled = styled.div(() => css`
@@ -30,25 +32,74 @@ export const WeekDayNameStyled = styled.div(() => css`
 export const DaysContainerStyled = styled.div(() => css`
   display: grid;
   grid-template-columns: repeat(7, auto);
-  grid-template-rows: repeat(auto-fill, minmax(50px, 165px));
+  grid-template-rows: repeat(auto-fill, minmax(50px, 175px));
   height: 100%;
+`)
+
+export const CalendarItemBorderTopStyled = styled.div(() => css`
+  &::before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #c4c4c4;
+  }
+  &::after {
+    content: '';
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #c4c4c4;
+  }
+`)
+
+export const CalendarItemBorderBottomStyled = styled.div(() => css`
+  &::before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #c4c4c4;
+  }
+  &::after {
+    content: '';
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #c4c4c4;
+  }
 `)
 
 export const CalendarItemStyled = styled.div(() => css`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  border: 1px solid #c4c4c4;
-  border-right: 1px solid transparent;
-  border-top: 1px solid transparent;
   background-color: transparent;
-  max-height: 165px;
   overflow: hidden;
   cursor: pointer;
+  position: relative;
+
   &:hover {
     background-color: #3f50b5;
     color: #ffffff;
-    border-color: #3f50b5;
+  }
+  ${CalendarItemBorderBottomStyled} {
+    &::after {
+      background-color: transparent;
+    }
+  }
+  ${CalendarItemBorderTopStyled} {
+    &::before {
+      background-color: transparent;
+    }
   }
 `)
 
@@ -57,28 +108,133 @@ export type DayStyledProps = {
   isToday: boolean
   isSelectedDay: boolean
 }
-
+// TODO: create good styles for borders
 export const DayStyled = styled(CalendarItemStyled)<DayStyledProps>(({ isToday, isAdditionalDay, isSelectedDay }) => css`
   opacity: ${isAdditionalDay ? '0.5' : '1'};
+
+  &:nth-child(7n) {
+    ${CalendarItemBorderBottomStyled} {
+      &::after {
+        background-color: #c4c4c4;
+      }
+    }
+  }
+  &:nth-child(-n + 7) {
+    ${CalendarItemBorderTopStyled} {
+      &::before {
+        background-color: #c4c4c4;
+      }
+    }
+  }
+//weekends
+  &:nth-child(7n - 1), &:nth-child(7n) {
+    background-color: rgba(245, 107, 98, 0.5);
+    ${DayItemHaveMore} {
+      color: #ffffff;
+    }
+  }
+
   ${isToday && `
     background-color: #1976d2;
     color: #ffffff;
-    border-color: #1976d2;
+
+    &:nth-child(7n - 1), &:nth-child(7n) {
+      background-color: #1976d2
+    }
+
+    ${CalendarItemBorderBottomStyled} {
+      &::after {
+        background-color:  #1976d2;
+      }
+      &::before {
+        background-color:  #1976d2;
+      }
+    }
+    ${CalendarItemBorderTopStyled} {
+      &::before {
+        background-color:  #1976d2;
+      }
+      &::after {
+        background-color:  #1976d2;
+      }
+    }
+    &:nth-child(7n) {
+      ${CalendarItemBorderBottomStyled} {
+        &::after {
+          background-color: #1976d2;
+        }
+      }
+    }
+    &:nth-child(-n + 7) {
+      ${CalendarItemBorderTopStyled} {
+        &::before {
+          background-color: #1976d2;
+        }
+      }
+    }
   `};
   ${isSelectedDay && `
     background-color: #002884;
     color: #ffffff;
-    border-color: #002884;
+    &:nth-child(7n - 1), &:nth-child(7n) {
+      background-color: #002884
+    }
+    ${CalendarItemBorderBottomStyled} {
+      &::after {
+        background-color:  #002884;
+      }
+      &::before {
+        background-color:  #002884;
+      }
+    }
+    ${CalendarItemBorderTopStyled} {
+      &::before {
+        background-color:  #002884;
+      }
+      &::after {
+        background-color:  #002884;
+      }
+    }
+    &:nth-child(7n) {
+      ${CalendarItemBorderBottomStyled} {
+        &::after {
+          background-color: #002884;
+        }
+      }
+    }
+    &:nth-child(-n + 7) {
+      ${CalendarItemBorderTopStyled} {
+        &::before {
+          background-color: #002884;
+        }
+      }
+    }
   `};
-  &:nth-child(7n) {
-    border-right: 1px solid #c4c4c4;
-  }
-  &:nth-child(-n + 7) {
-    border-top: 1px solid #c4c4c4;
+
+
+  &:hover {
+    background-color: #3f50b5;
+    color: #ffffff;
+    ${CalendarItemBorderBottomStyled} {
+      &::after {
+        background-color:  #3f50b5;
+      }
+      &::before {
+        background-color:  #3f50b5;
+      }
+    }
+    ${CalendarItemBorderTopStyled} {
+      &::before {
+        background-color:  #3f50b5;
+      }
+      &::after {
+        background-color:  #3f50b5;
+      }
+    }
   }
 `)
 
-export const CalendarItemNumber = styled.span(() => css`
+export const CalendarItemNumberStyled = styled(Typography)(() => css`
   padding: 12px 12px 0px 12px;
 `)
 
@@ -182,3 +338,14 @@ export const CalendarItemInfoStyled = styled.div(() => css`
     margin-right: 0px;
   }
 `)
+
+export const CalendarItemTopStyled = styled.div(() => css`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`)
+
+export const CalendarItemAdditionalStyled = styled.div(() => css`
+  padding: 12px 12px 0px 12px;
+`)
+

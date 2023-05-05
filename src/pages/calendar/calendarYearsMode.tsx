@@ -1,5 +1,6 @@
+import { Typography } from '@mui/material'
 import React from 'react'
-import { CalendarWrapperModeStyled, YearsContainerStyled, YearStyled, CalendarItemNumber } from './calendar.style'
+import { CalendarWrapperModeStyled, YearsContainerStyled, YearStyled, CalendarItemNumberStyled, CalendarItemWrapperStyled, CalendarItemInfoStyled } from './calendar.style'
 import { UseCalendarFuncsReturn, UseCalendarStateReturn } from './utils/types'
 
 interface CalendarYearsModeProps {
@@ -15,10 +16,29 @@ export const CalendarYearsMode: React.FC<CalendarYearsModeProps> = ({ state, fun
           isCurrentYear={false}
           isSelectedYear={false}
           isAdditionalYear
+          onClick={() => functions.onClickArrow('left')}
         >
-          <CalendarItemNumber>
+          <CalendarItemNumberStyled>
             {state.selectedYearsInterval[0] - 1}
-          </CalendarItemNumber>
+          </CalendarItemNumberStyled>
+          <CalendarItemWrapperStyled>
+                <CalendarItemInfoStyled>
+                  <Typography>
+                    Income:
+                  </Typography>
+                  <Typography>
+                    215 534
+                  </Typography>
+                </CalendarItemInfoStyled>
+                <CalendarItemInfoStyled>
+                  <Typography>
+                    Outcome:
+                  </Typography>
+                  <Typography>
+                    152 678
+                  </Typography>
+                </CalendarItemInfoStyled>
+              </CalendarItemWrapperStyled>
         </YearStyled>
         {state.selectedYearsInterval.map((year) => {
           const isCurrentYear = new Date().getFullYear() === year
@@ -35,9 +55,27 @@ export const CalendarYearsMode: React.FC<CalendarYearsModeProps> = ({ state, fun
                 functions.setMode('monthes')
               }}
             >
-              <CalendarItemNumber>
+              <CalendarItemNumberStyled>
                 {year}
-              </CalendarItemNumber>
+              </CalendarItemNumberStyled>
+              <CalendarItemWrapperStyled>
+                <CalendarItemInfoStyled>
+                  <Typography>
+                    Income:
+                  </Typography>
+                  <Typography>
+                    215 534
+                  </Typography>
+                </CalendarItemInfoStyled>
+                <CalendarItemInfoStyled>
+                  <Typography>
+                    Outcome:
+                  </Typography>
+                  <Typography>
+                    152 678
+                  </Typography>
+                </CalendarItemInfoStyled>
+              </CalendarItemWrapperStyled>
             </YearStyled>
           )
         })}
@@ -45,10 +83,29 @@ export const CalendarYearsMode: React.FC<CalendarYearsModeProps> = ({ state, fun
           isCurrentYear={false}
           isSelectedYear={false}
           isAdditionalYear
+          onClick={() => functions.onClickArrow('right')}
         >
-          <CalendarItemNumber>
+          <CalendarItemNumberStyled>
             {state.selectedYearsInterval[state.selectedYearsInterval.length - 1] + 1}
-          </CalendarItemNumber>
+          </CalendarItemNumberStyled>
+          <CalendarItemWrapperStyled>
+                <CalendarItemInfoStyled>
+                  <Typography>
+                    Income:
+                  </Typography>
+                  <Typography>
+                    215 534
+                  </Typography>
+                </CalendarItemInfoStyled>
+                <CalendarItemInfoStyled>
+                  <Typography>
+                    Outcome:
+                  </Typography>
+                  <Typography>
+                    152 678
+                  </Typography>
+                </CalendarItemInfoStyled>
+              </CalendarItemWrapperStyled>
         </YearStyled>
       </YearsContainerStyled>
     </CalendarWrapperModeStyled>

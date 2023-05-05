@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material'
 import React from 'react'
-import { CalendarWrapperModeStyled, DayItem, DayItemHaveMore, DayItemsList, CalendarItemNumber, DaysContainerStyled, DayStyled, WeekDayNameStyled, WeekDaysNameContainerStyled } from './calendar.style'
+import { CalendarWrapperModeStyled, DayItem, DayItemHaveMore, DayItemsList, CalendarItemNumberStyled, DaysContainerStyled, DayStyled, WeekDayNameStyled, WeekDaysNameContainerStyled, CalendarItemTopStyled, CalendarItemBorderTopStyled, CalendarItemBorderBottomStyled } from './calendar.style'
 import { checkDateIsEqual, checkIsToday } from './utils'
 import { UseCalendarFuncsReturn, UseCalendarStateReturn } from './utils/types'
 
@@ -35,9 +35,16 @@ export const CalendarDaysMode: React.FC<CalendarDaysModeProps> = ({ state, funct
                 selectDate(day.date)
               }}
             >
-              <CalendarItemNumber>
-                {day.dayNumber}
-              </CalendarItemNumber>
+              <CalendarItemBorderTopStyled/>
+              <CalendarItemBorderBottomStyled/>
+              <CalendarItemTopStyled>
+                <CalendarItemNumberStyled>
+                  {day.dayNumber}
+                </CalendarItemNumberStyled>
+                {/* <CalendarItemAdditionalStyled>
+                  <Typography fontSize="12px">100 000 P</Typography>
+                </CalendarItemAdditionalStyled> */}
+              </CalendarItemTopStyled>
               <DayItemsList>
                 <DayItem backgroundColor="#FF00FF">
                   <Typography fontSize="14px">Food</Typography>
