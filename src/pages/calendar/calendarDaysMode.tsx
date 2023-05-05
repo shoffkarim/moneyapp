@@ -1,6 +1,6 @@
-import { Typography } from '@mui/material'
 import React from 'react'
-import { CalendarWrapperModeStyled, DayItem, DayItemHaveMore, DayItemsList, CalendarItemNumberStyled, DaysContainerStyled, DayStyled, WeekDayNameStyled, WeekDaysNameContainerStyled, CalendarItemTopStyled, CalendarItemBorderTopStyled, CalendarItemBorderBottomStyled } from './calendar.style'
+import { CalendarWrapperModeStyled, DaysContainerStyled, WeekDayNameStyled, WeekDaysNameContainerStyled } from './calendar.style'
+import CalendarDayItem from './calendarDayItem'
 import { checkDateIsEqual, checkIsToday } from './utils'
 import { UseCalendarFuncsReturn, UseCalendarStateReturn } from './utils/types'
 
@@ -11,6 +11,7 @@ interface CalendarDaysModeProps {
 }
 
 export const CalendarDaysMode: React.FC<CalendarDaysModeProps> = ({ state, functions, selectDate }) => {
+
   return (
     <CalendarWrapperModeStyled>
       <WeekDaysNameContainerStyled>
@@ -26,41 +27,15 @@ export const CalendarDaysMode: React.FC<CalendarDaysModeProps> = ({ state, funct
           const isSelectedDay = checkDateIsEqual(day.date, state.selectedDate.date)
           const isAdditionalDay = day.monthIndex !== state.selectedMonth.monthIndex
           return (
-            <DayStyled key={`${day.dayNumber}-${day.monthIndex}`}
-              isAdditionalDay={isAdditionalDay}
+            <CalendarDayItem
+              key={`${day.dayNumber}-${day.monthIndex}`}
               isToday={isToday}
+              isAdditionalDay={isAdditionalDay}
               isSelectedDay={isSelectedDay}
-              onClick={() => {
-                functions.setSelectedDate(day)
-                selectDate(day.date)
-              }}
-            >
-              <CalendarItemBorderTopStyled/>
-              <CalendarItemBorderBottomStyled/>
-              <CalendarItemTopStyled>
-                <CalendarItemNumberStyled>
-                  {day.dayNumber}
-                </CalendarItemNumberStyled>
-                {/* <CalendarItemAdditionalStyled>
-                  <Typography fontSize="12px">100 000 P</Typography>
-                </CalendarItemAdditionalStyled> */}
-              </CalendarItemTopStyled>
-              <DayItemsList>
-                <DayItem backgroundColor="#FF00FF">
-                  <Typography fontSize="14px">Food</Typography>
-                </DayItem>
-                <DayItem backgroundColor="#008000">
-                  <Typography fontSize="14px">Medicine</Typography>
-                </DayItem>
-                <DayItem backgroundColor="#FF00FF">
-                  <Typography fontSize="14px">Food</Typography>
-                </DayItem>
-                <DayItem backgroundColor="#008000">
-                  <Typography fontSize="14px">Medicine</Typography>
-                </DayItem>
-              </DayItemsList>
-              <DayItemHaveMore><Typography fontSize="12px">2 more...</Typography></DayItemHaveMore>
-            </DayStyled>
+              functions={functions}
+              selectDate={selectDate}
+              day={day}
+            />
           )
         })}
       </DaysContainerStyled>

@@ -83,7 +83,7 @@ export const CalendarItemStyled = styled.div(() => css`
   flex-direction: column;
   justify-content: flex-start;
   background-color: transparent;
-  overflow: hidden;
+  //overflow: hidden;
   cursor: pointer;
   position: relative;
 
@@ -111,15 +111,15 @@ export type DayStyledProps = {
 // TODO: create good styles for borders
 export const DayStyled = styled(CalendarItemStyled)<DayStyledProps>(({ isToday, isAdditionalDay, isSelectedDay }) => css`
   opacity: ${isAdditionalDay ? '0.5' : '1'};
-
-  &:nth-child(7n) {
+  position: relative;
+  &:nth-of-type(7n) {
     ${CalendarItemBorderBottomStyled} {
       &::after {
         background-color: #c4c4c4;
       }
     }
   }
-  &:nth-child(-n + 7) {
+  &:nth-of-type(-n + 7) {
     ${CalendarItemBorderTopStyled} {
       &::before {
         background-color: #c4c4c4;
@@ -127,7 +127,7 @@ export const DayStyled = styled(CalendarItemStyled)<DayStyledProps>(({ isToday, 
     }
   }
 //weekends
-  &:nth-child(7n - 1), &:nth-child(7n) {
+  &:nth-of-type(7n - 1), &:nth-of-type(7n) {
     background-color: rgba(245, 107, 98, 0.5);
     ${DayItemHaveMore} {
       color: #ffffff;
@@ -138,7 +138,7 @@ export const DayStyled = styled(CalendarItemStyled)<DayStyledProps>(({ isToday, 
     background-color: #1976d2;
     color: #ffffff;
 
-    &:nth-child(7n - 1), &:nth-child(7n) {
+    &:nth-of-type(7n - 1), &:nth-of-type(7n) {
       background-color: #1976d2
     }
 
@@ -158,14 +158,14 @@ export const DayStyled = styled(CalendarItemStyled)<DayStyledProps>(({ isToday, 
         background-color:  #1976d2;
       }
     }
-    &:nth-child(7n) {
+    &:nth-of-type(7n) {
       ${CalendarItemBorderBottomStyled} {
         &::after {
           background-color: #1976d2;
         }
       }
     }
-    &:nth-child(-n + 7) {
+    &:nth-of-type(-n + 7) {
       ${CalendarItemBorderTopStyled} {
         &::before {
           background-color: #1976d2;
@@ -176,7 +176,7 @@ export const DayStyled = styled(CalendarItemStyled)<DayStyledProps>(({ isToday, 
   ${isSelectedDay && `
     background-color: #002884;
     color: #ffffff;
-    &:nth-child(7n - 1), &:nth-child(7n) {
+    &:nth-of-type(7n - 1), &:nth-of-type(7n) {
       background-color: #002884
     }
     ${CalendarItemBorderBottomStyled} {
@@ -195,14 +195,14 @@ export const DayStyled = styled(CalendarItemStyled)<DayStyledProps>(({ isToday, 
         background-color:  #002884;
       }
     }
-    &:nth-child(7n) {
+    &:nth-of-type(7n) {
       ${CalendarItemBorderBottomStyled} {
         &::after {
           background-color: #002884;
         }
       }
     }
-    &:nth-child(-n + 7) {
+    &:nth-of-type(-n + 7) {
       ${CalendarItemBorderTopStyled} {
         &::before {
           background-color: #002884;
@@ -259,10 +259,10 @@ export const MonthStyled = styled(CalendarItemStyled)<MonthStyledProps>(({ isCur
     background-color: #002884;
     color: #ffffff;
   `};
-  &:nth-child(3n) {
+  &:nth-of-type(3n) {
     border-right: 1px solid #c4c4c4;
   }
-  &:nth-child(-n + 3) {
+  &:nth-of-type(-n + 3) {
     border-top: 1px solid #c4c4c4;
   }
 `)
@@ -291,10 +291,10 @@ export const YearStyled = styled(CalendarItemStyled)<YearsStyledProps>(({ isCurr
     background-color: #002884;
     color: #ffffff;
   `};
-  &:nth-child(3n) {
+  &:nth-of-type(3n) {
     border-right: 1px solid #c4c4c4;
   }
-  &:nth-child(-n + 3) {
+  &:nth-of-type(-n + 3) {
     border-top: 1px solid #c4c4c4;
   }
 `)
@@ -349,3 +349,27 @@ export const CalendarItemAdditionalStyled = styled.div(() => css`
   padding: 12px 12px 0px 12px;
 `)
 
+export const DayItemPopupStyled = styled.div(() => css`
+  position: absolute;
+  top: -20px;
+  left: calc(50% - 110px);
+  z-index: 20;
+  background-color: #002884;
+  width: 220px;
+  height: 250px;
+  ${CalendarItemNumberStyled} {
+    color: #ffffff
+  }
+`)
+
+export const DayItemPopupOverlayStyled = styled.span(() => css`
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0);
+  z-index: 15;
+  width: 100%;
+  height: 100%;
+`)
+
+export const DayContainerStyled = styled.div(``)
