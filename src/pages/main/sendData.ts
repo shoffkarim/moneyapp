@@ -1,21 +1,30 @@
+import Axios from "axios"
+
 export const handleRequest = async () => {
+  console.log(111)
   try {
 
-    const response = await fetch('/api/start', {
+    await fetch ('/api/start', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
+        'Access-Control-Allow-Credentials': 'true',
+      },
       body: JSON.stringify({
-        name: "Karim Sharafutdinov",
+        name: "lol ke21`3k123213",
         incomes: [
           {
-            "id": 213214,
-            "name": "Зарплата",
+            "id": 2132141,
+            "name": "Зарплата2",
             "icon": "cash",
             "color": "#000000",
             "value": "343342"
           },
           {
-            "id": 1673942953633,
-            "name": "1232",
+            "id": 16739429536331,
+            "name": "123212",
             "icon": "bank",
             "color": "#000000",
             "value": 231
@@ -23,15 +32,15 @@ export const handleRequest = async () => {
         ],
         accounts: [
           {
-            "id": 13241234,
-            "name": "Тинькофф",
+            "id": 132412341,
+            "name": "Тинькофф12",
             "icon": "bank",
             "color": "#FFFF00",
             "value": 234054
           },
           {
-            "id": 31334,
-            "name": "Наличные",
+            "id": 313341,
+            "name": "Наличные12",
             "icon": "cash",
             "color": "#FF00FF",
             "value": 213
@@ -39,15 +48,15 @@ export const handleRequest = async () => {
         ],
         expenses: [
           {
-            "id": 1213,
-            "name": "Продукты",
+            "id": 12113,
+            "name": "Продукты12",
             "icon": "cash",
             "color": "#000000",
-            "value": 909435
+            "value": 9094351
           },
           {
-            "id": 154,
-            "name": "werwe",
+            "id": 1541,
+            "name": "werwe21",
             "icon": "bank",
             "color": "black",
             "value": 0
@@ -58,16 +67,9 @@ export const handleRequest = async () => {
           "incomes": 123546,
           "balance": 123456
         },
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:3000',
-        'Access-Control-Allow-Credentials': 'true'
-      }
+      })
     })
-    const data = await response
-    return data
+
   } catch (error) {
     console.log("Request Error", error)
   }

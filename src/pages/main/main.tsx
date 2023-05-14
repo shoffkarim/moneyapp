@@ -38,7 +38,9 @@ export const Main: React.FC = () => {
           'Access-Control-Allow-Credentials': 'true'
         }
       })
-      .then(({data}) => setData(data))
+      .then(({data}) => {
+        console.log(data)
+        setData(data)})
 
     } catch (error) {
       console.log("Request Error", error)
@@ -52,7 +54,7 @@ export const Main: React.FC = () => {
 
   return (
     <div className="container">
-      {/* <button onClick={() => handleRequest()}>{"Create new user"}</button> */}
+      <button onClick={() => handleRequest()}>{"Create new user"}</button>
       <main className="main">
         <div className="wrapper">
           <CardsContainer accounts={data?.accounts} expenses={data?.expenses} incomes={data?.incomes}/>

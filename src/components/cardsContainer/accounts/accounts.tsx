@@ -21,7 +21,7 @@ export const Accounts: React.FC<IAccounts> = ({transactionOpen, items}) => {
         {!isLoaded && items &&
           items.map((item: ICard) => (
             <CardDropWrapper
-              key={item.id}
+              key={`${item.id} - ${Math.random()}`}
               id={item.id}
               name={item.name}
               icon={item.icon}
