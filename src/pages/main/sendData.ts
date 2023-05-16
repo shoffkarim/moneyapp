@@ -10,7 +10,7 @@ export const handleRequest = async () => {
         'Access-Control-Allow-Credentials': 'true',
       },
       body: JSON.stringify({
-        name: "k",
+        name: "arr2",
         incomes: [
           {
             "id": 16739429536331,

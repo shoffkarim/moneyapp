@@ -6,9 +6,6 @@
     "@babel/core": "^7.16.0",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
-    "@fullcalendar/core": "~6.1.5",
-    "@fullcalendar/daygrid": "~6.1.5",
-    "@fullcalendar/react": "~6.1.5",
     "@mui/icons-material": "^5.5.1",
     "@mui/material": "^5.5.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
@@ -18,7 +15,6 @@
     "babel-loader": "^8.2.3",
     "babel-plugin-named-asset-import": "^0.3.8",
     "babel-preset-react-app": "^10.0.1",
-    "bcryptjs": "^2.4.3",
     "bfj": "^7.0.2",
     "browserslist": "^4.18.1",
     "camelcase": "^6.2.1",
@@ -30,7 +26,6 @@
     "dotenv-expand": "^5.1.0",
     "eslint-config-react-app": "^7.0.0",
     "eslint-webpack-plugin": "^3.1.1",
-    "express": "^4.18.2",
     "file-loader": "^6.2.0",
     "fs-extra": "^10.0.0",
     "html-webpack-plugin": "^5.5.0",
@@ -40,7 +35,6 @@
     "jest-watch-typeahead": "^1.0.0",
     "jsx-runtime": "^1.2.0",
     "mini-css-extract-plugin": "^2.4.5",
-    "mongoose": "^6.9.2",
     "postcss": "^8.4.4",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-loader": "^6.2.1",
@@ -79,7 +73,7 @@
     "test": "node scripts/test.js",
     "server": "nodemon src/server/app.js",
     "json-server-db": "json-server --watch public/db.json --port=3001",
-    "dev": "concurrently \"npm run server\" \"npm run start\""
+    "dev": "concurrently \"npm run start\""
   },
   "eslintConfig": {
     "extends": [
