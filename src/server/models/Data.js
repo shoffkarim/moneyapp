@@ -4,7 +4,7 @@ const schema = new Schema({
   name: {type: String, required: true, unique: true},
   incomes: [
     {
-      name: {type: String, required: true, unique: true},
+      name: {type: String, required: true},
       icon: {type: String, required: true},
       color: {type: String, required: true},
       value: {type: Number, required: true}
@@ -12,7 +12,7 @@ const schema = new Schema({
   ],
   accounts: [
     {
-      name: {type: String, required: true, unique: true},
+      name: {type: String, required: true},
       icon: {type: String, required: true},
       color: {type: String, required: true},
       value: {type: Number, required: true}
@@ -20,7 +20,7 @@ const schema = new Schema({
   ],
   expenses: [
     {
-      name: {type: String, required: true, unique: true},
+      name: {type: String, required: true},
       icon: {type: String, required: true},
       color: {type: String, required: true},
       value: {type: Number, required: true}

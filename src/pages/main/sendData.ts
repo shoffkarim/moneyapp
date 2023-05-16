@@ -1,5 +1,3 @@
-import Axios from "axios"
-
 export const handleRequest = async () => {
   console.log(111)
   try {
@@ -13,18 +11,11 @@ export const handleRequest = async () => {
         'Access-Control-Allow-Credentials': 'true',
       },
       body: JSON.stringify({
-        name: "lol ke21`3k123213",
+        name: "1232132",
         incomes: [
           {
-            "id": 2132141,
-            "name": "Зарплата2",
-            "icon": "cash",
-            "color": "#000000",
-            "value": "343342"
-          },
-          {
             "id": 16739429536331,
-            "name": "123212",
+            "name": "1232121234",
             "icon": "bank",
             "color": "#000000",
             "value": 231
@@ -33,14 +24,14 @@ export const handleRequest = async () => {
         accounts: [
           {
             "id": 132412341,
-            "name": "Тинькофф12",
+            "name": "Тинькофф121234",
             "icon": "bank",
             "color": "#FFFF00",
             "value": 234054
           },
           {
             "id": 313341,
-            "name": "Наличные12",
+            "name": "Наличные1123",
             "icon": "cash",
             "color": "#FF00FF",
             "value": 213
@@ -49,14 +40,14 @@ export const handleRequest = async () => {
         expenses: [
           {
             "id": 12113,
-            "name": "Продукты12",
+            "name": "Продукты121234",
             "icon": "cash",
             "color": "#000000",
             "value": 9094351
           },
           {
             "id": 1541,
-            "name": "werwe21",
+            "name": "werwe211234",
             "icon": "bank",
             "color": "black",
             "value": 0
