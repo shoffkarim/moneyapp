@@ -25,11 +25,19 @@ export const Main: React.FC = () => {
   const handleData = () => {
     try {
 
-      Axios.get('http://localhost:3001/db')
+      Axios.post('/api/data', {
+        method: 'POST',
+        body: JSON.stringify({}),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Access-Control-Allow-Origin': 'http://localhost:3000',
+          'Access-Control-Allow-Credentials': 'true'
+        }
+      })
       .then(({data}) => {
         console.log(data)
-        setData(data.db)}
-        )
+        setData(data)})
 
     } catch (error) {
       console.log("Request Error", error)
@@ -42,13 +50,11 @@ export const Main: React.FC = () => {
   {/* <button onClick={() => handleRequest()}>{"Create new user"}</button> */}
 
   return (
-
-
-      <MainStyled>
-        <WrapperStyled>
-          <CardsContainer accounts={data?.accounts} expenses={data?.expenses} incomes={data?.incomes}/>
-        </WrapperStyled>
-        <TransactionContainer/>
-       </MainStyled>
+    <MainStyled>
+    <WrapperStyled>
+      <CardsContainer accounts={data?.accounts} expenses={data?.expenses} incomes={data?.incomes}/>
+    </WrapperStyled>
+    <TransactionContainer/>
+   </MainStyled>
   );
 };

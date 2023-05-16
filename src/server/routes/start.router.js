@@ -6,7 +6,7 @@ const router = Router()
 router.post('/start', async (req, res) => {
   try {
     const {name, incomes, accounts, expenses, total} = req.body
-
+    console.log(name)
     const data = new Data({name, incomes, accounts, expenses, total})
     await data.save()
 
@@ -14,6 +14,7 @@ router.post('/start', async (req, res) => {
 
 
   } catch (error) {
+    console.log(error)
     res.status(500).json({ message: "Something wrong, try later"})
   }
 })
