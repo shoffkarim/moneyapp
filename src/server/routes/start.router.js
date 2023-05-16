@@ -6,7 +6,7 @@ const router = Router()
 router.post('/start', async (req, res) => {
   try {
     const {name, incomes, accounts, expenses, total} = req.body
-    console.log(name)
+
     const data = new Data({name, incomes, accounts, expenses, total})
     await data.save()
 

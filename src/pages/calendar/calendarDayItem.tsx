@@ -16,7 +16,6 @@ export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDa
   const [visibleDayPopup, setVisibleDayPopup] = useState(false)
 
   const handleVisiblePopup = (val: boolean) => {
-    console.log(val)
     setVisibleDayPopup(val)
   }
   return (

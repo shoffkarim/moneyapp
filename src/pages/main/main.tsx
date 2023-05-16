@@ -3,6 +3,7 @@ import { CardsContainer } from "components/cards-container";
 import { TransactionContainer } from "components/transaction-container";
 import Axios from "axios";
 import { MainStyled, WrapperStyled } from "./main.styled";
+import { handleRequest } from "./sendData";
 
 export const Main: React.FC = () => {
   const [data, setData] = useState<{
@@ -45,9 +46,10 @@ export const Main: React.FC = () => {
   }
 
   useEffect(() => {
-    handleData()
+    // handleData()
   }, [])
-  {/* <button onClick={() => handleRequest()}>{"Create new user"}</button> */}
+  // <button onClick={() => handleRequest()}>{"Create new user"}</button>
+
 
   return (
     <MainStyled>

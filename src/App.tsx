@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Menu } from 'components';
 import { History } from 'pages/history';
 import { ContainerStyled } from 'pages/main/main.styled';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Main } from './pages';
-import { Calendar } from 'pages/calendar';
 import { CalendarPage } from 'pages/calendar/calendar-page';
 
 const App = () => {

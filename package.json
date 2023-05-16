@@ -28,7 +28,6 @@
     "css-minimizer-webpack-plugin": "^3.2.0",
     "dotenv": "^10.0.0",
     "dotenv-expand": "^5.1.0",
-    "eslint": "^8.3.0",
     "eslint-config-react-app": "^7.0.0",
     "eslint-webpack-plugin": "^3.1.1",
     "express": "^4.18.2",
@@ -118,6 +117,7 @@
     "babel-plugin-styled-components": "~2.1.1",
     "classnames": "^2.3.1",
     "concurrently": "^7.6.0",
+    "eslint": "^8.40.0",
     "json-server": "^0.17.0",
     "node-sass": "^7.0.0",
     "nodemon": "^2.0.20",
@@ -178,10 +178,16 @@
   },
   "babel": {
     "plugins": [
-      ["@emotion"]
+      [
+        "@emotion"
+      ]
     ],
     "presets": [
-      "react-app"
+      [
+        "react-app",
+        {}
+      ]
     ]
-  }
+  },
+  "proxy": "http://localhost:5000"
 }

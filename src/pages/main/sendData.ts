@@ -1,5 +1,4 @@
 export const handleRequest = async () => {
-  console.log(111)
   try {
 
     await fetch ('/api/start', {
@@ -11,7 +10,7 @@ export const handleRequest = async () => {
         'Access-Control-Allow-Credentials': 'true',
       },
       body: JSON.stringify({
-        name: "1232132",
+        name: "k",
         incomes: [
           {
             "id": 16739429536331,
