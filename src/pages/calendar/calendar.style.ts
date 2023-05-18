@@ -314,6 +314,9 @@ export const DayItem = styled.li<DayItemProps>(({ backgroundColor }) => css`
   color: #ffffff;
   padding: 0px 12px;
   margin-bottom: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
 `)
 
 export const DayItemHaveMore = styled.div(`

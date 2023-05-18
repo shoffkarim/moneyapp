@@ -18,6 +18,7 @@ export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDa
   const handleVisiblePopup = (val: boolean) => {
     setVisibleDayPopup(val)
   }
+
   return (
     <>
       <DayStyled
@@ -40,20 +41,18 @@ export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDa
                   <Typography fontSize="12px">100 000 P</Typography>
                 </CalendarItemAdditionalStyled> */}
         </CalendarItemTopStyled>
-        <DayItemsList>
-          <DayItem backgroundColor="#FF00FF">
-            <Typography fontSize="14px">Food</Typography>
-          </DayItem>
-          <DayItem backgroundColor="#008000">
-            <Typography fontSize="14px">Medicine</Typography>
-          </DayItem>
-          <DayItem backgroundColor="#FF00FF">
-            <Typography fontSize="14px">Food</Typography>
-          </DayItem>
-          <DayItem backgroundColor="#008000">
-            <Typography fontSize="14px">Medicine</Typography>
-          </DayItem>
-        </DayItemsList>
+        {day.items &&
+          <DayItemsList>
+            {day.items.map((item) => {
+              return (
+                <DayItem backgroundColor={item.backgroundColor}>
+                  <Typography fontSize="14px">{item.title}</Typography>
+                  <Typography fontSize="14px">{item.value}</Typography>
+                </DayItem>
+              )
+            })}
+          </DayItemsList>
+        }
         <DayItemHaveMore><Typography fontSize="12px">2 more...</Typography></DayItemHaveMore>
         {visibleDayPopup &&
           <DayItemPopupStyled>
@@ -65,26 +64,18 @@ export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDa
                     <Typography fontSize="12px">100 000 P</Typography>
                   </CalendarItemAdditionalStyled> */}
             </CalendarItemTopStyled>
-            <DayItemsList>
-              <DayItem backgroundColor="#FF00FF">
-                <Typography fontSize="14px">Food</Typography>
-              </DayItem>
-              <DayItem backgroundColor="#008000">
-                <Typography fontSize="14px">Medicine</Typography>
-              </DayItem>
-              <DayItem backgroundColor="#FF00FF">
-                <Typography fontSize="14px">Food</Typography>
-              </DayItem>
-              <DayItem backgroundColor="#008000">
-                <Typography fontSize="14px">Medicine</Typography>
-              </DayItem>
-              <DayItem backgroundColor="#FF00FF">
-                <Typography fontSize="14px">Food</Typography>
-              </DayItem>
-              <DayItem backgroundColor="#008000">
-                <Typography fontSize="14px">Medicine</Typography>
-              </DayItem>
-            </DayItemsList>
+            {day.items &&
+              <DayItemsList>
+                {day.items.map((item) => {
+                  return (
+                    <DayItem backgroundColor={item.backgroundColor}>
+                      <Typography fontSize="14px">{item.title}</Typography>
+                      <Typography fontSize="14px">{item.value}</Typography>
+                    </DayItem>
+                  )
+                })}
+              </DayItemsList>
+            }
           </DayItemPopupStyled>
         }
       </DayStyled>

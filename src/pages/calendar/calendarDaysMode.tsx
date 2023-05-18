@@ -2,15 +2,16 @@ import React from 'react'
 import { CalendarWrapperModeStyled, DaysContainerStyled, WeekDayNameStyled, WeekDaysNameContainerStyled } from './calendar.style'
 import CalendarDayItem from './calendarDayItem'
 import { checkDateIsEqual, checkIsToday } from './utils'
-import { UseCalendarFuncsReturn, UseCalendarStateReturn } from './utils/types'
+import { CalendarDataType, UseCalendarFuncsReturn, UseCalendarStateReturn } from './utils/types'
 
 interface CalendarDaysModeProps {
   state: UseCalendarStateReturn
   functions: UseCalendarFuncsReturn
   selectDate: (date: Date) => void
+  data: CalendarDataType
 }
 
-export const CalendarDaysMode: React.FC<CalendarDaysModeProps> = ({ state, functions, selectDate }) => {
+export const CalendarDaysMode: React.FC<CalendarDaysModeProps> = ({ state, functions, selectDate, data }) => {
 
   return (
     <CalendarWrapperModeStyled>

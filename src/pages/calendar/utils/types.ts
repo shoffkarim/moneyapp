@@ -1,5 +1,32 @@
 import { Dispatch, SetStateAction } from 'react';
 
+interface CalendarDataDayType {
+  date: Date,
+  description: {
+    title: string
+    subTitle: string
+  },
+  items: Array<CalendarDataDayItemsType>
+}
+
+interface CalendarDataDaySubItemsType {
+  title: string
+  value: string
+}
+
+interface CalendarDataDayItemsType {
+  id: string
+  title: string
+  backgroundColor: string
+  value: string
+  subItems: Array<CalendarDataDaySubItemsType>
+}
+
+export interface CalendarDataType {
+  days: Array<CalendarDataDayType>
+}
+
+
 export type CreateDateReturn = {
   date: Date
   day: string
@@ -14,6 +41,11 @@ export type CreateDateReturn = {
   week: number
   year: number
   yearShort: string
+  description?: {
+    title: string
+    subTitle: string
+  },
+  items?: Array<CalendarDataDayItemsType>
 }
 
 export type CreateMonthReturn = {
@@ -67,3 +99,23 @@ export type UseCalendarReturn = {
   state: UseCalendarStateReturn
   functions: UseCalendarFuncsReturn
 }
+
+export type CalendarStateDaysReturn = {
+  mode: string
+  firstDay: Date
+  lastDay: Date
+  monthIndex: number
+  monthName: string
+  year: number
+}
+
+export type CalendarStateMonthesReturn = {
+  mode: string
+  firstMonthIndex: number
+  firstMonthName: string
+  lastMonthIndex: number
+  lastMonthName: string
+  year: number
+}
+
+export type CalendarStateReturn = CalendarStateDaysReturn | CalendarStateMonthesReturn
