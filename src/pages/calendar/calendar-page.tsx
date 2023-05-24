@@ -6,7 +6,7 @@ import { CalendarStateReturn, UseCalendarStateReturn } from './utils/types'
 export const CalendarPage: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState(new Date())
   const handleCalendarDate = (state: CalendarStateReturn) => {
-    // a
+    console.log(state)
   }
   return (
     <Calendar

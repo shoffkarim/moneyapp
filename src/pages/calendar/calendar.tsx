@@ -20,17 +20,40 @@ interface CalendarProps {
 export const Calendar: React.FC<CalendarProps> = ({ locale = 'default', firstWeekDay = 2, selectedDate, selectDate, data, sendParams}) => {
   const { state, functions } = useCalendar({ locale, selectedDate, firstWeekDay })
 
-  const returnState: CalendarStateReturn = {
-    mode: state.mode,
-    firstDay: state.calendarDays[0].date,
-    lastDay: state.calendarDays[state.calendarDays.length - 1].date,
-    monthIndex: state.selectedMonth.monthIndex,
-    monthName: state.selectedMonth.monthName,
-    year: state.selectedYear
+  const handleReturnStateApi = (state: UseCalendarStateReturn): CalendarStateReturn => {
+    if(state.mode === 'days') {
+      return {
+        mode: state.mode,
+        firstDay: state.calendarDays[0].date,
+        lastDay: state.calendarDays[state.calendarDays.length - 1].date,
+        monthIndex: state.selectedMonth.monthIndex,
+        monthName: state.selectedMonth.monthName,
+        year: state.selectedYear
+      }
+    }
+    if(state.mode === 'monthes') {
+      return {
+        mode: state.mode,
+        firstMonthIndex: state.monthesNames[0].monthIndex,
+        firstMonthName: state.monthesNames[0].month,
+        lastMonthIndex: state.monthesNames[state.monthesNames.length - 1].monthIndex,
+        lastMonthName: state.monthesNames[state.monthesNames.length - 1].month,
+        year: state.selectedYear
+      }
+    } else {
+      return {
+        mode: state.mode,
+        firstYear: state.selectedYearsInterval[0] - 1,
+        lastYear: state.selectedYearsInterval[state.selectedYearsInterval.length - 1] + 1,
+        year: state.selectedYear
+      }
+    }
   }
+
   const newState = assignData(state, data)
-  console.log(newState)
+  console.log(state)
   useEffect(() => {
+    const returnState = handleReturnStateApi(state)
     sendParams(returnState)
   }, [state])
 

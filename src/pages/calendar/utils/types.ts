@@ -118,4 +118,11 @@ export type CalendarStateMonthesReturn = {
   year: number
 }
 
-export type CalendarStateReturn = CalendarStateDaysReturn | CalendarStateMonthesReturn
+export type CalendarStateYearsReturn = {
+  mode: string
+  firstYear: number
+  lastYear: number
+  year: number
+}
+
+export type CalendarStateReturn = CalendarStateDaysReturn | CalendarStateMonthesReturn | CalendarStateYearsReturn

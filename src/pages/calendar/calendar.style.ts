@@ -20,7 +20,7 @@ export const CalendarWrapperModeStyled = styled.div(() => css`
 
 export const WeekDaysNameContainerStyled = styled.div(() => css`
   display: grid;
-  grid-template-columns: repeat(7, auto);
+  grid-template-columns: repeat(7, minmax(100px, 200px));
 `)
 
 export const WeekDayNameStyled = styled.div(() => css`
@@ -31,7 +31,7 @@ export const WeekDayNameStyled = styled.div(() => css`
 
 export const DaysContainerStyled = styled.div(() => css`
   display: grid;
-  grid-template-columns: repeat(7, auto);
+  grid-template-columns: repeat(7, minmax(100px, 200px));
   grid-template-rows: repeat(auto-fill, minmax(50px, 175px));
   height: 100%;
 `)
@@ -316,7 +316,14 @@ export const DayItem = styled.li<DayItemProps>(({ backgroundColor }) => css`
   margin-bottom: 2px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between
+  justify-content: space-between;
+`)
+
+export const DayItemTextStyled = styled(Typography)(() => css`
+  max-width: 75px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 5px;
 `)
 
 export const DayItemHaveMore = styled.div(`
@@ -376,3 +383,10 @@ export const DayItemPopupOverlayStyled = styled.span(() => css`
 `)
 
 export const DayContainerStyled = styled.div(``)
+
+export const DayTotalContainerStyled = styled.div(`
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 12px;
+  margin: 10px 0px;
+`)

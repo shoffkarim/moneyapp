@@ -28,8 +28,7 @@ export const createYear = (params?: CreateYearParams): CreateYearReturn => {
     }
     return monthes
   }
-  console.log({month,
-    year})
+
   return {
     createYearMonthes,
     month,

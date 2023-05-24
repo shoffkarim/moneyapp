@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material'
 import React, { useState } from 'react'
-import { CalendarItemBorderBottomStyled, CalendarItemBorderTopStyled, CalendarItemNumberStyled, CalendarItemTopStyled, DayItem, DayItemHaveMore, DayItemPopupOverlayStyled, DayItemPopupStyled, DayItemsList, DayStyled } from './calendar.style'
+import { CalendarItemBorderBottomStyled, CalendarItemBorderTopStyled, CalendarItemNumberStyled, CalendarItemTopStyled, DayItem, DayItemHaveMore, DayItemPopupOverlayStyled, DayItemPopupStyled, DayItemsList, DayStyled, DayTotalContainerStyled, DayItemTextStyled } from './calendar.style'
 import { CreateDateReturn, UseCalendarFuncsReturn } from './utils/types'
 
 interface CalendarDayItemProps {
@@ -43,17 +43,23 @@ export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDa
         </CalendarItemTopStyled>
         {day.items &&
           <DayItemsList>
-            {day.items.map((item) => {
-              return (
-                <DayItem backgroundColor={item.backgroundColor}>
-                  <Typography fontSize="14px">{item.title}</Typography>
-                  <Typography fontSize="14px">{item.value}</Typography>
-                </DayItem>
-              )
+            {day.items.map((item, index) => {
+              if(index < 4) {
+                return(
+                  <DayItem backgroundColor={item.backgroundColor}>
+                    <DayItemTextStyled fontSize="14px">{item.title}</DayItemTextStyled>
+                    <Typography fontSize="14px">{item.value}</Typography>
+                  </DayItem>
+                )
+              }
             })}
           </DayItemsList>
         }
-        <DayItemHaveMore><Typography fontSize="12px">2 more...</Typography></DayItemHaveMore>
+        {day.items && day.items.length > 4 &&
+          <DayItemHaveMore>
+            <Typography fontSize="12px">{`${day.items.length - 4} more...`}</Typography>
+          </DayItemHaveMore>
+        }
         {visibleDayPopup &&
           <DayItemPopupStyled>
             <CalendarItemTopStyled>
@@ -75,6 +81,12 @@ export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDa
                   )
                 })}
               </DayItemsList>
+            }
+            {day.description &&
+              <DayTotalContainerStyled>
+                <Typography>{day.description?.title}</Typography>
+                <Typography>{day.description?.subTitle}</Typography>
+              </DayTotalContainerStyled>
             }
           </DayItemPopupStyled>
         }
