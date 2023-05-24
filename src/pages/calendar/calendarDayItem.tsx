@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material'
 import React, { useState } from 'react'
-import { CalendarItemBorderBottomStyled, CalendarItemBorderTopStyled, CalendarItemNumberStyled, CalendarItemTopStyled, DayItem, DayItemHaveMore, DayItemPopupOverlayStyled, DayItemPopupStyled, DayItemsList, DayStyled, DayTotalContainerStyled, DayItemTextStyled } from './calendar.style'
+import { CalendarItemBorderBottomStyled, CalendarItemBorderTopStyled, CalendarItemNumberStyled, CalendarItemTopStyled, DayItem, DayItemHaveMore, DayItemPopupOverlayStyled, DayItemPopupStyled, DayItemsList, DayStyled, DayTotalContainerStyled, DayItemTextStyled, CalendarItemAdditionalStyled } from './calendar.style'
 import { CreateDateReturn, UseCalendarFuncsReturn } from './utils/types'
 
 interface CalendarDayItemProps {
@@ -37,9 +37,7 @@ export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDa
           <CalendarItemNumberStyled>
             {day.dayNumber}
           </CalendarItemNumberStyled>
-          {/* <CalendarItemAdditionalStyled>
-                  <Typography fontSize="12px">100 000 P</Typography>
-                </CalendarItemAdditionalStyled> */}
+
         </CalendarItemTopStyled>
         {day.items &&
           <DayItemsList>
@@ -60,15 +58,19 @@ export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDa
             <Typography fontSize="12px">{`${day.items.length - 4} more...`}</Typography>
           </DayItemHaveMore>
         }
+        {day.description &&
+            <CalendarItemAdditionalStyled>
+              <Typography fontSize="14px" fontWeight="600">{day.description?.title}</Typography>
+              <Typography fontSize="14px" fontWeight="600">{day.description?.subTitle}</Typography>
+            </CalendarItemAdditionalStyled>
+          }
         {visibleDayPopup &&
           <DayItemPopupStyled>
             <CalendarItemTopStyled>
               <CalendarItemNumberStyled>
                 {day.dayNumber}
               </CalendarItemNumberStyled>
-              {/* <CalendarItemAdditionalStyled>
-                    <Typography fontSize="12px">100 000 P</Typography>
-                  </CalendarItemAdditionalStyled> */}
+
             </CalendarItemTopStyled>
             {day.items &&
               <DayItemsList>

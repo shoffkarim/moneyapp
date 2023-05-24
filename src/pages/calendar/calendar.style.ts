@@ -235,7 +235,7 @@ export const DayStyled = styled(CalendarItemStyled)<DayStyledProps>(({ isToday, 
 `)
 
 export const CalendarItemNumberStyled = styled(Typography)(() => css`
-  padding: 12px 12px 0px 12px;
+  padding: 5px 12px 0px 12px;
 `)
 
 export const MonthesContainerStyled = styled.div(() => css`
@@ -303,7 +303,7 @@ export const DayItemsList = styled.ul(() => css`
   margin: 0;
   padding: 0;
   list-style: none;
-  margin-top: 20px;
+  margin-top: 5px;
 
 `)
 type DayItemProps = {
@@ -336,7 +336,7 @@ export const CalendarItemWrapperStyled = styled.div(() => css`
   display: flex;
   padding: 0px 12px;
   margin-top: 20px;
-  justify-content: space-around
+  justify-content: space-around;
 `)
 
 export const CalendarItemInfoStyled = styled.div(() => css`
@@ -351,12 +351,14 @@ export const CalendarItemInfoStyled = styled.div(() => css`
 
 export const CalendarItemTopStyled = styled.div(() => css`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
 `)
 
 export const CalendarItemAdditionalStyled = styled.div(() => css`
-  padding: 12px 12px 0px 12px;
+  padding: 5px 12px 5px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `)
 
 export const DayItemPopupStyled = styled.div(() => css`
