@@ -1,4 +1,4 @@
-import { WeekDaysNamesReturn } from './types';
+import { WeekDaysNamesReturn } from '../../types'
 import { createDate } from './createDate';
 
 export const getWeekDaysNames = ( firstWeekDay: number = 1, locale: string = 'default' ): Array<WeekDaysNamesReturn> => {

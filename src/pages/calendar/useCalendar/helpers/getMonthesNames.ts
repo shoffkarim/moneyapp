@@ -1,4 +1,4 @@
-import { GetMonthesNamesReturn } from './types';
+import { GetMonthesNamesReturn } from '../../types';
 import { createDate } from './createDate';
 
 export const getMonthesNames = (locale: string = 'default'): Array<GetMonthesNamesReturn> => {

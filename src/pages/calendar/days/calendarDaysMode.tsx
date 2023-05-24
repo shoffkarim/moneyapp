@@ -1,8 +1,9 @@
 import React from 'react'
-import { CalendarWrapperModeStyled, DaysContainerStyled, WeekDayNameStyled, WeekDaysNameContainerStyled } from './calendar.style'
+import { CalendarWrapperModeStyled, WeekDayNameStyled, WeekDaysNameContainerStyled } from '../calendar.style'
+import { DaysContainerStyled } from './calendarDays.style'
 import CalendarDayItem from './calendarDayItem'
-import { checkDateIsEqual, checkIsToday } from './utils'
-import { CalendarDataType, UseCalendarFuncsReturn, UseCalendarStateReturn } from './utils/types'
+import { checkDateIsEqual, checkIsToday } from '../utils'
+import { CalendarDataType, UseCalendarFuncsReturn, UseCalendarStateReturn } from '../types'
 
 interface CalendarDaysModeProps {
   state: UseCalendarStateReturn

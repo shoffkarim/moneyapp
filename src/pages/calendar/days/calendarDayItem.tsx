@@ -1,7 +1,9 @@
 import { Typography } from '@mui/material'
 import React, { useState } from 'react'
-import { CalendarItemBorderBottomStyled, CalendarItemBorderTopStyled, CalendarItemNumberStyled, CalendarItemTopStyled, DayItem, DayItemHaveMore, DayItemPopupOverlayStyled, DayItemPopupStyled, DayItemsList, DayStyled, DayTotalContainerStyled, DayItemTextStyled, CalendarItemAdditionalStyled } from './calendar.style'
-import { CreateDateReturn, UseCalendarFuncsReturn } from './utils/types'
+import { CalendarItemBorderBottomStyled, CalendarItemBorderTopStyled, CalendarItemNumberStyled, CalendarItemTopStyled, CalendarItemAdditionalStyled } from '../calendar.style'
+import { DayItem, DayItemHaveMore, DayItemPopupOverlayStyled, DayItemsList, DayStyled, DayItemTextStyled } from './calendarDays.style'
+import { CreateDateReturn, UseCalendarFuncsReturn } from '../types'
+import CalendarDayItemPopup from './calendarDayItemPopup'
 
 interface CalendarDayItemProps {
   isAdditionalDay: boolean
@@ -65,32 +67,7 @@ export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDa
             </CalendarItemAdditionalStyled>
           }
         {visibleDayPopup &&
-          <DayItemPopupStyled>
-            <CalendarItemTopStyled>
-              <CalendarItemNumberStyled>
-                {day.dayNumber}
-              </CalendarItemNumberStyled>
-
-            </CalendarItemTopStyled>
-            {day.items &&
-              <DayItemsList>
-                {day.items.map((item) => {
-                  return (
-                    <DayItem backgroundColor={item.backgroundColor}>
-                      <Typography fontSize="14px">{item.title}</Typography>
-                      <Typography fontSize="14px">{item.value}</Typography>
-                    </DayItem>
-                  )
-                })}
-              </DayItemsList>
-            }
-            {day.description &&
-              <DayTotalContainerStyled>
-                <Typography>{day.description?.title}</Typography>
-                <Typography>{day.description?.subTitle}</Typography>
-              </DayTotalContainerStyled>
-            }
-          </DayItemPopupStyled>
+          <CalendarDayItemPopup day={day}/>
         }
       </DayStyled>
       {visibleDayPopup &&

@@ -1,7 +1,8 @@
 import { Typography } from '@mui/material'
 import React from 'react'
-import { CalendarItemInfoStyled, CalendarItemNumberStyled, CalendarItemWrapperStyled, CalendarWrapperModeStyled, MonthesContainerStyled, MonthStyled } from './calendar.style'
-import { UseCalendarFuncsReturn, UseCalendarStateReturn } from './utils/types'
+import { CalendarItemInfoStyled, CalendarItemNumberStyled, CalendarItemWrapperStyled, CalendarWrapperModeStyled } from '../calendar.style'
+import { MonthesContainerStyled, MonthStyled } from './calendarMonthes.style'
+import { UseCalendarFuncsReturn, UseCalendarStateReturn } from '../types'
 
 interface CalendarMonthesModeProps {
   state: UseCalendarStateReturn

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Calendar } from './calendar'
 import { CalendarData } from './sampleDataCalendar'
-import { CalendarStateReturn, UseCalendarStateReturn } from './utils/types'
+import { CalendarStateReturn, UseCalendarStateReturn } from './types'
 
 export const CalendarPage: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState(new Date())

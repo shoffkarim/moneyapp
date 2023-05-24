@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react"
-import { UseCalendarReturn } from './utils/types';
-import { createDate, createMonth, getMonthesNames, getWeekDaysNames, getMonthNumberOfDays, getYearsInterval } from './utils';
+import { UseCalendarReturn } from '../types';
+import { createDate, createMonth, getMonthesNames, getWeekDaysNames, getMonthNumberOfDays, getYearsInterval } from './helpers';
 
 export const DAYS_IN_WEEK = 7
 
