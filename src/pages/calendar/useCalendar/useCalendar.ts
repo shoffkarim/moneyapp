@@ -98,20 +98,20 @@ export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekD
 
     if(mode === 'monthes' && direction === 'left') {
       const year = selectedYear - 1
-        setSelectedYear(year)
-        if(!selectedYearsInterval.includes(year)) {
-          setSelectedYearsInterval(getYearsInterval(year))
-        }
-        return setSelectedYear(year)
+      setSelectedYear(year)
+      if(!selectedYearsInterval.includes(year)) {
+        setSelectedYearsInterval(getYearsInterval(year))
+      }
+      return setSelectedYear(year)
     }
 
     if(mode === 'monthes' && direction === 'right') {
       const year = selectedYear + 1
-        setSelectedYear(year)
-        if(!selectedYearsInterval.includes(year)) {
-          setSelectedYearsInterval(getYearsInterval(year))
-        }
-        return setSelectedYear(year)
+      setSelectedYear(year)
+      if(!selectedYearsInterval.includes(year)) {
+        setSelectedYearsInterval(getYearsInterval(year))
+      }
+      return setSelectedYear(year)
     }
 
     if(mode === 'years' && direction === 'left') {

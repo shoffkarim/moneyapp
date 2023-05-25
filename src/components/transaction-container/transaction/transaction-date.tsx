@@ -15,7 +15,7 @@ export const TransactionDate: React.FC<TransactionDateProps> = ({ handlerTransac
 
   return (
     <TransactionWrapperStyled>
-        <input value={date} onChange={(e) => handlerDate(e.target.value)} type="date" name="" id="" />
+      <input value={date} onChange={(e) => handlerDate(e.target.value)} type="date" name="" id="" />
     </TransactionWrapperStyled>
   )
 }

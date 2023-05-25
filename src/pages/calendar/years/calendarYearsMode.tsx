@@ -23,23 +23,23 @@ export const CalendarYearsMode: React.FC<CalendarYearsModeProps> = ({ state, fun
             {state.selectedYearsInterval[0] - 1}
           </CalendarItemNumberStyled>
           <CalendarItemWrapperStyled>
-                <CalendarItemInfoStyled>
-                  <Typography>
+            <CalendarItemInfoStyled>
+              <Typography>
                     Income:
-                  </Typography>
-                  <Typography>
+              </Typography>
+              <Typography>
                     215 534
-                  </Typography>
-                </CalendarItemInfoStyled>
-                <CalendarItemInfoStyled>
-                  <Typography>
+              </Typography>
+            </CalendarItemInfoStyled>
+            <CalendarItemInfoStyled>
+              <Typography>
                     Outcome:
-                  </Typography>
-                  <Typography>
+              </Typography>
+              <Typography>
                     152 678
-                  </Typography>
-                </CalendarItemInfoStyled>
-              </CalendarItemWrapperStyled>
+              </Typography>
+            </CalendarItemInfoStyled>
+          </CalendarItemWrapperStyled>
         </YearStyled>
         {state.selectedYearsInterval.map((year) => {
           const isCurrentYear = new Date().getFullYear() === year
@@ -90,23 +90,23 @@ export const CalendarYearsMode: React.FC<CalendarYearsModeProps> = ({ state, fun
             {state.selectedYearsInterval[state.selectedYearsInterval.length - 1] + 1}
           </CalendarItemNumberStyled>
           <CalendarItemWrapperStyled>
-                <CalendarItemInfoStyled>
-                  <Typography>
+            <CalendarItemInfoStyled>
+              <Typography>
                     Income:
-                  </Typography>
-                  <Typography>
+              </Typography>
+              <Typography>
                     215 534
-                  </Typography>
-                </CalendarItemInfoStyled>
-                <CalendarItemInfoStyled>
-                  <Typography>
+              </Typography>
+            </CalendarItemInfoStyled>
+            <CalendarItemInfoStyled>
+              <Typography>
                     Outcome:
-                  </Typography>
-                  <Typography>
+              </Typography>
+              <Typography>
                     152 678
-                  </Typography>
-                </CalendarItemInfoStyled>
-              </CalendarItemWrapperStyled>
+              </Typography>
+            </CalendarItemInfoStyled>
+          </CalendarItemWrapperStyled>
         </YearStyled>
       </YearsContainerStyled>
     </CalendarWrapperModeStyled>

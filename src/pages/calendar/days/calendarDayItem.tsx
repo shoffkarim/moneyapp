@@ -65,7 +65,7 @@ export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDa
               <Typography fontSize="14px" fontWeight="600">{day.description?.title}</Typography>
               <Typography fontSize="14px" fontWeight="600">{day.description?.subTitle}</Typography>
             </CalendarItemAdditionalStyled>
-          }
+        }
         {visibleDayPopup &&
           <CalendarDayItemPopup day={day}/>
         }

@@ -25,7 +25,7 @@ export const CardNew: React.FC<CardNewProps> = ({ type }) => {
         onClick={() => setVisiblePopup(true)}
       >
         <CardWrapperStyled>
-        <Typography variant="body1" mb={'10px'}>Добавить</Typography>
+          <Typography variant="body1" mb={'10px'}>Добавить</Typography>
           <CardIconStyled style={{ backgroundColor: "#000000" }}>
             <MainIcon.Icon {...iconProps} />
           </CardIconStyled>

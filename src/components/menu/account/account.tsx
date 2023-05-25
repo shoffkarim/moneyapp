@@ -8,12 +8,12 @@ type AccontProps = {
 
 export const Account: React.FC<AccontProps> = ({ name }) => {
   return (
-      <LkStyled>
-        <LkPhotoStyled>
-          <img src="" alt="" />
-        </LkPhotoStyled>
-        <Typography variant="h5">{name}</Typography>
-      </LkStyled>
+    <LkStyled>
+      <LkPhotoStyled>
+        <img src="" alt="" />
+      </LkPhotoStyled>
+      <Typography variant="h5">{name}</Typography>
+    </LkStyled>
 
   )
 }

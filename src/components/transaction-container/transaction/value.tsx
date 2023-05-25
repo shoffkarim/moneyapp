@@ -16,7 +16,7 @@ export const Value: React.FC<ValueProps> = ({ handlerTransaction }) => {
 
   return (
     <TransactionWrapperStyled>
-        <input value={value} onChange={(e) => handlerValue(e.target.value)} autoFocus placeholder="Сумма" />
+      <input value={value} onChange={(e) => handlerValue(e.target.value)} autoFocus placeholder="Сумма" />
     </TransactionWrapperStyled>
   )
 }

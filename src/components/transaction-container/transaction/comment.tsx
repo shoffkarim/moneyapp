@@ -15,7 +15,7 @@ export const Comment: React.FC<CommentProps> = ({ handlerTransaction }) => {
 
   return (
     <TransactionWrapperStyled>
-        <input value={comment} onChange={(e) => handlerComment(e.target.value)} placeholder="Comment" />
+      <input value={comment} onChange={(e) => handlerComment(e.target.value)} placeholder="Comment" />
     </TransactionWrapperStyled>
   )
 }

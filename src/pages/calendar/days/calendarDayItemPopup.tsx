@@ -11,13 +11,13 @@ interface CalendarDayItemPopupProps {
 export const CalendarDayItemPopup: React.FC<CalendarDayItemPopupProps> = ({ day }) => {
   return (
     <DayItemPopupStyled>
-            <CalendarItemTopStyled>
-              <CalendarItemNumberStyled>
-                {day.dayNumber}
-              </CalendarItemNumberStyled>
+      <CalendarItemTopStyled>
+        <CalendarItemNumberStyled>
+          {day.dayNumber}
+        </CalendarItemNumberStyled>
 
-            </CalendarItemTopStyled>
-            {day.items &&
+      </CalendarItemTopStyled>
+      {day.items &&
               <DayItemsList>
                 {day.items.map((item, index) => {
                   return (
@@ -28,14 +28,14 @@ export const CalendarDayItemPopup: React.FC<CalendarDayItemPopupProps> = ({ day 
                   )
                 })}
               </DayItemsList>
-            }
-            {day.description &&
+      }
+      {day.description &&
               <DayTotalContainerStyled>
                 <Typography>{day.description?.title}</Typography>
                 <Typography>{day.description?.subTitle}</Typography>
               </DayTotalContainerStyled>
-            }
-          </DayItemPopupStyled>
+      }
+    </DayItemPopupStyled>
   )
 }
 
