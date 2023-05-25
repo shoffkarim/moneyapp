@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-import { css } from "@emotion/react";
+import styled from '@emotion/styled'
+import { css } from "@emotion/react"
 
 export const MenuStyled = styled.aside(() => css`
   max-width: 450px;

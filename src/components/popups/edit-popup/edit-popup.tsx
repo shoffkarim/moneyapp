@@ -1,12 +1,12 @@
-import { IMainIcon, IMainIconObj } from "components/interfaces";
-import { colorsArray } from "components/constants";
-import React, { useState } from "react";
-import { BiRuble } from "react-icons/bi";
-import { icons } from "components/utils/icons";
-import axios from "axios";
-import { IconsPopup } from "components/popups/icons-popup";
-import { ColorItemStyled, EditPopupButtonStyled, EditPopupColorStyled, EditPopupContainerStyled, EditPopupIconStyled, EditPopupInnerStyled, EditPopupNameStyled, EditPopupOverlayStyled, EditPopupStyled, EditPopupValueStyled, EditPopupWrapperStyled } from "./edit-popup.styled";
-import { BtnCloseStyled } from "pages/main/main.styled";
+import { IMainIcon, IMainIconObj } from "components/interfaces"
+import { colorsArray } from "components/constants"
+import React, { useState } from "react"
+import { BiRuble } from "react-icons/bi"
+import { icons } from "components/utils/icons"
+import axios from "axios"
+import { IconsPopup } from "components/popups/icons-popup"
+import { ColorItemStyled, EditPopupButtonStyled, EditPopupColorStyled, EditPopupContainerStyled, EditPopupIconStyled, EditPopupInnerStyled, EditPopupNameStyled, EditPopupOverlayStyled, EditPopupStyled, EditPopupValueStyled, EditPopupWrapperStyled } from "./edit-popup.styled"
+import { BtnCloseStyled } from "pages/main/main.styled"
 
 
 interface EditPopupProps {
@@ -17,7 +17,7 @@ interface EditPopupProps {
   name: string;
   value: number;
   type: string;
-  handlerClose: Function
+  handlerClose: (x: boolean) => void
 }
 
 export const EditPopup: React.FC<EditPopupProps> = ({
@@ -31,16 +31,16 @@ export const EditPopup: React.FC<EditPopupProps> = ({
   handlerClose
 }) => {
 
-  const [activeName, setActiveName] = useState(name);
-  const [activeMoney, setActiveMoney] = useState(value);
-  const [activeColor, setActiveColor] = useState(color);
-  const [activeIcon, setActiveIcon] = useState(iconName);
-  const [visibleIcons, setVisibleIcons] = useState(false);
-  const MainIcon: IMainIconObj = icons(activeIcon);
+  const [activeName, setActiveName] = useState(name)
+  const [activeMoney, setActiveMoney] = useState(value)
+  const [activeColor, setActiveColor] = useState(color)
+  const [activeIcon, setActiveIcon] = useState(iconName)
+  const [visibleIcons, setVisibleIcons] = useState(false)
+  const MainIcon: IMainIconObj = icons(activeIcon)
 
   const handleChangeMoney = (str: string) => {
-    setActiveMoney(parseInt(str));
-  };
+    setActiveMoney(parseInt(str))
+  }
 
   const handleSubmit = () => {
     const item = JSON.stringify({
@@ -49,22 +49,22 @@ export const EditPopup: React.FC<EditPopupProps> = ({
       "icon": activeIcon,
       "color": activeColor,
       "value": activeMoney
-    });
+    })
     axios.put(`http://localhost:3001/${type}/${id}`, JSON.parse(item))
-      .then(res => {
+      .then(() => {
         console.log("success")
       })
       .catch(error => {console.error('There was an error!', error)
-      });
+      })
   }
 
   const handleDelete = () => {
     axios.delete(`http://localhost:3001/${type}/${id}`)
-      .then(res => {
+      .then(() => {
         console.log("success")
       })
       .catch(error => {console.error('There was an error!', error)
-      });
+      })
   }
 
   return (
@@ -102,7 +102,7 @@ export const EditPopup: React.FC<EditPopupProps> = ({
                     style={{ backgroundColor: item }}
                     onClick={() => setActiveColor(item)}
                   />
-                );
+                )
               })}
             </EditPopupColorStyled>
           </EditPopupWrapperStyled>
@@ -117,5 +117,5 @@ export const EditPopup: React.FC<EditPopupProps> = ({
         <IconsPopup iconProps={iconProps} activeIcon={activeIcon} changeIcon={setActiveIcon}/>
       )}
     </EditPopupStyled>
-  );
-};
+  )
+}

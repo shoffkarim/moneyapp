@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Calendar } from './calendar'
 import { CalendarData } from './sampleDataCalendar'
-import { CalendarStateReturn, UseCalendarStateReturn } from './types'
+import { CalendarStateReturn } from './types'
 
 export const CalendarPage: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState(new Date())
   const handleCalendarDate = (state: CalendarStateReturn) => {
-    console.log(state)
+    // console.log(state)
   }
   return (
     <Calendar

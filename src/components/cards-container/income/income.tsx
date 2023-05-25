@@ -1,19 +1,25 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "__data__/store";
-import { ICard } from "components/interfaces";
-import { CardNew } from "components/card/card-new";
-import { CardDropWrapper } from "components/card/card-drop-wrapper";
-import { IncomeContainerStyled, IncomeWrapperStyled } from "./income.styled";
+import React from "react"
+import { useSelector } from "react-redux"
+import { RootState } from "__data__/store"
+import { ICard } from "components/interfaces"
+import { CardNew } from "components/card/card-new"
+import { CardDropWrapper } from "components/card/card-drop-wrapper"
+import { IncomeContainerStyled, IncomeWrapperStyled } from "./income.styled"
 
 interface IncomeProps {
-  transactionOpen: Function
-  items?: any
+  transactionOpen: (
+    open: boolean,
+    idFrom: number,
+    idWhere: number,
+    typeFrom: string,
+    typeWhere: string
+  ) => void
+  items?: Array<ICard>
 }
 
 export const Income: React.FC<IncomeProps> = ({transactionOpen, items}) => {
 
-  const isLoaded = useSelector((state: RootState) => state.Incomes.isLoaded);
+  const isLoaded = useSelector((state: RootState) => state.Incomes.isLoaded)
 
   return (
     <IncomeContainerStyled>
@@ -34,5 +40,5 @@ export const Income: React.FC<IncomeProps> = ({transactionOpen, items}) => {
         <CardNew type={"incomes"} />
       </IncomeWrapperStyled>
     </IncomeContainerStyled>
-  );
-};
+  )
+}

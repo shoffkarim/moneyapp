@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { useCalendar } from './useCalendar'
-import CalendarHeader from './header/calendarHeader';
-import CalendarDaysMode from './days/calendarDaysMode';
-import CalendarMonthesMode from './monthes/calendarMonthesMode';
-import CalendarYearsMode from './years/calendarYearsMode';
-import { CalendarDataType, CalendarStateReturn } from './types';
-import { assignData } from './utils/assignData';
-import { handleStateApi } from './utils/handleStateApi';
+import CalendarHeader from './header/calendarHeader'
+import CalendarDaysMode from './days/calendarDaysMode'
+import CalendarMonthesMode from './monthes/calendarMonthesMode'
+import CalendarYearsMode from './years/calendarYearsMode'
+import { CalendarDataType, CalendarStateReturn } from './types'
+import { assignData } from './utils/assignData'
+import { handleStateApi } from './utils/handleStateApi'
 
 interface CalendarProps {
   locale?: string

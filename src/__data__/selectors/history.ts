@@ -1,2 +1,4 @@
-import { RootState } from './../store';
-export const historyData = (state: RootState) => "data"
+import { RootState } from './../store'
+export const historyData = (state: RootState) => {
+  return "data"
+}

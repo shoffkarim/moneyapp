@@ -1,11 +1,11 @@
-import React from "react";
-import { BiRuble } from "react-icons/bi";
-import { formatMoney } from "components/utils/format";
-import { themeColor } from "components/utils/color";
-import { icons } from "components/utils/icons";
-import { BsCheckCircleFill } from "react-icons/bs";
-import { CardNameStyled, CardStyled, CardValueStyled, CardWrapperStyled } from "components/card/card.styled";
-import { CheckContainerStyled } from "../transaction/transaction.styled";
+import React from "react"
+import { BiRuble } from "react-icons/bi"
+import { formatMoney } from "components/utils/format"
+import { themeColor } from "components/utils/color"
+import { icons } from "components/utils/icons"
+import { BsCheckCircleFill } from "react-icons/bs"
+import { CardNameStyled, CardStyled, CardValueStyled, CardWrapperStyled } from "components/card/card.styled"
+import { CheckContainerStyled } from "../transaction/transaction.styled"
 
 export interface TransactionCardProps {
   id: number;
@@ -14,7 +14,7 @@ export interface TransactionCardProps {
   color: string;
   value: number;
   check: number;
-  handlerClick: Function;
+  handlerClick: (id: number) => void;
 }
 
 export interface IMainIcon {
@@ -30,7 +30,7 @@ export interface IMainIconObj {
 const iconProps = {
   size: "50px",
   color: "white",
-};
+}
 
 export const TransactionCard: React.FC<TransactionCardProps> = ({
   id,
@@ -42,15 +42,15 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({
   handlerClick,
 }) => {
 
-  const money: string = formatMoney(value);
-  const theme: string = themeColor(color);
-  const MainIcon: IMainIconObj = icons(icon);
+  const money: string = formatMoney(value)
+  const theme: string = themeColor(color)
+  const MainIcon: IMainIconObj = icons(icon)
 
   return (
     <>
       <CardStyled
         onClick={() => {
-          handlerClick(id);
+          handlerClick(id)
         }}
       >
         <CardWrapperStyled>
@@ -70,5 +70,5 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({
         )}
       </CardStyled>
     </>
-  );
-};
+  )
+}

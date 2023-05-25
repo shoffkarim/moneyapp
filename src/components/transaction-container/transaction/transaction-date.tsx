@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { TransactionWrapperStyled } from "./transaction.styled";
+import React, { useState } from "react"
+import { TransactionWrapperStyled } from "./transaction.styled"
 
 interface TransactionDateProps {
   handlerTransaction: (date: string) => void
@@ -17,5 +17,5 @@ export const TransactionDate: React.FC<TransactionDateProps> = ({handlerTransact
     <TransactionWrapperStyled>
         <input value={date} onChange={(e) => handlerDate(e.target.value)} type="date" name="" id="" />
     </TransactionWrapperStyled>
-  );
-};
+  )
+}

@@ -73,7 +73,8 @@
     "server": "nodemon src/server/app.js",
     "json-server-db": "json-server --watch public/db.json --port=3001",
     "dev": "concurrently \"npm run start\"",
-    "eslint": "npx eslint --ext .js,.jsx,.ts,.tsx ."
+    "eslint": "npx eslint --ext .js,.jsx,.ts,.tsx .",
+    "eslint:fix": "npx eslint --fix --ext .js,.jsx,.ts,.tsx ."
   },
   "browserslist": {
     "production": [

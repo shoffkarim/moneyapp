@@ -1,5 +1,5 @@
-import { SET_ACCOUNTS, InitState } from '../constants';
-import { AnyAction } from "redux";
+import { SET_ACCOUNTS, InitState } from '../constants'
+import { AnyAction } from "redux"
 
 const Accounts = (state = InitState, action: AnyAction ) => {
   switch(action.type){
@@ -12,6 +12,6 @@ const Accounts = (state = InitState, action: AnyAction ) => {
     default:
       return state
   }
-};
+}
 
-export default Accounts;
+export default Accounts

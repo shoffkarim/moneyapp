@@ -46,7 +46,7 @@ export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDa
             {day.items.map((item, index) => {
               if(index < 4) {
                 return(
-                  <DayItem backgroundColor={item.backgroundColor}>
+                  <DayItem backgroundColor={item.backgroundColor} key={`${item.title}-${index}`}>
                     <DayItemTextStyled fontSize="14px">{item.title}</DayItemTextStyled>
                     <Typography fontSize="14px">{item.value}</Typography>
                   </DayItem>

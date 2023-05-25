@@ -1,5 +1,5 @@
-import { InitState, SET_HISTORY } from '../constants';
-import { AnyAction } from "redux";
+import { InitState, SET_HISTORY } from '../constants'
+import { AnyAction } from "redux"
 
 const History = (state = InitState, action: AnyAction ) => {
   switch(action.type){
@@ -12,6 +12,6 @@ const History = (state = InitState, action: AnyAction ) => {
     default:
       return state
   }
-};
+}
 
-export default History;
+export default History

@@ -1,5 +1,5 @@
-import { SET_USER, InitStateUser } from '../constants';
-import { AnyAction } from "redux";
+import { SET_USER, InitStateUser } from '../constants'
+import { AnyAction } from "redux"
 
 const User = (state = InitStateUser, action: AnyAction ) => {
   switch(action.type){
@@ -12,6 +12,6 @@ const User = (state = InitStateUser, action: AnyAction ) => {
     default:
       return state
   }
-};
+}
 
-export default User;
+export default User

@@ -1,5 +1,5 @@
-import { checkDateIsEqual } from './checkDateIsEqual';
-import { CalendarDataType, UseCalendarStateReturn } from '../types';
+import { checkDateIsEqual } from './checkDateIsEqual'
+import { CalendarDataType, UseCalendarStateReturn } from '../types'
 export const assignData = (state: UseCalendarStateReturn, data: CalendarDataType): UseCalendarStateReturn => {
     const assignedDays = state.calendarDays.map((day) => {
       // return day

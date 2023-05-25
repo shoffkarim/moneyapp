@@ -1,4 +1,4 @@
-import { CalendarDataType } from "./types";
+import { CalendarDataType } from "./types"
 
 export const CalendarData: CalendarDataType = {
   days: [

@@ -12,7 +12,7 @@ interface CalendarDaysModeProps {
   data: CalendarDataType
 }
 
-export const CalendarDaysMode: React.FC<CalendarDaysModeProps> = ({ state, functions, selectDate, data }) => {
+export const CalendarDaysMode: React.FC<CalendarDaysModeProps> = ({ state, functions, selectDate }) => {
 
   return (
     <CalendarWrapperModeStyled>

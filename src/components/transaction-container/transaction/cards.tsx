@@ -1,34 +1,34 @@
-import React from "react";
-import { TransactionCard } from "components/transaction-container/transaction-card";
-import { TransactionCardProps } from "components/transaction-container/transaction-card/transaction-card";
-import { RootState } from "__data__/store";
-import { useDispatch, useSelector } from "react-redux";
-import { setCardIdFrom, setCardIdWhere } from "__data__/actions/transaction";
-import { ACCOUNTS, INCOMES } from "components/constants";
-import { TransactionCardWrapperStyled, TransactionTitleStyled, TransactionWrapperStyled } from "./transaction.styled";
+import React from "react"
+import { TransactionCard } from "components/transaction-container/transaction-card"
+import { TransactionCardProps } from "components/transaction-container/transaction-card/transaction-card"
+import { RootState } from "__data__/store"
+import { useDispatch, useSelector } from "react-redux"
+import { setCardIdFrom, setCardIdWhere } from "__data__/actions/transaction"
+import { ACCOUNTS, INCOMES } from "components/constants"
+import { TransactionCardWrapperStyled, TransactionTitleStyled, TransactionWrapperStyled } from "./transaction.styled"
 // TODO: fix cards in transaction
 export const Cards: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const handlerCardIdFrom = (id: number) => {
-    dispatch(setCardIdFrom(id));
-  };
+    dispatch(setCardIdFrom(id))
+  }
   const handlerCardIdWhere = (id: number) => {
-    dispatch(setCardIdWhere(id));
-  };
+    dispatch(setCardIdWhere(id))
+  }
 
-  const transaction = useSelector((state: RootState) => state.Transaction);
+  const transaction = useSelector((state: RootState) => state.Transaction)
 
   const itemsFrom = useSelector((state: RootState) => {
     if (transaction.typeFrom === INCOMES) {
-      return state.Incomes;
-    } else return state.Accounts;
-  });
+      return state.Incomes
+    } else return state.Accounts
+  })
 
   const itemsWhere = useSelector((state: RootState) => {
     if (transaction.typeWhere === ACCOUNTS) {
-      return state.Accounts;
-    } else return state.Expenses;
-  });
+      return state.Accounts
+    } else return state.Expenses
+  })
 
   return (
     <>
@@ -69,5 +69,5 @@ export const Cards: React.FC = () => {
         </TransactionCardWrapperStyled>
       </TransactionWrapperStyled>
     </>
-  );
-};
+  )
+}

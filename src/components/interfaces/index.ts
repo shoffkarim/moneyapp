@@ -5,7 +5,13 @@ export interface ICard {
   color: string;
   value: number;
   type: string;
-  operOpen: Function
+  operOpen: (
+    open: boolean,
+    idFrom: number,
+    idWhere: number,
+    typeFrom: string,
+    typeWhere: string
+  ) => void
 }
 
 export interface IMainIcon {

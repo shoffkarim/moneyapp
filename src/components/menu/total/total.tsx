@@ -1,8 +1,8 @@
 import React from 'react'
-import { BiRuble } from 'react-icons/bi';
-import { formatMoney } from 'components/utils/format';
-import { Typography } from '@mui/material';
-import { TotalItemStyled, TotalStyled, TotalItemWrapperStyled } from './total.styled';
+import { BiRuble } from 'react-icons/bi'
+import { formatMoney } from 'components/utils/format'
+import { Typography } from '@mui/material'
+import { TotalItemStyled, TotalStyled, TotalItemWrapperStyled } from './total.styled'
 
 type TotalProps = {
   total?: {

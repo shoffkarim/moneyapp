@@ -1,8 +1,8 @@
-import React from "react";
-import { useDrop } from "react-dnd";
-import { dndCanDrop } from "components/utils/dnd";
-import { dndItem, ICard } from "components/interfaces";
-import { Card } from "./card";
+import React from "react"
+import { useDrop } from "react-dnd"
+import { dndCanDrop } from "components/utils/dnd"
+import { dndItem, ICard } from "components/interfaces"
+import { Card } from "./card"
 
 export const CardDropWrapper: React.FC<ICard> = ({
   id,
@@ -21,15 +21,15 @@ export const CardDropWrapper: React.FC<ICard> = ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
     }),
-  }));
+  }))
 
 
-  let styleOpacity = 1;
-  const isActive = isOver && canDrop;
+  let styleOpacity = 1
+  const isActive = isOver && canDrop
   if (isActive) {
-    styleOpacity = 1;
+    styleOpacity = 1
   } else if (isOver && !canDrop) {
-    styleOpacity = 0.4;
+    styleOpacity = 0.4
   }
   return (
     <div ref={drop} style={{ opacity: styleOpacity }}>
@@ -43,5 +43,5 @@ export const CardDropWrapper: React.FC<ICard> = ({
         operOpen={operOpen}
       />
     </div>
-  );
-};
+  )
+}

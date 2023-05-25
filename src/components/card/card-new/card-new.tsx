@@ -1,8 +1,8 @@
-import { Typography } from '@mui/material';
-import { CardIconStyled, CardStyled, CardWrapperStyled } from 'components/card/card.styled';
-import { IMainIconObj } from 'components/interfaces';
-import { CreatePopup } from 'components/popups/create-popup';
-import { icons } from 'components/utils/icons';
+import { Typography } from '@mui/material'
+import { CardIconStyled, CardStyled, CardWrapperStyled } from 'components/card/card.styled'
+import { IMainIconObj } from 'components/interfaces'
+import { CreatePopup } from 'components/popups/create-popup'
+import { icons } from 'components/utils/icons'
 import React, { useState } from 'react'
 
 export interface CardNewProps {
@@ -12,13 +12,13 @@ export interface CardNewProps {
 const iconProps = {
   size: "50px",
   color: "white",
-};
+}
 
 export const CardNew: React.FC<CardNewProps> = ({ type }) => {
 
   const [visiblePopup, setVisiblePopup] = useState(false)
 
-  const MainIcon: IMainIconObj = icons("plus");
+  const MainIcon: IMainIconObj = icons("plus")
   return (
     <>
       <CardStyled

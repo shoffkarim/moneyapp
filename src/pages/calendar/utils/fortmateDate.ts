@@ -1,4 +1,4 @@
-import { createDate } from '../useCalendar/helpers/createDate';
+import { createDate } from '../useCalendar/helpers/createDate'
 
 export const formateDate = (date: Date, format: string, locale?: string): string => {
   const d = createDate({ date, locale })

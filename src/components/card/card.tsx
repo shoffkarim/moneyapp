@@ -1,26 +1,26 @@
-import React, { useState } from "react";
-import { GrFormEdit } from "react-icons/gr";
-import { formatMoney } from "components/utils/format";
-import { themeColor } from "components/utils/color";
-import { icons } from "components/utils/icons";
-import { EditPopup } from "components/popups/edit-popup";
-import { DragPreviewImage, useDrag } from "react-dnd";
-import { ICard, IMainIconObj } from "components/interfaces";
-import { Typography } from "@mui/material";
-import { CurrencyRuble } from "@mui/icons-material";
-import { CardIconStyled, CardStyled, CardValueStyled, CardWrapperStyled } from "./card.styled";
-import { EditContainerStyled } from "components/popups/edit-popup/edit-popup.styled";
+import React, { useState } from "react"
+import { GrFormEdit } from "react-icons/gr"
+import { formatMoney } from "components/utils/format"
+import { themeColor } from "components/utils/color"
+import { icons } from "components/utils/icons"
+import { EditPopup } from "components/popups/edit-popup"
+import { DragPreviewImage, useDrag } from "react-dnd"
+import { ICard, IMainIconObj } from "components/interfaces"
+import { Typography } from "@mui/material"
+import { CurrencyRuble } from "@mui/icons-material"
+import { CardIconStyled, CardStyled, CardValueStyled, CardWrapperStyled } from "./card.styled"
+import { EditContainerStyled } from "components/popups/edit-popup/edit-popup.styled"
 
 
 
 const iconProps = {
   size: "50px",
   color: "white",
-};
+}
 
-export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type, operOpen }) => {
-  const [visibleEdit, setVisibleEdit] = useState(false);
-  const [visiblePopup, setVisiblePopup] = useState(false);
+export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type }) => {
+  const [visibleEdit, setVisibleEdit] = useState(false)
+  const [visiblePopup, setVisiblePopup] = useState(false)
 
   const [{isDragging}, drag, preview] = useDrag(() => ({
     type: "card",
@@ -30,9 +30,9 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type, oper
     })
   }))
 
-  const money: string = formatMoney(value);
-  const theme: string = themeColor(color);
-  const MainIcon: IMainIconObj = icons(icon);
+  const money: string = formatMoney(value)
+  const theme: string = themeColor(color)
+  const MainIcon: IMainIconObj = icons(icon)
 
   return (
     <>
@@ -77,5 +77,5 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type, oper
         />
       )}
     </>
-  );
-};
+  )
+}

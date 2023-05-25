@@ -1,13 +1,13 @@
-import React from "react";
-import { iconsPack } from "components/iconsPack";
-import { IMainIcon } from "components/interfaces";
-import { black, white } from "components/constants";
-import { IconSelectorContainerStyled, IconSelectorItemStyled } from "./icons-popup.styled";
+import React from "react"
+import { iconsPack } from "components/iconsPack"
+import { IMainIcon } from "components/interfaces"
+import { black, white } from "components/constants"
+import { IconSelectorContainerStyled, IconSelectorItemStyled } from "./icons-popup.styled"
 
 interface IconsPopupProps {
   iconProps: IMainIcon,
   activeIcon: string,
-  changeIcon: Function
+  changeIcon: (name: string) => void
 }
 
 export const IconsPopup: React.FC<IconsPopupProps> = ({
@@ -19,7 +19,7 @@ export const IconsPopup: React.FC<IconsPopupProps> = ({
         const newIconProps = {
           ...iconProps,
           color: activeIcon === ItemIcon.iconName ? white : black,
-        };
+        }
         return (
           <IconSelectorItemStyled
             key={ItemIcon.iconName}
@@ -27,8 +27,8 @@ export const IconsPopup: React.FC<IconsPopupProps> = ({
           >
             <ItemIcon.Icon {...newIconProps} />
           </IconSelectorItemStyled>
-        );
+        )
       })}
     </IconSelectorContainerStyled>
-  );
+  )
 }

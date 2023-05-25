@@ -1,5 +1,5 @@
-import { TableRow, Typography } from '@mui/material';
-import styled from "@emotion/styled";
+import { TableRow, Typography } from '@mui/material'
+import styled from "@emotion/styled"
 import { css } from '@emotion/react'
 
 export const HistoryItemStyled = styled(TableRow)(() => css`
@@ -44,7 +44,7 @@ export const HistoryItemTagItemStyled = styled.ul(() => css`
 `)
 
 type HistoryItemCommentProps = {
-  show?: boolean
+  show: string
 }
 export const HistoryItemCommentStyled = styled(Typography)<HistoryItemCommentProps>(({ show }) => css`
   max-width: 220px;
@@ -52,5 +52,5 @@ export const HistoryItemCommentStyled = styled(Typography)<HistoryItemCommentPro
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
-  white-space: ${show ? 'initial' : 'nowrap'};
+  white-space: ${show};
 `)

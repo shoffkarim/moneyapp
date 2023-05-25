@@ -1,6 +1,6 @@
-import { Tag } from "components/interfaces";
-import React, { useState } from "react";
-import { TransactionTagsItemStyled, TransactionTagsStyled, TransactionWrapperStyled } from "./transaction.styled";
+import { Tag } from "components/interfaces"
+import React, { useState } from "react"
+import { TransactionTagsItemStyled, TransactionTagsStyled, TransactionWrapperStyled } from "./transaction.styled"
 
 const TagsData: Array<Tag> = [
   {
@@ -27,7 +27,7 @@ export const Tags: React.FC<TagsProps> = ({handlerTransaction}) => {
   const handlerActiveTags = (item: Tag) => {
     const index = activeTags.findIndex((el) => el?.id === item.id)
     if(index !== -1) {
-      let tempTags = activeTags.filter((el) => el!.id !== item.id)
+      const tempTags = activeTags.filter((el) => el?.id !== item.id)
       setActiveTags(tempTags)
       handlerTransaction(tempTags)
     } else {
@@ -51,5 +51,5 @@ export const Tags: React.FC<TagsProps> = ({handlerTransaction}) => {
         )}
       </TransactionTagsStyled>
     </TransactionWrapperStyled>
-  );
-};
+  )
+}

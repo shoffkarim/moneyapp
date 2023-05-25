@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
-import { connect, useDispatch } from 'react-redux'
-import { fetchHistory } from '__data__/actions/history'
+import React from 'react'
+import { connect } from 'react-redux'
 import { HistoryTransaction } from '../history-transaction'
 import { mapStateToProps } from '../utils'
 import { HistoryContainerStyled, HistoryWrapperStyled } from './history-page.styled'
@@ -9,13 +8,7 @@ interface HistoryPageProps {
   data?: string
 }
 
-const HistoryPage: React.FC<HistoryPageProps> = ({data}) => {
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(fetchHistory())
-  }, [dispatch])
-
-
+const HistoryPage: React.FC<HistoryPageProps> = () => {
   return (
       <HistoryContainerStyled>
         <HistoryWrapperStyled>

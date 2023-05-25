@@ -1,7 +1,7 @@
 export const formatMoney = (value: number | string | undefined) => {
   if (value) {
-    let tempNumber = typeof value === "number" ? value : parseInt(value);
-    return new Intl.NumberFormat("ru-RU").format(tempNumber);
+    const tempNumber = typeof value === "number" ? value : parseInt(value)
+    return new Intl.NumberFormat("ru-RU").format(tempNumber)
   }
   return "0"
-};
+}

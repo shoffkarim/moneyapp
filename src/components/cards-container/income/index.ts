@@ -1,1 +1,1 @@
-export { Income } from './income';
+export { Income } from './income'

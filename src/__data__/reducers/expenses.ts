@@ -1,5 +1,5 @@
-import { SET_EXPENSES, InitState } from '../constants';
-import { AnyAction } from "redux";
+import { SET_EXPENSES, InitState } from '../constants'
+import { AnyAction } from "redux"
 
 const Expenses = (state = InitState, action: AnyAction ) => {
   switch(action.type){
@@ -12,6 +12,6 @@ const Expenses = (state = InitState, action: AnyAction ) => {
     default:
       return state
   }
-};
+}
 
-export default Expenses;
+export default Expenses

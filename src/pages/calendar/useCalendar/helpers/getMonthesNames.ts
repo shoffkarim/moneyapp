@@ -1,7 +1,7 @@
-import { GetMonthesNamesReturn } from '../../types';
-import { createDate } from './createDate';
+import { GetMonthesNamesReturn } from '../../types'
+import { createDate } from './createDate'
 
-export const getMonthesNames = (locale: string = 'default'): Array<GetMonthesNamesReturn> => {
+export const getMonthesNames = (locale = 'default'): Array<GetMonthesNamesReturn> => {
   const monthesNames: Array<GetMonthesNamesReturn> = Array.from({length: 12})
 
   const today = new Date()

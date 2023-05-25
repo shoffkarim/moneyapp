@@ -1,1 +1,1 @@
-export { EditPopup } from './edit-popup';
+export { EditPopup } from './edit-popup'

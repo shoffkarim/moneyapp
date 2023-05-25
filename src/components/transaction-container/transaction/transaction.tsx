@@ -1,15 +1,16 @@
-import { Cards } from "./cards";
-import { Comment } from "./comment";
-import { TransactionDate } from "./transaction-date";
-import { Tags } from "./tags";
-import { Value } from "./value";
-import { useDispatch, useSelector } from "react-redux";
-import { addNewTransaction, closePopupTransaction, setTransactionData } from "__data__/actions/transaction";
-import { useState } from "react";
-import { Tag } from "components/interfaces";
-import { RootState } from "__data__/store";
-import { TransactionContainerStyled, TransactionOverlayStyled, TransactionStyled } from "./transaction.styled";
-import { BtnCloseStyled } from "pages/main/main.styled";
+import React from 'react'
+import { Cards } from "./cards"
+import { Comment } from "./comment"
+import { TransactionDate } from "./transaction-date"
+import { Tags } from "./tags"
+import { Value } from "./value"
+import { useDispatch, useSelector } from "react-redux"
+import { addNewTransaction, closePopupTransaction, setTransactionData } from "__data__/actions/transaction"
+import { useState } from "react"
+import { Tag } from "components/interfaces"
+import { RootState } from "__data__/store"
+import { TransactionContainerStyled, TransactionOverlayStyled, TransactionStyled } from "./transaction.styled"
+import { BtnCloseStyled } from "pages/main/main.styled"
 
 type TransactionData = {
   id: string,
@@ -81,5 +82,5 @@ export const Transaction: React.FC = () => {
         <BtnCloseStyled onClick={() => handlerClose(false)}></BtnCloseStyled>
       </TransactionContainerStyled>
     </TransactionStyled>
-  );
-};
+  )
+}

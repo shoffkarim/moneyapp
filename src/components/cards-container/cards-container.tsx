@@ -1,16 +1,17 @@
-import React from "react";
-import { Income, Accounts, Expenses } from "components";
-import { useDispatch } from "react-redux";
-import { openPopupTransaction, setTransaction } from "__data__/actions/transaction";
+import React from "react"
+import { Income, Accounts, Expenses } from "components"
+import { useDispatch } from "react-redux"
+import { openPopupTransaction, setTransaction } from "__data__/actions/transaction"
+import { ICard } from "components/interfaces"
 
 export interface CardsContainerProps {
-  accounts?: any
-  expenses?: any
-  incomes?: any
+  accounts?: Array<ICard>
+  expenses?: Array<ICard>
+  incomes?: Array<ICard>
 }
 export const CardsContainer: React.FC<CardsContainerProps> = ({ accounts, expenses, incomes }) => {
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const transactionHandler = (
     open: boolean,
     idFrom: number,
@@ -20,7 +21,7 @@ export const CardsContainer: React.FC<CardsContainerProps> = ({ accounts, expens
   ) => {
    dispatch(setTransaction({idFrom, typeFrom, idWhere, typeWhere}))
    dispatch(openPopupTransaction(open))
-  };
+  }
 
   return (
     <>
@@ -28,5 +29,5 @@ export const CardsContainer: React.FC<CardsContainerProps> = ({ accounts, expens
       <Accounts transactionOpen={transactionHandler} items={accounts} />
       <Expenses transactionOpen={transactionHandler} items={expenses} />
     </>
-  );
-};
+  )
+}

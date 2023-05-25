@@ -1,10 +1,10 @@
-import { TableCell, Typography } from "@mui/material";
-import React, { useState } from "react";
-import { BsBank, BsFillBagCheckFill } from "react-icons/bs";
-import { HistoryItemCellStyled, HistoryItemIconStyled, HistoryItemStyled, HistoryItemTagListStyled, HistoryItemTagItemStyled, HistoryItemCommentStyled } from "./history-transaction.styled";
+import { TableCell, Typography } from "@mui/material"
+import React, { useState } from "react"
+import { BsBank, BsFillBagCheckFill } from "react-icons/bs"
+import { HistoryItemCellStyled, HistoryItemIconStyled, HistoryItemStyled, HistoryItemTagListStyled, HistoryItemTagItemStyled, HistoryItemCommentStyled } from "./history-transaction.styled"
 
 export const HistoryTransactionElement: React.FC = () => {
-  const [showComment, setShowComment] = useState(false);
+  const [showComment, setShowComment] = useState<boolean>(false)
   return (
     <HistoryItemStyled>
       <TableCell>
@@ -32,7 +32,7 @@ export const HistoryTransactionElement: React.FC = () => {
       <TableCell>
         <HistoryItemCommentStyled
           onClick={() => setShowComment(!showComment)}
-          show={showComment}
+          show={showComment ? 'initial' : 'nowrap'}
           aria-label="comment comment comment comment comment comment comment comment"
           title="comment comment comment comment comment comment comment comment"
         >
@@ -60,5 +60,5 @@ export const HistoryTransactionElement: React.FC = () => {
         </HistoryItemTagListStyled>
       </TableCell>
     </HistoryItemStyled>
-  );
-};
+  )
+}

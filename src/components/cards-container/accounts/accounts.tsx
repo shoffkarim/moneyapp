@@ -1,19 +1,25 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "__data__/store";
-import { ICard } from "components/interfaces";
-import { CardNew } from "components/card/card-new";
-import { CardDropWrapper } from "components/card/card-drop-wrapper";
-import { AccountsContainerStyled, AccountsWrapperStyled } from "./accounts.styled";
+import React from "react"
+import { useSelector } from "react-redux"
+import { RootState } from "__data__/store"
+import { ICard } from "components/interfaces"
+import { CardNew } from "components/card/card-new"
+import { CardDropWrapper } from "components/card/card-drop-wrapper"
+import { AccountsContainerStyled, AccountsWrapperStyled } from "./accounts.styled"
 
 interface AccountsProps {
-  transactionOpen: Function,
-  items: any
+  transactionOpen: (
+    open: boolean,
+    idFrom: number,
+    idWhere: number,
+    typeFrom: string,
+    typeWhere: string
+  ) => void
+  items?: Array<ICard>
 }
 
 export const Accounts: React.FC<AccountsProps> = ({transactionOpen, items}) => {
 
-  const isLoaded = useSelector((state: RootState) => state.Accounts.isLoaded);
+  const isLoaded = useSelector((state: RootState) => state.Accounts.isLoaded)
 
   return (
     <AccountsContainerStyled>
@@ -34,5 +40,5 @@ export const Accounts: React.FC<AccountsProps> = ({transactionOpen, items}) => {
         <CardNew type={"accounts"}/>
       </AccountsWrapperStyled>
     </AccountsContainerStyled>
-  );
-};
+  )
+}

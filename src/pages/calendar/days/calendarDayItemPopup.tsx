@@ -19,9 +19,9 @@ export const CalendarDayItemPopup: React.FC<CalendarDayItemPopupProps> = ({ day 
             </CalendarItemTopStyled>
             {day.items &&
               <DayItemsList>
-                {day.items.map((item) => {
+                {day.items.map((item, index) => {
                   return (
-                    <DayItem backgroundColor={item.backgroundColor}>
+                    <DayItem backgroundColor={item.backgroundColor} key={`${item.title}-${index}`}>
                       <Typography fontSize="14px">{item.title}</Typography>
                       <Typography fontSize="14px">{item.value}</Typography>
                     </DayItem>

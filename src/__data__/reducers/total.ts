@@ -1,5 +1,5 @@
-import { SET_TOTAL, InitStateTotal } from '../constants';
-import { AnyAction } from "redux";
+import { SET_TOTAL, InitStateTotal } from '../constants'
+import { AnyAction } from "redux"
 
 
 const Total = (state = InitStateTotal, action: AnyAction ) => {
@@ -13,6 +13,6 @@ const Total = (state = InitStateTotal, action: AnyAction ) => {
     default:
       return state
   }
-};
+}
 
-export default Total;
+export default Total

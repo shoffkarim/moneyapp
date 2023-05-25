@@ -1,7 +1,7 @@
 import { WeekDaysNamesReturn } from '../../types'
-import { createDate } from './createDate';
+import { createDate } from './createDate'
 
-export const getWeekDaysNames = ( firstWeekDay: number = 1, locale: string = 'default' ): Array<WeekDaysNamesReturn> => {
+export const getWeekDaysNames = ( firstWeekDay = 1, locale = 'default' ): Array<WeekDaysNamesReturn> => {
   const weekDaysNames: Array<WeekDaysNamesReturn> = Array.from({ length: 7 })
 
   const today = new Date()

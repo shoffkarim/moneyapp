@@ -1,5 +1,5 @@
-import { SET_INCOMES, InitState } from '../constants';
-import { AnyAction } from "redux";
+import { SET_INCOMES, InitState } from '../constants'
+import { AnyAction } from "redux"
 
 const Incomes = (state = InitState, action: AnyAction ) => {
   switch(action.type){
@@ -12,6 +12,6 @@ const Incomes = (state = InitState, action: AnyAction ) => {
     default:
       return state
   }
-};
+}
 
-export default Incomes;
+export default Incomes

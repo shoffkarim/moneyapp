@@ -1,7 +1,7 @@
-import { CalendarItemStyled, CalendarItemBorderBottomStyled, CalendarItemBorderTopStyled, CalendarItemNumberStyled } from './../calendar.style';
-import styled from '@emotion/styled';
-import { css } from "@emotion/react";
-import { Typography } from '@mui/material';
+import { CalendarItemStyled, CalendarItemBorderBottomStyled, CalendarItemBorderTopStyled, CalendarItemNumberStyled } from './../calendar.style'
+import styled from '@emotion/styled'
+import { css } from "@emotion/react"
+import { Typography } from '@mui/material'
 
 export const DaysContainerStyled = styled.div(() => css`
   display: grid;

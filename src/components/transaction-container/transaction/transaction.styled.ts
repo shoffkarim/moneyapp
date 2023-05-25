@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
-import { css } from "@emotion/react";
-import { Tag } from 'components/interfaces';
+import styled from '@emotion/styled'
+import { css } from "@emotion/react"
+import { Tag } from 'components/interfaces'
 
 export const TransactionStyled = styled.div(() => css`
   position: fixed;
