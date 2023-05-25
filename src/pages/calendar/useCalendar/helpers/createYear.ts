@@ -16,9 +16,9 @@ export const createYear = (params?: CreateYearParams): CreateYearReturn => {
   const year = params?.year ?? today.year
   const monthNumber = params?.monthNumber ?? today.monthNumber
 
-  const month = createMonth({locale, date: new Date(year, monthNumber - 1)})
+  const month = createMonth({ locale, date: new Date(year, monthNumber - 1) })
 
-  const getMonthDays = (monthIndex: number) => createMonth({locale, date: new Date(year, monthIndex)}).createMonthDays()
+  const getMonthDays = (monthIndex: number) => createMonth({ locale, date: new Date(year, monthIndex) }).createMonthDays()
 
   const createYearMonthes = () => {
     const monthes = []

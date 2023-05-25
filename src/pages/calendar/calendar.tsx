@@ -17,7 +17,7 @@ interface CalendarProps {
   sendParams: (state: CalendarStateReturn) => CalendarStateReturn | void
 }
 
-export const Calendar: React.FC<CalendarProps> = ({ locale = 'default', firstWeekDay = 2, selectedDate, selectDate, data, sendParams}) => {
+export const Calendar: React.FC<CalendarProps> = ({ locale = 'default', firstWeekDay = 2, selectedDate, selectDate, data, sendParams }) => {
   const { state, functions } = useCalendar({ locale, selectedDate, firstWeekDay })
 
   const newState = assignData(state, data)

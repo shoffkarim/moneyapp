@@ -9,6 +9,6 @@ export const setExpenses = (user: unknown) => ({
 
 export const fetchExpenses = () => (dispatch: AppDispatch) => {
   Axios.get(`http://localhost:3001/expenses`)
-  .then(({data}) =>
+  .then(({ data }) =>
   dispatch(setExpenses(data)))
 }

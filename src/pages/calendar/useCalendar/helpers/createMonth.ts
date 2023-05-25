@@ -11,11 +11,11 @@ export const createMonth = (params?: CreateMonthParams): CreateMonthReturn => {
 
   const date = params?.date ?? new Date()
 
-  const createdDate = createDate({locale, date})
+  const createdDate = createDate({ locale, date })
 
-  const { month: monthName, year, monthNumber, monthIndex} = createdDate
+  const { month: monthName, year, monthNumber, monthIndex } = createdDate
 
-  const getDay = (dayNumber: number) => createDate({locale, date: new Date(year, monthIndex, dayNumber)})
+  const getDay = (dayNumber: number) => createDate({ locale, date: new Date(year, monthIndex, dayNumber) })
 
   const createMonthDays = () => {
     const days = []

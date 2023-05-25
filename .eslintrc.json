@@ -21,7 +21,8 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "semi": ["warn", "never", { "beforeStatementContinuationChars": "never"}]
-
+        "semi": ["warn", "never", { "beforeStatementContinuationChars": "never"}],
+        "no-mixed-spaces-and-tabs": "error",
+        "object-curly-spacing": ["warn", "always"]
     }
 }
