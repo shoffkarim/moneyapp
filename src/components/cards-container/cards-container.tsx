@@ -19,8 +19,8 @@ export const CardsContainer: React.FC<CardsContainerProps> = ({ accounts, expens
     typeFrom: string,
     typeWhere: string
   ) => {
-   dispatch(setTransaction({ idFrom, typeFrom, idWhere, typeWhere }))
-   dispatch(openPopupTransaction(open))
+    dispatch(setTransaction({ idFrom, typeFrom, idWhere, typeWhere }))
+    dispatch(openPopupTransaction(open))
   }
 
   return (

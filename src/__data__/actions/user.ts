@@ -9,6 +9,6 @@ export const setUser = (user: unknown) => ({
 
 export const fetchUser = () => (dispatch: AppDispatch) => {
   Axios.get(`http://localhost:3001/user`)
-  .then(({ data }) =>
-  dispatch(setUser(data)))
+    .then(({ data }) =>
+      dispatch(setUser(data)))
 }

@@ -10,52 +10,52 @@ export const SignUpPage: React.FC = () => {
 
   return (
     <SignUpContainer>
-    <Typography variant="h1">Sign Up</Typography>
-    <SignUpForm>
-      <Stack spacing={2} direction="row">
+      <Typography variant="h1">Sign Up</Typography>
+      <SignUpForm>
+        <Stack spacing={2} direction="row">
+          <SignUpTextField
+            type="text"
+            variant="outlined"
+            color="primary"
+            label="First Name"
+            value={firstName}
+            onChange={e => setFirstName(e.target.value)}
+            fullWidth
+            required
+          />
+          <SignUpTextField
+            type="text"
+            variant="outlined"
+            color="primary"
+            label="Last Name"
+            value={lastName}
+            onChange={e => setLastName(e.target.value)}
+            fullWidth
+            required
+          />
+        </Stack>
         <SignUpTextField
-          type="text"
+          type="email"
           variant="outlined"
           color="primary"
-          label="First Name"
-          value={firstName}
-          onChange={e => setFirstName(e.target.value)}
+          label="Email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
           fullWidth
           required
         />
         <SignUpTextField
-          type="text"
+          type="password"
           variant="outlined"
           color="primary"
-          label="Last Name"
-          value={lastName}
-          onChange={e => setLastName(e.target.value)}
+          label="Password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
           fullWidth
           required
         />
-      </Stack>
-      <SignUpTextField
-        type="email"
-        variant="outlined"
-        color="primary"
-        label="Email"
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-        fullWidth
-        required
-      />
-      <SignUpTextField
-        type="password"
-        variant="outlined"
-        color="primary"
-        label="Password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-        fullWidth
-        required
-      />
-      <Button variant="contained" type="submit">Sign Up</Button>
-    </SignUpForm>
+        <Button variant="contained" type="submit">Sign Up</Button>
+      </SignUpForm>
     </SignUpContainer>
   )
 }

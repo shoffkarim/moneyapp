@@ -77,21 +77,21 @@ const App = () => {
 
   return (
     <BrowserRouter>
-    <ContainerStyled>
-      <Routes>
-        <Route path='/' Component={Main}/>
-        <Route path='history' Component={History}/>
-        <Route path='calendar' Component={CalendarPage}/>
-        <Route path='signup' Component={SignUpPage}/>
-      </Routes>
-      <Menu
-       name={'Пользователь П'}
-       total={{
-          "expenses": 213546,
-          "incomes": 123546,
-          "balance": 123456
-        }
-      }/>
+      <ContainerStyled>
+        <Routes>
+          <Route path='/' Component={Main}/>
+          <Route path='history' Component={History}/>
+          <Route path='calendar' Component={CalendarPage}/>
+          <Route path='signup' Component={SignUpPage}/>
+        </Routes>
+        <Menu
+          name={'Пользователь П'}
+          total={{
+            "expenses": 213546,
+            "incomes": 123546,
+            "balance": 123456
+          }
+          }/>
       </ContainerStyled>
     </BrowserRouter>
   )

@@ -45,7 +45,7 @@ export const Tags: React.FC<TagsProps> = ({ handlerTransaction }) => {
             key={item.id}
             onClick={() => handlerActiveTags(item)}
             active={activeTags.find((el) => el?.id === item.id)}
-            >
+          >
             <span>{item.text}</span>
           </TransactionTagsItemStyled>
         )}

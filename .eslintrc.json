@@ -6,7 +6,8 @@
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -23,6 +24,7 @@
     "rules": {
         "semi": ["warn", "never", { "beforeStatementContinuationChars": "never"}],
         "no-mixed-spaces-and-tabs": "error",
-        "object-curly-spacing": ["warn", "always"]
+        "object-curly-spacing": ["warn", "always"],
+        "indent": ["warn", 2]
     }
 }

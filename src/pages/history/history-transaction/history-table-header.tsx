@@ -4,24 +4,24 @@ import React from 'react'
 function HistoryTableHeader() {
   return (
     <TableHead>
-        <TableRow>
-          <TableCell>
+      <TableRow>
+        <TableCell>
             Date
-          </TableCell>
-          <TableCell>
+        </TableCell>
+        <TableCell>
             From
-          </TableCell>
-          <TableCell>
+        </TableCell>
+        <TableCell>
             To
-          </TableCell>
-          <TableCell>
+        </TableCell>
+        <TableCell>
             Value
-          </TableCell>
-          <TableCell>
+        </TableCell>
+        <TableCell>
             Info
-          </TableCell>
-        </TableRow>
-      </TableHead>
+        </TableCell>
+      </TableRow>
+    </TableHead>
   )
 }
 

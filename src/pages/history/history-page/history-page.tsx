@@ -10,11 +10,11 @@ interface HistoryPageProps {
 
 const HistoryPage: React.FC<HistoryPageProps> = () => {
   return (
-      <HistoryContainerStyled>
-        <HistoryWrapperStyled>
-          <HistoryTransaction/>
-        </HistoryWrapperStyled>
-      </HistoryContainerStyled>
+    <HistoryContainerStyled>
+      <HistoryWrapperStyled>
+        <HistoryTransaction/>
+      </HistoryWrapperStyled>
+    </HistoryContainerStyled>
 
   )
 }
