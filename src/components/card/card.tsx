@@ -22,9 +22,9 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type }) =>
   const [visibleEdit, setVisibleEdit] = useState(false)
   const [visiblePopup, setVisiblePopup] = useState(false)
 
-  const [{isDragging}, drag, preview] = useDrag(() => ({
+  const [{ isDragging }, drag, preview] = useDrag(() => ({
     type: "card",
-    item: {id: id, type: type},
+    item: { id: id, type: type },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging()
     })
@@ -52,7 +52,7 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type }) =>
           </CardIconStyled>
           <CardValueStyled>
             <Typography component={'span'}>{money}</Typography>
-            <CurrencyRuble sx={{fontSize: 18}} />
+            <CurrencyRuble sx={{ fontSize: 18 }} />
           </CardValueStyled>
         </CardWrapperStyled>
         {/* TODO: move EditContainerStyled out of here */}

@@ -5,7 +5,7 @@ interface CommentProps {
   handlerTransaction: (text: string) => void
 }
 
-export const Comment: React.FC<CommentProps> = ({handlerTransaction}) => {
+export const Comment: React.FC<CommentProps> = ({ handlerTransaction }) => {
   const [comment, setComment] = useState('')
 
   const handlerComment = (text: string) => {

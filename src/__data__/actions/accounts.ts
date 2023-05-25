@@ -9,6 +9,6 @@ export const setAccounts = (user: unknown) => ({
 
 export const fetchAccounts = () => (dispatch: AppDispatch) => {
   Axios.get(`http://localhost:3001/accounts`)
-  .then(({data}) =>
+  .then(({ data }) =>
   dispatch(setAccounts(data)))
 }

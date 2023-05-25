@@ -5,7 +5,7 @@ interface ValueProps {
   handlerTransaction: (val: number) => void
 }
 
-export const Value: React.FC<ValueProps> = ({handlerTransaction}) => {
+export const Value: React.FC<ValueProps> = ({ handlerTransaction }) => {
   const [value, setValue] = useState(0)
 
   const handlerValue = (val: string) => {

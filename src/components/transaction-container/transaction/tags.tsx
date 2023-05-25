@@ -21,7 +21,7 @@ interface TagsProps {
   handlerTransaction: (tags: Array<Tag | undefined>) => void
 }
 
-export const Tags: React.FC<TagsProps> = ({handlerTransaction}) => {
+export const Tags: React.FC<TagsProps> = ({ handlerTransaction }) => {
   const [activeTags, setActiveTags] = useState<Array<Tag | undefined>>([])
 
   const handlerActiveTags = (item: Tag) => {

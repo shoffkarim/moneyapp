@@ -3,7 +3,7 @@ import { Menu } from 'components'
 import { History } from 'pages/history'
 import { ContainerStyled } from 'pages/main/main.styled'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Main } from './pages'
+import { Main, SignUpPage } from './pages'
 import { CalendarPage } from 'pages/calendar/calendar-page'
 import { useMutation, useQuery } from '@apollo/client'
 import { GET_USERS, GET_USER_BY_ID } from '__data__/queries/user'
@@ -82,6 +82,7 @@ const App = () => {
         <Route path='/' Component={Main}/>
         <Route path='history' Component={History}/>
         <Route path='calendar' Component={CalendarPage}/>
+        <Route path='signup' Component={SignUpPage}/>
       </Routes>
       <Menu
        name={'Пользователь П'}

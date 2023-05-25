@@ -40,19 +40,19 @@ export const Transaction: React.FC = () => {
   }
 
   const handlerTransactionValue = (val: number) => {
-    setData({...data, value: val})
+    setData({ ...data, value: val })
   }
 
   const handlerTransactionComment = (text: string) => {
-    setData({...data, comment: text})
+    setData({ ...data, comment: text })
   }
 
   const handlerTransactionDate = (date: string) => {
-    setData({...data, date: date})
+    setData({ ...data, date: date })
   }
 
   const handlerTransactionTags = (tags: Array<Tag | undefined>) => {
-    setData({...data, tags: tags})
+    setData({ ...data, tags: tags })
   }
 
   const handlerDone = () => {

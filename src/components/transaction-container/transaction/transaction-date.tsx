@@ -5,7 +5,7 @@ interface TransactionDateProps {
   handlerTransaction: (date: string) => void
 }
 
-export const TransactionDate: React.FC<TransactionDateProps> = ({handlerTransaction}) => {
+export const TransactionDate: React.FC<TransactionDateProps> = ({ handlerTransaction }) => {
   const [date, setDate] = useState('')
 
   const handlerDate = (date: string) => {

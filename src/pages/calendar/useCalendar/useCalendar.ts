@@ -11,7 +11,7 @@ interface UseCalendarParams {
 }
 
 
-export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekDay = 2}: UseCalendarParams): UseCalendarReturn => {
+export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekDay = 2 }: UseCalendarParams): UseCalendarReturn => {
   const [mode, setMode] = useState<'days' | 'monthes' | 'years'>('days')
   const [selectedDate, setSelectedDate] = useState(createDate({ date }))
   const [selectedMonth, setSelectedMonth] = useState(createMonth({ locale, date: new Date(selectedDate.year, selectedDate.monthIndex) }))

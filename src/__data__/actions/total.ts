@@ -9,6 +9,6 @@ export const setTotal = (user: unknown) => ({
 
 export const fetchTotal = () => (dispatch: AppDispatch) => {
   Axios.get(`http://localhost:3001/total`)
-  .then(({data}) =>
+  .then(({ data }) =>
   dispatch(setTotal(data)))
 }

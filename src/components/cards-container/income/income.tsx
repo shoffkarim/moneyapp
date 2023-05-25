@@ -17,7 +17,7 @@ interface IncomeProps {
   items?: Array<ICard>
 }
 
-export const Income: React.FC<IncomeProps> = ({transactionOpen, items}) => {
+export const Income: React.FC<IncomeProps> = ({ transactionOpen, items }) => {
 
   const isLoaded = useSelector((state: RootState) => state.Incomes.isLoaded)
 
