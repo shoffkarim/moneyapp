@@ -5,9 +5,12 @@ import { ContainerStyled } from 'pages/main/main.styled'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Main } from './pages'
 import { CalendarPage } from 'pages/calendar/calendar-page'
+import { useQuery } from '@apollo/client'
+import { GET_CLIENTS } from '__data__/queries/clients'
 
 const App = () => {
-
+  const { loading, error, data } = useQuery(GET_CLIENTS)
+  console.log(loading, error, data)
   return (
     <BrowserRouter>
     <ContainerStyled>
