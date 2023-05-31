@@ -7,6 +7,7 @@ import React, { useState } from 'react'
 
 export interface CardNewProps {
   type: string;
+  text: string
 }
 
 const iconProps = {
@@ -14,7 +15,7 @@ const iconProps = {
   color: "white",
 }
 
-export const CardNew: React.FC<CardNewProps> = ({ type }) => {
+export const CardNew: React.FC<CardNewProps> = ({ type, text }) => {
 
   const [visiblePopup, setVisiblePopup] = useState(false)
 
@@ -25,7 +26,7 @@ export const CardNew: React.FC<CardNewProps> = ({ type }) => {
         onClick={() => setVisiblePopup(true)}
       >
         <CardWrapperStyled>
-          <Typography variant="body1" mb={'10px'}>Добавить</Typography>
+          <Typography variant="body1" mb={'10px'} color="white" textAlign="center">{text}</Typography>
           <CardIconStyled style={{ backgroundColor: "#000000" }}>
             <MainIcon.Icon {...iconProps} />
           </CardIconStyled>

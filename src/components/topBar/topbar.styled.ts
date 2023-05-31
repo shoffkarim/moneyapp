@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { css } from "@emotion/react"
+import { Link } from 'react-router-dom'
 
 export const MenuStyled = styled.aside(() => css`
   max-width: 450px;
@@ -14,4 +15,9 @@ export const MenuStyled = styled.aside(() => css`
 
 export const MenuContainerStyled = styled.div(() => css`
   padding: 40px 25px;
+`)
+
+export const NavLinkStyled = styled(Link)(() => css`
+  color: #1976d2;
+  text-decoration: none;
 `)

@@ -42,7 +42,7 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type }) =>
         onMouseLeave={() => setVisibleEdit(!visibleEdit)}
       >
         <CardWrapperStyled >
-          <Typography variant="body1" mb={'10px'}>{name}</Typography>
+          <Typography variant="body1" mb={'10px'} color="white">{name}</Typography>
           <CardIconStyled
             ref={drag}
             style={{ backgroundColor: theme }}

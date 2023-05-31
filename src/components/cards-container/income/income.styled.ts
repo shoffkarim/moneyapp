@@ -1,9 +1,10 @@
 import styled from '@emotion/styled'
 import { css } from "@emotion/react"
+import { Box } from '@mui/material'
 
 export const IncomeContainerStyled = styled.div(() => css`
   padding: 10px 20px;
-  background-color: #c4c4c4;
+  /* background-color: #c4c4c4; */
 `)
 
 export const IncomeWrapperStyled = styled.div(() => css`
@@ -12,4 +13,16 @@ export const IncomeWrapperStyled = styled.div(() => css`
   justify-items: start;
   grid-template-columns: repeat(auto-fit, 100px);
   gap: 0px 20px;
+`)
+
+export const BoxStyled = styled(Box)(() => css`
+  position: relative;
+`)
+
+export const BoxLabelStyled = styled.div(() => css`
+  position: absolute;
+  top: -37px;
+  background-color: #1976d2;
+  padding: 5px 10px;
+  border-radius: 5px 5px 0px 0px;
 `)
