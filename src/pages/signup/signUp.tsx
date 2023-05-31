@@ -1,58 +1,48 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button, Stack, Typography } from '@mui/material'
-import { SignUpContainer, SignUpForm, SignUpTextField } from './singup.style'
+import { SignUpContainer, SignUpForm } from './singup.style'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { FormValues } from './types'
+import { ControlTextField } from './ControlTextField'
 
 export const SignUpPage: React.FC = () => {
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+
+  const { control, handleSubmit, formState: { errors } } = useForm<FormValues>()
+  console.log(errors)
+  const handleOnSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log(data)
+  }
 
   return (
     <SignUpContainer>
       <Typography variant="h1">Sign Up</Typography>
-      <SignUpForm>
+      <SignUpForm onSubmit={handleSubmit(handleOnSubmit)}>
         <Stack spacing={2} direction="row">
-          <SignUpTextField
-            type="text"
-            variant="outlined"
-            color="primary"
-            label="First Name"
-            value={firstName}
-            onChange={e => setFirstName(e.target.value)}
-            fullWidth
-            required
+          <ControlTextField
+            name='firstName'
+            control={control}
+            label='First Name'
+            errors={errors}
           />
-          <SignUpTextField
-            type="text"
-            variant="outlined"
-            color="primary"
-            label="Last Name"
-            value={lastName}
-            onChange={e => setLastName(e.target.value)}
-            fullWidth
-            required
+          <ControlTextField
+            name='lastName'
+            control={control}
+            label='Last Name'
+            errors={errors}
           />
         </Stack>
-        <SignUpTextField
-          type="email"
-          variant="outlined"
-          color="primary"
-          label="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          fullWidth
-          required
+        <ControlTextField
+          name='email'
+          control={control}
+          label='Email'
+          pattern={/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/}
+          errors={errors}
         />
-        <SignUpTextField
-          type="password"
-          variant="outlined"
-          color="primary"
-          label="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          fullWidth
-          required
+        <ControlTextField
+          name='password'
+          control={control}
+          label='Password'
+          errors={errors}
         />
         <Button variant="contained" type="submit">Sign Up</Button>
       </SignUpForm>
