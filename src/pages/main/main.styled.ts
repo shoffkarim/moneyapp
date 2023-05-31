@@ -3,17 +3,13 @@ import { css } from "@emotion/react"
 
 export const ContainerStyled = styled.div(() => css`
   display: grid;
-  grid-template-columns: 3fr minmax(450px, 1fr);
-  grid-template-areas: 'auto aside';
-  gap: 0px 30px;
-  min-height: 100vh;
-  padding-left: 30px;
 `)
 
 export const WrapperStyled = styled.div(() => css`
   display: grid;
   grid-template-rows: repeat(3, min-content);
-  gap: 40px 0px;
+  gap: 60px 0px;
+  margin-top: 60px;
 `)
 
 export const MainStyled = styled.main(() => css``)
@@ -52,4 +48,13 @@ export const BtnCloseStyled = styled.button(() => css`
   &::after {
     transform: rotate(-45deg);
   }
+`)
+
+export const PageWrapperStyled = styled.div(() => css`
+  display: flex;
+  flex-direction: column;
+  max-width: 1480px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0px 16px;
 `)
