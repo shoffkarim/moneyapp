@@ -1,6 +1,6 @@
 import React from 'react'
 import { Control, Controller, FieldErrors } from 'react-hook-form'
-import { SignUpTextField } from './singup.style'
+import { SignUpTextField } from './login.style'
 import { FormValues } from './types'
 import { getErrorMessage } from './utils'
 

@@ -1,11 +1,12 @@
 import React from 'react'
-import { Button, Stack, Typography } from '@mui/material'
-import { SignUpContainer, SignUpForm } from './singup.style'
+import { Button, Typography } from '@mui/material'
+import { FormButtonSubmitStyled, SignUpContainer, SignUpForm } from '../login.style'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { FormValues } from './types'
-import { ControlTextField } from './ControlTextField'
+import { FormValues } from '../types'
+import { ControlTextField } from '../ControlTextField'
+import { Link } from 'react-router-dom'
 
-export const SignUpPage: React.FC = () => {
+export const SignInPage: React.FC = () => {
 
   const { control, handleSubmit, formState: { errors } } = useForm<FormValues>()
   console.log(errors)
@@ -15,22 +16,8 @@ export const SignUpPage: React.FC = () => {
 
   return (
     <SignUpContainer>
-      <Typography variant="h1">Sign Up</Typography>
+      <Typography variant="h1">Sign In</Typography>
       <SignUpForm onSubmit={handleSubmit(handleOnSubmit)}>
-        <Stack spacing={2} direction="row">
-          <ControlTextField
-            name='firstName'
-            control={control}
-            label='First Name'
-            errors={errors}
-          />
-          <ControlTextField
-            name='lastName'
-            control={control}
-            label='Last Name'
-            errors={errors}
-          />
-        </Stack>
         <ControlTextField
           name='email'
           control={control}
@@ -44,7 +31,8 @@ export const SignUpPage: React.FC = () => {
           label='Password'
           errors={errors}
         />
-        <Button variant="contained" type="submit">Sign Up</Button>
+        <FormButtonSubmitStyled variant="contained" type="submit">Sign In</FormButtonSubmitStyled>
+        <Button component={Link} to={'/signup'} variant="outlined">Sign Up</Button>
       </SignUpForm>
     </SignUpContainer>
   )
