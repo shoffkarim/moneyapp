@@ -1,2 +1,2 @@
 export { Main } from './main'
-export { SignUpPage } from './signup'
+export { SignUpPage, SignInPage } from './login'
