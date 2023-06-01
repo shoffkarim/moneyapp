@@ -10,7 +10,9 @@ import { useState } from "react"
 import { Tag } from "components/interfaces"
 import { RootState } from "__data__/store"
 import { TransactionContainerStyled, TransactionOverlayStyled, TransactionStyled } from "./transaction.styled"
-import { BtnCloseStyled } from "pages/main/main.styled"
+import { Button } from '@mui/material'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { TransactionValues } from './utils'
 
 type TransactionData = {
   id: string,
@@ -19,6 +21,8 @@ type TransactionData = {
   comment: string,
   tags: Array<Tag | undefined>
 }
+
+
 
 const initTransactionData: TransactionData = {
   id: "",
@@ -39,21 +43,6 @@ export const Transaction: React.FC = () => {
     dispatch(closePopupTransaction(close))
   }
 
-  const handlerTransactionValue = (val: number) => {
-    setData({ ...data, value: val })
-  }
-
-  const handlerTransactionComment = (text: string) => {
-    setData({ ...data, comment: text })
-  }
-
-  const handlerTransactionDate = (date: string) => {
-    setData({ ...data, date: date })
-  }
-
-  const handlerTransactionTags = (tags: Array<Tag | undefined>) => {
-    setData({ ...data, tags: tags })
-  }
 
   const handlerDone = () => {
     dispatch(setTransactionData(data))
@@ -69,17 +58,24 @@ export const Transaction: React.FC = () => {
     handlerClose(false)
   }
 
+  const { control, handleSubmit, formState: { errors } } = useForm<TransactionValues>()
+  console.log(errors)
+  const handleOnSubmit: SubmitHandler<TransactionValues> = (data) => {
+    console.log(data)
+  }
+
   return (
     <TransactionStyled>
       <TransactionOverlayStyled/>
       <TransactionContainerStyled>
-        <Cards/>
-        <Value handlerTransaction={handlerTransactionValue}/>
-        <TransactionDate handlerTransaction={handlerTransactionDate}/>
-        <Comment handlerTransaction={handlerTransactionComment}/>
-        <Tags handlerTransaction={handlerTransactionTags}/>
-        <button onClick={handlerDone}>Done</button>
-        <BtnCloseStyled onClick={() => handlerClose(false)}></BtnCloseStyled>
+        <form onSubmit={handleSubmit(handleOnSubmit)}>
+          <Cards/>
+          <Value control={control}/>
+          <TransactionDate control={control}/>
+          <Comment control={control}/>
+          <Tags control={control}/>
+          <Button variant='contained' type="submit">Submit</Button>
+        </form>
       </TransactionContainerStyled>
     </TransactionStyled>
   )

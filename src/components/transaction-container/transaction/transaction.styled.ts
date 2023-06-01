@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import { css } from "@emotion/react"
-import { Tag } from 'components/interfaces'
 
 export const TransactionStyled = styled.div(() => css`
   position: fixed;
@@ -9,6 +8,9 @@ export const TransactionStyled = styled.div(() => css`
   width: 100%;
   height: 100%;
   z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `)
 
 export const TransactionOverlayStyled = styled.div(() => css`
@@ -22,14 +24,11 @@ export const TransactionOverlayStyled = styled.div(() => css`
 `)
 
 export const TransactionContainerStyled = styled.div(() => css`
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 50%;
-  height: 100%;
-  background-color: #c4c4c4;
+  height: auto;
+  background-color: #fff;
   z-index: 12;
-  padding: 15px;
+  padding: 30px 30px;
 `)
 
 export const TransactionWrapperStyled = styled.div(() => css`
@@ -53,20 +52,28 @@ export const TransactionTagsStyled = styled.div(() => css`
   display: flex;
   flex-wrap: wrap;
 `)
-type TransactionTagsItemStyledProps = {
-  active?: Tag
+
+export const TransactionTagsItemStyled = styled.input(() => css`
+  display: none;
+`)
+
+type TransactionsTagsLabelStyledProps = {
+  active: boolean
 }
-export const TransactionTagsItemStyled = styled.div<TransactionTagsItemStyledProps>(({ active }) => css`
-  padding: 3px 5px;
-  background-color: #fff;
-  color: black;
+
+export const TransactionsTagsLabelStyled = styled.label<TransactionsTagsLabelStyledProps>(({ active }) => css`
+  padding: 5px 10px;
+  background-color: ${active ? "#1976d2": "#fff"};
+  color: ${active ? "#fff": "#000"};
   border-radius: 25px;
   margin-right: 5px;
+  border: 1px solid;
+  border-color: ${active ? "transparent" : "rgba(0, 0, 0, 0.23)"};
   cursor: pointer;
   transition: 0.4s linear;
-  &:last-child
+  &:last-child {
     margin-right: 0px;
-  ${active ? 'background-color: blue; color: white;': ''}
+  };
 `)
 
 export const CheckContainerStyled = styled.div(() => css`
