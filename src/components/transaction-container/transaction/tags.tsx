@@ -1,6 +1,8 @@
-import { Tag } from "components/interfaces"
 import React, { useState } from "react"
-import { TransactionTagsItemStyled, TransactionTagsStyled, TransactionWrapperStyled } from "./transaction.styled"
+import { Tag } from "components/interfaces"
+import { Control, Controller } from "react-hook-form"
+import { TransactionsTagsLabelStyled, TransactionTagsItemStyled, TransactionTagsStyled, TransactionWrapperStyled } from "./transaction.styled"
+import { TransactionValues } from "./utils"
 
 const TagsData: Array<Tag> = [
   {
@@ -18,37 +20,49 @@ const TagsData: Array<Tag> = [
 ]
 
 interface TagsProps {
-  handlerTransaction: (tags: Array<Tag | undefined>) => void
+  // vendor library
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  control: Control<TransactionValues, any>
 }
 
-export const Tags: React.FC<TagsProps> = ({ handlerTransaction }) => {
-  const [activeTags, setActiveTags] = useState<Array<Tag | undefined>>([])
+export const Tags: React.FC<TagsProps> = ({ control }) => {
 
-  const handlerActiveTags = (item: Tag) => {
-    const index = activeTags.findIndex((el) => el?.id === item.id)
-    if(index !== -1) {
-      const tempTags = activeTags.filter((el) => el?.id !== item.id)
-      setActiveTags(tempTags)
-      handlerTransaction(tempTags)
-    } else {
-      setActiveTags([...activeTags, item])
-      handlerTransaction([...activeTags, item])
-    }
-
-  }
-
+  const [activeTags, setActiveTags] = useState<Array<string>>([])
+  console.log(activeTags)
   return (
     <TransactionWrapperStyled>
       <TransactionTagsStyled>
-        {TagsData && TagsData.map((item) =>
-          <TransactionTagsItemStyled
-            key={item.id}
-            onClick={() => handlerActiveTags(item)}
-            active={activeTags.find((el) => el?.id === item.id)}
-          >
-            <span>{item.text}</span>
-          </TransactionTagsItemStyled>
-        )}
+        <Controller
+          name="tags"
+          control={control}
+          defaultValue={[]}
+          render={({ field }) => (
+            <>
+              {TagsData.map((item) =>
+                <TransactionsTagsLabelStyled
+                  key={item.id}
+                  active={activeTags.includes(item.id )}
+                >
+                  <span>{item.text}</span>
+                  <TransactionTagsItemStyled
+                    onChange={(checked) => {
+                      if(checked) {
+                        field.onChange([
+                          ...field.value,
+                          item
+                        ]),
+                        setActiveTags([...activeTags, item.id])
+                      }
+                    }}
+                    type="checkbox"
+                    value={item.text}
+                  >
+                  </TransactionTagsItemStyled>
+                </TransactionsTagsLabelStyled>
+              )}
+            </>
+          )}
+        />
       </TransactionTagsStyled>
     </TransactionWrapperStyled>
   )

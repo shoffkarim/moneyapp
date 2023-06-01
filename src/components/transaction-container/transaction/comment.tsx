@@ -1,21 +1,34 @@
-import React, { useState } from "react"
+import { TextField } from "@mui/material"
+import React from "react"
+import { Control, Controller } from "react-hook-form"
 import { TransactionWrapperStyled } from "./transaction.styled"
+import { TransactionValues } from "./utils"
 
 interface CommentProps {
-  handlerTransaction: (text: string) => void
+  // vendor library
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  control: Control<TransactionValues, any>
 }
 
-export const Comment: React.FC<CommentProps> = ({ handlerTransaction }) => {
-  const [comment, setComment] = useState('')
-
-  const handlerComment = (text: string) => {
-    setComment(text)
-    handlerTransaction(text)
-  }
-
+export const Comment: React.FC<CommentProps> = ({ control  }) => {
   return (
     <TransactionWrapperStyled>
-      <input value={comment} onChange={(e) => handlerComment(e.target.value)} placeholder="Comment" />
+      <Controller
+        name="comment"
+        control={control}
+        defaultValue=""
+        render={({ field }) => (
+          <TextField
+            {...field}
+            variant="outlined"
+            color="primary"
+            fullWidth
+            label="Comment"
+            placeholder="Comment"
+            type="text"
+          />
+        )}
+      />
     </TransactionWrapperStyled>
   )
 }
