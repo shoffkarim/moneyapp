@@ -1,16 +1,80 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Menu } from 'components'
 import { History } from 'pages/history'
 import { ContainerStyled } from 'pages/main/main.styled'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Main } from './pages'
 import { CalendarPage } from 'pages/calendar/calendar-page'
-import { useQuery } from '@apollo/client'
-import { GET_CLIENTS } from '__data__/queries/clients'
+import { useMutation, useQuery } from '@apollo/client'
+import { GET_USERS, GET_USER_BY_ID } from '__data__/queries/user'
+import { GET_USER_CARDS } from '__data__/queries/cards'
+import { GET_USER_TOTAL } from '__data__/queries/total'
+import { ADD_USER } from '__data__/mutations/user'
+import { SET_ACCOUNT, SET_EXPENSE, SET_INCOME } from '__data__/mutations/cards'
+import { SET_TOTAL } from '__data__/mutations/total'
+
 
 const App = () => {
-  const { loading, error, data } = useQuery(GET_CLIENTS)
-  console.log(loading, error, data)
+  // const { loading, error, data } = useQuery(GET_USERS)
+  //const { loading, error, data } = useQuery(GET_USER_BY_ID, { variables: { id: '6474446d56a2116018550d1c'}})
+   //const { loading, error, data } = useQuery(GET_USER_CARDS, { variables: { id: '6474446d56a2116018550d1c'}})
+   //const { loading, error, data } = useQuery(GET_USER_TOTAL, { variables: { id: '6474446d56a2116018550d1c'}})
+  // console.log(loading, error, data)
+  // const [addUser] = useMutation(ADD_USER, {
+  //   variables: {
+  //     name: "User One",
+  //     email: "user@gmail.com",
+  //     password: "password"
+  //   }
+  // })
+
+  // const [setIncome] = useMutation(SET_INCOME, {
+  //   variables: {
+  //     id: "6474446d56a2116018550d1c",
+  //     name: "cashback",
+  //     icon: "money",
+  //     color: "grey",
+  //     value: 100
+  //   }
+  // })
+
+  // const [setAccount] = useMutation(SET_ACCOUNT, {
+  //   variables: {
+  //     id: "6474446d56a2116018550d1c",
+  //     name: "tinkoff",
+  //     icon: "bank",
+  //     color: "yellow",
+  //     value: 10000
+  //   }
+  // })
+
+  // const [setExpense] = useMutation(SET_EXPENSE, {
+  //   variables: {
+  //     id: "6474446d56a2116018550d1c",
+  //     name: "services",
+  //     icon: "utils",
+  //     color: "blue",
+  //     value: 60
+  //   }
+  // })
+
+  //  const [setTotal] = useMutation(SET_TOTAL, {
+  //   variables: {
+  //     id: "6474446d56a2116018550d1c",
+  //     incomes: 50,
+  //     accounts: 10000,
+  //     expenses: 30,
+  //   }
+  // })
+
+  useEffect(() => {
+    // addUser()
+    //setIncome()
+    // setAccount()
+    //setExpense()
+    //setTotal()
+  }, [])
+
   return (
     <BrowserRouter>
     <ContainerStyled>
