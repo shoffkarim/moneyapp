@@ -1,6 +1,5 @@
 export type FormValues = {
-  firstName: string
-  lastName: string
+  name: string
   email: string
   password: string
 }

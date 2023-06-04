@@ -9,7 +9,6 @@ import { useMutation, useQuery } from '@apollo/client'
 import { GET_USERS, GET_USER_BY_ID } from '__data__/queries/user'
 import { GET_USER_CARDS } from '__data__/queries/cards'
 import { GET_USER_TOTAL } from '__data__/queries/total'
-import { ADD_USER } from '__data__/mutations/user'
 import { SET_ACCOUNT, SET_EXPENSE, SET_INCOME } from '__data__/mutations/cards'
 import { SET_TOTAL } from '__data__/mutations/total'
 
@@ -17,16 +16,9 @@ import { SET_TOTAL } from '__data__/mutations/total'
 const App = () => {
   // const { loading, error, data } = useQuery(GET_USERS)
   //const { loading, error, data } = useQuery(GET_USER_BY_ID, { variables: { id: '6474446d56a2116018550d1c'}})
-   //const { loading, error, data } = useQuery(GET_USER_CARDS, { variables: { id: '6474446d56a2116018550d1c'}})
-   //const { loading, error, data } = useQuery(GET_USER_TOTAL, { variables: { id: '6474446d56a2116018550d1c'}})
+
   // console.log(loading, error, data)
-  // const [addUser] = useMutation(ADD_USER, {
-  //   variables: {
-  //     name: "User One",
-  //     email: "user@gmail.com",
-  //     password: "password"
-  //   }
-  // })
+
 
   // const [setIncome] = useMutation(SET_INCOME, {
   //   variables: {
@@ -75,15 +67,22 @@ const App = () => {
     //setTotal()
   }, [])
 
+  const { loading, error, data } = useQuery(GET_USER_TOTAL,
+    { variables:
+      {
+        id: '6474446d56a2116018550d1c'
+      }
+    })
+    
   return (
     <BrowserRouter>
       <ContainerStyled>
         <TopBar
           name={'Пользователь П'}
           total={{
-            "expenses": 213546,
-            "incomes": 123546,
-            "balance": 123456
+            "expenses": data?.user.total.expenses,
+            "incomes": data?.user.total.incomes,
+            "balance": data?.user.total.accounts
           }}
         />
         <PageWrapperStyled>

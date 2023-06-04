@@ -19,13 +19,13 @@ const client = new ApolloClient({
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <DndProvider backend={HTML5Backend}>
-          <App />
-        </DndProvider>
-      </ThemeProvider>
-    </Provider>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <DndProvider backend={HTML5Backend}>
+            <App />
+          </DndProvider>
+        </ThemeProvider>
+      </Provider>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')

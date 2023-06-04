@@ -1,37 +1,37 @@
 import React from 'react'
-import { Button, Stack, Typography } from '@mui/material'
+import { Button, Typography } from '@mui/material'
 import { FormButtonSubmitStyled, SignUpContainer, SignUpForm } from '../login.style'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { FormValues } from '../types'
 import { ControlTextField } from '../ControlTextField'
 import { Link } from 'react-router-dom'
+import { useMutation } from '@apollo/client'
+import { ADD_USER } from '__data__/mutations/user'
 
 export const SignUpPage: React.FC = () => {
 
   const { control, handleSubmit, formState: { errors } } = useForm<FormValues>()
-  console.log(errors)
+
+  const [addUser] = useMutation(ADD_USER)
+
   const handleOnSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data)
+    addUser({ variables: {
+      name: data.name,
+      email: data.email,
+      password: data.password
+    } })
   }
 
   return (
     <SignUpContainer>
       <Typography variant="h1">Sign Up</Typography>
       <SignUpForm onSubmit={handleSubmit(handleOnSubmit)}>
-        <Stack spacing={2} direction="row">
-          <ControlTextField
-            name='firstName'
-            control={control}
-            label='First Name'
-            errors={errors}
-          />
-          <ControlTextField
-            name='lastName'
-            control={control}
-            label='Last Name'
-            errors={errors}
-          />
-        </Stack>
+        <ControlTextField
+          name='name'
+          control={control}
+          label='Name'
+          errors={errors}
+        />
         <ControlTextField
           name='email'
           control={control}

@@ -5,46 +5,33 @@ import { TransactionContainer } from "components/transaction-container"
 import { MainStyled, WrapperStyled } from "./main.styled"
 import { handleRequest } from "./sendData"
 import { ICard } from "components/interfaces"
+import { useQuery } from "@apollo/client"
+import { GET_USER_CARDS } from "__data__/queries/cards"
 
 export const Main: React.FC = () => {
-  const [data, setData] = useState<{
-    user?: {
-      id: string
-      name: string
-      image: string
-    }
-    accounts?: Array<ICard>
-    incomes?: Array<ICard>
-    expenses?: Array<ICard>
-    total?: {
-      expenses?:number
-      incomes?: number
-      balance?: number
-    }
-  }>()
-
-
-  // const handleData = () => {
-  //   try {
-
-  //     Axios.post('/api/data', {
-  //       method: 'POST',
-  //       body: JSON.stringify({}),
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         'Accept': 'application/json',
-  //         'Access-Control-Allow-Origin': 'http://localhost:3000',
-  //         'Access-Control-Allow-Credentials': 'true'
-  //       }
-  //     })
-  //     .then(({data}) => {
-  //       console.log(data)
-  //       setData(data)})
-
-  //   } catch (error) {
-  //     console.log("Request Error", error)
+  // const [data, setData] = useState<{
+  //   user?: {
+  //     id: string
+  //     name: string
+  //     image: string
   //   }
-  // }
+  //   accounts?: Array<ICard>
+  //   incomes?: Array<ICard>
+  //   expenses?: Array<ICard>
+  //   total?: {
+  //     expenses?:number
+  //     incomes?: number
+  //     balance?: number
+  //   }
+  // }>()
+
+  const { loading, error, data } = useQuery(GET_USER_CARDS,
+    { variables: {
+      id: '6474446d56a2116018550d1c'
+    } })
+
+  console.log(data)
+
 
   useEffect(() => {
     // handleData()
@@ -56,7 +43,7 @@ export const Main: React.FC = () => {
     <MainStyled>
       <button onClick={() => handleRequest()}>{"Create new user"}</button>
       <WrapperStyled>
-        <CardsContainer accounts={data?.accounts} expenses={data?.expenses} incomes={data?.incomes}/>
+        <CardsContainer accounts={data?.user.accounts} expenses={data?.user.expenses} incomes={data?.user.incomes}/>
       </WrapperStyled>
       <TransactionContainer/>
     </MainStyled>
