@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { CardsContainer } from "components/cards-container"
 import { TransactionContainer } from "components/transaction-container"
-// import Axios from "axios";
 import { MainStyled, WrapperStyled } from "./main.styled"
-import { handleRequest } from "./sendData"
-import { ICard } from "components/interfaces"
 import { useQuery } from "@apollo/client"
 import { GET_USER_CARDS } from "__data__/queries/cards"
 
@@ -33,19 +30,12 @@ export const Main: React.FC = () => {
   console.log(data)
 
 
-  useEffect(() => {
-    // handleData()
-  }, [])
-  // <button onClick={() => handleRequest()}>{"Create new user"}</button>
-
-
   return (
     <MainStyled>
-      <button onClick={() => handleRequest()}>{"Create new user"}</button>
-    <WrapperStyled>
-      <CardsContainer accounts={data?.accounts} expenses={data?.expenses} incomes={data?.incomes}/>
-    </WrapperStyled>
-    <TransactionContainer/>
-   </MainStyled>
+      <WrapperStyled>
+        <CardsContainer accounts={data?.user.accounts} expenses={data?.user.expenses} incomes={data?.user.incomes}/>
+      </WrapperStyled>
+      <TransactionContainer/>
+    </MainStyled>
   )
 }

@@ -1,10 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React from 'react'
 import { BiDollar } from 'react-icons/bi'
 import { formatMoney } from 'components/utils/format'
 import { Typography } from '@mui/material'
 import { TotalItemStyled, TotalStyled, TotalItemWrapperStyled } from './total.styled'
-import { useQuery } from '@apollo/client'
-import { GET_USER_TOTAL } from '__data__/queries/total'
 
 type TotalProps = {
   total?: {
