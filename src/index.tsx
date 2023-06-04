@@ -9,9 +9,16 @@ import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { ThemeProvider } from '@mui/material'
 import { theme } from 'theme'
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
+
+const client = new ApolloClient({
+  uri: 'http://localhost:5000/graphql',
+  cache: new InMemoryCache()
+})
 
 ReactDOM.render(
   <React.StrictMode>
+    <ApolloProvider client={client}>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <DndProvider backend={HTML5Backend}>
@@ -19,6 +26,7 @@ ReactDOM.render(
         </DndProvider>
       </ThemeProvider>
     </Provider>
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
