@@ -15,10 +15,9 @@ type TotalProps = {
 }
 
 export const Total: React.FC<TotalProps> = ({ total }) => {
-
-  const expensesFormat: string | boolean = formatMoney(total?.expenses)
-  const incomeFormat: string | boolean = formatMoney(total?.incomes)
-  const balanceFormat: string | boolean = formatMoney(total?.balance)
+  const expensesFormat: string = formatMoney(total?.expenses)
+  const incomeFormat: string = formatMoney(total?.incomes)
+  const balanceFormat: string = formatMoney(total?.balance)
 
   return (
     <TotalStyled>

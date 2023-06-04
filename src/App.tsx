@@ -1,5 +1,5 @@
-import React, { useEffect }  from 'react'
-import { TopBar } from 'components'
+import React, { useEffect } from 'react'
+import { Menu } from 'components'
 import { History } from 'pages/history'
 import { ContainerStyled, PageWrapperStyled } from 'pages/main/main.styled'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -73,27 +73,23 @@ const App = () => {
         id: '6474446d56a2116018550d1c'
       }
     })
-    
+
   return (
     <BrowserRouter>
-      <ContainerStyled>
-        <TopBar
-          name={'Пользователь П'}
-          total={{
-            "expenses": data?.user.total.expenses,
-            "incomes": data?.user.total.incomes,
-            "balance": data?.user.total.accounts
-          }}
-        />
-        <PageWrapperStyled>
-          <Routes>
-            <Route path='/' Component={Main}/>
-            <Route path='history' Component={History}/>
-            <Route path='calendar' Component={CalendarPage}/>
-            <Route path='signup' Component={SignUpPage}/>
-            <Route path='signin' Component={SignInPage}/>
-          </Routes>
-        </PageWrapperStyled>
+    <ContainerStyled>
+      <Routes>
+        <Route path='/' Component={Main}/>
+        <Route path='history' Component={History}/>
+        <Route path='calendar' Component={CalendarPage}/>
+      </Routes>
+      <Menu
+       name={'Пользователь П'}
+       total={{
+          "expenses": 213546,
+          "incomes": 123546,
+          "balance": 123456
+        }
+      }/>
       </ContainerStyled>
     </BrowserRouter>
   )

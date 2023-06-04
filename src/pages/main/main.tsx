@@ -42,10 +42,10 @@ export const Main: React.FC = () => {
   return (
     <MainStyled>
       <button onClick={() => handleRequest()}>{"Create new user"}</button>
-      <WrapperStyled>
-        <CardsContainer accounts={data?.user.accounts} expenses={data?.user.expenses} incomes={data?.user.incomes}/>
-      </WrapperStyled>
-      <TransactionContainer/>
-    </MainStyled>
+    <WrapperStyled>
+      <CardsContainer accounts={data?.accounts} expenses={data?.expenses} incomes={data?.incomes}/>
+    </WrapperStyled>
+    <TransactionContainer/>
+   </MainStyled>
   )
 }

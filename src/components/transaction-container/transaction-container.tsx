@@ -7,7 +7,7 @@ export const TransactionContainer: React.FC = () => {
   const transaction = useSelector((state: RootState) => state.Transaction)
   return (
     <>
-      {transaction.open && (
+      {!transaction.open && (
         <Transaction/>
       )}
     </>
