@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Tag } from "components/interfaces"
-import { Control, Controller } from "react-hook-form"
+import { Control, Controller, ControllerRenderProps } from "react-hook-form"
 import { TransactionsTagsLabelStyled, TransactionTagsItemStyled, TransactionTagsStyled, TransactionWrapperStyled } from "./transaction.styled"
 import { TransactionValues } from "./utils"
 
@@ -28,7 +28,22 @@ interface TagsProps {
 export const Tags: React.FC<TagsProps> = ({ control }) => {
 
   const [activeTags, setActiveTags] = useState<Array<string>>([])
-  console.log(activeTags)
+
+  const handleActiveTag = (item: Tag, field: ControllerRenderProps<TransactionValues, "tags">) => {
+    if(activeTags.includes(item.id)) {
+      const filteredTags = activeTags.filter((activeItem) => activeItem !== item.id)
+      const filteredValue = field.value.filter((activeValue) => activeValue.id !== item.id)
+      field.onChange(filteredValue)
+      setActiveTags(filteredTags)
+    } else {
+      field.onChange([
+        ...field.value,
+        item
+      ])
+      setActiveTags([...activeTags, item.id])
+    }
+  }
+
   return (
     <TransactionWrapperStyled>
       <TransactionTagsStyled>
@@ -41,18 +56,12 @@ export const Tags: React.FC<TagsProps> = ({ control }) => {
               {TagsData.map((item) =>
                 <TransactionsTagsLabelStyled
                   key={item.id}
-                  active={activeTags.includes(item.id )}
+                  active={activeTags.includes(item.id)}
                 >
                   <span>{item.text}</span>
                   <TransactionTagsItemStyled
-                    onChange={(checked) => {
-                      if(checked) {
-                        field.onChange([
-                          ...field.value,
-                          item
-                        ]),
-                        setActiveTags([...activeTags, item.id])
-                      }
+                    onChange={() => {
+                      handleActiveTag(item, field)
                     }}
                     type="checkbox"
                     value={item.text}
