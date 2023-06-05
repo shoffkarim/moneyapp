@@ -14,7 +14,7 @@ const App = () => {
   const { loading, error, data } = useQuery(GET_USER_TOTAL,
     { variables:
       {
-        id: '6474446d56a2116018550d1c'
+        id: '647db351529d7960cb8ce476'
       }
     })
 

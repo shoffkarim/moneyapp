@@ -9,6 +9,8 @@ import { TransactionContainerStyled, TransactionOverlayStyled, TransactionStyled
 import { Button } from '@mui/material'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { TransactionValues } from './utils'
+import { useMutation } from '@apollo/client'
+import { SET_TRANSACTION } from '__data__/mutations/transactions'
 
 
 // type TransactionData = {
@@ -30,10 +32,20 @@ import { TransactionValues } from './utils'
 
 export const Transaction: React.FC = () => {
 
-
   const { control, handleSubmit, formState: { errors } } = useForm<TransactionValues>()
 
+  const [setTransaction] = useMutation(SET_TRANSACTION)
+
   const handleOnSubmit: SubmitHandler<TransactionValues> = (data) => {
+    setTransaction({ variables:
+      {
+        id: '647db351529d7960cb8ce476',
+        idFrom: '647db3d9529d7960cb8ce484',
+        idTo: '647db3ee529d7960cb8ce488',
+        value: Number(data.value),
+        comment: data.comment
+      }
+    })
     console.log(data, errors)
   }
 
