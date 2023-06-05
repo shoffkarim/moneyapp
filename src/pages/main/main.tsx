@@ -27,7 +27,6 @@ export const Main: React.FC = () => {
       id: '6474446d56a2116018550d1c'
     } })
 
-  console.log(data)
 
 
   return (

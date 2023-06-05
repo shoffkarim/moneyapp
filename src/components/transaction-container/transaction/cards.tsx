@@ -1,13 +1,22 @@
 import React from "react"
 import { TransactionCard } from "components/transaction-container/transaction-card"
 import { TransactionCardProps } from "components/transaction-container/transaction-card/transaction-card"
-import { RootState } from "__data__/store"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { setCardIdFrom, setCardIdWhere } from "__data__/actions/transaction"
-import { ACCOUNTS, INCOMES } from "components/constants"
 import { TransactionCardWrapperStyled, TransactionTitleStyled, TransactionWrapperStyled } from "./transaction.styled"
+import { useQuery } from "@apollo/client"
+import { GET_USER_CARDS } from "__data__/queries/cards"
 // TODO: fix cards in transaction
 export const Cards: React.FC = () => {
+
+  const { loading, error, data } = useQuery(GET_USER_CARDS,
+    { variables: {
+      id: '6474446d56a2116018550d1c'
+    } }
+  )
+
+
+
   const dispatch = useDispatch()
   const handlerCardIdFrom = (id: number) => {
     dispatch(setCardIdFrom(id))
@@ -16,27 +25,14 @@ export const Cards: React.FC = () => {
     dispatch(setCardIdWhere(id))
   }
 
-  const transaction = useSelector((state: RootState) => state.Transaction)
-
-  const itemsFrom = useSelector((state: RootState) => {
-    if (transaction.typeFrom === INCOMES) {
-      return state.Incomes
-    } else return state.Accounts
-  })
-
-  const itemsWhere = useSelector((state: RootState) => {
-    if (transaction.typeWhere === ACCOUNTS) {
-      return state.Accounts
-    } else return state.Expenses
-  })
 
   return (
     <>
       <TransactionWrapperStyled>
-        <TransactionTitleStyled>Откуда</TransactionTitleStyled>
+        <TransactionTitleStyled>From</TransactionTitleStyled>
         <TransactionCardWrapperStyled>
-          {itemsFrom.isLoaded &&
-            itemsFrom.items.map((item: TransactionCardProps) => (
+          {!loading && !error && data.user.accounts &&
+            data.user.accounts.map((item: TransactionCardProps) => (
               <TransactionCard
                 key={item.id}
                 id={item.id}
@@ -44,17 +40,18 @@ export const Cards: React.FC = () => {
                 icon={item.icon}
                 color={item.color}
                 value={item.value}
-                check={transaction.idFrom}
+                check={0}
                 handlerClick={handlerCardIdFrom}
               />
-            ))}
+            ))
+          }
         </TransactionCardWrapperStyled>
       </TransactionWrapperStyled>
       <TransactionWrapperStyled>
-        <TransactionTitleStyled>Куда</TransactionTitleStyled>
+        <TransactionTitleStyled>To</TransactionTitleStyled>
         <TransactionCardWrapperStyled>
-          {itemsWhere.isLoaded &&
-            itemsWhere.items.map((item: TransactionCardProps) => (
+          {!loading && !error && data.user.expenses &&
+            data.user.expenses.map((item: TransactionCardProps) => (
               <TransactionCard
                 key={item.id}
                 id={item.id}
@@ -62,10 +59,11 @@ export const Cards: React.FC = () => {
                 icon={item.icon}
                 color={item.color}
                 value={item.value}
-                check={transaction.idWhere}
+                check={0}
                 handlerClick={handlerCardIdWhere}
               />
-            ))}
+            ))
+          }
         </TransactionCardWrapperStyled>
       </TransactionWrapperStyled>
     </>

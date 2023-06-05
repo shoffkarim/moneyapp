@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 export const SignInPage: React.FC = () => {
 
   const { control, handleSubmit, formState: { errors } } = useForm<FormValues>()
-  console.log(errors)
+
   const handleOnSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data)
   }
