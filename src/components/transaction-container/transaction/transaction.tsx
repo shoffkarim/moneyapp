@@ -43,7 +43,9 @@ export const Transaction: React.FC = () => {
         idFrom: '647db3d9529d7960cb8ce484',
         idTo: '647db3ee529d7960cb8ce488',
         value: Number(data.value),
-        comment: data.comment
+        comment: data.comment,
+        date: new Date(),
+        tags: [ { tagId: '1', name: 'food' } ]
       }
     })
     console.log(data, errors)

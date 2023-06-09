@@ -27,8 +27,6 @@ export const Main: React.FC = () => {
       id: '647db351529d7960cb8ce476'
     } })
 
-
-
   return (
     <MainStyled>
       <WrapperStyled>
