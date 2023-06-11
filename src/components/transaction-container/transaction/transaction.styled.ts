@@ -100,17 +100,3 @@ export const CloseButtonStyled = styled(IconButton)(() => css`
   right: -85px;
   z-index: 50;
 `)
-
-type TransactionAlertWrapperStyledProps = {
-  visible: boolean
-}
-
-export const TransactionAlertWrapperStyled = styled.div<TransactionAlertWrapperStyledProps>(({ visible }) => css`
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  z-index: 100;
-  opacity: ${visible ? '1' : '0'};
-  visibility: ${visible ? 'visible' : 'hidden'};
-  transition: all .4s;
-`)

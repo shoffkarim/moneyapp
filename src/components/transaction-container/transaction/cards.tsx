@@ -7,6 +7,7 @@ import { useQuery } from "@apollo/client"
 import { GET_USER_CARDS } from "__data__/queries/cards"
 import { RootState } from "__data__/store"
 import { setTransactionCardIDFrom, setTransactionCardIDTo } from "__data__/reducers/transaction"
+import { ACCOUNTS, INCOMES } from "components/constants"
 
 export const Cards: React.FC = () => {
 
@@ -16,7 +17,10 @@ export const Cards: React.FC = () => {
     } }
   )
 
-  const { idFrom, idTo } = useSelector((state: RootState) => state.transaction)
+  const { idFrom, idTo, typeFrom, typeTo } = useSelector((state: RootState) => state.transaction)
+
+  const itemsFrom = typeFrom === INCOMES ? data.user.incomes : data.user.accounts
+  const itemsTo = typeTo === ACCOUNTS ? data.user.accounts : data.user.expenses
 
   const dispatch = useDispatch()
   const handlerCardIdFrom = (id: number) => {
@@ -32,8 +36,8 @@ export const Cards: React.FC = () => {
       <TransactionWrapperStyled>
         <TransactionTitleStyled>From</TransactionTitleStyled>
         <TransactionCardWrapperStyled>
-          {!loading && !error && data.user.accounts &&
-            data.user.accounts.map((item: TransactionCardProps) => (
+          {!loading && !error &&
+            itemsFrom.map((item: TransactionCardProps) => (
               <TransactionCard
                 key={item.id}
                 id={item.id}
@@ -51,8 +55,8 @@ export const Cards: React.FC = () => {
       <TransactionWrapperStyled>
         <TransactionTitleStyled>To</TransactionTitleStyled>
         <TransactionCardWrapperStyled>
-          {!loading && !error && data.user.expenses &&
-            data.user.expenses.map((item: TransactionCardProps) => (
+          {!loading && !error &&
+            itemsTo.map((item: TransactionCardProps) => (
               <TransactionCard
                 key={item.id}
                 id={item.id}

@@ -47,8 +47,6 @@ export const Transaction: React.FC<TransactionProps> = ({ handleTransactionOpen,
     } catch (error) {
       console.log(errors)
     }
-
-
   }
 
   return (

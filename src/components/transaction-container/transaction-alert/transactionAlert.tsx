@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Alert } from '@mui/material'
 import CheckIcon from '@mui/icons-material/Check'
-import { TransactionAlertWrapperStyled } from "../transaction/transaction.styled"
+import { TransactionAlertWrapperStyled } from "./transactionAlert.styled"
 
 interface TransactionAlertProps {
   transactionAlert: boolean
