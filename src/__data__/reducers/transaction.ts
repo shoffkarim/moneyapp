@@ -1,56 +1,41 @@
-import {
-  CLOSE_POPUP_TRANSACTION,
-  InitStateTransaction,
-  OPEN_POPUP_TRANSACTION,
-  SET_CARD_ID_FROM,
-  SET_CARD_ID_WHERE,
-  SET_TRANSACTION,
-  SET_TRANSACTION_DATA,
-  SET_TRANSACTION_VALUE,
-} from "__data__/constants"
-import { AnyAction } from "redux"
+import { createSlice } from "@reduxjs/toolkit"
+import { RootState } from "__data__/store"
 
-const Transaction = (state = InitStateTransaction, action: AnyAction) => {
-  switch (action.type) {
-  case SET_TRANSACTION:
-    return {
-      ...state,
-      ...action.payload,
-      isLoaded: true,
-    }
-  case OPEN_POPUP_TRANSACTION:
-    return {
-      ...state,
-      open: action.payload,
-    }
-  case CLOSE_POPUP_TRANSACTION:
-    return {
-      ...state,
-      open: action.payload,
-    }
-  case SET_CARD_ID_FROM:
-    return {
-      ...state,
-      idFrom: action.payload,
-    }
-  case SET_CARD_ID_WHERE:
-    return {
-      ...state,
-      idWhere: action.payload,
-    }
-  case SET_TRANSACTION_VALUE:
-    return {
-      ...state,
-      value: action.payload,
-    }
-  case SET_TRANSACTION_DATA:
-    return {
-      ...state,
-      ...action.payload
-    }
-  default:
-    return state
-  }
+const initialState = {
+  idFrom: 0,
+  typeFrom: "",
+  idTo: 0,
+  typeTo: "",
+  value: 0,
+  date: "",
+  comment: "",
+  tags: [],
 }
 
-export default Transaction
+const transaction = createSlice({
+  name: 'transaction',
+  initialState,
+  reducers: {
+    setTransaction: (state, action) => state = action.payload,
+    setTransactionStart: (state, action) => {
+      return state = {
+        ...state,
+        ...action.payload
+      }
+    },
+    setTransactionCardIDFrom: (state, action) => state.idFrom = action.payload,
+    setTransactionCardIDTo: (state, action) => state.idTo = action.payload,
+    setTransactionCardTypeFrom: (state, action) => state.typeFrom = action.payload,
+    setTransactionCardTypeTo: (state, action) => state.typeTo = action.payload,
+    setTransactionValue: (state, action) => state.value = action.payload,
+    setTransactionDate: (state, action) => state.date = action.payload,
+    setTransactionComment: (state, action) => state.comment = action.payload,
+    setTransactionTags: (state, action) => state.tags = action.payload,
+  },
+})
+
+export const { setTransaction, setTransactionStart } = transaction.actions
+
+export const selectTransaction = (state: RootState) => state
+
+export default transaction.reducer

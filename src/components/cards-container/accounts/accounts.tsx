@@ -1,6 +1,4 @@
 import React from "react"
-import { useSelector } from "react-redux"
-import { RootState } from "__data__/store"
 import { ICard } from "components/interfaces"
 import { CardNew } from "components/card/card-new"
 import { CardDropWrapper } from "components/card/card-drop-wrapper"
@@ -20,8 +18,6 @@ interface AccountsProps {
 
 export const Accounts: React.FC<AccountsProps> = ({ transactionOpen, items }) => {
 
-  const isLoaded = useSelector((state: RootState) => state.Accounts.isLoaded)
-
   return (
     <BoxStyled sx={{ backgroundColor: 'primary.dark' }}>
       <BoxLabelStyled>
@@ -29,7 +25,8 @@ export const Accounts: React.FC<AccountsProps> = ({ transactionOpen, items }) =>
       </BoxLabelStyled>
       <AccountsContainerStyled>
         <AccountsWrapperStyled>
-          {!isLoaded && items &&
+          {/* {!isLoaded && items && */}
+          { items &&
             items.map((item: ICard) => (
               <CardDropWrapper
                 key={`${item.id} - ${Math.random()}`}
@@ -39,7 +36,7 @@ export const Accounts: React.FC<AccountsProps> = ({ transactionOpen, items }) =>
                 color={item.color}
                 value={item.value}
                 type={"accounts"}
-                operOpen={transactionOpen}
+                transactionOpen={transactionOpen}
               />
             ))}
           <CardNew type={"accounts"} text="Add"/>

@@ -20,7 +20,7 @@ interface IncomeProps {
 
 export const Income: React.FC<IncomeProps> = ({ transactionOpen, items }) => {
 
-  const isLoaded = useSelector((state: RootState) => state.Incomes.isLoaded)
+  // const isLoaded = useSelector((state: RootState) => state.Incomes.isLoaded)
 
   return (
     <BoxStyled sx={{ backgroundColor: 'primary.dark' }}>
@@ -29,7 +29,8 @@ export const Income: React.FC<IncomeProps> = ({ transactionOpen, items }) => {
       </BoxLabelStyled>
       <IncomeContainerStyled>
         <IncomeWrapperStyled>
-          {!isLoaded && items &&
+          {/* {!isLoaded && items && */}
+          {items &&
             items.map((item: ICard) => (
               <CardDropWrapper
                 key={`${item.id} - ${Math.random()}`}
@@ -39,7 +40,7 @@ export const Income: React.FC<IncomeProps> = ({ transactionOpen, items }) => {
                 color={item.color}
                 value={item.value}
                 type={"incomes"}
-                operOpen={transactionOpen}
+                transactionOpen={transactionOpen}
               />
             ))}
           <CardNew type={"incomes"} text="Add" />

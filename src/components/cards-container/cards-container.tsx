@@ -1,8 +1,9 @@
 import React from "react"
 import { Income, Accounts, Expenses } from "components"
 import { useDispatch } from "react-redux"
-import { setTransaction } from "__data__/actions/transaction"
+
 import { ICard } from "components/interfaces"
+import { setTransactionStart } from "__data__/reducers/transaction"
 
 export interface CardsContainerProps {
   accounts?: Array<ICard>
@@ -13,6 +14,7 @@ export interface CardsContainerProps {
 export const CardsContainer: React.FC<CardsContainerProps> = ({ accounts, expenses, incomes, handleTransactionOpen }) => {
 
   const dispatch = useDispatch()
+
   const transactionHandler = (
     open: boolean,
     idFrom: number,
@@ -20,7 +22,8 @@ export const CardsContainer: React.FC<CardsContainerProps> = ({ accounts, expens
     typeFrom: string,
     typeWhere: string
   ) => {
-    dispatch(setTransaction({ idFrom, typeFrom, idWhere, typeWhere }))
+    console.log(idFrom, typeFrom, idWhere, typeWhere)
+    dispatch(setTransactionStart({ idFrom, typeFrom, idWhere, typeWhere }))
     handleTransactionOpen(open)
   }
 

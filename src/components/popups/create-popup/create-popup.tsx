@@ -4,7 +4,6 @@ import React, { useState } from "react"
 import { BiRuble } from "react-icons/bi"
 import { icons } from "components/utils/icons"
 import { IconsPopup } from "components/popups/icons-popup"
-import { addNewCard } from "__data__/actions/createCard"
 import { BtnCloseStyled } from "pages/main/main.styled"
 import { ColorItemStyled, EditPopupButtonStyled, EditPopupColorStyled, EditPopupContainerStyled, EditPopupIconStyled, EditPopupInnerStyled, EditPopupNameStyled, EditPopupOverlayStyled, EditPopupStyled, EditPopupValueStyled, EditPopupWrapperStyled } from "../edit-popup/edit-popup.styled"
 
@@ -41,7 +40,7 @@ export const CreatePopup: React.FC<CreatePopupProps> = ({
       "value": activeMoney
     })
 
-    addNewCard(type, item)
+    // addNewCard(type, item)
   }
 
   return (

@@ -1,3 +1,4 @@
+// TODO: separate Card and transaction card
 export interface ICard {
   id: number;
   name: string;
@@ -5,7 +6,7 @@ export interface ICard {
   color: string;
   value: number;
   type: string;
-  operOpen: (
+  transactionOpen: (
     open: boolean,
     idFrom: number,
     idWhere: number,

@@ -11,12 +11,12 @@ export const CardDropWrapper: React.FC<ICard> = ({
   color,
   value,
   type,
-  operOpen,
+  transactionOpen,
 }) => {
   const [{ isOver, canDrop }, drop] = useDrop(() => ({
     accept: "card",
     canDrop: (item: dndItem) => dndCanDrop(item, id, type),
-    drop: (item: dndItem) => operOpen(true, item.id, id, item.type, type),
+    drop: (item: dndItem) => transactionOpen(true, item.id, id, item.type, type),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
@@ -40,7 +40,7 @@ export const CardDropWrapper: React.FC<ICard> = ({
         color={color}
         value={value}
         type={type}
-        operOpen={operOpen}
+        transactionOpen={transactionOpen}
       />
     </div>
   )

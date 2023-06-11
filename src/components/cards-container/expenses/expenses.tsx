@@ -20,7 +20,7 @@ interface ExpensesProps {
 
 export const Expenses: React.FC<ExpensesProps> = ({ transactionOpen, items }) => {
 
-  const isLoaded = useSelector((state: RootState) => state.Expenses.isLoaded)
+  // const isLoaded = useSelector((state: RootState) => state.Expenses.isLoaded)
 
   return (
     <BoxStyled sx={{ backgroundColor: 'primary.dark' }}>
@@ -29,7 +29,8 @@ export const Expenses: React.FC<ExpensesProps> = ({ transactionOpen, items }) =>
       </BoxLabelStyled>
       <ExpensesContainerStyled>
         <ExpensesWrapperStyled>
-          {!isLoaded && items &&
+          {/* {!isLoaded && items && */}
+          {items &&
             items.map((item: ICard) => (
               <CardDropWrapper
                 key={`${item.id} - ${Math.random()}`}
@@ -39,7 +40,7 @@ export const Expenses: React.FC<ExpensesProps> = ({ transactionOpen, items }) =>
                 color={item.color}
                 value={item.value}
                 type={"expenses"}
-                operOpen={transactionOpen}
+                transactionOpen={transactionOpen}
               />
             ))}
           <CardNew type={"expenses"} text="Add" />

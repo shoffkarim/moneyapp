@@ -11,6 +11,9 @@ import { TransactionValues } from './utils'
 import { useMutation } from '@apollo/client'
 import { SET_TRANSACTION } from '__data__/mutations/transactions'
 import CloseIcon from '@mui/icons-material/Close'
+import { setTransaction } from '__data__/reducers/transaction'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '__data__/store'
 
 
 interface TransactionProps {
@@ -18,13 +21,15 @@ interface TransactionProps {
 }
 
 export const Transaction: React.FC<TransactionProps> = ({ handleTransactionOpen }) => {
-
+  const dispatch = useDispatch()
+  const state = useSelector((state: RootState) => state)
+  console.log(state)
   const { control, handleSubmit, formState: { errors } } = useForm<TransactionValues>()
 
-  const [setTransaction] = useMutation(SET_TRANSACTION)
+  const [setTransactionApi] = useMutation(SET_TRANSACTION)
 
   const handleOnSubmit: SubmitHandler<TransactionValues> = (data) => {
-    setTransaction({ variables:
+    setTransactionApi({ variables:
       {
         id: '647db351529d7960cb8ce476',
         idFrom: '647db3d9529d7960cb8ce484',
@@ -51,7 +56,16 @@ export const Transaction: React.FC<TransactionProps> = ({ handleTransactionOpen 
           <TransactionDate control={control}/>
           <Comment control={control}/>
           <Tags control={control}/>
-          <Button variant='contained' type="submit">Submit</Button>
+          <Button variant='contained' type="button" onClick={() => dispatch(setTransaction({ idFrom: 20,
+            typeFrom: "acconts",
+            typeWhere: "expenses",
+            value: 100,
+            date: "",
+            comment: "",
+            tags: [],
+            isLoaded: true,
+            open: true
+          }))}>Submit</Button>
         </form>
       </TransactionContainerStyled>
     </TransactionStyled>

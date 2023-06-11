@@ -6,7 +6,7 @@ import { setCardIdFrom, setCardIdWhere } from "__data__/actions/transaction"
 import { TransactionCardWrapperStyled, TransactionTitleStyled, TransactionWrapperStyled } from "./transaction.styled"
 import { useQuery } from "@apollo/client"
 import { GET_USER_CARDS } from "__data__/queries/cards"
-// TODO: fix cards in transaction
+
 export const Cards: React.FC = () => {
 
   const { loading, error, data } = useQuery(GET_USER_CARDS,
