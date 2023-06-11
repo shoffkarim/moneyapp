@@ -51,8 +51,8 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type }) =>
             <MainIcon.Icon {...iconProps} />
           </CardIconStyled>
           <CardValueStyled>
-            <Typography component={'span'}>{money}</Typography>
-            <CurrencyRuble sx={{ fontSize: 18 }} />
+            <Typography component={'span'} color="white">{money}</Typography>
+            <CurrencyRuble htmlColor="white" sx={{ fontSize: 18 }} />
           </CardValueStyled>
         </CardWrapperStyled>
         {/* TODO: move EditContainerStyled out of here */}
