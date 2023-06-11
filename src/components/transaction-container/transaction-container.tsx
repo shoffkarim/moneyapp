@@ -1,5 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import { Transaction } from "components/transaction-container/transaction"
+import { TransactionAlert } from "./transaction-alert"
+
 
 interface TransactionContainerProps {
   transactionOpen: boolean
@@ -7,12 +9,15 @@ interface TransactionContainerProps {
 }
 
 export const TransactionContainer: React.FC<TransactionContainerProps> = ({ transactionOpen, handleTransactionOpen }) => {
-
+  const [transactionAlert, setTransactionAlert] = useState<boolean>(false)
+  
   return (
     <>
       {transactionOpen && (
-        <Transaction handleTransactionOpen={handleTransactionOpen}/>
+        <Transaction handleTransactionOpen={handleTransactionOpen} handleAlert={setTransactionAlert}/>
       )}
+      <TransactionAlert handleAlert={setTransactionAlert} transactionAlert={transactionAlert}/>
     </>
   )
 }
+

@@ -12,6 +12,7 @@ const initialState = {
   tags: [],
 }
 
+//TODO: delete useless
 const transaction = createSlice({
   name: 'transaction',
   initialState,

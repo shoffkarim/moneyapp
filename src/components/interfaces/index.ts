@@ -31,8 +31,8 @@ export interface dndItem {
 }
 
 export type Tag = {
-  id: string,
-  text: string
+  tagId: string,
+  name: string
 }
 
 export type TransactionData = {

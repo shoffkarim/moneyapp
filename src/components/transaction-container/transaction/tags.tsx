@@ -6,16 +6,16 @@ import { TransactionValues } from "./utils"
 
 const TagsData: Array<Tag> = [
   {
-    id: "1",
-    text: "Business lunch"
+    tagId: "1",
+    name: "Business lunch"
   },
   {
-    id: "2",
-    text: "Bank"
+    tagId: "2",
+    name: "Bank"
   },
   {
-    id: "3",
-    text: "Coffee"
+    tagId: "3",
+    name: "Coffee"
   }
 ]
 
@@ -30,9 +30,9 @@ export const Tags: React.FC<TagsProps> = ({ control }) => {
   const [activeTags, setActiveTags] = useState<Array<string>>([])
 
   const handleActiveTag = (item: Tag, field: ControllerRenderProps<TransactionValues, "tags">) => {
-    if(activeTags.includes(item.id)) {
-      const filteredTags = activeTags.filter((activeItem) => activeItem !== item.id)
-      const filteredValue = field.value.filter((activeValue) => activeValue.id !== item.id)
+    if(activeTags.includes(item.tagId)) {
+      const filteredTags = activeTags.filter((activeItem) => activeItem !== item.tagId)
+      const filteredValue = field.value.filter((activeValue) => activeValue.tagId !== item.tagId)
       field.onChange(filteredValue)
       setActiveTags(filteredTags)
     } else {
@@ -40,7 +40,7 @@ export const Tags: React.FC<TagsProps> = ({ control }) => {
         ...field.value,
         item
       ])
-      setActiveTags([...activeTags, item.id])
+      setActiveTags([...activeTags, item.tagId])
     }
   }
 
@@ -55,16 +55,16 @@ export const Tags: React.FC<TagsProps> = ({ control }) => {
             <>
               {TagsData.map((item) =>
                 <TransactionsTagsLabelStyled
-                  key={item.id}
-                  active={activeTags.includes(item.id)}
+                  key={item.tagId}
+                  active={activeTags.includes(item.tagId)}
                 >
-                  <span>{item.text}</span>
+                  <span>{item.name}</span>
                   <TransactionTagsItemStyled
                     onChange={() => {
                       handleActiveTag(item, field)
                     }}
                     type="checkbox"
-                    value={item.text}
+                    value={item.name}
                   >
                   </TransactionTagsItemStyled>
                 </TransactionsTagsLabelStyled>

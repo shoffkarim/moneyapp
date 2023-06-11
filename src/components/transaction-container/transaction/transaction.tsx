@@ -11,36 +11,44 @@ import { TransactionValues } from './utils'
 import { useMutation } from '@apollo/client'
 import { SET_TRANSACTION } from '__data__/mutations/transactions'
 import CloseIcon from '@mui/icons-material/Close'
-import { setTransaction } from '__data__/reducers/transaction'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { RootState } from '__data__/store'
 
 
 interface TransactionProps {
   handleTransactionOpen: (value: boolean) => void
+  handleAlert: (value: boolean) => void
 }
 
-export const Transaction: React.FC<TransactionProps> = ({ handleTransactionOpen }) => {
-  const dispatch = useDispatch()
-  const state = useSelector((state: RootState) => state)
-  console.log(state)
+export const Transaction: React.FC<TransactionProps> = ({ handleTransactionOpen, handleAlert }) => {
+
+  const { idFrom, idTo } = useSelector((state: RootState) => state.transaction)
+
   const { control, handleSubmit, formState: { errors } } = useForm<TransactionValues>()
 
-  const [setTransactionApi] = useMutation(SET_TRANSACTION)
+  const [setTransaction] = useMutation(SET_TRANSACTION)
 
   const handleOnSubmit: SubmitHandler<TransactionValues> = (data) => {
-    setTransactionApi({ variables:
-      {
-        id: '647db351529d7960cb8ce476',
-        idFrom: '647db3d9529d7960cb8ce484',
-        idTo: '647db3ee529d7960cb8ce488',
-        value: Number(data.value),
-        comment: data.comment,
-        date: new Date(),
-        tags: [ { tagId: '1', name: 'food' } ]
-      }
-    })
-    console.log(data, errors)
+    try {
+      setTransaction({ variables:
+        {
+          id: '647db351529d7960cb8ce476',
+          idFrom,
+          idTo,
+          value: Number(data.value),
+          comment: data.comment,
+          date: new Date(),
+          tags: data.tags
+        }
+      }).then(() => {
+        handleTransactionOpen(false)
+        handleAlert(true)
+      })
+    } catch (error) {
+      console.log(errors)
+    }
+
+
   }
 
   return (
@@ -56,16 +64,7 @@ export const Transaction: React.FC<TransactionProps> = ({ handleTransactionOpen 
           <TransactionDate control={control}/>
           <Comment control={control}/>
           <Tags control={control}/>
-          <Button variant='contained' type="button" onClick={() => dispatch(setTransaction({ idFrom: 20,
-            typeFrom: "acconts",
-            typeWhere: "expenses",
-            value: 100,
-            date: "",
-            comment: "",
-            tags: [],
-            isLoaded: true,
-            open: true
-          }))}>Submit</Button>
+          <Button variant='contained' type="submit">Submit</Button>
         </form>
       </TransactionContainerStyled>
     </TransactionStyled>
