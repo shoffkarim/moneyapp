@@ -4,33 +4,20 @@ import { Comment } from "./comment"
 import { TransactionDate } from "./transaction-date"
 import { Tags } from "./tags"
 import { Value } from "./value"
-// import { Tag } from "components/interfaces"
-import { TransactionContainerStyled, TransactionOverlayStyled, TransactionStyled } from "./transaction.styled"
+import { TransactionContainerStyled, TransactionOverlayStyled, TransactionStyled, CloseButtonStyled } from "./transaction.styled"
 import { Button } from '@mui/material'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { TransactionValues } from './utils'
 import { useMutation } from '@apollo/client'
 import { SET_TRANSACTION } from '__data__/mutations/transactions'
+import CloseIcon from '@mui/icons-material/Close'
 
 
-// type TransactionData = {
-//   id: string,
-//   value: number,
-//   date: string,
-//   comment: string,
-//   tags: Array<Tag | undefined>
-// }
+interface TransactionProps {
+  handleTransactionOpen: (value: boolean) => void
+}
 
-
-// const initTransactionData: TransactionData = {
-//   id: "",
-//   value: 0,
-//   date: "",
-//   comment: "",
-//   tags: []
-// }
-
-export const Transaction: React.FC = () => {
+export const Transaction: React.FC<TransactionProps> = ({ handleTransactionOpen }) => {
 
   const { control, handleSubmit, formState: { errors } } = useForm<TransactionValues>()
 
@@ -55,6 +42,9 @@ export const Transaction: React.FC = () => {
     <TransactionStyled>
       <TransactionOverlayStyled/>
       <TransactionContainerStyled>
+        <CloseButtonStyled aria-label="close" onClick={() => handleTransactionOpen(false)}>
+          <CloseIcon htmlColor="#fff" fontSize='large' />
+        </CloseButtonStyled>
         <form onSubmit={handleSubmit(handleOnSubmit)}>
           <Cards/>
           <Value control={control}/>

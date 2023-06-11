@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { css } from "@emotion/react"
+import { IconButton } from '@mui/material'
 
 export const TransactionStyled = styled.div(() => css`
   position: fixed;
@@ -29,6 +30,7 @@ export const TransactionContainerStyled = styled.div(() => css`
   background-color: #fff;
   z-index: 12;
   padding: 30px 30px;
+  position: relative;
 `)
 
 export const TransactionWrapperStyled = styled.div(() => css`
@@ -41,8 +43,11 @@ export const TransactionTitleStyled = styled.div(() => css`
 `)
 
 export const TransactionCardWrapperStyled = styled.div(() => css`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-auto-flow: column;
+  justify-items: start;
+  grid-template-columns: repeat(auto-fill, 100px);
+  gap: 0px 20px;
 `)
 
 export const TransactionTagsStyled = styled.div(() => css`
@@ -85,4 +90,13 @@ export const CheckContainerStyled = styled.div(() => css`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 50%;
+  background-color: #1976d2;
+`)
+
+export const CloseButtonStyled = styled(IconButton)(() => css`
+  position: absolute;
+  top: -15px;
+  right: -85px;
+  z-index: 50;
 `)

@@ -3,8 +3,8 @@ import { BiRuble } from "react-icons/bi"
 import { formatMoney } from "components/utils/format"
 import { themeColor } from "components/utils/color"
 import { icons } from "components/utils/icons"
-import { BsCheckCircleFill } from "react-icons/bs"
-import { CardNameStyled, CardStyled, CardValueStyled, CardWrapperStyled } from "components/card/card.styled"
+import CheckIcon from '@mui/icons-material/Check'
+import { CardNameStyled, CardStyled, CardValueStyled, CardWrapperStyled, CardIconStyled } from "components/card/card.styled"
 import { CheckContainerStyled } from "../transaction/transaction.styled"
 
 export interface TransactionCardProps {
@@ -55,17 +55,17 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({
       >
         <CardWrapperStyled>
           <CardNameStyled>{name}</CardNameStyled>
-          <CardNameStyled style={{ backgroundColor: theme }}>
+          <CardIconStyled style={{ backgroundColor: theme }}>
             <MainIcon.Icon {...iconProps} />
-          </CardNameStyled>
+          </CardIconStyled>
           <CardValueStyled>
             <span>{money}</span>
             <BiRuble />
           </CardValueStyled>
         </CardWrapperStyled>
-        {id === check && (
+        {id !== check && (
           <CheckContainerStyled>
-            <BsCheckCircleFill size="25px" color={"green"} />
+            <CheckIcon htmlColor="#ffffff" fontSize="small"/>
           </CheckContainerStyled>
         )}
       </CardStyled>

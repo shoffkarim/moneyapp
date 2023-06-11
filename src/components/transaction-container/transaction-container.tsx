@@ -1,14 +1,17 @@
 import React from "react"
 import { Transaction } from "components/transaction-container/transaction"
-import { useSelector } from "react-redux"
-import { RootState } from "__data__/store"
 
-export const TransactionContainer: React.FC = () => {
-  const transaction = useSelector((state: RootState) => state.Transaction)
+interface TransactionContainerProps {
+  transactionOpen: boolean
+  handleTransactionOpen: (value: boolean) => void
+}
+
+export const TransactionContainer: React.FC<TransactionContainerProps> = ({ transactionOpen, handleTransactionOpen }) => {
+
   return (
     <>
-      {transaction.open && (
-        <Transaction/>
+      {transactionOpen && (
+        <Transaction handleTransactionOpen={handleTransactionOpen}/>
       )}
     </>
   )
