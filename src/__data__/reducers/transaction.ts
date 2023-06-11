@@ -23,18 +23,29 @@ const transaction = createSlice({
         ...action.payload
       }
     },
-    setTransactionCardIDFrom: (state, action) => state.idFrom = action.payload,
-    setTransactionCardIDTo: (state, action) => state.idTo = action.payload,
-    setTransactionCardTypeFrom: (state, action) => state.typeFrom = action.payload,
-    setTransactionCardTypeTo: (state, action) => state.typeTo = action.payload,
-    setTransactionValue: (state, action) => state.value = action.payload,
-    setTransactionDate: (state, action) => state.date = action.payload,
-    setTransactionComment: (state, action) => state.comment = action.payload,
-    setTransactionTags: (state, action) => state.tags = action.payload,
+    setTransactionCardIDFrom: (state, action) => { state.idFrom = action.payload },
+    setTransactionCardIDTo: (state, action) => { state.idTo = action.payload },
+    setTransactionCardTypeFrom: (state, action) => { state.typeFrom = action.payload },
+    setTransactionCardTypeTo: (state, action) => { state.typeTo = action.payload },
+    setTransactionValue: (state, action) => { state.value = action.payload },
+    setTransactionDate: (state, action) => { state.date = action.payload },
+    setTransactionComment: (state, action) => { state.comment = action.payload },
+    setTransactionTags: (state, action) => { state.tags = action.payload },
   },
 })
 
-export const { setTransaction, setTransactionStart } = transaction.actions
+export const {
+  setTransaction,
+  setTransactionStart,
+  setTransactionCardIDFrom,
+  setTransactionCardIDTo,
+  setTransactionCardTypeFrom,
+  setTransactionCardTypeTo,
+  setTransactionValue,
+  setTransactionDate,
+  setTransactionComment,
+  setTransactionTags
+} = transaction.actions
 
 export const selectTransaction = (state: RootState) => state
 

@@ -18,12 +18,11 @@ export const CardsContainer: React.FC<CardsContainerProps> = ({ accounts, expens
   const transactionHandler = (
     open: boolean,
     idFrom: number,
-    idWhere: number,
+    idTo: number,
     typeFrom: string,
-    typeWhere: string
+    typeTo: string
   ) => {
-    console.log(idFrom, typeFrom, idWhere, typeWhere)
-    dispatch(setTransactionStart({ idFrom, typeFrom, idWhere, typeWhere }))
+    dispatch(setTransactionStart({ idFrom, typeFrom, idTo, typeTo }))
     handleTransactionOpen(open)
   }
 

@@ -8,23 +8,23 @@ import { CardNameStyled, CardStyled, CardValueStyled, CardWrapperStyled, CardIco
 import { CheckContainerStyled } from "../transaction/transaction.styled"
 
 export interface TransactionCardProps {
-  id: number;
-  name: string;
-  icon: string;
-  color: string;
-  value: number;
-  check: number;
-  handlerClick: (id: number) => void;
+  id: number
+  name: string
+  icon: string
+  color: string
+  value: number
+  check: boolean
+  handlerClick: (id: number) => void
 }
 
 export interface IMainIcon {
-  size: string;
-  color: string;
+  size: string
+  color: string
 }
 
 export interface IMainIconObj {
-  Icon: React.FC<IMainIcon>;
-  iconName: string;
+  Icon: React.FC<IMainIcon>
+  iconName: string
 }
 
 const iconProps = {
@@ -63,7 +63,7 @@ export const TransactionCard: React.FC<TransactionCardProps> = ({
             <BiRuble />
           </CardValueStyled>
         </CardWrapperStyled>
-        {id !== check && (
+        {check && (
           <CheckContainerStyled>
             <CheckIcon htmlColor="#ffffff" fontSize="small"/>
           </CheckContainerStyled>

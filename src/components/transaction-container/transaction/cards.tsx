@@ -1,11 +1,12 @@
 import React from "react"
 import { TransactionCard } from "components/transaction-container/transaction-card"
 import { TransactionCardProps } from "components/transaction-container/transaction-card/transaction-card"
-import { useDispatch } from "react-redux"
-import { setCardIdFrom, setCardIdWhere } from "__data__/actions/transaction"
+import { useDispatch, useSelector } from "react-redux"
 import { TransactionCardWrapperStyled, TransactionTitleStyled, TransactionWrapperStyled } from "./transaction.styled"
 import { useQuery } from "@apollo/client"
 import { GET_USER_CARDS } from "__data__/queries/cards"
+import { RootState } from "__data__/store"
+import { setTransactionCardIDFrom, setTransactionCardIDTo } from "__data__/reducers/transaction"
 
 export const Cards: React.FC = () => {
 
@@ -15,14 +16,14 @@ export const Cards: React.FC = () => {
     } }
   )
 
-
+  const { idFrom, idTo } = useSelector((state: RootState) => state.transaction)
 
   const dispatch = useDispatch()
   const handlerCardIdFrom = (id: number) => {
-    dispatch(setCardIdFrom(id))
+    dispatch(setTransactionCardIDFrom(id))
   }
-  const handlerCardIdWhere = (id: number) => {
-    dispatch(setCardIdWhere(id))
+  const handlerCardIdTo = (id: number) => {
+    dispatch(setTransactionCardIDTo(id))
   }
 
 
@@ -40,7 +41,7 @@ export const Cards: React.FC = () => {
                 icon={item.icon}
                 color={item.color}
                 value={item.value}
-                check={0}
+                check={idFrom === item.id}
                 handlerClick={handlerCardIdFrom}
               />
             ))
@@ -59,8 +60,8 @@ export const Cards: React.FC = () => {
                 icon={item.icon}
                 color={item.color}
                 value={item.value}
-                check={0}
-                handlerClick={handlerCardIdWhere}
+                check={idTo === item.id}
+                handlerClick={handlerCardIdTo}
               />
             ))
           }

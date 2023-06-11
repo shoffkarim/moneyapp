@@ -11,9 +11,9 @@ interface IncomeProps {
   transactionOpen: (
     open: boolean,
     idFrom: number,
-    idWhere: number,
+    idTo: number,
     typeFrom: string,
-    typeWhere: string
+    typeTo: string
   ) => void
   items?: Array<ICard>
 }
