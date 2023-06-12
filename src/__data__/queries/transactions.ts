@@ -7,10 +7,17 @@ export const GET_USER_TRANSACTIONS = gql`
       transactions {
         id
         idFrom
+        typeFrom
         idTo
+        typeTo
         value
         comment
         date
+        tags {
+          id
+          tagId
+          name
+        }
       }
     }
   }

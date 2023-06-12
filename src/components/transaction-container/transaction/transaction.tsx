@@ -22,7 +22,7 @@ interface TransactionProps {
 
 export const Transaction: React.FC<TransactionProps> = ({ handleTransactionOpen, handleAlert }) => {
 
-  const { idFrom, idTo } = useSelector((state: RootState) => state.transaction)
+  const { idFrom, typeFrom, idTo, typeTo } = useSelector((state: RootState) => state.transaction)
 
   const { control, handleSubmit, formState: { errors } } = useForm<TransactionValues>()
 
@@ -34,7 +34,9 @@ export const Transaction: React.FC<TransactionProps> = ({ handleTransactionOpen,
         {
           id: '647db351529d7960cb8ce476',
           idFrom,
+          typeFrom,
           idTo,
+          typeTo,
           value: Number(data.value),
           comment: data.comment,
           date: new Date(),
