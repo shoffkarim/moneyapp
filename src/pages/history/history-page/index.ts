@@ -1,6 +1,1 @@
-import History from './history-page'
-
-
-export {
-  History
-}
+export { HistoryPage } from './history-page'

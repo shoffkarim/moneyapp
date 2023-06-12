@@ -1,22 +1,25 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { HistoryTransaction } from '../history-transaction'
-import { mapStateToProps } from '../utils'
 import { HistoryContainerStyled, HistoryWrapperStyled } from './history-page.styled'
+import { useQuery } from '@apollo/client'
+import { GET_USER_TRANSACTIONS } from '__data__/queries/transactions'
 
-interface HistoryPageProps {
-  data?: string
-}
+export const HistoryPage: React.FC = () => {
 
-const HistoryPage: React.FC<HistoryPageProps> = () => {
+  const { loading, data } = useQuery(GET_USER_TRANSACTIONS,
+    { variables:
+      {
+        id: '647db351529d7960cb8ce476'
+      }
+    })
+
   return (
     <HistoryContainerStyled>
       <HistoryWrapperStyled>
-        <HistoryTransaction/>
+        {!loading && <HistoryTransaction items={data?.user.transactions}/>}
       </HistoryWrapperStyled>
     </HistoryContainerStyled>
 
   )
 }
 
-export default connect(mapStateToProps)(HistoryPage)

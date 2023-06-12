@@ -1,62 +1,83 @@
 import { TableCell, Typography } from "@mui/material"
 import React, { useState } from "react"
-import { BsBank, BsFillBagCheckFill } from "react-icons/bs"
 import { HistoryItemCellStyled, HistoryItemIconStyled, HistoryItemStyled, HistoryItemTagListStyled, HistoryItemTagItemStyled, HistoryItemCommentStyled } from "./history-transaction.styled"
+import { format } from "date-fns"
+import { formatMoney } from "components/utils/format"
+import { icons } from "components/utils/icons"
+import { themeColor } from "components/utils/color"
+import { TransactionItem } from "../types"
 
-export const HistoryTransactionElement: React.FC = () => {
+export interface IMainIcon {
+  size: string
+  color: string
+}
+
+export interface IMainIconObj {
+  Icon: React.FC<IMainIcon>
+  iconName: string
+}
+
+const iconProps = {
+  size: "16px",
+  color: "white",
+}
+
+export const HistoryTransactionElement: React.FC<TransactionItem> = ({
+  value,
+  date,
+  comment,
+  tags,
+  cardFrom,
+  cardTo
+}) => {
   const [showComment, setShowComment] = useState<boolean>(false)
+  const formatedDate = format(new Date(date), 'MM-dd-yyyy')
+  const formatedMoney = formatMoney(value)
+  const IconFrom: IMainIconObj = icons(cardFrom?.icon || '')
+  const iconBackgroundFrom: string = themeColor(cardFrom?.color || '')
+  const IconTo: IMainIconObj = icons(cardTo?.icon || '')
+  const iconBackgroundTo: string = themeColor(cardTo?.color || '')
+  console.log(iconBackgroundFrom, iconBackgroundTo)
+
   return (
     <HistoryItemStyled>
       <TableCell>
-        <Typography>12-02-2023</Typography>
+        <Typography>{formatedDate}</Typography>
       </TableCell>
       <TableCell>
         <HistoryItemCellStyled>
-          <HistoryItemIconStyled>
-            <BsBank color="white" />
+          <HistoryItemIconStyled background={ iconBackgroundFrom }>
+            <IconFrom.Icon {...iconProps} />
           </HistoryItemIconStyled>
-          <Typography>Tinkoff</Typography>
+          <Typography>{cardFrom?.name}</Typography>
         </HistoryItemCellStyled>
       </TableCell>
       <TableCell>
         <HistoryItemCellStyled>
-          <HistoryItemIconStyled>
-            <BsFillBagCheckFill color="white" />
+          <HistoryItemIconStyled background={ iconBackgroundTo }>
+            <IconTo.Icon {...iconProps} />
           </HistoryItemIconStyled>
-          <Typography>Purchases</Typography>
+          <Typography>{cardTo?.name}</Typography>
         </HistoryItemCellStyled>
       </TableCell>
       <TableCell>
-        <Typography>2000.00 P</Typography>
+        <Typography>{formatedMoney} $</Typography>
       </TableCell>
       <TableCell>
         <HistoryItemCommentStyled
           onClick={() => setShowComment(!showComment)}
           show={showComment ? 'initial' : 'nowrap'}
-          aria-label="comment comment comment comment comment comment comment comment"
-          title="comment comment comment comment comment comment comment comment"
+          aria-label={comment}
+          title={comment}
         >
-          comment comment comment comment comment comment comment comment
+          {comment}
         </HistoryItemCommentStyled>
         <HistoryItemTagListStyled>
-          <HistoryItemTagItemStyled>
-            <Typography fontSize="14px">Business lunch</Typography>
-          </HistoryItemTagItemStyled>
-          <HistoryItemTagItemStyled>
-            <Typography fontSize="14px">Bank</Typography>
-          </HistoryItemTagItemStyled>
-          <HistoryItemTagItemStyled>
-            <Typography fontSize="14px">Coffee</Typography>
-          </HistoryItemTagItemStyled>
-          <HistoryItemTagItemStyled>
-            <Typography fontSize="14px">Bank</Typography>
-          </HistoryItemTagItemStyled>
-          <HistoryItemTagItemStyled>
-            <Typography fontSize="14px">Coffee</Typography>
-          </HistoryItemTagItemStyled>
-          <HistoryItemTagItemStyled>
-            <Typography fontSize="14px">Business lunch</Typography>
-          </HistoryItemTagItemStyled>
+          {tags.length > 0 && tags.map((tagItem) =>
+            <HistoryItemTagItemStyled key={tagItem.tagId}>
+              <Typography fontSize="14px">{tagItem.name}</Typography>
+            </HistoryItemTagItemStyled>
+          )}
         </HistoryItemTagListStyled>
       </TableCell>
     </HistoryItemStyled>

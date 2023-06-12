@@ -1,6 +1,6 @@
 import React from 'react'
 import { TopBar } from 'components'
-import { History } from 'pages/history'
+import { HistoryPage } from 'pages/history'
 import { ContainerStyled, PageWrapperStyled } from 'pages/main/main.styled'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Main, SignUpPage, SignInPage } from './pages'
@@ -32,7 +32,7 @@ const App = () => {
         <PageWrapperStyled>
           <Routes>
             <Route path='/' Component={Main}/>
-            <Route path='history' Component={History}/>
+            <Route path='history' Component={HistoryPage}/>
             <Route path='calendar' Component={CalendarPage}/>
             <Route path='signup' Component={SignUpPage}/>
             <Route path='signin' Component={SignInPage}/>

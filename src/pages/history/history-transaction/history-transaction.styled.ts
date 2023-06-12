@@ -13,11 +13,14 @@ export const HistoryItemCellStyled = styled.div(() => css`
   align-items: center;
 `)
 
-export const HistoryItemIconStyled = styled.div(() => css`
+type HistoryItemIconStyledProps = {
+  background: string
+}
+export const HistoryItemIconStyled = styled.div<HistoryItemIconStyledProps>(({ background }) => css`
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #000;
+  background-color: ${background};
   display: flex;
   align-items: center;
   justify-content: center;
