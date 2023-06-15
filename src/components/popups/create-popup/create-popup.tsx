@@ -1,12 +1,19 @@
 import { IMainIcon, IMainIconObj } from "components/interfaces"
-import { black, colorsArray } from "components/constants"
+import { colorsArray } from "components/constants"
 import React, { useState } from "react"
-import { BiRuble } from "react-icons/bi"
 import { icons } from "components/utils/icons"
 import { IconsPopup } from "components/popups/icons-popup"
-import { BtnCloseStyled } from "pages/main/main.styled"
-import { ColorItemStyled, EditPopupButtonStyled, EditPopupColorStyled, EditPopupContainerStyled, EditPopupIconStyled, EditPopupInnerStyled, EditPopupNameStyled, EditPopupOverlayStyled, EditPopupStyled, EditPopupValueStyled, EditPopupWrapperStyled } from "../edit-popup/edit-popup.styled"
+import { TextField } from "@mui/material"
+import { ColorInputStyled, ColorLabelStyled, PopupButtonStyled, PopupCloseButtonStyled, PopupColorsWrapperStyled, PopupContainerStyled, PopupElementWrapperStyled, PopupFormContainerStyled, PopupFormStyled, PopupIconStyled, PopupOverlayStyled, PopupStyled, PopupWrapperStyled } from "../popup.styled"
+import CloseIcon from '@mui/icons-material/Close'
+import { Controller, ControllerRenderProps, SubmitHandler, useForm } from "react-hook-form"
 
+type CreateCard = {
+  name: string
+  icon: string,
+  color: string,
+  value: string
+}
 
 interface CreatePopupProps {
   iconProps: IMainIcon;
@@ -20,77 +27,116 @@ export const CreatePopup: React.FC<CreatePopupProps> = ({
   handlerClose
 }) => {
 
-  const [activeName, setActiveName] = useState("")
-  const [activeMoney, setActiveMoney] = useState(0)
-  const [activeColor, setActiveColor] = useState(black)
+  const { control, handleSubmit, formState: { errors } } = useForm<CreateCard>()
+
+  const [activeColor, setActiveColor] = useState(colorsArray[0])
   const [activeIcon, setActiveIcon] = useState("bank")
   const [visibleIcons, setVisibleIcons] = useState(false)
   const MainIcon: IMainIconObj = icons(activeIcon)
 
-  const handleChangeMoney = (str: string) => {
-    setActiveMoney(parseInt(str))
+
+  const handleActiveColor = (item: string, field: ControllerRenderProps<CreateCard, "color">) => {
+    setActiveColor(item)
+    field.onChange(item)
   }
+  const handleOnSubmit: SubmitHandler<CreateCard> = (data) => {
+    console.log(data)
 
-  const handleSubmit = () => {
-    const item = JSON.stringify({
-      "id": String(Date.now()),
-      "name": activeName,
-      "icon": activeIcon,
-      "color": activeColor,
-      "value": activeMoney
-    })
-
-    // addNewCard(type, item)
   }
 
   return (
-    <EditPopupStyled>
-      <EditPopupOverlayStyled/>
-      <EditPopupContainerStyled>
-        <EditPopupInnerStyled>
-          <EditPopupIconStyled
-            style={{ backgroundColor: activeColor }}
-            onClick={() => setVisibleIcons(!visibleIcons)}
-          >
-            <MainIcon.Icon {...iconProps} />
-          </EditPopupIconStyled>
-          <EditPopupWrapperStyled>
-            <EditPopupNameStyled>
-              <input
-                value={activeName}
-                onChange={(e) => setActiveName(e.target.value)}
-                autoFocus
-              />
-            </EditPopupNameStyled>
-            <EditPopupValueStyled>
-              <input
-                value={activeMoney}
-                onChange={(e) => handleChangeMoney(e.target.value)}
-              />
-              <BiRuble fontSize={"26px"} />
-            </EditPopupValueStyled>
-            <EditPopupColorStyled>
-              {colorsArray.map((item) => {
-                return (
-                  <ColorItemStyled
-                    activeColor={activeColor === item}
-                    key={item}
-                    style={{ backgroundColor: item }}
-                    onClick={() => setActiveColor(item)}
-                  />
-                )
-              })}
-            </EditPopupColorStyled>
-          </EditPopupWrapperStyled>
-        </EditPopupInnerStyled>
-        <EditPopupButtonStyled>
-          <button onClick={() => handleSubmit()}>Создать</button>
-        </EditPopupButtonStyled>
-        <BtnCloseStyled onClick={() => handlerClose(false)}></BtnCloseStyled>
-      </EditPopupContainerStyled>
+    <PopupStyled>
+      <PopupOverlayStyled/>
+      <PopupContainerStyled>
+        <PopupCloseButtonStyled aria-label="close" onClick={() => handlerClose(false)}>
+          <CloseIcon htmlColor="#fff" fontSize='large' />
+        </PopupCloseButtonStyled>
+        <PopupFormStyled onSubmit={handleSubmit(handleOnSubmit)}>
+          <PopupFormContainerStyled>
+            <PopupIconStyled
+              style={{ backgroundColor: activeColor }}
+              onClick={() => setVisibleIcons(!visibleIcons)}
+            >
+              <MainIcon.Icon {...iconProps} />
+            </PopupIconStyled>
+            <PopupWrapperStyled>
+              <PopupElementWrapperStyled>
+                <Controller
+                  name="name"
+                  control={control}
+                  defaultValue=""
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      variant="outlined"
+                      color="primary"
+                      fullWidth
+                      label="name"
+                      placeholder="0"
+                      type="text"
+                    />
+                  )}
+                />
+              </PopupElementWrapperStyled>
+              <PopupElementWrapperStyled>
+                <Controller
+                  name="value"
+                  control={control}
+                  defaultValue=""
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      variant="outlined"
+                      color="primary"
+                      fullWidth
+                      label="value"
+                      placeholder="name"
+                      type="text"
+                    />
+                  )}
+                />
+              </PopupElementWrapperStyled>
+              <PopupElementWrapperStyled>
+                <Controller
+                  name="color"
+                  control={control}
+                  defaultValue={colorsArray[0]}
+                  render={({ field }) => (
+                    <PopupColorsWrapperStyled>
+                      {colorsArray.map((item) => {
+                        return (
+                          <ColorLabelStyled
+                            active={item === activeColor}
+                            color={item}
+                            key={item}
+                          >
+                            <ColorInputStyled
+                              {...field}
+                              type="radio"
+                              name="create-popup-colors"
+                              value={item}
+                              onChange={() => {
+                                handleActiveColor(item, field)
+                              }}
+                            />
+                          </ColorLabelStyled>
+                        )
+                      })}
+                    </PopupColorsWrapperStyled>
+                  )}
+                />
+              </PopupElementWrapperStyled>
+            </PopupWrapperStyled>
+          </PopupFormContainerStyled>
+          <PopupButtonStyled variant="contained" type="submit">Create</PopupButtonStyled>
+        </PopupFormStyled>
+
+      </PopupContainerStyled>
       {visibleIcons && (
         <IconsPopup iconProps={iconProps} activeIcon={activeIcon} changeIcon={setActiveIcon}/>
       )}
-    </EditPopupStyled>
+    </PopupStyled>
   )
 }

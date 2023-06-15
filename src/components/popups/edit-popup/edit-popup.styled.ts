@@ -58,8 +58,9 @@ export const EditPopupButtonStyled = styled.div(() => css`
   margin-top: 30px;
   display: flex;
   justify-content: center;
-  button
+  button {
     cursor: pointer;
+  }
 `)
 
 export const EditPopupIconStyled = styled.div(() => css`
@@ -86,8 +87,9 @@ export const EditPopupValueStyled = styled.div(() => css`
   margin-bottom: 14px;
   display: flex;
   align-items: center;
-  input
-    margin-right: 5px
+  input {
+    margin-right: 5px;
+  }
 `)
 
 export const EditPopupColorStyled = styled.div(() => css`
