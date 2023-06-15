@@ -3,7 +3,8 @@ import { css } from "@emotion/react"
 import { Button, IconButton } from '@mui/material'
 
 
-export const PopupStyled = styled.div(() => css`
+
+export const PopupStyled = styled.form(() => css`
   position: fixed;
   top: 0;
   left: 0;
@@ -26,7 +27,11 @@ export const PopupOverlayStyled = styled.div(() => css`
   z-index: 11;
 `)
 
-export const PopupContainerStyled = styled.div(() => css`
+type PopupContainerStyledProps = {
+  visible?: boolean
+}
+
+export const PopupContainerStyled = styled.div<PopupContainerStyledProps>(() => css`
   position: relative;
   z-index: 12;
   width: 440px;
@@ -38,7 +43,7 @@ export const PopupContainerStyled = styled.div(() => css`
   border-radius: 15px;
 `)
 
-export const PopupFormStyled = styled.form(() => css`
+export const PopupFormStyled = styled.div(() => css`
   display: flex;
   flex-direction: column;
 `)

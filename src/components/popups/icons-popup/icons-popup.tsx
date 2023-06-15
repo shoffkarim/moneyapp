@@ -1,34 +1,53 @@
 import React from "react"
 import { iconsPack } from "components/iconsPack"
-import { IMainIcon } from "components/interfaces"
-import { black, white } from "components/constants"
-import { IconSelectorContainerStyled, IconSelectorItemStyled } from "./icons-popup.styled"
+import { IconPopupWrapperStyled, IconPoupContainerStyled, IconSelectorInputStyled, IconSelectorItemStyled } from "./icons-popup.styled"
+import { Control, Controller, ControllerRenderProps } from "react-hook-form"
+import { CreateCard } from "../utils"
 
 interface IconsPopupProps {
-  iconProps: IMainIcon,
   activeIcon: string,
   changeIcon: (name: string) => void
+  control: Control<CreateCard, 'icon'>
+  visible: boolean
 }
 
 export const IconsPopup: React.FC<IconsPopupProps> = ({
-  iconProps, activeIcon, changeIcon
+  activeIcon, changeIcon, control, visible
 }) => {
+
+  const handleActiveIcon = (name: string, field: ControllerRenderProps<CreateCard, "icon">) => {
+    changeIcon(name)
+    field.onChange(name)
+  }
   return (
-    <IconSelectorContainerStyled>
-      {iconsPack.map((ItemIcon) => {
-        const newIconProps = {
-          ...iconProps,
-          color: activeIcon === ItemIcon.iconName ? white : black,
-        }
-        return (
-          <IconSelectorItemStyled
-            key={ItemIcon.iconName}
-            onClick={() => changeIcon(ItemIcon.iconName)}
-          >
-            <ItemIcon.Icon {...newIconProps} />
-          </IconSelectorItemStyled>
-        )
-      })}
-    </IconSelectorContainerStyled>
+    <IconPoupContainerStyled visible={visible}>
+      <Controller
+        name="icon"
+        control={control}
+        defaultValue="bank"
+        render={({ field }) => (
+          <IconPopupWrapperStyled>
+            {iconsPack.map((ItemIcon) => {
+              return (
+                <IconSelectorItemStyled
+                  key={ItemIcon.iconName}
+                  htmlFor={ItemIcon.iconName}
+                >
+                  <ItemIcon.Icon
+                    size="30px"
+                    color={activeIcon === ItemIcon.iconName ? "white" : "black"}/>
+                  <IconSelectorInputStyled
+                    {...field}
+                    type="radio"
+                    id={ItemIcon.iconName}
+                    name="icon-popups"
+                    value={ItemIcon.iconName}
+                    onChange={() => {handleActiveIcon(ItemIcon.iconName, field)}} />
+                </IconSelectorItemStyled>
+              )
+            })}
+          </IconPopupWrapperStyled>
+        )}/>
+    </IconPoupContainerStyled>
   )
 }

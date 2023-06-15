@@ -4,7 +4,6 @@ import React, { useState } from "react"
 import { BiRuble } from "react-icons/bi"
 import { icons } from "components/utils/icons"
 import axios from "axios"
-import { IconsPopup } from "components/popups/icons-popup"
 import { ColorItemStyled, EditPopupButtonStyled, EditPopupColorStyled, EditPopupContainerStyled, EditPopupIconStyled, EditPopupInnerStyled, EditPopupNameStyled, EditPopupOverlayStyled, EditPopupStyled, EditPopupValueStyled, EditPopupWrapperStyled } from "./edit-popup.styled"
 import { BtnCloseStyled } from "pages/main/main.styled"
 
@@ -113,9 +112,9 @@ export const EditPopup: React.FC<EditPopupProps> = ({
         </EditPopupButtonStyled>
         <BtnCloseStyled onClick={() => handlerClose(false)}></BtnCloseStyled>
       </EditPopupContainerStyled>
-      {visibleIcons && (
+      {/* {visibleIcons && (
         <IconsPopup iconProps={iconProps} activeIcon={activeIcon} changeIcon={setActiveIcon}/>
-      )}
+      )} */}
     </EditPopupStyled>
   )
 }

@@ -7,13 +7,9 @@ import { TextField } from "@mui/material"
 import { ColorInputStyled, ColorLabelStyled, PopupButtonStyled, PopupCloseButtonStyled, PopupColorsWrapperStyled, PopupContainerStyled, PopupElementWrapperStyled, PopupFormContainerStyled, PopupFormStyled, PopupIconStyled, PopupOverlayStyled, PopupStyled, PopupWrapperStyled } from "../popup.styled"
 import CloseIcon from '@mui/icons-material/Close'
 import { Controller, ControllerRenderProps, SubmitHandler, useForm } from "react-hook-form"
+import { CreateCard } from "../utils"
 
-type CreateCard = {
-  name: string
-  icon: string,
-  color: string,
-  value: string
-}
+
 
 interface CreatePopupProps {
   iconProps: IMainIcon;
@@ -45,13 +41,13 @@ export const CreatePopup: React.FC<CreatePopupProps> = ({
   }
 
   return (
-    <PopupStyled>
+    <PopupStyled onSubmit={handleSubmit(handleOnSubmit)}>
       <PopupOverlayStyled/>
       <PopupContainerStyled>
         <PopupCloseButtonStyled aria-label="close" onClick={() => handlerClose(false)}>
           <CloseIcon htmlColor="#fff" fontSize='large' />
         </PopupCloseButtonStyled>
-        <PopupFormStyled onSubmit={handleSubmit(handleOnSubmit)}>
+        <PopupFormStyled >
           <PopupFormContainerStyled>
             <PopupIconStyled
               style={{ backgroundColor: activeColor }}
@@ -111,12 +107,14 @@ export const CreatePopup: React.FC<CreatePopupProps> = ({
                             active={item === activeColor}
                             color={item}
                             key={item}
+                            htmlFor={item}
                           >
                             <ColorInputStyled
                               {...field}
                               type="radio"
                               name="create-popup-colors"
                               value={item}
+                              id={item}
                               onChange={() => {
                                 handleActiveColor(item, field)
                               }}
@@ -134,9 +132,12 @@ export const CreatePopup: React.FC<CreatePopupProps> = ({
         </PopupFormStyled>
 
       </PopupContainerStyled>
-      {visibleIcons && (
-        <IconsPopup iconProps={iconProps} activeIcon={activeIcon} changeIcon={setActiveIcon}/>
-      )}
+      <IconsPopup
+        visible={visibleIcons}
+        activeIcon={activeIcon}
+        changeIcon={setActiveIcon}
+        control={control}
+      />
     </PopupStyled>
   )
 }
