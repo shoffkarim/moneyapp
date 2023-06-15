@@ -5,8 +5,8 @@ import { Typography } from '@mui/material'
 
 export const DaysContainerStyled = styled.div(() => css`
   display: grid;
-  grid-template-columns: repeat(7, minmax(100px, 200px));
-  grid-template-rows: repeat(auto-fill, minmax(50px, 175px));
+  grid-template-columns: repeat(7, minmax(100px, 215px));
+  grid-auto-rows: minmax(100px, 175px);
   height: 100%;
 `)
 

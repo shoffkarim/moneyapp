@@ -1,14 +1,20 @@
 import styled from '@emotion/styled'
 import { css } from "@emotion/react"
+import { Button } from '@mui/material'
 
 
 export const CalendarHeaderStyled = styled.div(() => css`
   display: flex;
   justify-content: space-between;
-  background-color: #c4c4c4;
+  background-color: #1565c0;
+  padding: 5px 12px;
 `)
 
 export const CalendarHeaderWrapperStyled = styled.div(() => css`
   display: flex;
   justify-content: center;
+`)
+
+export const CalendarHeaderMainButtonStyled = styled(Button)(() => css`
+  color: #fff;
 `)

@@ -1,6 +1,6 @@
 import React from 'react'
-import { CalendarHeaderStyled, CalendarHeaderWrapperStyled } from './calendarHeader.style'
-import { Button, IconButton } from '@mui/material'
+import { CalendarHeaderMainButtonStyled, CalendarHeaderStyled, CalendarHeaderWrapperStyled } from './calendarHeader.style'
+import { IconButton } from '@mui/material'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import { UseCalendarFuncsReturn, UseCalendarStateReturn } from '../types'
@@ -14,27 +14,27 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({ state, functions
   return (
     <CalendarHeaderStyled>
       <IconButton onClick={() => functions.onClickArrow('left')}>
-        <ArrowBackIosIcon/>
+        <ArrowBackIosIcon htmlColor="white"/>
       </IconButton>
       <CalendarHeaderWrapperStyled>
         {state.mode === 'days' && (
-          <Button onClick={() => functions.setMode('monthes')}>
+          <CalendarHeaderMainButtonStyled onClick={() => functions.setMode('monthes')}>
             {state.monthesNames[state.selectedMonth.monthIndex].month} {state.selectedYear}
-          </Button>
+          </CalendarHeaderMainButtonStyled>
         )}
         {state.mode === 'monthes' && (
-          <Button onClick={() => functions.setMode('years')}>
+          <CalendarHeaderMainButtonStyled onClick={() => functions.setMode('years')}>
             {state.selectedYear}
-          </Button>
+          </CalendarHeaderMainButtonStyled>
         )}
         {state.mode === 'years' && (
-          <Button onClick={() => functions.setMode('days')}>
+          <CalendarHeaderMainButtonStyled onClick={() => functions.setMode('days')}>
             {state.selectedYearsInterval[0]}  -  {state.selectedYearsInterval[state.selectedYearsInterval.length - 1]}
-          </Button>
+          </CalendarHeaderMainButtonStyled>
         )}
       </CalendarHeaderWrapperStyled>
       <IconButton onClick={() => functions.onClickArrow('right')}>
-        <ArrowForwardIosIcon/>
+        <ArrowForwardIosIcon htmlColor="white"/>
       </IconButton>
     </CalendarHeaderStyled>
   )

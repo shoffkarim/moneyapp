@@ -10,7 +10,7 @@ export const CalendarWrapperModeStyled = styled.div(() => css`
 
 export const WeekDaysNameContainerStyled = styled.div(() => css`
   display: grid;
-  grid-template-columns: repeat(7, minmax(100px, 200px));
+  grid-template-columns: repeat(7, minmax(100px, 215px));
 `)
 
 export const WeekDayNameStyled = styled.div(() => css`
