@@ -2,20 +2,25 @@ import React from "react"
 import { iconsPack } from "components/iconsPack"
 import { IconPopupWrapperStyled, IconPoupContainerStyled, IconSelectorInputStyled, IconSelectorItemStyled } from "./icons-popup.styled"
 import { Control, Controller, ControllerRenderProps } from "react-hook-form"
-import { CreateCard } from "../utils"
+import { PopupFormElementName, SetCard } from "../utils"
 
 interface IconsPopupProps {
   activeIcon: string,
   changeIcon: (name: string) => void
-  control: Control<CreateCard, 'icon'>
+  control: Control<SetCard, PopupFormElementName>
   visible: boolean
+  groupName: string
 }
 
 export const IconsPopup: React.FC<IconsPopupProps> = ({
-  activeIcon, changeIcon, control, visible
+  activeIcon,
+  changeIcon,
+  control,
+  visible,
+  groupName
 }) => {
 
-  const handleActiveIcon = (name: string, field: ControllerRenderProps<CreateCard, "icon">) => {
+  const handleActiveIcon = (name: string, field: ControllerRenderProps<SetCard, 'icon'>) => {
     changeIcon(name)
     field.onChange(name)
   }
@@ -40,9 +45,11 @@ export const IconsPopup: React.FC<IconsPopupProps> = ({
                     {...field}
                     type="radio"
                     id={ItemIcon.iconName}
-                    name="icon-popups"
+                    name={groupName}
                     value={ItemIcon.iconName}
-                    onChange={() => {handleActiveIcon(ItemIcon.iconName, field)}} />
+                    onChange={() => {
+                      handleActiveIcon(ItemIcon.iconName, field)}
+                    } />
                 </IconSelectorItemStyled>
               )
             })}
