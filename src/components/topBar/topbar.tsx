@@ -1,6 +1,6 @@
 import React from 'react'
-import { Account, Total } from 'components'
-import { NavLinkStyled } from './topbar.styled'
+import { Total } from 'components'
+import { NavLinkStyled, RightMenuStyled } from './topbar.styled'
 import { AppBar, IconButton, Menu, MenuItem, Toolbar } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 
@@ -12,7 +12,7 @@ type TopBarProps = {
     balance?: number
   }
 }
-export const TopBar: React.FC<TopBarProps> = ({ name, total }) => {
+export const TopBar: React.FC<TopBarProps> = ({ total }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -27,8 +27,7 @@ export const TopBar: React.FC<TopBarProps> = ({ name, total }) => {
     <AppBar position='relative'>
       <Toolbar>
         <Total total={total}/>
-        <Account name={name}/>
-        <div>
+        <RightMenuStyled>
           <IconButton
             size="large"
             aria-label="account of current user"
@@ -70,7 +69,7 @@ export const TopBar: React.FC<TopBarProps> = ({ name, total }) => {
               <NavLinkStyled to={'/signin'}>Sign in</NavLinkStyled>
             </MenuItem>
           </Menu>
-        </div>
+        </RightMenuStyled>
       </Toolbar>
     </AppBar>
 

@@ -16,6 +16,7 @@ export const AccountsWrapperStyled = styled.div(() => css`
 
 export const BoxStyled = styled(Box)(() => css`
   position: relative;
+  border-radius: 0px 10px 10px 10px;
 `)
 
 export const BoxLabelStyled = styled.div(() => css`

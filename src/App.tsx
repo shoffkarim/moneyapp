@@ -9,9 +9,8 @@ import { useQuery } from '@apollo/client'
 import { GET_USER_TOTAL } from '__data__/queries/total'
 
 
-const App = () => {
-
-  const { loading, error, data } = useQuery(GET_USER_TOTAL,
+const App: React.FC = () => {
+  const { data } = useQuery(GET_USER_TOTAL,
     { variables:
       {
         id: '647db351529d7960cb8ce476'
@@ -22,7 +21,6 @@ const App = () => {
     <BrowserRouter>
       <ContainerStyled>
         <TopBar
-          name={'Пользователь П'}
           total={{
             "expenses": data?.user.total.expenses,
             "incomes": data?.user.total.incomes,

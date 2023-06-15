@@ -4,7 +4,6 @@ import { Box } from '@mui/material'
 
 export const IncomeContainerStyled = styled.div(() => css`
   padding: 10px 20px;
-  /* background-color: #c4c4c4; */
 `)
 
 export const IncomeWrapperStyled = styled.div(() => css`
@@ -17,6 +16,7 @@ export const IncomeWrapperStyled = styled.div(() => css`
 
 export const BoxStyled = styled(Box)(() => css`
   position: relative;
+  border-radius: 0px 10px 10px 10px;
 `)
 
 export const BoxLabelStyled = styled.div(() => css`

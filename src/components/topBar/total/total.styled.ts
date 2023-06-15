@@ -3,8 +3,8 @@ import { css } from "@emotion/react"
 
 export const TotalStyled = styled.div(() => css`
   display: flex;
-  justify-self: center;
   margin: 0 auto;
+  gap: 30px;
 `)
 
 export const TotalItemStyled = styled.div(() => css`
