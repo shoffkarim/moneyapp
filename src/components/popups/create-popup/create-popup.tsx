@@ -1,6 +1,4 @@
-import { IMainIcon, IMainIconObj } from "components/interfaces"
-import { colorsArray } from "components/constants"
-import React, { useState } from "react"
+import React, { useState, useCallback } from "react"
 import { icons } from "components/utils/icons"
 import { IconsPopup } from "components/popups/icons-popup"
 import { PopupButtonStyled, PopupCloseButtonStyled, PopupContainerStyled, PopupFormContainerStyled, PopupFormStyled, PopupIconStyled, PopupOverlayStyled, PopupStyled, PopupWrapperStyled } from "../popup.styled"
@@ -9,7 +7,10 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { SetCard } from "../utils"
 import { PopupInput } from "../popupInput"
 import { PopupColors } from "../popupColors"
-
+import { SET_ACCOUNT, SET_EXPENSE, SET_INCOME } from "__data__/mutations/cards"
+import { useMutation } from "@apollo/client"
+import { IMainIcon, IMainIconObj } from "components/interfaces"
+import { ACCOUNTS, INCOMES, colorsArray } from "components/constants"
 
 interface CreatePopupProps {
   iconProps: IMainIcon;
@@ -30,10 +31,42 @@ export const CreatePopup: React.FC<CreatePopupProps> = ({
   const [visibleIcons, setVisibleIcons] = useState(false)
   const MainIcon: IMainIconObj = icons(activeIcon)
 
+  const [setIncome] = useMutation(SET_INCOME)
+  const [setAccount] = useMutation(SET_ACCOUNT)
+  const [setExpense] = useMutation(SET_EXPENSE)
+
+  const getTypeCard = useCallback(() => {
+    if(type === INCOMES) {
+      return setIncome
+    }
+    if(type === ACCOUNTS) {
+      return setAccount
+    }
+    return setExpense
+  }, [type],
+  )
+
 
   const handleOnSubmit: SubmitHandler<SetCard> = (data) => {
-    console.log(data, type, errors)
-    handlerClose(false)
+    try {
+      const setCard = getTypeCard()
+
+      setCard({ variables:
+        {
+          id: '647db351529d7960cb8ce476',
+          name: data.name,
+          icon: data.icon,
+          color: data.color,
+          value: Number(data.value)
+        }
+      }).then(() => {
+        handlerClose(false)
+      })
+    } catch (error) {
+      console.log(errors)
+    }
+
+
   }
 
   return (
