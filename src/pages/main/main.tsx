@@ -25,7 +25,8 @@ export const Main: React.FC = () => {
   const { data } = useQuery(GET_USER_CARDS,
     { variables: {
       id: '647db351529d7960cb8ce476'
-    } })
+    } }
+  )
 
   const [transactionOpen, setTransactionOpen] = useState<boolean>(false)
 

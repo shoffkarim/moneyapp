@@ -39,7 +39,7 @@ export const Transaction: React.FC<TransactionProps> = ({ handleTransactionOpen,
           typeTo,
           value: Number(data.value),
           comment: data.comment,
-          date: new Date(),
+          date: data.date,
           tags: data.tags
         }
       }).then(() => {
