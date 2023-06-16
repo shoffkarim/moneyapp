@@ -23,10 +23,11 @@ export const HistoryTransaction: React.FC<HistoryTransactionProps> = ({ items })
     <Table stickyHeader aria-label="sticky table">
       <HistoryTableHeader />
       <TableBody>
-        {processedItems && processedItems.map((item: TransactionItem) =>
+        {processedItems && processedItems.map((item: TransactionItem, index: number) =>
           <HistoryTransactionElement
             key={item.id}
             {...item}
+            index={index}
           />
         )}
       </TableBody>

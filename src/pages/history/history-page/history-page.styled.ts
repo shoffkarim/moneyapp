@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 export const HistoryContainerStyled = styled.div(() => css`
   width: auto;
   height: 100%;
-  background-color: #c4c4c4;
+  background-color: #1976d2;
   z-index: 12;
   padding: 15px;
 `)

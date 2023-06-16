@@ -1,6 +1,7 @@
 import { Tag } from "components/interfaces"
 
 export type TransactionItem = {
+  index: number
   id: string
   value: number
   idFrom: string

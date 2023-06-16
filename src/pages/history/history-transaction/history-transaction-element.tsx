@@ -1,6 +1,6 @@
 import { TableCell, Typography } from "@mui/material"
 import React, { useState } from "react"
-import { HistoryItemCellStyled, HistoryItemIconStyled, HistoryItemStyled, HistoryItemTagListStyled, HistoryItemTagItemStyled, HistoryItemCommentStyled } from "./history-transaction.styled"
+import { HistoryItemCellStyled, HistoryItemIconStyled, HistoryItemStyled, HistoryItemTagListStyled, HistoryItemTagItemStyled, HistoryItemCommentStyled, HistoryItemTextStyled } from "./history-transaction.styled"
 import { format } from "date-fns"
 import { formatMoney } from "components/utils/format"
 import { icons } from "components/utils/icons"
@@ -28,7 +28,8 @@ export const HistoryTransactionElement: React.FC<TransactionItem> = ({
   comment,
   tags,
   cardFrom,
-  cardTo
+  cardTo,
+  index,
 }) => {
   const [showComment, setShowComment] = useState<boolean>(false)
   const formatedDate = format(new Date(date), 'MM-dd-yyyy')
@@ -37,19 +38,20 @@ export const HistoryTransactionElement: React.FC<TransactionItem> = ({
   const iconBackgroundFrom: string = themeColor(cardFrom?.color || '')
   const IconTo: IMainIconObj = icons(cardTo?.icon || '')
   const iconBackgroundTo: string = themeColor(cardTo?.color || '')
-  console.log(iconBackgroundFrom, iconBackgroundTo)
+  console.log(index)
+  const textColor = index % 2 === 0
 
   return (
     <HistoryItemStyled>
       <TableCell>
-        <Typography>{formatedDate}</Typography>
+        <HistoryItemTextStyled white={textColor}>{formatedDate}</HistoryItemTextStyled>
       </TableCell>
       <TableCell>
         <HistoryItemCellStyled>
           <HistoryItemIconStyled background={ iconBackgroundFrom }>
             <IconFrom.Icon {...iconProps} />
           </HistoryItemIconStyled>
-          <Typography>{cardFrom?.name}</Typography>
+          <HistoryItemTextStyled white={textColor}>{cardFrom?.name}</HistoryItemTextStyled>
         </HistoryItemCellStyled>
       </TableCell>
       <TableCell>
@@ -57,11 +59,11 @@ export const HistoryTransactionElement: React.FC<TransactionItem> = ({
           <HistoryItemIconStyled background={ iconBackgroundTo }>
             <IconTo.Icon {...iconProps} />
           </HistoryItemIconStyled>
-          <Typography>{cardTo?.name}</Typography>
+          <HistoryItemTextStyled white={textColor}>{cardTo?.name}</HistoryItemTextStyled>
         </HistoryItemCellStyled>
       </TableCell>
       <TableCell>
-        <Typography>{formatedMoney} $</Typography>
+        <HistoryItemTextStyled white={textColor}>{formatedMoney} $</HistoryItemTextStyled>
       </TableCell>
       <TableCell>
         <HistoryItemCommentStyled
@@ -69,12 +71,13 @@ export const HistoryTransactionElement: React.FC<TransactionItem> = ({
           show={showComment ? 'initial' : 'nowrap'}
           aria-label={comment}
           title={comment}
+          white={textColor}
         >
           {comment}
         </HistoryItemCommentStyled>
         <HistoryItemTagListStyled>
           {tags.length > 0 && tags.map((tagItem) =>
-            <HistoryItemTagItemStyled key={tagItem.tagId}>
+            <HistoryItemTagItemStyled white={textColor} key={tagItem.tagId}>
               <Typography fontSize="14px">{tagItem.name}</Typography>
             </HistoryItemTagItemStyled>
           )}
