@@ -18,7 +18,7 @@ export const CalendarPage: React.FC = () => {
 
   console.log(handleData(data))
   const handleCalendarDate = (state: CalendarStateReturn) => {
-    console.log(state)
+    // console.log(state)
   }
   return (
     <Calendar

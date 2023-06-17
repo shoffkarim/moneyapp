@@ -22,51 +22,22 @@ type ResultData = {
 
 export const handleData = (data?: DataType) => {
   if (data) {
-    return data.transactions.reduce((acc: any, item: TransactionItem, index: number, arr: Array<TransactionItem>) => {
 
+    const groupedData: any = {}
 
-      if(index === 0) {
-        const tempObject: ResultData = {
-          date: formateDate( new Date(item.date), 'MM-DD-YYYY' ),
-          description: {
-            title: 'Total',
-            subTitle: item.value
-          },
-          items: [
-            {
-              id: item.id,
-              title: item.idTo,
-              backgroundColor: item.typeTo,
-              value: item.value,
-            }
-          ]
-        }
-        acc.push(tempObject)
+    for (const item of data.transactions) {
+      const date: any = formateDate(new Date(item.date), 'MM-DD-YYYY')
+      if(date in groupedData) {
+        groupedData[date].push(item)
+      } else {
+        groupedData[date] = [item]
       }
 
-      if(index !== 0 && acc.some((accItem: any) => accItem.date !== formateDate(new Date(item.date), 'MM-DD-YYYY'))) {
-        const tempObject: ResultData = {
-          date: formateDate( new Date(item.date), 'MM-DD-YYYY' ),
-          description: {
-            title: 'Total',
-            subTitle: item.value
-          },
-          items: [
-            {
-              id: item.id,
-              title: item.idTo,
-              backgroundColor: item.typeTo,
-              value: item.value,
-            }
-          ]
-        }
-        acc.push(tempObject)
-      }
+    }
+    return Object.values(groupedData)
 
 
-      return acc
 
-
-    },[])
+  
   }
 }
