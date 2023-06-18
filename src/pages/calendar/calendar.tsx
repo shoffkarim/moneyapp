@@ -13,7 +13,7 @@ interface CalendarProps {
   selectedDate: Date
   selectDate: (date: Date) => void
   firstWeekDay?: number
-  data: CalendarDataType
+  data: any
   sendParams: (state: CalendarStateReturn) => CalendarStateReturn | void
 }
 
@@ -30,7 +30,7 @@ export const Calendar: React.FC<CalendarProps> = ({ locale = 'default', firstWee
   return (
     <div>
       <CalendarHeader state={state} functions={functions} />
-      {state.mode === 'days' &&
+      {state.mode === 'days' && newState && newState.calendarDays &&
         <CalendarDaysMode state={newState} functions={functions} selectDate={selectDate} data={data} />
       }
 

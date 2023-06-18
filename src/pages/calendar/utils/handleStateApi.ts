@@ -4,8 +4,8 @@ export const handleStateApi = (state: UseCalendarStateReturn): CalendarStateRetu
   if(state.mode === 'days') {
     return {
       mode: state.mode,
-      firstDay: state.calendarDays[0].date,
-      lastDay: state.calendarDays[state.calendarDays.length - 1].date,
+      firstDay: state.calendarDays?.[0].date,
+      lastDay: state.calendarDays?.[state.calendarDays.length - 1].date,
       monthIndex: state.selectedMonth.monthIndex,
       monthName: state.selectedMonth.monthName,
       year: state.selectedYear

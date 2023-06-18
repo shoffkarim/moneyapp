@@ -37,13 +37,13 @@ export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDa
         <CalendarItemBorderBottomStyled />
         <CalendarItemTopStyled>
           <CalendarItemNumberStyled>
-            {day.dayNumber}
+            {day?.dayNumber}
           </CalendarItemNumberStyled>
 
         </CalendarItemTopStyled>
-        {day.items &&
+        {day?.items &&
           <DayItemsList>
-            {day.items.map((item, index) => {
+            {day?.items.map((item, index) => {
               if(index < 4) {
                 return(
                   <DayItem backgroundColor={item.backgroundColor} key={`${item.title}-${index}`}>
@@ -55,20 +55,20 @@ export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDa
             })}
           </DayItemsList>
         }
-        {day.items && day.items.length > 4 &&
+        {day?.items && day.items.length > 4 &&
           <DayItemHaveMore>
             <Typography fontSize="12px">{`${day.items.length - 4} more...`}</Typography>
           </DayItemHaveMore>
         }
-        {day.description &&
+        {day && day.description &&
             <CalendarItemAdditionalStyled>
               <Typography fontSize="14px" fontWeight="600">{day.description?.title}</Typography>
               <Typography fontSize="14px" fontWeight="600">{day.description?.subTitle}</Typography>
             </CalendarItemAdditionalStyled>
         }
-        {visibleDayPopup &&
+        {/* {visibleDayPopup &&
           <CalendarDayItemPopup day={day}/>
-        }
+        } */}
       </DayStyled>
       {visibleDayPopup &&
         <DayItemPopupOverlayStyled

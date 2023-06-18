@@ -78,7 +78,7 @@ export type WeekDaysNamesReturn = {
 
 export type UseCalendarStateReturn = {
   mode: string
-  calendarDays: Array<CreateDateReturn>
+  calendarDays?: Array<CreateDateReturn>
   weekDaysNames: Array<WeekDaysNamesReturn>
   monthesNames: Array<GetMonthesNamesReturn>
   selectedDate: CreateDateReturn
@@ -102,8 +102,8 @@ export type UseCalendarReturn = {
 
 export type CalendarStateDaysReturn = {
   mode: string
-  firstDay: Date
-  lastDay: Date
+  firstDay?: Date
+  lastDay?: Date
   monthIndex: number
   monthName: string
   year: number

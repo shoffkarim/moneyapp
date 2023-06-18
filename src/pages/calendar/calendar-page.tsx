@@ -5,6 +5,7 @@ import { CalendarStateReturn } from './types'
 import { useQuery } from "@apollo/client"
 import { GET_TRANSACTIONS_CALENDAR } from '__data__/queries/transactions'
 import { handleData } from './utils/handleData'
+import { GET_USER_CARDS } from '__data__/queries/cards'
 
 export const CalendarPage: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState(new Date())
@@ -16,7 +17,13 @@ export const CalendarPage: React.FC = () => {
     } }
   )
 
-  console.log(handleData(data))
+  const { data: cardsData } = useQuery(GET_USER_CARDS,
+    { variables: {
+      id: '647db351529d7960cb8ce476'
+    } }
+  )
+
+  const calendarData = handleData(cardsData, data )
   const handleCalendarDate = (state: CalendarStateReturn) => {
     // console.log(state)
   }
@@ -24,7 +31,7 @@ export const CalendarPage: React.FC = () => {
     <Calendar
       selectedDate={selectedDate}
       selectDate={setSelectedDate}
-      data={CalendarData}
+      data={{ days: calendarData }}
       locale="en-US"
       firstWeekDay={2}
       sendParams={handleCalendarDate}
