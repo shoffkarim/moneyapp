@@ -25,11 +25,12 @@ export const CalendarDaysMode: React.FC<CalendarDaysModeProps> = ({ state, funct
           ))}
         </WeekDaysNameContainerStyled>
         <DaysContainerStyled>
-          {state?.calendarDays?.map((day) => {
+          {state.calendarDays.map((day) => {
+
             const isToday = checkIsToday(day?.date)
             const isSelectedDay = checkDateIsEqual(day?.date, state?.selectedDate.date)
             const isAdditionalDay = day?.monthIndex !== state?.selectedMonth.monthIndex
-            return (
+            return day &&
               <CalendarDayItem
                 key={`${day?.dayNumber}-${day?.monthIndex}`}
                 isToday={isToday}
@@ -39,7 +40,6 @@ export const CalendarDaysMode: React.FC<CalendarDaysModeProps> = ({ state, funct
                 selectDate={selectDate}
                 day={day}
               />
-            )
           })}
         </DaysContainerStyled>
       </CalendarWrapperModeStyled>
