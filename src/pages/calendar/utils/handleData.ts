@@ -79,7 +79,7 @@ export const handleData = (cards: DBCardsCollection, data?: DataType, ) => {
         items: newData[index]
       }
     })
-    console.log({ days: handled })
+    
     return handled
   }
 }
