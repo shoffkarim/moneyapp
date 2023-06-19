@@ -1,41 +1,45 @@
-import React, { useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Calendar } from './calendar'
-import { CalendarData } from './sampleDataCalendar'
-import { CalendarStateDaysReturn, CalendarStateMonthesReturn, CalendarStateReturn, CalendarStateYearsReturn } from './types'
+import { CalendarStateReturn } from './types'
 import { useLazyQuery, useQuery } from "@apollo/client"
 import { GET_TRANSACTIONS_CALENDAR } from '__data__/queries/transactions'
 import { handleData } from './utils/handleData'
 import { GET_USER_CARDS } from '__data__/queries/cards'
+import { useCalendar } from './useCalendar'
+import { handleStateApi } from './utils/handleStateApi'
+import { assignData } from './utils/assignData'
+import { CalendarWrapper } from './calendarWrapper'
 
 export const CalendarPage: React.FC = () => {
+
   const [selectedDate, setSelectedDate] = useState(new Date())
 
-  const [getCalendarData, { data }] = useLazyQuery(GET_TRANSACTIONS_CALENDAR)
+  const { state, functions } = useCalendar({ locale: "en-US", selectedDate, firstWeekDay: 2 })
 
-  const { data: cardsData } = useQuery(GET_USER_CARDS,
-    { variables: {
-      id: '647db351529d7960cb8ce476'
-    } }
-  )
 
-  const calendarData = handleData(cardsData, data )
-  const handleCalendarDate = (state: CalendarStateReturn) => {
-    if(state?.mode === 'days') {
-      getCalendarData({ variables: {
-        id: '647db351529d7960cb8ce476',
-        firstDay: state.firstDay,
-        lastDay: state.lastDay
-      } })
-    }
-  }
+
+  // const { data: cardsData } = useQuery(GET_USER_CARDS,
+  //   { variables: {
+  //     id: '647db351529d7960cb8ce476'
+  //   } }
+  // )
+  // console.log(state)
+
+
+  // if(state?.mode === 'days' && state.calendarDays?.[0] && state.calendarDays?.[state.calendarDays.length - 1]) {
+  //   getCalendarData({ variables: {
+  //     id: '647db351529d7960cb8ce476',
+  //     firstDay: state.calendarDays?.[0].date,
+  //     lastDay: state.calendarDays?.[state.calendarDays.length - 1].date
+  //   } })
+  // }
+
+
   return (
-    <Calendar
-      selectedDate={selectedDate}
+    <CalendarWrapper
+      state={state}
+      functions={functions}
       selectDate={setSelectedDate}
-      data={{ days: calendarData }}
-      locale="en-US"
-      firstWeekDay={2}
-      sendParams={handleCalendarDate}
     />
   )
 }

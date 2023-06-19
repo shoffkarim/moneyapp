@@ -9,7 +9,6 @@ interface CalendarDaysModeProps {
   state: UseCalendarStateReturn
   functions: UseCalendarFuncsReturn
   selectDate: (date: Date) => void
-  data: CalendarDataType
 }
 
 export const CalendarDaysMode: React.FC<CalendarDaysModeProps> = ({ state, functions, selectDate }) => {

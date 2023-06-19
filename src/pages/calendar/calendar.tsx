@@ -1,37 +1,34 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useCalendar } from './useCalendar'
 import CalendarHeader from './header/calendarHeader'
 import CalendarDaysMode from './days/calendarDaysMode'
 import CalendarMonthesMode from './monthes/calendarMonthesMode'
 import CalendarYearsMode from './years/calendarYearsMode'
-import { CalendarDataType, CalendarStateReturn } from './types'
+import { CalendarDataType, CalendarStateReturn, UseCalendarFuncsReturn, UseCalendarStateReturn } from './types'
 import { assignData } from './utils/assignData'
 import { handleStateApi } from './utils/handleStateApi'
 
 interface CalendarProps {
-  locale?: string
-  selectedDate: Date
+  state: UseCalendarStateReturn,
+  functions: UseCalendarFuncsReturn
   selectDate: (date: Date) => void
-  firstWeekDay?: number
-  data: any
-  sendParams: (state: CalendarStateReturn) => CalendarStateReturn | void
+  // sendParams: (state: CalendarStateReturn) => CalendarStateReturn | void
 }
 
-export const Calendar: React.FC<CalendarProps> = ({ locale = 'default', firstWeekDay = 2, selectedDate, selectDate, data, sendParams }) => {
-  const { state, functions } = useCalendar({ locale, selectedDate, firstWeekDay })
+export const Calendar: React.FC<CalendarProps> = ({ state, functions, selectDate }) => {
 
-  const newState = assignData(state, data)
+  console.log(2)
 
-  useEffect(() => {
-    const returnState = handleStateApi(state)
-    sendParams(returnState)
-  }, [state])
+  // useEffect(() => {
+  //   const returnState = handleStateApi(state)
+  //   sendParams(returnState)
+  // }, [state])
 
   return (
-    <div>
+    state && <div>
       <CalendarHeader state={state} functions={functions} />
-      {state.mode === 'days' && newState && newState.calendarDays &&
-        <CalendarDaysMode state={newState} functions={functions} selectDate={selectDate} data={data} />
+      {state.mode === 'days' && state && state.calendarDays &&
+        <CalendarDaysMode state={state} functions={functions} selectDate={selectDate} />
       }
 
       {state.mode === 'monthes' &&
@@ -42,5 +39,6 @@ export const Calendar: React.FC<CalendarProps> = ({ locale = 'default', firstWee
         <CalendarYearsMode state={state} functions={functions} />
       }
     </div>
+
   )
 }
