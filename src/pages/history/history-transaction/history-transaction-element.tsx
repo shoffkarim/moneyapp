@@ -38,7 +38,6 @@ export const HistoryTransactionElement: React.FC<TransactionItem> = ({
   const iconBackgroundFrom: string = themeColor(cardFrom?.color || '')
   const IconTo: IMainIconObj = icons(cardTo?.icon || '')
   const iconBackgroundTo: string = themeColor(cardTo?.color || '')
-  console.log(index)
   const textColor = index % 2 === 0
 
   return (

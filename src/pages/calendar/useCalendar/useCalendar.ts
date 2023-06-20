@@ -128,6 +128,16 @@ export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekD
     setSelectedMonth(createMonth({ date: new Date(selectedYear, monthIndex), locale }))
   }
 
+  const backToToday = () => {
+    const today = createDate({ date: new Date() })
+    setSelectedYear(today.year)
+    if(!selectedYearsInterval.includes(today.year)) {
+      setSelectedYearsInterval(getYearsInterval(today.year))
+    }
+    setSelectedMonth(createMonth({ date: new Date(today.year, today.monthIndex), locale }))
+    setMode('days')
+  }
+
   return {
     state: {
       mode,
@@ -145,6 +155,7 @@ export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekD
       setSelectedMonthByIndex,
       setSelectedYear,
       onClickArrow,
+      backToToday
     }
   }
 }

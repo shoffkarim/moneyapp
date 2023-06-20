@@ -28,7 +28,7 @@ export const CalendarWrapper: React.FC<CalendarWrapperProps> = ({ state, functio
   )
 
   const calendarData = handleData(cardsData, data)
-  console.log(assignData(state, calendarData))
+
   const getData = useCallback(() => {
     if(calendarData) {
       return assignData(state, {days: calendarData})

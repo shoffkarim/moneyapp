@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material'
 import React, { useState } from 'react'
-import { CalendarItemBorderBottomStyled, CalendarItemBorderTopStyled, CalendarItemNumberStyled, CalendarItemTopStyled, CalendarItemAdditionalStyled } from '../calendar.style'
+import { CalendarItemNumberStyled, CalendarItemTopStyled, CalendarItemAdditionalStyled } from '../calendar.style'
 import { DayItem, DayItemHaveMore, DayItemPopupOverlayStyled, DayItemsList, DayStyled, DayItemTextStyled } from './calendarDays.style'
 import { CreateDateReturn, UseCalendarFuncsReturn } from '../types'
 import CalendarDayItemPopup from './calendarDayItemPopup'
@@ -33,10 +33,14 @@ export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDa
           handleVisiblePopup(true)
         }}
       >
-        <CalendarItemBorderTopStyled />
-        <CalendarItemBorderBottomStyled />
+        {/* <CalendarItemBorderTopStyled />
+        <CalendarItemBorderBottomStyled /> */}
         <CalendarItemTopStyled>
-          <CalendarItemNumberStyled>
+          <CalendarItemNumberStyled
+            isToday={isToday}
+            isSelectedDay={isSelectedDay}
+            isAdditionalDay={isAdditionalDay}
+          >
             {day?.dayNumber}
           </CalendarItemNumberStyled>
 
@@ -66,9 +70,9 @@ export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDa
               <Typography fontSize="14px" fontWeight="600">{day.description?.subTitle}</Typography>
             </CalendarItemAdditionalStyled>
         }
-        {/* {visibleDayPopup &&
+        {visibleDayPopup &&
           <CalendarDayItemPopup day={day}/>
-        } */}
+        }
       </DayStyled>
       {visibleDayPopup &&
         <DayItemPopupOverlayStyled

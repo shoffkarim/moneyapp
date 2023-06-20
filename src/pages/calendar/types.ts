@@ -93,6 +93,7 @@ export type UseCalendarFuncsReturn = {
   setSelectedMonthByIndex: (monthIndex: number) => void
   setSelectedYear: (year: number) => void
   onClickArrow: (direction: 'right' | 'left') => void
+  backToToday: () => void
 }
 
 export type UseCalendarReturn = {

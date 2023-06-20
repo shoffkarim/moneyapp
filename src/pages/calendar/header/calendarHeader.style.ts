@@ -17,4 +17,18 @@ export const CalendarHeaderWrapperStyled = styled.div(() => css`
 
 export const CalendarHeaderMainButtonStyled = styled(Button)(() => css`
   color: #fff;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+`)
+
+export const CalendarHeaderControlsWrapperStyled = styled.div(() => css`
+  display: flex;
+`)
+
+export const CalendarHeaderButtonTodayStyled = styled(Button)(() => css`
+  color: #fff;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
 `)

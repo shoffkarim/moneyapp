@@ -12,7 +12,11 @@ export const CalendarDayItemPopup: React.FC<CalendarDayItemPopupProps> = ({ day 
   return (
     <DayItemPopupStyled>
       <CalendarItemTopStyled>
-        <CalendarItemNumberStyled>
+        <CalendarItemNumberStyled
+          isToday={false}
+          isAdditionalDay={false}
+          isSelectedDay={false}
+        >
           {day.dayNumber}
         </CalendarItemNumberStyled>
 

@@ -1,9 +1,10 @@
 import React from 'react'
-import { CalendarHeaderMainButtonStyled, CalendarHeaderStyled, CalendarHeaderWrapperStyled } from './calendarHeader.style'
-import { IconButton } from '@mui/material'
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
+import { CalendarHeaderControlsWrapperStyled, CalendarHeaderMainButtonStyled, CalendarHeaderStyled, CalendarHeaderButtonTodayStyled, CalendarHeaderWrapperStyled } from './calendarHeader.style'
+import { Button, IconButton } from '@mui/material'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import { UseCalendarFuncsReturn, UseCalendarStateReturn } from '../types'
+import { createDate } from '../useCalendar/helpers'
 
 interface CalendarHeaderProps {
   state: UseCalendarStateReturn
@@ -13,9 +14,7 @@ interface CalendarHeaderProps {
 export const CalendarHeader: React.FC<CalendarHeaderProps> = ({ state, functions }) => {
   return (
     <CalendarHeaderStyled>
-      <IconButton onClick={() => functions.onClickArrow('left')}>
-        <ArrowBackIosIcon htmlColor="white"/>
-      </IconButton>
+
       <CalendarHeaderWrapperStyled>
         {state.mode === 'days' && (
           <CalendarHeaderMainButtonStyled onClick={() => functions.setMode('monthes')}>
@@ -33,9 +32,19 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({ state, functions
           </CalendarHeaderMainButtonStyled>
         )}
       </CalendarHeaderWrapperStyled>
-      <IconButton onClick={() => functions.onClickArrow('right')}>
-        <ArrowForwardIosIcon htmlColor="white"/>
-      </IconButton>
+      <CalendarHeaderControlsWrapperStyled>
+        <IconButton onClick={() => functions.onClickArrow('left')}>
+          <ArrowBackIosNewIcon htmlColor="white"/>
+        </IconButton>
+        <CalendarHeaderButtonTodayStyled
+          variant='text'
+          onClick={() => {
+            console.log(functions.backToToday())
+          }}>Today</CalendarHeaderButtonTodayStyled>
+        <IconButton onClick={() => functions.onClickArrow('right')}>
+          <ArrowForwardIosIcon htmlColor="white"/>
+        </IconButton>
+      </CalendarHeaderControlsWrapperStyled>
     </CalendarHeaderStyled>
   )
 }

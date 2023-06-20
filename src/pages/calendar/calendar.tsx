@@ -17,8 +17,6 @@ interface CalendarProps {
 
 export const Calendar: React.FC<CalendarProps> = ({ state, functions, selectDate }) => {
 
-  console.log(2)
-
   // useEffect(() => {
   //   const returnState = handleStateApi(state)
   //   sendParams(returnState)

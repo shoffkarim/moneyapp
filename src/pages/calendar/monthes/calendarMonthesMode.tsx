@@ -15,18 +15,19 @@ export const CalendarMonthesMode: React.FC<CalendarMonthesModeProps> = ({ state,
       <MonthesContainerStyled>
         {state.monthesNames.map((month) => {
           const isCurrentMonth = new Date().getMonth() === month.monthIndex && new Date().getFullYear() === state.selectedYear
-          const isSelectedMonth = state.selectedDate.year === state.selectedYear && month.monthIndex === state.selectedDate.monthIndex
+          // const isSelectedMonth = state.selectedDate.year === state.selectedYear && month.monthIndex === state.selectedDate.monthIndex
           return (
             <MonthStyled
               key={`${month.monthIndex}`}
-              isCurrentMonth={isCurrentMonth}
-              isSelectedMonth={isSelectedMonth}
               onClick={() => {
                 functions.setSelectedMonthByIndex(month.monthIndex)
                 functions.setMode('days')
               }}
             >
-              <CalendarItemNumberStyled>
+              <CalendarItemNumberStyled
+                isToday={isCurrentMonth}
+                isAdditionalDay={false}
+                isSelectedDay={false}>
                 {month.monthShort}
               </CalendarItemNumberStyled>
               <CalendarItemWrapperStyled>

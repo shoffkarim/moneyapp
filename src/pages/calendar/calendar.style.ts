@@ -20,77 +20,43 @@ export const WeekDayNameStyled = styled.div(() => css`
 `)
 
 
-export const CalendarItemBorderTopStyled = styled.div(() => css`
-  &::before {
-    content: '';
-    width: 100%;
-    height: 1px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #c4c4c4;
-  }
-  &::after {
-    content: '';
-    width: 1px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #c4c4c4;
-  }
-`)
-
-export const CalendarItemBorderBottomStyled = styled.div(() => css`
-  &::before {
-    content: '';
-    width: 100%;
-    height: 1px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: #c4c4c4;
-  }
-  &::after {
-    content: '';
-    width: 1px;
-    height: 100%;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background-color: #c4c4c4;
-  }
-`)
-
 export const CalendarItemStyled = styled.div(() => css`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   background-color: transparent;
-  //overflow: hidden;
+
+  border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: #e0e0e0;
+
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #e0e0e0;
+
   cursor: pointer;
   position: relative;
 
-  &:hover {
-    background-color: #3f50b5;
-    color: #ffffff;
-  }
-  ${CalendarItemBorderBottomStyled} {
-    &::after {
-      background-color: transparent;
-    }
-  }
-  ${CalendarItemBorderTopStyled} {
-    &::before {
-      background-color: transparent;
-    }
-  }
 `)
 
 
-
-export const CalendarItemNumberStyled = styled(Typography)(() => css`
-  padding: 5px 12px 0px 12px;
+type CalendarItemNumberStyledProps = {
+  isToday: boolean
+  isSelectedDay: boolean
+  isAdditionalDay: boolean
+}
+export const CalendarItemNumberStyled = styled(Typography, { shouldForwardProp: prop => prop !== 'isToday' && prop !== 'isSelectedDay' && prop !== 'isAdditionalDay' })<CalendarItemNumberStyledProps>(({ isToday, isSelectedDay, isAdditionalDay }) => css`
+  margin: 3px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${isToday || isSelectedDay ? '#fff' : '#000'};
+  color: ${isAdditionalDay && 'rgba(0,0,0, 0.5)'};
+  ${isToday ? "background-color: red" : 'background-color: transparent'};
+  ${isSelectedDay && !isToday && 'background-color : #616161'};
 `)
 
 
