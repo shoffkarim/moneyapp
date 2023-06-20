@@ -4,6 +4,7 @@ import { CardNew } from "components/card/card-new"
 import { CardDropWrapper } from "components/card/card-drop-wrapper"
 import { AccountsContainerStyled, AccountsWrapperStyled, BoxLabelStyled, BoxStyled } from "./accounts.styled"
 import { Typography } from "@mui/material"
+import { CardSkeletonContainer } from "components/cardSkeleton/cardSkeletonContainer"
 
 interface AccountsProps {
   transactionOpen: (
@@ -25,7 +26,6 @@ export const Accounts: React.FC<AccountsProps> = ({ transactionOpen, items }) =>
       </BoxLabelStyled>
       <AccountsContainerStyled>
         <AccountsWrapperStyled>
-          {/* {!isLoaded && items && */}
           { items &&
             items.map((item: ICard) => (
               <CardDropWrapper
@@ -39,6 +39,7 @@ export const Accounts: React.FC<AccountsProps> = ({ transactionOpen, items }) =>
                 transactionOpen={transactionOpen}
               />
             ))}
+          {!items && <CardSkeletonContainer/>}
           <CardNew type={"accounts"} text="Add"/>
         </AccountsWrapperStyled>
       </AccountsContainerStyled>

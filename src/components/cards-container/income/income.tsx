@@ -1,11 +1,10 @@
 import React from "react"
-import { useSelector } from "react-redux"
-import { RootState } from "__data__/store"
 import { ICard } from "components/interfaces"
 import { CardNew } from "components/card/card-new"
 import { CardDropWrapper } from "components/card/card-drop-wrapper"
 import { BoxLabelStyled, BoxStyled, IncomeContainerStyled, IncomeWrapperStyled } from "./income.styled"
 import { Typography } from "@mui/material"
+import { CardSkeletonContainer } from "components/cardSkeleton/cardSkeletonContainer"
 
 interface IncomeProps {
   transactionOpen: (
@@ -19,9 +18,6 @@ interface IncomeProps {
 }
 
 export const Income: React.FC<IncomeProps> = ({ transactionOpen, items }) => {
-
-  // const isLoaded = useSelector((state: RootState) => state.Incomes.isLoaded)
-
   return (
     <BoxStyled sx={{ backgroundColor: 'primary.dark' }}>
       <BoxLabelStyled>
@@ -29,7 +25,6 @@ export const Income: React.FC<IncomeProps> = ({ transactionOpen, items }) => {
       </BoxLabelStyled>
       <IncomeContainerStyled>
         <IncomeWrapperStyled>
-          {/* {!isLoaded && items && */}
           {items &&
             items.map((item: ICard) => (
               <CardDropWrapper
@@ -43,6 +38,7 @@ export const Income: React.FC<IncomeProps> = ({ transactionOpen, items }) => {
                 transactionOpen={transactionOpen}
               />
             ))}
+          {!items && <CardSkeletonContainer/>}
           <CardNew type={"incomes"} text="Add" />
         </IncomeWrapperStyled>
       </IncomeContainerStyled>
