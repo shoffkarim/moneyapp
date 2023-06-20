@@ -39,7 +39,7 @@ export const Expenses: React.FC<ExpensesProps> = ({ transactionOpen, items }) =>
               />
             ))}
           {!items && <CardSkeletonContainer/>}
-          <CardNew type={"expenses"} text="Add" />
+          {items && <CardNew type={"expenses"} text="Add" />}
         </ExpensesWrapperStyled>
       </ExpensesContainerStyled>
     </BoxStyled>

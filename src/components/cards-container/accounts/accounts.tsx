@@ -40,7 +40,7 @@ export const Accounts: React.FC<AccountsProps> = ({ transactionOpen, items }) =>
               />
             ))}
           {!items && <CardSkeletonContainer/>}
-          <CardNew type={"accounts"} text="Add"/>
+          {items && <CardNew type={"expenses"} text="Add" />}
         </AccountsWrapperStyled>
       </AccountsContainerStyled>
     </BoxStyled>

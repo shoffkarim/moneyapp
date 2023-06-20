@@ -39,7 +39,7 @@ export const Income: React.FC<IncomeProps> = ({ transactionOpen, items }) => {
               />
             ))}
           {!items && <CardSkeletonContainer/>}
-          <CardNew type={"incomes"} text="Add" />
+          {items && <CardNew type={"expenses"} text="Add" />}
         </IncomeWrapperStyled>
       </IncomeContainerStyled>
     </BoxStyled>
