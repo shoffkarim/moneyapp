@@ -91,6 +91,8 @@ export const PopupCloseButtonStyled = styled(IconButton)(() => css`
 
 export const PopupColorsWrapperStyled = styled.div(() => css`
   display: flex;
+  flex-wrap: wrap;
+  max-width: 232px;
 `)
 
 type ColorLabelStyledProps = {

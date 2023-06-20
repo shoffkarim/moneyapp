@@ -54,7 +54,7 @@ export const PageWrapperStyled = styled.div(() => css`
   display: flex;
   flex-direction: column;
   max-width: 1480px;
-  width: 100%;
+  width: calc(100% - 32px);
   margin: 0 auto;
   padding: 0px 16px;
 `)

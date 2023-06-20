@@ -1,14 +1,22 @@
 export const black = "#000000"
-export const gray = "#c4c4c4"
+export const gray = "#616161"
 export const white = "#ffffff"
-export const yellow = "#FFFF00"
-export const teal = "#008080"
-export const red = "#FF0000"
-export const purple = "#800080"
-export const blue = "#0000FF"
-export const pink = "#FF00FF"
-export const green = "#008000"
-export const navy = "#000080"
+export const yellow = "#fbc02d"
+export const teal = "#00796b"
+export const red = "#d32f2f"
+export const purple = "#7b1fa2"
+export const blue = "#1976d2"
+export const pink = "#c2185b"
+export const green = "#388e3c"
+export const cyan = "#0097a7"
+export const indigo = "#303f9f"
+export const deepPurple = "#512da8"
+export const lightBlue = "#0288d1"
+export const lime = "#afb42b"
+export const orange = "#f57c00"
+export const brown = "#5d4037"
+export const blueGray = "#455a64"
+
 
 export const ACCOUNTS = "accounts"
 export const INCOMES = "incomes"
@@ -29,7 +37,7 @@ export const colors: IObjectKeys = {
   blue,
   pink,
   green,
-  navy,
+  cyan,
 }
 
 export const colorsArray: string[] = [
@@ -41,5 +49,12 @@ export const colorsArray: string[] = [
   blue,
   pink,
   green,
-  navy,
+  cyan,
+  indigo,
+  deepPurple,
+  lightBlue,
+  lime,
+  orange,
+  brown,
+  blueGray,
 ]
