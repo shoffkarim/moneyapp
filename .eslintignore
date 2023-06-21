@@ -5,3 +5,5 @@ target-dev
 target-demo
 scripts
 config
+public
+build
