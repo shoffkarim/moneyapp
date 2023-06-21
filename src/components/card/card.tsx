@@ -3,13 +3,13 @@ import { GrFormEdit } from "react-icons/gr"
 import { formatMoney } from "components/utils/format"
 import { themeColor } from "components/utils/color"
 import { icons } from "components/utils/icons"
-import { EditPopup } from "components/popups/edit-popup"
+import { EditPopup } from "components/popups/editPopup"
 import { DragPreviewImage, useDrag } from "react-dnd"
 import { ICard, IMainIconObj } from "components/interfaces"
 import { Typography } from "@mui/material"
 import { CurrencyRuble } from "@mui/icons-material"
 import { CardIconStyled, CardStyled, CardValueStyled, CardWrapperStyled } from "./card.styled"
-import { EditContainerStyled } from "components/popups/edit-popup/edit-popup.styled"
+import { EditContainerStyled } from "components/popups/editPopup/editPopup.styled"
 
 
 

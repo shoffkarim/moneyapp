@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import { CardsContainer } from "components/cards-container"
-import { TransactionContainer } from "components/transaction-container"
+import { CardsContainer } from "components/cardsContainer"
+import { TransactionContainer } from "components/transactionContainer"
 import { MainStyled, WrapperStyled } from "./main.styled"
 import { useQuery } from "@apollo/client"
 import { GET_USER_CARDS } from "__data__/queries/cards"

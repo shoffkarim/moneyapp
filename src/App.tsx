@@ -4,7 +4,7 @@ import { HistoryPage } from 'pages/history'
 import { ContainerStyled, PageWrapperStyled } from 'pages/main/main.styled'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Main, SignUpPage, SignInPage } from './pages'
-import { CalendarPage } from 'pages/calendar/calendar-page'
+import { CalendarPage } from 'pages/calendar/calendarPage'
 import { useQuery } from '@apollo/client'
 import { GET_USER_TOTAL } from '__data__/queries/total'
 
