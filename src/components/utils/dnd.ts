@@ -1,5 +1,5 @@
 import { ACCOUNTS, EXPENSES, INCOMES } from "components/constants"
-import { dndItem } from "components/interfaces"
+import { dndItem } from "types"
 
 export const dndCanDrop = (item: dndItem, id: number, type: string) => {
   if(item.type === type) {

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Tag } from "components/interfaces"
+import { Tag } from "types"
 import { Control, Controller, ControllerRenderProps } from "react-hook-form"
 import { TransactionsTagsLabelStyled, TransactionTagsItemStyled, TransactionTagsStyled, TransactionWrapperStyled } from "./transaction.styled"
 import { TransactionValues } from "./utils"

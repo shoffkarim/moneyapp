@@ -1,9 +1,9 @@
 import React from 'react'
-import { HistoryTransaction } from '../historyTransaction'
+import { HistoryTransaction } from '../../components/historyTransaction'
 import { HistoryContainerStyled, HistoryWrapperStyled } from './historyPage.styled'
 import { useQuery } from '@apollo/client'
 import { GET_USER_TRANSACTIONS } from '__data__/queries/transactions'
-import { HistoryTransactionSkeleton } from '../historyTransaction/historyTransactionSkeleton'
+import { HistoryTransactionSkeleton } from '../../components/historyTransaction/historyTransactionSkeleton'
 
 export const HistoryPage: React.FC = () => {
 

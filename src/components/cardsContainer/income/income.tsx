@@ -1,12 +1,12 @@
 import React from "react"
-import { ICard } from "components/interfaces"
+import { ICard } from "types"
 import { CardNew } from "components/card/cardNew"
 import { CardDropWrapper } from "components/card/cardDropWrapper"
 import { IncomeContainerStyled, IncomeWrapperStyled } from "./income.styled"
 import { BoxLabelStyled, BoxStyled, SwiperStyled, SwiperSlideStyled  } from '../cardContainers.style'
 import { Typography } from "@mui/material"
-import { CardSkeletonContainer } from "components/cardSkeleton/cardSkeletonContainer"
-import { CardSkeleton } from "components/cardSkeleton/cardSkeleton"
+import { CardSkeletonContainer } from "components/card/cardSkeleton/cardSkeletonContainer"
+import { CardSkeleton } from "components/card/cardSkeleton/cardSkeleton"
 import { Pagination } from "swiper"
 
 interface IncomeProps {

@@ -1,4 +1,4 @@
-import { CalendarItemStyled, CalendarItemNumberStyled } from './../calendar.style'
+import { CalendarItemStyled, CalendarItemNumberStyled } from '../calendar.style'
 import styled from '@emotion/styled'
 import { css } from "@emotion/react"
 import { Typography } from '@mui/material'

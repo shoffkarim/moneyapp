@@ -9,7 +9,7 @@ import { PopupInput } from "../popupInput"
 import { PopupColors } from "../popupColors"
 import { SET_ACCOUNT, SET_EXPENSE, SET_INCOME } from "__data__/mutations/cards"
 import { useMutation } from "@apollo/client"
-import { IMainIcon, IMainIconObj } from "components/interfaces"
+import { IMainIcon, IMainIconObj } from "types"
 import { ACCOUNTS, INCOMES, colorsArray } from "components/constants"
 
 interface CreatePopupProps {

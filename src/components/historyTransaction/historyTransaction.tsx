@@ -4,8 +4,8 @@ import HistoryTableHeader from './historyTableHeader'
 import { HistoryTransactionElement } from './historyTransactionElement'
 import { useQuery } from "@apollo/client"
 import { GET_USER_CARDS } from "__data__/queries/cards"
-import { assignItemsWithCards } from '../utils'
-import { TransactionItem } from '../types'
+import { assignItemsWithCards } from './utils'
+import { TransactionItem } from './types'
 
 interface HistoryTransactionProps {
   items: Array<TransactionItem>

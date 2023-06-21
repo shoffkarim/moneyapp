@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Transaction } from "components/transactionContainer/transaction"
-import { TransactionAlert } from "./transaction-alert"
+import { TransactionAlert } from "./transactionAlert"
 
 
 interface TransactionContainerProps {

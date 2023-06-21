@@ -1,6 +1,6 @@
 import React from "react"
-import { TransactionCard } from "components/transactionContainer/transactionCard"
-import { TransactionCardProps } from "components/transactionContainer/transactionCard/transactionCard"
+import { CardTransaction } from "components/card/cardTransaction"
+import { CardTransactionProps } from "components/card/cardTransaction/cardTransaction"
 import { useDispatch, useSelector } from "react-redux"
 import { TransactionCardWrapperStyled, TransactionTitleStyled, TransactionWrapperStyled } from "./transaction.styled"
 import { useQuery } from "@apollo/client"
@@ -37,8 +37,8 @@ export const Cards: React.FC = () => {
         <TransactionTitleStyled>From</TransactionTitleStyled>
         <TransactionCardWrapperStyled>
           {!loading && !error &&
-            itemsFrom.map((item: TransactionCardProps) => (
-              <TransactionCard
+            itemsFrom.map((item: CardTransactionProps) => (
+              <CardTransaction
                 key={item.id}
                 id={item.id}
                 name={item.name}
@@ -56,8 +56,8 @@ export const Cards: React.FC = () => {
         <TransactionTitleStyled>To</TransactionTitleStyled>
         <TransactionCardWrapperStyled>
           {!loading && !error &&
-            itemsTo.map((item: TransactionCardProps) => (
-              <TransactionCard
+            itemsTo.map((item: CardTransactionProps) => (
+              <CardTransaction
                 key={item.id}
                 id={item.id}
                 name={item.name}

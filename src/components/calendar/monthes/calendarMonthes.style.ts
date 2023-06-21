@@ -1,8 +1,8 @@
-import { CalendarItemNumberStyled, CalendarItemStyled } from './../calendar.style'
+import { CalendarItemNumberStyled, CalendarItemStyled } from '../calendar.style'
 import styled from '@emotion/styled'
 import { css } from "@emotion/react"
 
-export const YearsContainerStyled = styled.div(() => css`
+export const MonthesContainerStyled = styled.div(() => css`
   display: grid;
   grid-template-columns: repeat(3, minmax(100px, auto));
   grid-auto-rows: minmax(100px, 175px);
@@ -10,7 +10,8 @@ export const YearsContainerStyled = styled.div(() => css`
 `)
 
 
-export const YearStyled = styled(CalendarItemStyled)(() => css`
+export const MonthStyled = styled(CalendarItemStyled)(() => css`
+
   &:nth-of-type(3n) {
     border-right-width: 1px;
     border-right-style: solid;
@@ -24,7 +25,8 @@ export const YearStyled = styled(CalendarItemStyled)(() => css`
   }
 
   ${CalendarItemNumberStyled} {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
 `)
+

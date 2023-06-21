@@ -1,11 +1,11 @@
 import React from "react"
-import { ICard } from "components/interfaces"
+import { ICard } from "types"
 import { CardNew } from "components/card/cardNew"
 import { CardDropWrapper } from "components/card/cardDropWrapper"
 import { AccountsContainerStyled, AccountsWrapperStyled } from "./accounts.styled"
 import { Typography } from "@mui/material"
-import { CardSkeletonContainer } from "components/cardSkeleton/cardSkeletonContainer"
-import { CardSkeleton } from "components/cardSkeleton/cardSkeleton"
+import { CardSkeletonContainer } from "components/card/cardSkeleton/cardSkeletonContainer"
+import { CardSkeleton } from "components/card/cardSkeleton/cardSkeleton"
 import { Grid, Pagination } from "swiper"
 import { BoxLabelStyled, BoxStyled, SwiperStyled, SwiperSlideStyled  } from '../cardContainers.style'
 

@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react'
-import { UseCalendarFuncsReturn, UseCalendarStateReturn } from './types'
+import { UseCalendarFuncsReturn, UseCalendarStateReturn } from '../../components/calendar/types'
 import { useLazyQuery, useQuery } from '@apollo/client'
 import { GET_TRANSACTIONS_CALENDAR } from '__data__/queries/transactions'
-import { Calendar } from './calendar'
+import { Calendar } from '../../components/calendar/calendar'
 import { GET_USER_CARDS } from '__data__/queries/cards'
-import { handleData } from './utils/handleData'
-import { assignData } from './utils/assignData'
+import { handleData } from '../../components/calendar/utils/handleData'
+import { assignData } from '../../components/calendar/utils/assignData'
 
 interface CalendarWrapperProps {
   state: UseCalendarStateReturn,

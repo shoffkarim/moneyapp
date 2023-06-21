@@ -5,7 +5,7 @@ import { format } from "date-fns"
 import { formatMoney } from "components/utils/format"
 import { icons } from "components/utils/icons"
 import { themeColor } from "components/utils/color"
-import { TransactionItem } from "../types"
+import { TransactionItem } from "./types"
 
 export interface IMainIcon {
   size: string

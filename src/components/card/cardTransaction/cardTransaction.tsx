@@ -5,9 +5,9 @@ import { themeColor } from "components/utils/color"
 import { icons } from "components/utils/icons"
 import CheckIcon from '@mui/icons-material/Check'
 import { CardNameStyled, CardStyled, CardValueStyled, CardWrapperStyled, CardIconStyled } from "components/card/card.styled"
-import { CheckContainerStyled } from "../transaction/transaction.styled"
+import { CheckContainerStyled } from "../../transactionContainer/transaction/transaction.styled"
 
-export interface TransactionCardProps {
+export interface CardTransactionProps {
   id: number
   name: string
   icon: string
@@ -32,7 +32,7 @@ const iconProps = {
   color: "white",
 }
 
-export const TransactionCard: React.FC<TransactionCardProps> = ({
+export const CardTransaction: React.FC<CardTransactionProps> = ({
   id,
   name,
   icon,

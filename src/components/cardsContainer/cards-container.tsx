@@ -2,7 +2,7 @@ import React from "react"
 import { Income, Accounts, Expenses } from "components"
 import { useDispatch } from "react-redux"
 
-import { ICard } from "components/interfaces"
+import { ICard } from "types"
 import { setTransactionStart } from "__data__/reducers/transaction"
 
 export interface CardsContainerProps {

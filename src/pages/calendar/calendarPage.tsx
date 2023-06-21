@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Calendar } from './calendar'
-import { CalendarStateReturn } from './types'
+import { Calendar } from '../../components/calendar/calendar'
+import { CalendarStateReturn } from '../../components/calendar/types'
 import { useLazyQuery, useQuery } from "@apollo/client"
 import { GET_TRANSACTIONS_CALENDAR } from '__data__/queries/transactions'
-import { handleData } from './utils/handleData'
+import { handleData } from '../../components/calendar/utils/handleData'
 import { GET_USER_CARDS } from '__data__/queries/cards'
-import { useCalendar } from './useCalendar'
-import { handleStateApi } from './utils/handleStateApi'
-import { assignData } from './utils/assignData'
+import { useCalendar } from '../../components/calendar/useCalendar'
+import { handleStateApi } from '../../components/calendar/utils/handleStateApi'
+import { assignData } from '../../components/calendar/utils/assignData'
 import { CalendarWrapper } from './calendarWrapper'
 
 export const CalendarPage: React.FC = () => {

@@ -1,4 +1,4 @@
-import { Tag } from "components/interfaces"
+import { Tag } from "types"
 
 export type TransactionItem = {
   index: number

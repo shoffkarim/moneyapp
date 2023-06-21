@@ -1,4 +1,4 @@
-import { DBCard, DBCardsCollection, TransactionItem } from "pages/history/types"
+import { DBCard, DBCardsCollection, TransactionItem } from "components/historyTransaction/types"
 import { formateDate } from "./fortmateDate"
 import { ACCOUNTS } from "components/constants"
 
@@ -79,7 +79,7 @@ export const handleData = (cards: DBCardsCollection, data?: DataType, ) => {
         items: newData[index]
       }
     })
-    
+
     return handled
   }
 }

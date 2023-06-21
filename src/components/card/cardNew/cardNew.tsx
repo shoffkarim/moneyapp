@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material'
 import { CardIconStyled, CardStyled, CardWrapperStyled } from 'components/card/card.styled'
-import { IMainIconObj } from 'components/interfaces'
+import { IMainIconObj } from 'types'
 import { CreatePopup } from 'components/popups/createPopup'
 import { icons } from 'components/utils/icons'
 import React, { useState } from 'react'
