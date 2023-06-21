@@ -10,7 +10,7 @@ import { GET_USER_TOTAL } from '__data__/queries/total'
 
 
 const App: React.FC = () => {
-  const { data } = useQuery(GET_USER_TOTAL,
+  const { data, loading, error } = useQuery(GET_USER_TOTAL,
     { variables:
       {
         id: '647db351529d7960cb8ce476'
@@ -21,6 +21,8 @@ const App: React.FC = () => {
     <BrowserRouter>
       <ContainerStyled>
         <TopBar
+          loading={loading}
+          error={error}
           total={{
             "expenses": data?.user.total.expenses,
             "incomes": data?.user.total.incomes,

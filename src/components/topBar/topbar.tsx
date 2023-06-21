@@ -3,6 +3,8 @@ import { Total } from 'components'
 import { NavLinkStyled, RightMenuStyled } from './topbar.styled'
 import { AppBar, IconButton, Menu, MenuItem, Toolbar } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
+import { ApolloError } from '@apollo/client'
+import { TotalSkeleton } from './total/totalSkeleton'
 
 type TopBarProps = {
   name?: string
@@ -11,8 +13,10 @@ type TopBarProps = {
     incomes?: number
     balance?: number
   }
+  loading?: boolean
+  error?: ApolloError
 }
-export const TopBar: React.FC<TopBarProps> = ({ total }) => {
+export const TopBar: React.FC<TopBarProps> = ({ total, loading, error }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -26,7 +30,10 @@ export const TopBar: React.FC<TopBarProps> = ({ total }) => {
   return (
     <AppBar position='relative'>
       <Toolbar>
-        <Total total={total}/>
+        {!loading && !error ?
+          <Total total={total}/>
+          : <TotalSkeleton/>
+        }
         <RightMenuStyled>
           <IconButton
             size="large"

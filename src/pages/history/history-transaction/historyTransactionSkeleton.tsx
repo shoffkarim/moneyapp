@@ -1,5 +1,5 @@
-import { Skeleton, Table, TableBody, TableCell } from '@mui/material'
 import React from 'react'
+import { Skeleton, Table, TableBody, TableCell } from '@mui/material'
 import HistoryTableHeader from './history-table-header'
 import { HistoryItemCellStyled, HistoryItemCircularSkeletonStyled, HistoryItemStyled } from './history-transaction.styled'
 
