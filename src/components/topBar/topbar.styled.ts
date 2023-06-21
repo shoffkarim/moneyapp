@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 export const NavLinkStyled = styled(Link)(() => css`
   color: #1976d2;
   text-decoration: none;
+  width: 100%;
 `)
 
 export const RightMenuStyled = styled.div(() => css`

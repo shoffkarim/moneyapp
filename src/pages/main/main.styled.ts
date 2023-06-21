@@ -57,4 +57,7 @@ export const PageWrapperStyled = styled.div(() => css`
   width: calc(100% - 32px);
   margin: 0 auto;
   padding: 0px 16px;
+  @media screen and (max-width: 1512px) {
+    max-width: 1360px;
+  }
 `)

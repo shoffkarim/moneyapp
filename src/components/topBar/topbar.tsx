@@ -48,15 +48,7 @@ export const TopBar: React.FC<TopBarProps> = ({ total, loading, error }) => {
           <Menu
             id="menu-appbar"
             anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
             keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >

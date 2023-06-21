@@ -8,13 +8,13 @@ export const BoxStyled = styled(Box)(() => css`
   border-radius: 0px 10px 10px 10px;
   width: 100%;
   display: flex;
-  overflow: hidden;
+  max-width: 1480px;
 `)
 
 export const BoxLabelStyled = styled.div(() => css`
   position: absolute;
   top: -37px;
-  background-color: #1976d2;
+  background-color: #1565c0;
   padding: 5px 10px;
   border-radius: 5px 5px 0px 0px;
 `)

@@ -1,1 +1,1 @@
-export { CardsContainer } from './cards-container'
+export { CardsContainer } from './cardsContainer'
