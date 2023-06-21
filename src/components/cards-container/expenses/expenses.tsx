@@ -2,9 +2,13 @@ import React from "react"
 import { ICard } from "components/interfaces"
 import { CardNew } from "components/card/card-new"
 import { CardDropWrapper } from "components/card/card-drop-wrapper"
-import { BoxLabelStyled, BoxStyled, ExpensesContainerStyled, ExpensesWrapperStyled } from "./expenses.styled"
+import { ExpensesContainerStyled, ExpensesWrapperStyled, SwiperSlideExpensesStyled } from "./expenses.styled"
 import { Typography } from "@mui/material"
 import { CardSkeletonContainer } from "components/cardSkeleton/cardSkeletonContainer"
+import { BoxLabelStyled, BoxStyled, SwiperStyled, SwiperSlideStyled  } from '../cardContainers.style'
+import { Grid, Pagination } from "swiper"
+import { CardSkeleton } from "components/cardSkeleton/cardSkeleton"
+
 
 interface ExpensesProps {
   transactionOpen: (
@@ -23,7 +27,57 @@ export const Expenses: React.FC<ExpensesProps> = ({ transactionOpen, items }) =>
       <BoxLabelStyled>
         <Typography color="white">Expenses</Typography>
       </BoxLabelStyled>
-      <ExpensesContainerStyled>
+      {!items &&
+            <SwiperStyled
+              slidesPerView={1}
+              pagination={{ clickable: true }}
+              modules={[ Pagination ]}
+              className="mySwiper"
+            >
+              <SwiperSlideExpensesStyled>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+              </SwiperSlideExpensesStyled>
+              <SwiperSlideExpensesStyled>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+              </SwiperSlideExpensesStyled>
+
+            </SwiperStyled>
+      }
+      {/* <ExpensesContainerStyled>
         <ExpensesWrapperStyled>
           {items &&
             items.map((item: ICard) => (
@@ -40,8 +94,8 @@ export const Expenses: React.FC<ExpensesProps> = ({ transactionOpen, items }) =>
             ))}
           {!items && <CardSkeletonContainer/>}
           {items && <CardNew type={"expenses"} text="Add" />}
-        </ExpensesWrapperStyled>
-      </ExpensesContainerStyled>
+        </ExpensesWrapperStyled> */}
+      {/* </ExpensesContainerStyled> */}
     </BoxStyled>
   )
 }

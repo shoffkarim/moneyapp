@@ -2,9 +2,12 @@ import React from "react"
 import { ICard } from "components/interfaces"
 import { CardNew } from "components/card/card-new"
 import { CardDropWrapper } from "components/card/card-drop-wrapper"
-import { BoxLabelStyled, BoxStyled, IncomeContainerStyled, IncomeWrapperStyled } from "./income.styled"
+import { IncomeContainerStyled, IncomeWrapperStyled } from "./income.styled"
+import { BoxLabelStyled, BoxStyled, SwiperStyled, SwiperSlideStyled  } from '../cardContainers.style'
 import { Typography } from "@mui/material"
 import { CardSkeletonContainer } from "components/cardSkeleton/cardSkeletonContainer"
+import { CardSkeleton } from "components/cardSkeleton/cardSkeleton"
+import { Pagination } from "swiper"
 
 interface IncomeProps {
   transactionOpen: (
@@ -23,25 +26,59 @@ export const Income: React.FC<IncomeProps> = ({ transactionOpen, items }) => {
       <BoxLabelStyled>
         <Typography color="white">Incomes</Typography>
       </BoxLabelStyled>
-      <IncomeContainerStyled>
-        <IncomeWrapperStyled>
-          {items &&
-            items.map((item: ICard) => (
-              <CardDropWrapper
-                key={`${item.id} - ${Math.random()}`}
-                id={item.id}
-                name={item.name}
-                icon={item.icon}
-                color={item.color}
-                value={item.value}
-                type={"incomes"}
-                transactionOpen={transactionOpen}
-              />
-            ))}
-          {!items && <CardSkeletonContainer/>}
-          {items && <CardNew type={"expenses"} text="Add" />}
-        </IncomeWrapperStyled>
-      </IncomeContainerStyled>
+      {!items &&
+            <SwiperStyled
+              slidesPerView={1}
+              pagination={{ clickable: true }}
+              modules={[ Pagination ]}
+              className="mySwiper"
+            >
+              <SwiperSlideStyled>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+              </SwiperSlideStyled>
+              <SwiperSlideStyled>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+              </SwiperSlideStyled>
+            </SwiperStyled>
+      }
+      {/* <IncomeWrapperStyled> */}
+      {/* <Swiper>
+            {items &&
+              items.map((item: ICard) => (
+                <SwiperSlide key={`${item.id} - ${Math.random()}`}>
+                  <CardDropWrapper
+                    id={item.id}
+                    name={item.name}
+                    icon={item.icon}
+                    color={item.color}
+                    value={item.value}
+                    type={"incomes"}
+                    transactionOpen={transactionOpen}
+                  />
+                </SwiperSlide>
+              ))
+            }
+          </Swiper> */}
+
+
+      {/* <CardSkeletonContainer/> */}
+      {/* {items && <CardNew type={"expenses"} text="Add" />}
+        </IncomeWrapperStyled> */}
+      {/* </IncomeContainerStyled> */}
     </BoxStyled>
   )
 }

@@ -72,14 +72,14 @@ export const HistoryItemCommentStyled = styled(Typography)<HistoryItemCommentPro
   color: ${white ? '#fff' : '#000'};
 `)
 
+export const HistoryItemCircularSkeletonStyled = styled(Skeleton)(() => css`
+  margin-right: 10px;
+`)
+
 type HistoryItemDateStyledProps = {
   white: boolean
 }
 
 export const HistoryItemTextStyled = styled(Typography)<HistoryItemDateStyledProps>(({ white }) => css`
   color: ${white ? '#fff' : '#000'};
-`)
-
-export const HistoryItemCircularSkeletonStyled = styled(Skeleton)(() => css`
-  margin-right: 10px;
 `)

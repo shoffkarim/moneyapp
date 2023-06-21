@@ -4,6 +4,9 @@ import { TransactionContainer } from "components/transaction-container"
 import { MainStyled, WrapperStyled } from "./main.styled"
 import { useQuery } from "@apollo/client"
 import { GET_USER_CARDS } from "__data__/queries/cards"
+import 'swiper/css'
+import "swiper/css/grid"
+import "swiper/css/pagination"
 
 export const Main: React.FC = () => {
   // const [data, setData] = useState<{

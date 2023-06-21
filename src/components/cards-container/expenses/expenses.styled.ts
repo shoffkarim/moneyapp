@@ -1,27 +1,22 @@
 import styled from '@emotion/styled'
 import { css } from "@emotion/react"
-import { Box } from '@mui/material'
-
+import { SwiperSlide } from 'swiper/react'
 export const ExpensesContainerStyled = styled.div(() => css`
   padding: 10px 20px;
 `)
 
 export const ExpensesWrapperStyled = styled.div(() => css`
   display: grid;
+  grid-auto-flow: column;
   justify-items: start;
   grid-template-columns: repeat(auto-fill, 100px);
-  gap: 30px 20px;
+  gap: 0px 20px;
 `)
 
-export const BoxStyled = styled(Box)(() => css`
-  position: relative;
-  border-radius: 0px 10px 10px 10px;
-`)
 
-export const BoxLabelStyled = styled.div(() => css`
-  position: absolute;
-  top: -37px;
-  background-color: #1976d2;
-  padding: 5px 10px;
-  border-radius: 5px 5px 0px 0px;
+export const SwiperSlideExpensesStyled = styled(SwiperSlide)(() => css`
+  display: flex;
+  height: calc((100% - 30px) / 2) !important;
+  gap: 40px 20px;
+  flex-wrap: wrap;
 `)

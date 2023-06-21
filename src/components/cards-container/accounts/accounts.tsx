@@ -2,9 +2,12 @@ import React from "react"
 import { ICard } from "components/interfaces"
 import { CardNew } from "components/card/card-new"
 import { CardDropWrapper } from "components/card/card-drop-wrapper"
-import { AccountsContainerStyled, AccountsWrapperStyled, BoxLabelStyled, BoxStyled } from "./accounts.styled"
+import { AccountsContainerStyled, AccountsWrapperStyled } from "./accounts.styled"
 import { Typography } from "@mui/material"
 import { CardSkeletonContainer } from "components/cardSkeleton/cardSkeletonContainer"
+import { CardSkeleton } from "components/cardSkeleton/cardSkeleton"
+import { Grid, Pagination } from "swiper"
+import { BoxLabelStyled, BoxStyled, SwiperStyled, SwiperSlideStyled  } from '../cardContainers.style'
 
 interface AccountsProps {
   transactionOpen: (
@@ -24,7 +27,36 @@ export const Accounts: React.FC<AccountsProps> = ({ transactionOpen, items }) =>
       <BoxLabelStyled>
         <Typography color="white">Accounts</Typography>
       </BoxLabelStyled>
-      <AccountsContainerStyled>
+      {!items &&
+            <SwiperStyled
+              slidesPerView={1}
+              pagination={{ clickable: true }}
+              modules={[ Pagination ]}
+              className="mySwiper"
+            >
+              <SwiperSlideStyled>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+              </SwiperSlideStyled>
+              <SwiperSlideStyled>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+              </SwiperSlideStyled>
+            </SwiperStyled>
+      }
+      {/* <AccountsContainerStyled>
         <AccountsWrapperStyled>
           { items &&
             items.map((item: ICard) => (
@@ -42,7 +74,7 @@ export const Accounts: React.FC<AccountsProps> = ({ transactionOpen, items }) =>
           {!items && <CardSkeletonContainer/>}
           {items && <CardNew type={"expenses"} text="Add" />}
         </AccountsWrapperStyled>
-      </AccountsContainerStyled>
+      </AccountsContainerStyled> */}
     </BoxStyled>
   )
 }
