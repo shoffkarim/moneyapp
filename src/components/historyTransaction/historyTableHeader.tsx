@@ -1,5 +1,6 @@
 import { TableCell, TableHead, TableRow } from '@mui/material'
 import React from 'react'
+import { TableCellValueStyled } from './historyTransaction.styled'
 
 function HistoryTableHeader() {
   return (
@@ -14,9 +15,9 @@ function HistoryTableHeader() {
         <TableCell>
             To
         </TableCell>
-        <TableCell>
+        <TableCellValueStyled>
             Value
-        </TableCell>
+        </TableCellValueStyled>
         <TableCell>
             Info
         </TableCell>

@@ -1,4 +1,4 @@
-import { Skeleton, TableRow, Typography } from '@mui/material'
+import { Skeleton, TableCell, TableRow, Typography } from '@mui/material'
 import styled from "@emotion/styled"
 import { css } from '@emotion/react'
 
@@ -82,4 +82,17 @@ type HistoryItemDateStyledProps = {
 
 export const HistoryItemTextStyled = styled(Typography)<HistoryItemDateStyledProps>(({ white }) => css`
   color: ${white ? '#fff' : '#000'};
+`)
+
+export const HistoryItemValueMobileStyled = styled(HistoryItemTextStyled)(() => css`
+  display: none;
+  @media screen and (max-width: 900px) {
+    display: block;
+  }
+`)
+
+export const TableCellValueStyled = styled(TableCell)(() => css`
+  @media screen and (max-width: 900px) {
+    display: none
+  }
 `)

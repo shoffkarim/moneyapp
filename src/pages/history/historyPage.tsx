@@ -17,6 +17,7 @@ export const HistoryPage: React.FC = () => {
   return (
     <HistoryContainerStyled>
       <HistoryWrapperStyled>
+        <HistoryTransaction items={[]}/>
         {!loading && !error ?
           <HistoryTransaction items={data?.user.transactions}/>
           : <HistoryTransactionSkeleton/>

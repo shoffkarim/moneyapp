@@ -1,6 +1,6 @@
 import { TableCell, Typography } from "@mui/material"
 import React, { useState } from "react"
-import { HistoryItemCellStyled, HistoryItemIconStyled, HistoryItemStyled, HistoryItemTagListStyled, HistoryItemTagItemStyled, HistoryItemCommentStyled, HistoryItemTextStyled } from "./historyTransaction.styled"
+import { HistoryItemCellStyled, HistoryItemIconStyled, HistoryItemStyled, HistoryItemTagListStyled, HistoryItemTagItemStyled, HistoryItemCommentStyled, HistoryItemTextStyled, TableCellValueStyled, HistoryItemValueMobileStyled } from "./historyTransaction.styled"
 import { format } from "date-fns"
 import { formatMoney } from "components/utils/format"
 import { icons } from "components/utils/icons"
@@ -61,10 +61,13 @@ export const HistoryTransactionElement: React.FC<TransactionItem> = ({
           <HistoryItemTextStyled white={textColor}>{cardTo?.name}</HistoryItemTextStyled>
         </HistoryItemCellStyled>
       </TableCell>
-      <TableCell>
+      <TableCellValueStyled>
         <HistoryItemTextStyled white={textColor}>{formatedMoney} $</HistoryItemTextStyled>
-      </TableCell>
+      </TableCellValueStyled>
       <TableCell>
+        <HistoryItemValueMobileStyled
+          white={textColor}
+        >{formatedMoney} $</HistoryItemValueMobileStyled>
         <HistoryItemCommentStyled
           onClick={() => setShowComment(!showComment)}
           show={showComment ? 'initial' : 'nowrap'}
