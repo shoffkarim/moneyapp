@@ -1,7 +1,12 @@
 import styled from '@emotion/styled'
 import { css } from "@emotion/react"
 import { Link } from 'react-router-dom'
+import { Toolbar } from '@mui/material'
 
+
+export const ToolbarStyled = styled(Toolbar)(() => css`
+  padding: 10px 0px;
+`)
 export const NavLinkStyled = styled(Link)(() => css`
   color: #1976d2;
   text-decoration: none;

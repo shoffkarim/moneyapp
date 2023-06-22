@@ -3,6 +3,7 @@ import { BiDollar } from 'react-icons/bi'
 import { formatMoney } from 'components/utils/format'
 import { Typography } from '@mui/material'
 import { TotalItemStyled, TotalStyled, TotalItemWrapperStyled } from './total.styled'
+import { BALANCE, EXPENSES, INCOMES } from 'components/constants'
 
 type TotalProps = {
   total?: {
@@ -20,21 +21,21 @@ export const Total: React.FC<TotalProps> = ({ total }) => {
   return (
     <TotalStyled>
       <TotalItemStyled>
-        <Typography variant="h5" fontSize={20}>Outcomes</Typography>
+        <Typography variant="h5" fontSize={20}>{INCOMES.toLocaleUpperCase()}</Typography>
         <TotalItemWrapperStyled>
           <Typography variant="h5" fontSize={22}>{expensesFormat}</Typography>
           <BiDollar fontSize={22}/>
         </TotalItemWrapperStyled>
       </TotalItemStyled>
       <TotalItemStyled>
-        <Typography variant="h5" fontSize={20}>Incomes</Typography>
+        <Typography variant="h5" fontSize={20}>{EXPENSES.toLocaleUpperCase()}</Typography>
         <TotalItemWrapperStyled>
           <Typography variant="h5" fontSize={22}>{incomeFormat}</Typography>
           <BiDollar fontSize={22}/>
         </TotalItemWrapperStyled>
       </TotalItemStyled>
       <TotalItemStyled>
-        <Typography variant="h5" fontSize={20}>Balance</Typography>
+        <Typography variant="h5" fontSize={20}>{BALANCE.toLocaleUpperCase()}</Typography>
         <TotalItemWrapperStyled>
           <Typography variant="h5" fontSize={22}>{balanceFormat}</Typography>
           <BiDollar fontSize={22}/>

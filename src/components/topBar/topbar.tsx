@@ -1,7 +1,7 @@
 import React from 'react'
 import { Total } from 'components'
-import { NavLinkStyled, RightMenuStyled } from './topbar.styled'
-import { AppBar, IconButton, Menu, MenuItem, Toolbar } from '@mui/material'
+import { NavLinkStyled, RightMenuStyled, ToolbarStyled } from './topbar.styled'
+import { AppBar, IconButton, Menu, MenuItem } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import { ApolloError } from '@apollo/client'
 import { TotalSkeleton } from './total/totalSkeleton'
@@ -29,7 +29,7 @@ export const TopBar: React.FC<TopBarProps> = ({ total, loading, error }) => {
 
   return (
     <AppBar position='relative'>
-      <Toolbar>
+      <ToolbarStyled>
         {!loading && !error ?
           <Total total={total}/>
           : <TotalSkeleton/>
@@ -69,7 +69,7 @@ export const TopBar: React.FC<TopBarProps> = ({ total, loading, error }) => {
             </MenuItem>
           </Menu>
         </RightMenuStyled>
-      </Toolbar>
+      </ToolbarStyled>
     </AppBar>
 
   )
