@@ -7,8 +7,7 @@ import { DragPreviewImage, useDrag } from "react-dnd"
 import { ICard, IMainIconObj } from "types"
 import { Typography } from "@mui/material"
 import { CurrencyRuble } from "@mui/icons-material"
-import { CardIconStyled, CardStyled, CardValueStyled, CardWrapperStyled } from "./card.styled"
-import { EditContainerStyled } from "components/popups/editPopup/editPopup.styled"
+import { CardIconStyled, CardStyled, CardValueStyled, CardWrapperStyled, CardEditContainerStyled } from "./card.styled"
 import { openEditPopup } from "__data__/reducers/editPopup"
 import { useAppDispatch } from "hooks"
 
@@ -22,8 +21,6 @@ const iconProps = {
 export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type }) => {
 
   const dispatch = useAppDispatch()
-
-  const [visibleEdit, setVisibleEdit] = useState(false)
 
   const [{ isDragging }, drag, preview] = useDrag(() => ({
     type: "card",
@@ -41,8 +38,6 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type }) =>
     <>
       <CardStyled
         isDragging={isDragging}
-        onMouseEnter={() => setVisibleEdit(!visibleEdit)}
-        onMouseLeave={() => setVisibleEdit(!visibleEdit)}
       >
         <CardWrapperStyled >
           <Typography variant="body1" mb={'10px'} color="white">{name}</Typography>
@@ -58,21 +53,19 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type }) =>
             <CurrencyRuble htmlColor="white" sx={{ fontSize: 18 }} />
           </CardValueStyled>
         </CardWrapperStyled>
-        {/* TODO: move EditContainerStyled out of here */}
-        {visibleEdit && (
-          <EditContainerStyled
-            onClick={() => dispatch(openEditPopup({
-              id,
-              name,
-              color,
-              iconName: icon,
-              type,
-              value
-            }))}
-          >
-            <GrFormEdit size="25px" />
-          </EditContainerStyled>
-        )}
+        <CardEditContainerStyled
+          onClick={() => dispatch(openEditPopup({
+            id,
+            name,
+            color,
+            iconName: icon,
+            type,
+            value
+          }))}
+        >
+          <GrFormEdit size="25px" />
+        </CardEditContainerStyled>
+
       </CardStyled>
     </>
   )
