@@ -18,9 +18,7 @@ export const Main: React.FC = () => {
   )
 
   const [transactionOpen, setTransactionOpen] = useState<boolean>(false)
-  const [createPopupOpen, setCreatePopupOpen] = useState<boolean>(false)
-  const [createPopupType, setCreatePopupType] = useState<string>('')
-  console.log(1)
+
   return (
     <MainStyled>
       <WrapperStyled>
@@ -29,18 +27,10 @@ export const Main: React.FC = () => {
           expenses={data?.user.expenses}
           incomes={data?.user.incomes}
           handleTransactionOpen={setTransactionOpen}
-          handleCreatePopupOpen={setCreatePopupOpen}
-          handleCreatePopupType={setCreatePopupType}
         />
       </WrapperStyled>
       <TransactionContainer transactionOpen={transactionOpen} handleTransactionOpen={setTransactionOpen}/>
-      {/* TODO: fix rerender of full page */}
-      {createPopupOpen &&
-        <CreatePopup
-          type={createPopupType}
-          handlerClose={setCreatePopupOpen}
-        />
-      }
+      <CreatePopup/>
     </MainStyled>
   )
 }

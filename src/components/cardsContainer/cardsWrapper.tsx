@@ -17,8 +17,6 @@ interface CardsWrapperProps {
     typeFrom: string,
     typeTo: string
   ) => void
-  handleCreatePopupOpen: (value: boolean) => void
-  handleCreatePopupType: (value: string) => void
   items?: Array<ICard>
   type: string
   title: string
@@ -26,8 +24,6 @@ interface CardsWrapperProps {
 
 export const CardsWrapper: React.FC<CardsWrapperProps> = ({
   transactionOpen,
-  handleCreatePopupOpen,
-  handleCreatePopupType,
   items,
   type,
   title,
@@ -72,9 +68,6 @@ export const CardsWrapper: React.FC<CardsWrapperProps> = ({
                 {index === handledArray.length - 1 &&
                   <CardNew
                     type={type}
-                    text="Add"
-                    handleCreatePopupOpen={handleCreatePopupOpen}
-                    handleCreatePopupType={handleCreatePopupType}
                   />
                 }
               </SlideComponent>

@@ -1,5 +1,5 @@
 import React from "react"
-import { useDispatch } from "react-redux"
+import { useAppDispatch } from "hooks"
 
 import { ICard } from "types"
 import { setTransactionStart } from "__data__/reducers/transaction"
@@ -12,19 +12,15 @@ export interface CardsContainerProps {
   expenses?: Array<ICard>
   incomes?: Array<ICard>
   handleTransactionOpen: (value: boolean) => void
-  handleCreatePopupOpen: (value: boolean) => void
-  handleCreatePopupType: (value: string) => void
 }
 export const CardsContainer: React.FC<CardsContainerProps> = ({
   accounts,
   expenses,
   incomes,
   handleTransactionOpen,
-  handleCreatePopupOpen,
-  handleCreatePopupType
 }) => {
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const transactionHandler = (
     open: boolean,
@@ -44,24 +40,18 @@ export const CardsContainer: React.FC<CardsContainerProps> = ({
         title={INCOMES}
         transactionOpen={transactionHandler}
         items={sampleCards.incomes}
-        handleCreatePopupOpen={handleCreatePopupOpen}
-        handleCreatePopupType={handleCreatePopupType}
       />
       <CardsWrapper
         type={ACCOUNTS}
         title={ACCOUNTS}
         transactionOpen={transactionHandler}
         items={sampleCards.accounts}
-        handleCreatePopupOpen={handleCreatePopupOpen}
-        handleCreatePopupType={handleCreatePopupType}
       />
       <CardsWrapper
         type={EXPENSES}
         title={EXPENSES}
         transactionOpen={transactionHandler}
         items={sampleCards.expenses}
-        handleCreatePopupOpen={handleCreatePopupOpen}
-        handleCreatePopupType={handleCreatePopupType}
       />
     </>
   )

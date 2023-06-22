@@ -3,12 +3,11 @@ import { CardIconStyled, CardStyled, CardWrapperStyled } from 'components/card/c
 import { IMainIconObj } from 'types'
 import { icons } from 'components/utils/icons'
 import React from 'react'
+import { openCreatePopup } from '__data__/reducers/createPopup'
+import { useAppDispatch } from 'hooks'
 
 export interface CardNewProps {
   type: string
-  text: string
-  handleCreatePopupOpen: (value: boolean) => void
-  handleCreatePopupType: (value: string) => void
 }
 
 const iconProps = {
@@ -18,22 +17,20 @@ const iconProps = {
 
 export const CardNew: React.FC<CardNewProps> = ({
   type,
-  text,
-  handleCreatePopupOpen,
-  handleCreatePopupType
 }) => {
+
+  const dispatch = useAppDispatch()
 
   const MainIcon: IMainIconObj = icons("plus")
   return (
     <>
       <CardStyled
         onClick={() => {
-          handleCreatePopupOpen(true)
-          handleCreatePopupType(type)
+          dispatch(openCreatePopup({ open: true, type: type }))
         }}
       >
         <CardWrapperStyled>
-          <Typography variant="body1" mb={'10px'} color="white" textAlign="center">{text}</Typography>
+          <Typography variant="body1" mb={'10px'} color="white" textAlign="center">Add</Typography>
           <CardIconStyled style={{ backgroundColor: "#000000" }}>
             <MainIcon.Icon {...iconProps} />
           </CardIconStyled>

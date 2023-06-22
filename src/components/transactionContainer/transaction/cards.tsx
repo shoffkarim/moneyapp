@@ -1,7 +1,8 @@
 import React from "react"
 import { CardTransaction } from "components/card/cardTransaction"
 import { CardTransactionProps } from "components/card/cardTransaction/cardTransaction"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
+import { useAppDispatch } from 'hooks'
 import { TransactionCardWrapperStyled, TransactionTitleStyled, TransactionWrapperStyled } from "./transaction.styled"
 import { useQuery } from "@apollo/client"
 import { GET_USER_CARDS } from "__data__/queries/cards"
@@ -17,12 +18,13 @@ export const Cards: React.FC = () => {
     } }
   )
 
+  // TODO: change selector
   const { idFrom, idTo, typeFrom, typeTo } = useSelector((state: RootState) => state.transaction)
 
   const itemsFrom = typeFrom === INCOMES ? data.user.incomes : data.user.accounts
   const itemsTo = typeTo === ACCOUNTS ? data.user.accounts : data.user.expenses
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const handlerCardIdFrom = (id: number) => {
     dispatch(setTransactionCardIDFrom(id))
   }

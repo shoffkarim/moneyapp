@@ -12,16 +12,17 @@ import { useMutation } from "@apollo/client"
 import { IMainIconObj } from "types"
 import { ACCOUNTS, INCOMES, colorsArray } from "components/constants"
 import { Typography } from "@mui/material"
+import { closeCreatePoup } from "__data__/reducers/createPopup"
+import { useAppDispatch, useAppSelector } from "hooks"
+import { RootState } from "__data__/store"
 
-interface CreatePopupProps {
-  type: string;
-  handlerClose: (x: boolean) => void
-}
 
-export const CreatePopup: React.FC<CreatePopupProps> = ({
-  type,
-  handlerClose
-}) => {
+export const CreatePopup: React.FC = () => {
+
+  const dispatch = useAppDispatch()
+
+  const { open, type } = useAppSelector((state: RootState) => state.createPopup)
+
   const title = getPopupTitle('create', type)
   const { control, handleSubmit, formState: { errors } } = useForm<SetCard>()
 
@@ -45,6 +46,9 @@ export const CreatePopup: React.FC<CreatePopupProps> = ({
   }, [type],
   )
 
+  const handleClose = () => {
+    dispatch(closeCreatePoup())
+  }
 
   const handleOnSubmit: SubmitHandler<SetCard> = (data) => {
     try {
@@ -59,7 +63,7 @@ export const CreatePopup: React.FC<CreatePopupProps> = ({
           value: Number(data.value)
         }
       }).then(() => {
-        handlerClose(false)
+        handleClose()
       })
     } catch (error) {
       console.log(errors)
@@ -67,59 +71,62 @@ export const CreatePopup: React.FC<CreatePopupProps> = ({
   }
 
   return (
-    <PopupStyled onSubmit={handleSubmit(handleOnSubmit)}>
-      <PopupOverlayStyled/>
-      <PopupContainerStyled>
-        <PopupCloseButtonStyled aria-label="close" onClick={() => handlerClose(false)}>
-          <CloseIcon htmlColor="#fff" fontSize='large' />
-        </PopupCloseButtonStyled>
-        <PopupFormStyled>
-          {title &&
+    open ?
+      <PopupStyled onSubmit={handleSubmit(handleOnSubmit)}>
+        <PopupOverlayStyled/>
+        <PopupContainerStyled>
+          <PopupCloseButtonStyled aria-label="close" onClick={() => handleClose()}>
+            <CloseIcon htmlColor="#fff" fontSize='large' />
+          </PopupCloseButtonStyled>
+          <PopupFormStyled>
+            {title &&
             <Typography
               variant="h5"
               component="h2"
               textAlign="center"
               marginBottom="20px"
             >{title}</Typography>
-          }
-          <PopupFormContainerStyled>
-            <PopupIconStyled
-              style={{ backgroundColor: activeColor }}
-              onClick={() => setVisibleIcons(!visibleIcons)}
-            >
-              <MainIcon.Icon size="50px" color="white" />
-            </PopupIconStyled>
-            <PopupWrapperStyled>
-              <PopupInput
-                control={control}
-                name="name"
-                label="Name"
-              />
-              <PopupInput
-                control={control}
-                name="value"
-                label="Value"
-              />
-              <PopupColors
-                setActiveColor={setActiveColor}
-                control={control}
-                activeColor={activeColor}
-                name="color"
-                groupName="create-popup-colors"
-              />
-            </PopupWrapperStyled>
-          </PopupFormContainerStyled>
-          <PopupButtonStyled variant="contained" type="submit">Create</PopupButtonStyled>
-        </PopupFormStyled>
+            }
+            <PopupFormContainerStyled>
+              <PopupIconStyled
+                style={{ backgroundColor: activeColor }}
+                onClick={() => setVisibleIcons(!visibleIcons)}
+              >
+                <MainIcon.Icon size="50px" color="white" />
+              </PopupIconStyled>
+              <PopupWrapperStyled>
+                <PopupInput
+                  control={control}
+                  name="name"
+                  label="Name"
+                />
+                <PopupInput
+                  control={control}
+                  name="value"
+                  label="Value"
+                />
+                <PopupColors
+                  setActiveColor={setActiveColor}
+                  control={control}
+                  activeColor={activeColor}
+                  name="color"
+                  groupName="create-popup-colors"
+                />
+              </PopupWrapperStyled>
+            </PopupFormContainerStyled>
+            <PopupButtonStyled variant="contained" type="submit">Create</PopupButtonStyled>
+          </PopupFormStyled>
 
-      </PopupContainerStyled>
-      <IconsPopup
-        visible={visibleIcons}
-        activeIcon={activeIcon}
-        changeIcon={setActiveIcon}
-        control={control}
-        groupName="create-popup-icons"
-      />
-    </PopupStyled>
+        </PopupContainerStyled>
+        <IconsPopup
+          visible={visibleIcons}
+          activeIcon={activeIcon}
+          changeIcon={setActiveIcon}
+          control={control}
+          groupName="create-popup-icons"
+        />
+      </PopupStyled>
+      : null
+
   )
 }
