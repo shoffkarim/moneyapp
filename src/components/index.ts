@@ -1,6 +1,3 @@
 export { Card } from './card'
-export { Income } from './cardsContainer/income'
-export { Accounts } from './cardsContainer/accounts'
-export { Expenses } from './cardsContainer/expenses'
 export { TopBar } from './topBar'
 export { Total } from './topBar/total'

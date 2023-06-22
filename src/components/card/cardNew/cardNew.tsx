@@ -1,13 +1,14 @@
 import { Typography } from '@mui/material'
 import { CardIconStyled, CardStyled, CardWrapperStyled } from 'components/card/card.styled'
 import { IMainIconObj } from 'types'
-import { CreatePopup } from 'components/popups/createPopup'
 import { icons } from 'components/utils/icons'
-import React, { useState } from 'react'
+import React from 'react'
 
 export interface CardNewProps {
-  type: string;
+  type: string
   text: string
+  handleCreatePopupOpen: (value: boolean) => void
+  handleCreatePopupType: (value: string) => void
 }
 
 const iconProps = {
@@ -15,15 +16,21 @@ const iconProps = {
   color: "white",
 }
 
-export const CardNew: React.FC<CardNewProps> = ({ type, text }) => {
-
-  const [visiblePopup, setVisiblePopup] = useState(false)
+export const CardNew: React.FC<CardNewProps> = ({
+  type,
+  text,
+  handleCreatePopupOpen,
+  handleCreatePopupType
+}) => {
 
   const MainIcon: IMainIconObj = icons("plus")
   return (
     <>
       <CardStyled
-        onClick={() => setVisiblePopup(true)}
+        onClick={() => {
+          handleCreatePopupOpen(true)
+          handleCreatePopupType(type)
+        }}
       >
         <CardWrapperStyled>
           <Typography variant="body1" mb={'10px'} color="white" textAlign="center">{text}</Typography>
@@ -32,7 +39,6 @@ export const CardNew: React.FC<CardNewProps> = ({ type, text }) => {
           </CardIconStyled>
         </CardWrapperStyled>
       </CardStyled>
-      {visiblePopup && <CreatePopup iconProps={iconProps} type={type} handlerClose={setVisiblePopup}/>}
     </>
   )
 }

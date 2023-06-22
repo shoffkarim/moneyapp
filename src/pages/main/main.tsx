@@ -7,23 +7,9 @@ import { GET_USER_CARDS } from "__data__/queries/cards"
 import 'swiper/css'
 import "swiper/css/grid"
 import "swiper/css/pagination"
+import { CreatePopup } from "components/popups/createPopup"
 
 export const Main: React.FC = () => {
-  // const [data, setData] = useState<{
-  //   user?: {
-  //     id: string
-  //     name: string
-  //     image: string
-  //   }
-  //   accounts?: Array<ICard>
-  //   incomes?: Array<ICard>
-  //   expenses?: Array<ICard>
-  //   total?: {
-  //     expenses?:number
-  //     incomes?: number
-  //     balance?: number
-  //   }
-  // }>()
 
   const { data } = useQuery(GET_USER_CARDS,
     { variables: {
@@ -32,13 +18,29 @@ export const Main: React.FC = () => {
   )
 
   const [transactionOpen, setTransactionOpen] = useState<boolean>(false)
-
+  const [createPopupOpen, setCreatePopupOpen] = useState<boolean>(false)
+  const [createPopupType, setCreatePopupType] = useState<string>('')
+  console.log(1)
   return (
     <MainStyled>
       <WrapperStyled>
-        <CardsContainer accounts={data?.user.accounts} expenses={data?.user.expenses} incomes={data?.user.incomes} handleTransactionOpen={setTransactionOpen}/>
+        <CardsContainer
+          accounts={data?.user.accounts}
+          expenses={data?.user.expenses}
+          incomes={data?.user.incomes}
+          handleTransactionOpen={setTransactionOpen}
+          handleCreatePopupOpen={setCreatePopupOpen}
+          handleCreatePopupType={setCreatePopupType}
+        />
       </WrapperStyled>
       <TransactionContainer transactionOpen={transactionOpen} handleTransactionOpen={setTransactionOpen}/>
+      {/* TODO: fix rerender of full page */}
+      {createPopupOpen &&
+        <CreatePopup
+          type={createPopupType}
+          handlerClose={setCreatePopupOpen}
+        />
+      }
     </MainStyled>
   )
 }

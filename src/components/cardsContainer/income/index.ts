@@ -1,1 +1,0 @@
-export { Income } from './income'

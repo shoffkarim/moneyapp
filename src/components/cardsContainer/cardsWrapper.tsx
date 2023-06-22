@@ -2,16 +2,14 @@ import React from "react"
 import { ICard } from "types"
 import { CardNew } from "components/card/cardNew"
 import { CardDropWrapper } from "components/card/cardDropWrapper"
-import { SwiperSlideExpensesStyled } from "./expenses.styled"
 import { Typography } from "@mui/material"
-import { BoxLabelStyled, BoxStyled, SwiperStyled } from '../cardContainers.style'
 import { Pagination } from "swiper"
-import { CardsSkeleton } from "../cardsSkeleton"
-import { separateItems } from "../separateItems"
-import { SIZE_OF_EXPENSES_CARDS } from "components/constants"
+import { BoxLabelStyled, BoxStyled, SwiperStyled, SwiperSlideStyled, SwiperSlideExpensesStyled  } from './cardContainers.style'
+import { CardsSkeleton } from "./cardsSkeleton"
+import { separateItems } from "./separateItems"
+import { EXPENSES, SIZE_OF_CARDS, SIZE_OF_EXPENSES_CARDS } from "components/constants"
 
-
-interface ExpensesProps {
+interface CardsWrapperProps {
   transactionOpen: (
     open: boolean,
     idFrom: number,
@@ -19,17 +17,30 @@ interface ExpensesProps {
     typeFrom: string,
     typeTo: string
   ) => void
+  handleCreatePopupOpen: (value: boolean) => void
+  handleCreatePopupType: (value: string) => void
   items?: Array<ICard>
+  type: string
+  title: string
 }
 
-export const Expenses: React.FC<ExpensesProps> = ({ transactionOpen, items }) => {
+export const CardsWrapper: React.FC<CardsWrapperProps> = ({
+  transactionOpen,
+  handleCreatePopupOpen,
+  handleCreatePopupType,
+  items,
+  type,
+  title,
+}) => {
+  const size = type === EXPENSES ? SIZE_OF_EXPENSES_CARDS : SIZE_OF_CARDS
+  const handledArray = items && separateItems(items, size)
 
-  const handledArray = items && separateItems(items, SIZE_OF_EXPENSES_CARDS)
+  const SlideComponent = type == EXPENSES ? SwiperSlideExpensesStyled : SwiperSlideStyled
 
   return (
     <BoxStyled sx={{ backgroundColor: 'primary.dark' }}>
       <BoxLabelStyled>
-        <Typography color="white">Expenses</Typography>
+        <Typography color="white" fontSize="14px">{title.toLocaleUpperCase()}</Typography>
       </BoxLabelStyled>
       {items ?
         <SwiperStyled
@@ -43,7 +54,7 @@ export const Expenses: React.FC<ExpensesProps> = ({ transactionOpen, items }) =>
           handledArray.map((subArray: Array<ICard>, index: number) => {
 
             return (
-              <SwiperSlideExpensesStyled key={`${'11111'} - ${Math.random()}`}>
+              <SlideComponent key={`${'11111'} - ${Math.random()}`}>
                 {subArray && subArray.map((item: ICard) => {
                   return (
                     <CardDropWrapper
@@ -53,15 +64,20 @@ export const Expenses: React.FC<ExpensesProps> = ({ transactionOpen, items }) =>
                       icon={item.icon}
                       color={item.color}
                       value={item.value}
-                      type={"incomes"}
+                      type={type}
                       transactionOpen={transactionOpen}
                     />
                   )
                 })}
                 {index === handledArray.length - 1 &&
-                  <CardNew type={"incomes"} text="Add" />
+                  <CardNew
+                    type={type}
+                    text="Add"
+                    handleCreatePopupOpen={handleCreatePopupOpen}
+                    handleCreatePopupType={handleCreatePopupType}
+                  />
                 }
-              </SwiperSlideExpensesStyled>
+              </SlideComponent>
             )
           })}
         </SwiperStyled>

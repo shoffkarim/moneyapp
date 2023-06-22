@@ -13,7 +13,7 @@ export const BoxStyled = styled(Box)(() => css`
 
 export const BoxLabelStyled = styled.div(() => css`
   position: absolute;
-  top: -37px;
+  top: -31px;
   background-color: #1565c0;
   padding: 5px 10px;
   border-radius: 5px 5px 0px 0px;
@@ -28,7 +28,9 @@ export type SwiperStyled = {
   paddingBottom?: boolean | 0
 }
 
-export const SwiperStyled = styled(Swiper)<SwiperStyled>(({ paddingBottom }) => css`
+export const SwiperStyled = styled(Swiper, {
+  shouldForwardProp: prop => prop !== 'paddingBottom'
+})<SwiperStyled>(({ paddingBottom }) => css`
   padding: ${paddingBottom ? '10px 0px 40px 25px' : '10px 0px 10px 25px'};
   width: 100%;
 `)
@@ -40,4 +42,11 @@ export const CardsSkeletonStyled = styled.div(() => css`
   grid-template-columns: repeat(auto-fill, 100px);
   gap: 0px 20px;
   padding: 10px 0px 10px 25px;
+`)
+
+export const SwiperSlideExpensesStyled = styled(SwiperSlide)(() => css`
+  display: flex;
+  height: calc((100% - 30px) / 2) !important;
+  gap: 40px 20px;
+  flex-wrap: wrap;
 `)

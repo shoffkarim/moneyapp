@@ -4,26 +4,25 @@ import { IconsPopup } from "components/popups/iconsPopup"
 import { PopupButtonStyled, PopupCloseButtonStyled, PopupContainerStyled, PopupFormContainerStyled, PopupFormStyled, PopupIconStyled, PopupOverlayStyled, PopupStyled, PopupWrapperStyled } from "../popup.styled"
 import CloseIcon from '@mui/icons-material/Close'
 import { SubmitHandler, useForm } from "react-hook-form"
-import { SetCard } from "../utils"
+import { getPopupTitle, SetCard } from "../utils"
 import { PopupInput } from "../popupInput"
 import { PopupColors } from "../popupColors"
 import { SET_ACCOUNT, SET_EXPENSE, SET_INCOME } from "__data__/mutations/cards"
 import { useMutation } from "@apollo/client"
-import { IMainIcon, IMainIconObj } from "types"
+import { IMainIconObj } from "types"
 import { ACCOUNTS, INCOMES, colorsArray } from "components/constants"
+import { Typography } from "@mui/material"
 
 interface CreatePopupProps {
-  iconProps: IMainIcon;
   type: string;
   handlerClose: (x: boolean) => void
 }
 
 export const CreatePopup: React.FC<CreatePopupProps> = ({
-  iconProps,
   type,
   handlerClose
 }) => {
-
+  const title = getPopupTitle('create', type)
   const { control, handleSubmit, formState: { errors } } = useForm<SetCard>()
 
   const [activeColor, setActiveColor] = useState(colorsArray[0])
@@ -65,8 +64,6 @@ export const CreatePopup: React.FC<CreatePopupProps> = ({
     } catch (error) {
       console.log(errors)
     }
-
-
   }
 
   return (
@@ -76,13 +73,21 @@ export const CreatePopup: React.FC<CreatePopupProps> = ({
         <PopupCloseButtonStyled aria-label="close" onClick={() => handlerClose(false)}>
           <CloseIcon htmlColor="#fff" fontSize='large' />
         </PopupCloseButtonStyled>
-        <PopupFormStyled >
+        <PopupFormStyled>
+          {title &&
+            <Typography
+              variant="h5"
+              component="h2"
+              textAlign="center"
+              marginBottom="20px"
+            >{title}</Typography>
+          }
           <PopupFormContainerStyled>
             <PopupIconStyled
               style={{ backgroundColor: activeColor }}
               onClick={() => setVisibleIcons(!visibleIcons)}
             >
-              <MainIcon.Icon {...iconProps} />
+              <MainIcon.Icon size="50px" color="white" />
             </PopupIconStyled>
             <PopupWrapperStyled>
               <PopupInput
