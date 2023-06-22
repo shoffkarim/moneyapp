@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { RootState } from "__data__/store"
 
 const initialState = {
   idFrom: 0,
@@ -35,6 +34,5 @@ export const {
   setTransactionCardIDTo,
 } = transaction.actions
 
-export const selectTransaction = (state: RootState) => state.transaction
 
 export default transaction.reducer

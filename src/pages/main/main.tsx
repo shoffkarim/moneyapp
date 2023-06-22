@@ -8,6 +8,7 @@ import 'swiper/css'
 import "swiper/css/grid"
 import "swiper/css/pagination"
 import { CreatePopup } from "components/popups/createPopup"
+import { EditPopup } from "components/popups/editPopup"
 
 export const Main: React.FC = () => {
 
@@ -16,6 +17,7 @@ export const Main: React.FC = () => {
       id: '647db351529d7960cb8ce476'
     } }
   )
+  // TODO: 3 first render
 
   const [transactionOpen, setTransactionOpen] = useState<boolean>(false)
 
@@ -31,6 +33,7 @@ export const Main: React.FC = () => {
       </WrapperStyled>
       <TransactionContainer transactionOpen={transactionOpen} handleTransactionOpen={setTransactionOpen}/>
       <CreatePopup/>
+      <EditPopup/>
     </MainStyled>
   )
 }

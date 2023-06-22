@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { RootState } from "__data__/store"
+
 
 const initialState = {
   open: false,
@@ -23,6 +23,5 @@ export const {
   closeCreatePoup,
 } = createPopup.actions
 
-export const selectCreatePopup = (state: RootState) => state.createPopup
 
 export default createPopup.reducer

@@ -8,19 +8,21 @@ type PopupInputProps = {
   control: Control<SetCard, PopupFormElementName>
   name: PopupFormElementName
   label: string
+  defaultValue?: string | number
 }
 
 export const PopupInput: React.FC<PopupInputProps> = ({
   control,
   name,
-  label
+  label,
+  defaultValue
 }) => {
   return (
     <PopupElementWrapperStyled>
       <Controller
         name={name}
         control={control}
-        defaultValue=""
+        defaultValue={defaultValue ? String(defaultValue) : ''}
         rules={{ required: true }}
         render={({ field }) => (
           <TextField

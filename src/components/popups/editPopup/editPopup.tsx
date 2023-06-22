@@ -1,120 +1,112 @@
-import { IMainIcon, IMainIconObj } from "types"
-import { colorsArray } from "components/constants"
+import { IMainIconObj } from "types"
 import React, { useState } from "react"
-import { BiRuble } from "react-icons/bi"
 import { icons } from "components/utils/icons"
-import axios from "axios"
-import { ColorItemStyled, EditPopupButtonStyled, EditPopupColorStyled, EditPopupContainerStyled, EditPopupIconStyled, EditPopupInnerStyled, EditPopupNameStyled, EditPopupOverlayStyled, EditPopupStyled, EditPopupValueStyled, EditPopupWrapperStyled } from "./editPopup.styled"
-import { BtnCloseStyled } from "pages/main/main.styled"
+import { useAppDispatch, useAppSelector } from "hooks"
+import { RootState } from "__data__/store"
+import { changeColor, changeIcon, closeEditPopup } from "__data__/reducers/editPopup"
+import { PopupButtonStyled, PopupCloseButtonStyled, PopupContainerStyled, PopupFormContainerStyled, PopupFormStyled, PopupIconStyled, PopupOverlayStyled, PopupStyled, PopupWrapperStyled } from "../popup.styled"
+import { Typography } from "@mui/material"
+import { PopupInput } from "../popupInput"
+import { PopupColors } from "../popupColors"
+import { IconsPopup } from "../iconsPopup"
+import CloseIcon from '@mui/icons-material/Close'
+import { getPopupTitle, EditCard } from "../utils"
+import { SubmitHandler, useForm } from "react-hook-form"
+
+export const EditPopup: React.FC = () => {
+
+  const dispatch = useAppDispatch()
+
+  const { open, id, iconName, color, name, value, type } = useAppSelector((state: RootState) => state.editPopup)
 
 
-interface EditPopupProps {
-  id: number;
-  iconName: string;
-  iconProps: IMainIcon;
-  color: string;
-  name: string;
-  value: number;
-  type: string;
-  handlerClose: (x: boolean) => void
-}
+  const title = getPopupTitle('edit', type)
+  const { control, handleSubmit, formState: { errors } } = useForm<EditCard>()
 
-export const EditPopup: React.FC<EditPopupProps> = ({
-  id,
-  iconName,
-  iconProps,
-  color,
-  name,
-  value,
-  type,
-  handlerClose
-}) => {
-
-  const [activeName, setActiveName] = useState(name)
-  const [activeMoney, setActiveMoney] = useState(value)
-  const [activeColor, setActiveColor] = useState(color)
-  const [activeIcon, setActiveIcon] = useState(iconName)
   const [visibleIcons, setVisibleIcons] = useState(false)
-  const MainIcon: IMainIconObj = icons(activeIcon)
+  const MainIcon: IMainIconObj = icons(iconName)
 
-  const handleChangeMoney = (str: string) => {
-    setActiveMoney(parseInt(str))
+  const handleChangeIcon = (icon: string) => {
+    dispatch(changeIcon(icon))
   }
 
-  const handleSubmit = () => {
-    const item = JSON.stringify({
-      "id": id,
-      "name": activeName,
-      "icon": activeIcon,
-      "color": activeColor,
-      "value": activeMoney
-    })
-    axios.put(`http://localhost:3001/${type}/${id}`, JSON.parse(item))
-      .then(() => {
-        console.log("success")
-      })
-      .catch(error => {console.error('There was an error!', error)
-      })
+  const handleChangeColor = (color: string) => {
+    dispatch(changeColor(color))
   }
 
-  const handleDelete = () => {
-    axios.delete(`http://localhost:3001/${type}/${id}`)
-      .then(() => {
-        console.log("success")
-      })
-      .catch(error => {console.error('There was an error!', error)
-      })
+  const handleOnSubmit: SubmitHandler<EditCard> = (data) => {
+    // TODO: create submiting and deleting
+    console.log(data)
+  }
+
+  const handleClose = () => {
+    dispatch(closeEditPopup())
   }
 
   return (
-    <EditPopupStyled>
-      <EditPopupOverlayStyled/>
-      <EditPopupContainerStyled>
-        <EditPopupInnerStyled>
-          <EditPopupIconStyled
-            style={{ backgroundColor: activeColor }}
-            onClick={() => setVisibleIcons(!visibleIcons)}
+    open ?
+      <PopupStyled onSubmit={handleSubmit(handleOnSubmit)}>
+        <PopupOverlayStyled/>
+        <PopupContainerStyled>
+          <PopupCloseButtonStyled
+            aria-label="close"
+            onClick={() => handleClose()}
           >
-            <MainIcon.Icon {...iconProps} />
-          </EditPopupIconStyled>
-          <EditPopupWrapperStyled>
-            <EditPopupNameStyled>
-              <input
-                value={activeName}
-                onChange={(e) => setActiveName(e.target.value)}
-                autoFocus
-              />
-            </EditPopupNameStyled>
-            <EditPopupValueStyled>
-              <input
-                value={activeMoney}
-                onChange={(e) => handleChangeMoney(e.target.value)}
-              />
-              <BiRuble fontSize={"26px"} />
-            </EditPopupValueStyled>
-            <EditPopupColorStyled>
-              {colorsArray.map((item) => {
-                return (
-                  <ColorItemStyled
-                    activeColor={activeColor === item}
-                    key={item}
-                    style={{ backgroundColor: item }}
-                    onClick={() => setActiveColor(item)}
-                  />
-                )
-              })}
-            </EditPopupColorStyled>
-          </EditPopupWrapperStyled>
-        </EditPopupInnerStyled>
-        <EditPopupButtonStyled>
-          <button onClick={() => handleSubmit()}>Изменить</button>
-          <button onClick={() => handleDelete()}>Удалить</button>
-        </EditPopupButtonStyled>
-        <BtnCloseStyled onClick={() => handlerClose(false)}></BtnCloseStyled>
-      </EditPopupContainerStyled>
-      {/* {visibleIcons && (
-        <IconsPopup iconProps={iconProps} activeIcon={activeIcon} changeIcon={setActiveIcon}/>
-      )} */}
-    </EditPopupStyled>
+            <CloseIcon htmlColor="#fff" fontSize='large' />
+          </PopupCloseButtonStyled>
+          <PopupFormStyled>
+            {title &&
+              <Typography
+                variant="h5"
+                component="h2"
+                textAlign="center"
+                marginBottom="20px"
+              >{title}</Typography>
+            }
+            <PopupFormContainerStyled>
+              <PopupIconStyled
+                style={{ backgroundColor: color }}
+                onClick={() => setVisibleIcons(!visibleIcons)}
+              >
+                <MainIcon.Icon
+                  size="50px"
+                  color="white"
+                />
+              </PopupIconStyled>
+              <PopupWrapperStyled>
+                <PopupInput
+                  control={control}
+                  name="name"
+                  label="Name"
+                  defaultValue={name}
+                />
+                <PopupInput
+                  control={control}
+                  name="value"
+                  label="Value"
+                  defaultValue={value}
+                />
+                <PopupColors
+                  setActiveColor={handleChangeColor}
+                  control={control}
+                  activeColor={color}
+                  name="color"
+                  groupName="create-popup-colors"
+                />
+              </PopupWrapperStyled>
+            </PopupFormContainerStyled>
+            <PopupButtonStyled variant="contained" type="submit">Create</PopupButtonStyled>
+          </PopupFormStyled>
+
+        </PopupContainerStyled>
+        <IconsPopup
+          visible={visibleIcons}
+          activeIcon={iconName}
+          changeIcon={handleChangeIcon}
+          control={control}
+          groupName="create-popup-icons"
+        />
+      </PopupStyled>
+      : null
   )
 }

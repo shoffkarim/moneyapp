@@ -3,13 +3,14 @@ import { GrFormEdit } from "react-icons/gr"
 import { formatMoney } from "components/utils/format"
 import { themeColor } from "components/utils/color"
 import { icons } from "components/utils/icons"
-import { EditPopup } from "components/popups/editPopup"
 import { DragPreviewImage, useDrag } from "react-dnd"
 import { ICard, IMainIconObj } from "types"
 import { Typography } from "@mui/material"
 import { CurrencyRuble } from "@mui/icons-material"
 import { CardIconStyled, CardStyled, CardValueStyled, CardWrapperStyled } from "./card.styled"
 import { EditContainerStyled } from "components/popups/editPopup/editPopup.styled"
+import { openEditPopup } from "__data__/reducers/editPopup"
+import { useAppDispatch } from "hooks"
 
 
 
@@ -19,8 +20,10 @@ const iconProps = {
 }
 
 export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type }) => {
+
+  const dispatch = useAppDispatch()
+
   const [visibleEdit, setVisibleEdit] = useState(false)
-  const [visiblePopup, setVisiblePopup] = useState(false)
 
   const [{ isDragging }, drag, preview] = useDrag(() => ({
     type: "card",
@@ -58,24 +61,19 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type }) =>
         {/* TODO: move EditContainerStyled out of here */}
         {visibleEdit && (
           <EditContainerStyled
-            onClick={() => setVisiblePopup(!visiblePopup)}
+            onClick={() => dispatch(openEditPopup({
+              id,
+              name,
+              color,
+              iconName: icon,
+              type,
+              value
+            }))}
           >
             <GrFormEdit size="25px" />
           </EditContainerStyled>
         )}
       </CardStyled>
-      {visiblePopup && (
-        <EditPopup
-          id={id}
-          iconName={icon}
-          iconProps={iconProps}
-          color={theme}
-          name={name}
-          value={value}
-          type={type}
-          handlerClose={setVisiblePopup}
-        />
-      )}
     </>
   )
 }
