@@ -22,6 +22,9 @@ export const ACCOUNTS = "accounts"
 export const INCOMES = "incomes"
 export const EXPENSES = "expenses"
 
+export const SIZE_OF_CARDS = 12
+export const SIZE_OF_EXPENSES_CARDS = 24
+
 interface IObjectKeys {
   [key: string]: string;
 }

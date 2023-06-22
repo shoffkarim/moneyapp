@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 
 import { ICard } from "types"
 import { setTransactionStart } from "__data__/reducers/transaction"
+import { sampleCards } from "./sampleCards"
 
 export interface CardsContainerProps {
   accounts?: Array<ICard>
@@ -28,8 +29,8 @@ export const CardsContainer: React.FC<CardsContainerProps> = ({ accounts, expens
 
   return (
     <>
-      <Income transactionOpen={transactionHandler} items={incomes} />
-      <Accounts transactionOpen={transactionHandler} items={accounts} />
+      <Income transactionOpen={transactionHandler} items={sampleCards.incomes} />
+      <Accounts transactionOpen={transactionHandler} items={sampleCards.accounts} />
       <Expenses transactionOpen={transactionHandler} items={expenses} />
     </>
   )

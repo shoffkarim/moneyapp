@@ -24,7 +24,20 @@ export const SwiperSlideStyled = styled(SwiperSlide)(() => css`
   gap: 0px 20px;
 `)
 
-export const SwiperStyled = styled(Swiper)(() => css`
-  padding: 10px 0px 40px 25px;
+export type SwiperStyled = {
+  paddingBottom?: boolean | 0
+}
+
+export const SwiperStyled = styled(Swiper)<SwiperStyled>(({ paddingBottom }) => css`
+  padding: ${paddingBottom ? '10px 0px 40px 25px' : '10px 0px 10px 25px'};
   width: 100%;
+`)
+
+export const CardsSkeletonStyled = styled.div(() => css`
+  display: grid;
+  grid-auto-flow: column;
+  justify-items: start;
+  grid-template-columns: repeat(auto-fill, 100px);
+  gap: 0px 20px;
+  padding: 10px 0px 10px 25px;
 `)

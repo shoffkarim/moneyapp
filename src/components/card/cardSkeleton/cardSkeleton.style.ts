@@ -7,6 +7,7 @@ export const CardSkeletonWrapperStyled = styled.div(() => css`
   flex-direction: column;
 `)
 
-export const CardSkeletonTextStyled = styled(Skeleton)(() => css`
+export const CardSkeletonCircularStyled = styled(Skeleton)(() => css`
   margin-bottom: 15px;
+  margin-top: 15px;
 `)

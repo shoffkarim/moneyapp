@@ -1,10 +1,10 @@
 import React from "react"
 import { useDrop } from "react-dnd"
 import { dndCanDrop } from "components/utils/dnd"
-import { dndItem, ICard } from "types"
+import { dndItem, ICardDND } from "types"
 import { Card } from "./card"
 
-export const CardDropWrapper: React.FC<ICard> = ({
+export const CardDropWrapper: React.FC<ICardDND> = ({
   id,
   name,
   icon,

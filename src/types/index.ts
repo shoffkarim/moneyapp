@@ -6,6 +6,22 @@ export interface ICard {
   color: string;
   value: number;
   type: string;
+  transactionOpen?: (
+    open: boolean,
+    idFrom: number,
+    idWhere: number,
+    typeFrom: string,
+    typeWhere: string
+  ) => void
+}
+
+export interface ICardDND {
+  id: number;
+  name: string;
+  icon: string;
+  color: string;
+  value: number;
+  type: string;
   transactionOpen: (
     open: boolean,
     idFrom: number,

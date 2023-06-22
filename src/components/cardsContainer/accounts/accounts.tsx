@@ -2,12 +2,12 @@ import React from "react"
 import { ICard } from "types"
 import { CardNew } from "components/card/cardNew"
 import { CardDropWrapper } from "components/card/cardDropWrapper"
-import { AccountsContainerStyled, AccountsWrapperStyled } from "./accounts.styled"
 import { Typography } from "@mui/material"
-import { CardSkeletonContainer } from "components/card/cardSkeleton/cardSkeletonContainer"
-import { CardSkeleton } from "components/card/cardSkeleton/cardSkeleton"
-import { Grid, Pagination } from "swiper"
+import { Pagination } from "swiper"
 import { BoxLabelStyled, BoxStyled, SwiperStyled, SwiperSlideStyled  } from '../cardContainers.style'
+import { CardsSkeleton } from "../cardsSkeleton"
+import { separateItems } from "../separateItems"
+import { SIZE_OF_CARDS } from "components/constants"
 
 interface AccountsProps {
   transactionOpen: (
@@ -22,59 +22,49 @@ interface AccountsProps {
 
 export const Accounts: React.FC<AccountsProps> = ({ transactionOpen, items }) => {
 
+  const handledArray = items && separateItems(items, SIZE_OF_CARDS)
+
   return (
     <BoxStyled sx={{ backgroundColor: 'primary.dark' }}>
       <BoxLabelStyled>
         <Typography color="white">Accounts</Typography>
       </BoxLabelStyled>
-      {!items &&
-            <SwiperStyled
-              slidesPerView={1}
-              pagination={{ clickable: true }}
-              modules={[ Pagination ]}
-              className="mySwiper"
-            >
-              <SwiperSlideStyled>
-                <CardSkeleton/>
-                <CardSkeleton/>
-                <CardSkeleton/>
-                <CardSkeleton/>
-                <CardSkeleton/>
-                <CardSkeleton/>
-                <CardSkeleton/>
-                <CardSkeleton/>
-                <CardSkeleton/>
-                <CardSkeleton/>
-                <CardSkeleton/>
-                <CardSkeleton/>
+      {items ?
+        <SwiperStyled
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          modules={[ Pagination ]}
+          className="mySwiper"
+          paddingBottom={items?.length && items?.length > 12}
+        >
+          {handledArray && handledArray.length > 0 &&
+          handledArray.map((subArray: Array<ICard>, index: number) => {
+
+            return (
+              <SwiperSlideStyled key={`${'11111'} - ${Math.random()}`}>
+                {subArray && subArray.map((item: ICard) => {
+                  return (
+                    <CardDropWrapper
+                      key={item.id}
+                      id={item.id}
+                      name={item.name}
+                      icon={item.icon}
+                      color={item.color}
+                      value={item.value}
+                      type={"incomes"}
+                      transactionOpen={transactionOpen}
+                    />
+                  )
+                })}
+                {index === handledArray.length - 1 &&
+                  <CardNew type={"incomes"} text="Add" />
+                }
               </SwiperSlideStyled>
-              <SwiperSlideStyled>
-                <CardSkeleton/>
-                <CardSkeleton/>
-                <CardSkeleton/>
-                <CardSkeleton/>
-              </SwiperSlideStyled>
-            </SwiperStyled>
+            )
+          })}
+        </SwiperStyled>
+        : <CardsSkeleton/>
       }
-      {/* <AccountsContainerStyled>
-        <AccountsWrapperStyled>
-          { items &&
-            items.map((item: ICard) => (
-              <CardDropWrapper
-                key={`${item.id} - ${Math.random()}`}
-                id={item.id}
-                name={item.name}
-                icon={item.icon}
-                color={item.color}
-                value={item.value}
-                type={"accounts"}
-                transactionOpen={transactionOpen}
-              />
-            ))}
-          {!items && <CardSkeletonContainer/>}
-          {items && <CardNew type={"expenses"} text="Add" />}
-        </AccountsWrapperStyled>
-      </AccountsContainerStyled> */}
     </BoxStyled>
   )
 }
