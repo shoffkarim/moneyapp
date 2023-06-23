@@ -50,7 +50,7 @@ export const CardsWrapper: React.FC<CardsWrapperProps> = ({
           handledArray.map((subArray: Array<ICard>, index: number) => {
 
             return (
-              <SlideComponent key={`${'11111'} - ${Math.random()}`}>
+              <SlideComponent key={`${subArray[0].id} - ${Math.random()}`}>
                 {subArray && subArray.map((item: ICard) => {
                   return (
                     <CardDropWrapper

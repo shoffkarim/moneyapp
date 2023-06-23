@@ -42,10 +42,20 @@ export const colors: IObjectKeys = {
   pink,
   green,
   cyan,
+  indigo,
+  deepPurple,
+  lightBlue,
+  lime,
+  orange,
+  brown,
+  blueGray,
+
 }
 
 export const colorsArray: string[] = [
   black,
+  gray,
+  white,
   yellow,
   teal,
   red,
