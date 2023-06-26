@@ -49,7 +49,7 @@ export const CreatePopup: React.FC = () => {
   const handleClose = () => {
     dispatch(closeCreatePoup())
   }
-
+  console.log(errors)
   const handleOnSubmit: SubmitHandler<SetCard> = (data) => {
     try {
       const setCard = getTypeCard()
@@ -106,7 +106,9 @@ export const CreatePopup: React.FC = () => {
                   label="Name"
                 />
                 <PopupInput
+                  defaultValue={"0"}
                   control={control}
+                  pattern={/^\d+$/}
                   name="value"
                   label="Value"
                 />

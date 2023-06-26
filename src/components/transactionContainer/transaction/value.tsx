@@ -5,6 +5,7 @@ import { TransactionWrapperStyled } from "./transaction.styled"
 import { TransactionValues } from "./utils"
 
 interface ValueProps {
+  // TODO
   // vendor library
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<TransactionValues, any>
@@ -18,13 +19,13 @@ export const Value: React.FC<ValueProps> = ({ control }) => {
         name="value"
         control={control}
         defaultValue=""
-        // TODO: regexp for numbers
-        rules={{ required: true }}
-        render={({ field }) => (
+        rules={{ required: true, pattern: /^\d+$/ }}
+        render={({ field, fieldState: { error } }) => (
           <TextField
             {...field}
             variant="outlined"
             color="primary"
+            error={!!error}
             fullWidth
             label="value"
             placeholder="0"

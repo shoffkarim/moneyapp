@@ -9,13 +9,15 @@ type PopupInputProps = {
   name: PopupFormElementName
   label: string
   defaultValue?: string | number
+  pattern?: RegExp
 }
 
 export const PopupInput: React.FC<PopupInputProps> = ({
   control,
   name,
   label,
-  defaultValue
+  defaultValue,
+  pattern
 }) => {
   return (
     <PopupElementWrapperStyled>
@@ -23,12 +25,13 @@ export const PopupInput: React.FC<PopupInputProps> = ({
         name={name}
         control={control}
         defaultValue={defaultValue ? String(defaultValue) : ''}
-        rules={{ required: true }}
-        render={({ field }) => (
+        rules={{ required: true, pattern: pattern }}
+        render={({ field, fieldState: { error } }) => (
           <TextField
             {...field}
             variant="outlined"
             color="primary"
+            error={!!error}
             fullWidth
             label={label}
             placeholder={label}
