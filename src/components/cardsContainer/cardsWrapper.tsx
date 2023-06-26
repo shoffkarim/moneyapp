@@ -40,6 +40,7 @@ export const CardsWrapper: React.FC<CardsWrapperProps> = ({
       </BoxLabelStyled>
       {items ?
         <SwiperStyled
+          allowTouchMove={false}
           slidesPerView={1}
           pagination={{ clickable: true }}
           modules={[ Pagination ]}

@@ -23,14 +23,14 @@ export const Total: React.FC<TotalProps> = ({ total }) => {
       <TotalItemStyled>
         <Typography variant="h5" fontSize={20}>{INCOMES.toLocaleUpperCase()}</Typography>
         <TotalItemWrapperStyled>
-          <Typography variant="h5" fontSize={22}>{expensesFormat}</Typography>
+          <Typography variant="h5" fontSize={22}>{incomeFormat}</Typography>
           <BiDollar fontSize={22}/>
         </TotalItemWrapperStyled>
       </TotalItemStyled>
       <TotalItemStyled>
         <Typography variant="h5" fontSize={20}>{EXPENSES.toLocaleUpperCase()}</Typography>
         <TotalItemWrapperStyled>
-          <Typography variant="h5" fontSize={22}>{incomeFormat}</Typography>
+          <Typography variant="h5" fontSize={22}>{expensesFormat}</Typography>
           <BiDollar fontSize={22}/>
         </TotalItemWrapperStyled>
       </TotalItemStyled>

@@ -43,8 +43,7 @@ export const CreatePopup: React.FC = () => {
       return setAccount
     }
     return setExpense
-  }, [type],
-  )
+  }, [type])
 
   const handleClose = () => {
     dispatch(closeCreatePoup())

@@ -29,7 +29,7 @@ export const IconsPopup: React.FC<IconsPopupProps> = ({
       <Controller
         name="icon"
         control={control}
-        defaultValue="bank"
+        defaultValue={activeIcon}
         render={({ field }) => (
           <IconPopupWrapperStyled>
             {iconsPack.map((ItemIcon) => {

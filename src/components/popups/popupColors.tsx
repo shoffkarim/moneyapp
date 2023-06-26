@@ -29,7 +29,7 @@ export const PopupColors: React.FC<PopupColorsProps> = ({
       <Controller
         name={name}
         control={control}
-        defaultValue={colorsArray[0]}
+        defaultValue={activeColor}
         render={({ field }) => (
           <PopupColorsWrapperStyled>
             {colorsArray.map((item) => {

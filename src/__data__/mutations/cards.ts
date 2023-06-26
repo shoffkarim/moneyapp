@@ -47,3 +47,27 @@ export const SET_EXPENSE = gql`
     }
   }
 `
+
+export const UPDATE_ACCOUNT = gql`
+  mutation updateAccount ($id: ID!, $idCard: ID!, $name: String!, $icon: String!, $color: String!, $value: Float!){
+    updateAccount(id: $id, idCard: $idCard, name: $name, icon: $icon, color: $color, value: $value) {
+      id
+    }
+  }
+`
+
+export const UPDATE_INCOME = gql`
+  mutation updateIncome ($id: ID!, $idCard: ID!, $name: String!, $icon: String!, $color: String!, $value: Float!){
+    updateIncome(id: $id, idCard: $idCard, name: $name, icon: $icon, color: $color, value: $value) {
+      id
+    }
+  }
+`
+
+export const UPDATE_EXPENSE = gql`
+  mutation updateExpense ($id: ID!, $idCard: ID!, $name: String!, $icon: String!, $color: String!, $value: Float!){
+    updateExpense(id: $id, idCard: $idCard, name: $name, icon: $icon, color: $color, value: $value) {
+      id
+    }
+  }
+`
