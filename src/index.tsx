@@ -11,6 +11,30 @@ import { ThemeProvider } from '@mui/material'
 import { theme } from 'theme'
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
 
+
+const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        user: {
+          merge(existing, incoming) {
+            return incoming
+          }
+        },
+        transactions: {
+          merge(existing, incoming) {
+            return incoming
+          }
+        },
+        calendarItems: {
+          merge(existing, incoming) {
+            return incoming
+          }
+        },
+      }
+    }
+  }
+})
 const client = new ApolloClient({
   uri: 'http://localhost:5000/graphql',
   cache: new InMemoryCache()

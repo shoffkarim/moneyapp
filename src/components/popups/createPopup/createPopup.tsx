@@ -16,6 +16,8 @@ import { closeCreatePoup } from "__data__/reducers/createPopup"
 import { useAppDispatch, useAppSelector } from "hooks"
 import { RootState } from "__data__/store"
 import { openSuccessAlert } from "__data__/reducers/alerts"
+import { GET_USER_CARDS } from "__data__/queries/cards"
+import { GET_USER_TOTAL } from "__data__/queries/total"
 
 
 export const CreatePopup: React.FC = () => {
@@ -54,15 +56,31 @@ export const CreatePopup: React.FC = () => {
     try {
       const setCard = getTypeCard()
 
-      setCard({ variables:
+      setCard(
         {
-          id: '647db351529d7960cb8ce476',
-          name: data.name,
-          icon: data.icon,
-          color: data.color,
-          value: Number(data.value)
-        }
-      }).then(() => {
+          variables: {
+            id: '647db351529d7960cb8ce476',
+            name: data.name,
+            icon: data.icon,
+            color: data.color,
+            value: Number(data.value)
+          },
+          refetchQueries: [
+            {
+              query: GET_USER_CARDS,
+              variables: {
+                id: '647db351529d7960cb8ce476'
+              }
+            },
+            {
+              query: GET_USER_TOTAL,
+              variables: {
+                id: '647db351529d7960cb8ce476'
+              }
+            },
+          ]
+        },
+      ).then(() => {
         handleClose()
         dispatch(openSuccessAlert({
           open: true,

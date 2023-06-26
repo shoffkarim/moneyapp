@@ -16,6 +16,8 @@ import { UPDATE_ACCOUNT, UPDATE_EXPENSE, UPDATE_INCOME } from "__data__/mutation
 import { useMutation } from "@apollo/client"
 import { ACCOUNTS, INCOMES } from "components/constants"
 import { openSuccessAlert } from "__data__/reducers/alerts"
+import { GET_USER_CARDS } from "__data__/queries/cards"
+import { GET_USER_TOTAL } from "__data__/queries/total"
 
 export const EditPopup: React.FC = () => {
 
@@ -55,16 +57,32 @@ export const EditPopup: React.FC = () => {
 
   const handleOnSubmit: SubmitHandler<EditCard> = (data) => {
     const updateCard = getTypeCard()
-    updateCard({
-      variables: {
-        id: '647db351529d7960cb8ce476',
-        idCard: id,
-        name: data.name,
-        icon: data.icon,
-        color: data.color,
-        value: Number(data.value)
+    updateCard(
+      {
+        variables: {
+          id: '647db351529d7960cb8ce476',
+          idCard: id,
+          name: data.name,
+          icon: data.icon,
+          color: data.color,
+          value: Number(data.value)
+        },
+        refetchQueries: [
+          {
+            query: GET_USER_CARDS,
+            variables: {
+              id: '647db351529d7960cb8ce476'
+            }
+          },
+          {
+            query: GET_USER_TOTAL,
+            variables: {
+              id: '647db351529d7960cb8ce476'
+            }
+          },
+        ]
       }
-    }).then(() => {
+    ).then(() => {
       dispatch(closeEditPopup())
       dispatch(openSuccessAlert({
         open: true,

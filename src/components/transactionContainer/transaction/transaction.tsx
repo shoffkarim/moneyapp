@@ -13,6 +13,8 @@ import { SET_TRANSACTION } from '__data__/mutations/transactions'
 import CloseIcon from '@mui/icons-material/Close'
 import { useSelector } from 'react-redux'
 import { RootState } from '__data__/store'
+import { GET_USER_CARDS } from '__data__/queries/cards'
+import { GET_USER_TOTAL } from '__data__/queries/total'
 
 
 interface TransactionProps {
@@ -30,19 +32,35 @@ export const Transaction: React.FC<TransactionProps> = ({ handleTransactionOpen,
 
   const handleOnSubmit: SubmitHandler<TransactionValues> = (data) => {
     try {
-      setTransaction({ variables:
+      setTransaction(
         {
-          id: '647db351529d7960cb8ce476',
-          idFrom,
-          typeFrom,
-          idTo,
-          typeTo,
-          value: Number(data.value),
-          comment: data.comment,
-          date: data.date,
-          tags: data.tags
+          variables: {
+            id: '647db351529d7960cb8ce476',
+            idFrom,
+            typeFrom,
+            idTo,
+            typeTo,
+            value: Number(data.value),
+            comment: data.comment,
+            date: data.date,
+            tags: data.tags
+          },
+          refetchQueries: [
+            {
+              query: GET_USER_CARDS,
+              variables: {
+                id: '647db351529d7960cb8ce476'
+              }
+            },
+            {
+              query: GET_USER_TOTAL,
+              variables: {
+                id: '647db351529d7960cb8ce476'
+              }
+            },
+          ]
         }
-      }).then(() => {
+      ).then(() => {
         handleTransactionOpen(false)
         handleAlert(true)
       })
