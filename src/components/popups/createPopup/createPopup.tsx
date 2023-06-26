@@ -15,6 +15,7 @@ import { Typography } from "@mui/material"
 import { closeCreatePoup } from "__data__/reducers/createPopup"
 import { useAppDispatch, useAppSelector } from "hooks"
 import { RootState } from "__data__/store"
+import { openSuccessAlert } from "__data__/reducers/alerts"
 
 
 export const CreatePopup: React.FC = () => {
@@ -24,7 +25,7 @@ export const CreatePopup: React.FC = () => {
   const { open, type } = useAppSelector((state: RootState) => state.createPopup)
 
   const title = getPopupTitle('create', type)
-  const { control, handleSubmit, formState: { errors } } = useForm<SetCard>()
+  const { control, handleSubmit, formState: { errors }, reset } = useForm<SetCard>()
 
   const [activeColor, setActiveColor] = useState(colorsArray[0])
   const [activeIcon, setActiveIcon] = useState("bank")
@@ -63,6 +64,11 @@ export const CreatePopup: React.FC = () => {
         }
       }).then(() => {
         handleClose()
+        dispatch(openSuccessAlert({
+          open: true,
+          text: 'Card has been created'
+        }))
+        reset()
       })
     } catch (error) {
       console.log(errors)

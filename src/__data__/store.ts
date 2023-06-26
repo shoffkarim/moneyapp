@@ -2,11 +2,13 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import transaction from './reducers/transaction'
 import createPopup from './reducers/createPopup'
 import editPopup from './reducers/editPopup'
+import successAlert from './reducers/alerts'
 
 const reducer = combineReducers({
   transaction: transaction,
   createPopup: createPopup,
   editPopup: editPopup,
+  successAlert: successAlert
 })
 
 export const store = configureStore({

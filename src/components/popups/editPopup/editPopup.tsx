@@ -15,6 +15,7 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { UPDATE_ACCOUNT, UPDATE_EXPENSE, UPDATE_INCOME } from "__data__/mutations/cards"
 import { useMutation } from "@apollo/client"
 import { ACCOUNTS, INCOMES } from "components/constants"
+import { openSuccessAlert } from "__data__/reducers/alerts"
 
 export const EditPopup: React.FC = () => {
 
@@ -65,6 +66,10 @@ export const EditPopup: React.FC = () => {
       }
     }).then(() => {
       dispatch(closeEditPopup())
+      dispatch(openSuccessAlert({
+        open: true,
+        text: 'Card has been changed'
+      }))
       reset()
     })
   }

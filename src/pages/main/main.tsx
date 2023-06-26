@@ -9,6 +9,7 @@ import "swiper/css/grid"
 import "swiper/css/pagination"
 import { CreatePopup } from "components/popups/createPopup"
 import { EditPopup } from "components/popups/editPopup"
+import { AlertContainer } from "components/alerts/alertContainer"
 
 export const Main: React.FC = () => {
 
@@ -20,6 +21,7 @@ export const Main: React.FC = () => {
   // TODO: 3 first render
 
   const [transactionOpen, setTransactionOpen] = useState<boolean>(false)
+
 
   return (
     <MainStyled>
@@ -34,6 +36,7 @@ export const Main: React.FC = () => {
       <TransactionContainer transactionOpen={transactionOpen} handleTransactionOpen={setTransactionOpen}/>
       <CreatePopup/>
       <EditPopup/>
+      <AlertContainer/>
     </MainStyled>
   )
 }
