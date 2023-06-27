@@ -1,4 +1,4 @@
-import { Skeleton, TableCell, TableRow, Typography } from '@mui/material'
+import { IconButton, Skeleton, TableCell, TableRow, Typography } from '@mui/material'
 import styled from "@emotion/styled"
 import { css } from '@emotion/react'
 
@@ -95,4 +95,15 @@ export const TableCellValueStyled = styled(TableCell)(() => css`
   @media screen and (max-width: 900px) {
     display: none
   }
+`)
+
+export const HistoryItemActionsWrapper = styled.div(() => css`
+  display: flex;
+`)
+
+
+export const HistoryItemAction = styled(IconButton)(() => css`
+  display: flex;
+  width: 43px;
+  margin-right: 10px;
 `)

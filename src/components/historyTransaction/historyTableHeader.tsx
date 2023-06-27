@@ -21,6 +21,9 @@ function HistoryTableHeader() {
         <TableCell>
             Info
         </TableCell>
+        <TableCell>
+            Actions
+        </TableCell>
       </TableRow>
     </TableHead>
   )

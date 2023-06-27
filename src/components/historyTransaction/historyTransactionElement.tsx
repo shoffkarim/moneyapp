@@ -1,11 +1,15 @@
-import { TableCell, Typography } from "@mui/material"
+import { IconButton, TableCell, Typography } from "@mui/material"
 import React, { useState } from "react"
-import { HistoryItemCellStyled, HistoryItemIconStyled, HistoryItemStyled, HistoryItemTagListStyled, HistoryItemTagItemStyled, HistoryItemCommentStyled, HistoryItemTextStyled, TableCellValueStyled, HistoryItemValueMobileStyled } from "./historyTransaction.styled"
+import { HistoryItemCellStyled, HistoryItemIconStyled, HistoryItemStyled, HistoryItemTagListStyled, HistoryItemTagItemStyled, HistoryItemCommentStyled, HistoryItemTextStyled, TableCellValueStyled, HistoryItemValueMobileStyled, HistoryItemActionsWrapper, HistoryItemAction } from "./historyTransaction.styled"
 import { format } from "date-fns"
 import { formatMoney } from "components/utils/format"
 import { icons } from "components/utils/icons"
 import { themeColor } from "components/utils/color"
 import { TransactionItem } from "./types"
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
+import EditIcon from '@mui/icons-material/Edit'
+import { HistoryTransactionDeleteDialog } from "./historyTransactionDeleteDialog"
+
 
 export interface IMainIcon {
   size: string
@@ -39,6 +43,16 @@ export const HistoryTransactionElement: React.FC<TransactionItem> = ({
   const IconTo: IMainIconObj = icons(cardTo?.icon || '')
   const iconBackgroundTo: string = themeColor(cardTo?.color || '')
   const textColor = index % 2 === 0
+
+  const [openDeleteDialog, setOpenDeleteDialog] = useState(false)
+
+  const handleOpenDeleteDialog = () => {
+    setOpenDeleteDialog(true)
+  }
+
+  const handleCloseDeleteDialog = () => {
+    setOpenDeleteDialog(false)
+  }
 
   return (
     <HistoryItemStyled>
@@ -84,6 +98,20 @@ export const HistoryTransactionElement: React.FC<TransactionItem> = ({
             </HistoryItemTagItemStyled>
           )}
         </HistoryItemTagListStyled>
+      </TableCell>
+      <TableCell>
+        <HistoryItemActionsWrapper>
+          <HistoryItemAction>
+            <EditIcon htmlColor="#fff" fontSize="small" />
+          </HistoryItemAction>
+          <IconButton onClick={handleOpenDeleteDialog}>
+            <DeleteForeverIcon htmlColor="#d32f2f" />
+          </IconButton>
+        </HistoryItemActionsWrapper>
+        <HistoryTransactionDeleteDialog
+          open={openDeleteDialog}
+          handleClose={handleCloseDeleteDialog}
+        />
       </TableCell>
     </HistoryItemStyled>
   )
