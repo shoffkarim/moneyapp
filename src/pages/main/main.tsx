@@ -10,6 +10,7 @@ import "swiper/css/pagination"
 import { CreatePopup } from "components/popups/createPopup"
 import { EditPopup } from "components/popups/editPopup"
 import { AlertContainer } from "components/alerts/alertContainer"
+import { MainButton } from "components/mainButton/mainButton"
 
 export const Main: React.FC = () => {
 
@@ -34,6 +35,7 @@ export const Main: React.FC = () => {
         />
       </WrapperStyled>
       <TransactionContainer transactionOpen={transactionOpen} handleTransactionOpen={setTransactionOpen}/>
+      <MainButton action={setTransactionOpen}/>
       <CreatePopup/>
       <EditPopup/>
       <AlertContainer/>
