@@ -39,19 +39,19 @@ export const CardsContainer: React.FC<CardsContainerProps> = ({
         type={INCOMES}
         title={INCOMES}
         transactionOpen={transactionHandler}
-        items={incomes}
+        items={sampleCards.incomes}
       />
       <CardsWrapper
         type={ACCOUNTS}
         title={ACCOUNTS}
         transactionOpen={transactionHandler}
-        items={accounts}
+        items={sampleCards.accounts}
       />
       <CardsWrapper
         type={EXPENSES}
         title={EXPENSES}
         transactionOpen={transactionHandler}
-        items={expenses}
+        items={sampleCards.expenses}
       />
     </>
   )

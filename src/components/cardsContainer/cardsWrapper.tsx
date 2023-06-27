@@ -4,10 +4,11 @@ import { CardNew } from "components/card/cardNew"
 import { CardDropWrapper } from "components/card/cardDropWrapper"
 import { Typography } from "@mui/material"
 import { Pagination } from "swiper"
-import { BoxLabelStyled, BoxStyled, SwiperStyled, SwiperSlideStyled, SwiperSlideExpensesStyled  } from './cardContainers.style'
+import { BoxLabelStyled, BoxStyled, SwiperStyled, SwiperSlideStyled, SwiperSlideExpensesStyled } from './cardContainers.style'
 import { CardsSkeleton } from "./cardsSkeleton"
 import { separateItems } from "./separateItems"
 import { EXPENSES, SIZE_OF_CARDS, SIZE_OF_EXPENSES_CARDS } from "components/constants"
+import { SwiperNavigation } from "./swiperNavigation"
 
 interface CardsWrapperProps {
   transactionOpen: (
@@ -74,6 +75,7 @@ export const CardsWrapper: React.FC<CardsWrapperProps> = ({
               </SlideComponent>
             )
           })}
+          <SwiperNavigation/>
         </SwiperStyled>
         : <CardsSkeleton/>
       }

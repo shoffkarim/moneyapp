@@ -7,6 +7,7 @@ import { GET_USER_CARDS } from "__data__/queries/cards"
 import 'swiper/css'
 import "swiper/css/grid"
 import "swiper/css/pagination"
+import "swiper/css/navigation"
 import { CreatePopup } from "components/popups/createPopup"
 import { EditPopup } from "components/popups/editPopup"
 import { AlertContainer } from "components/alerts/alertContainer"
