@@ -18,7 +18,6 @@ const calendarDayPopup = createSlice({
     openCalendarDayPopup: (state, action) => state = action.payload,
     closeCalendarDayPoup: (state) => {
       state.open = false
-      state.day = createDate({ date: new Date() })
     }
   },
 })

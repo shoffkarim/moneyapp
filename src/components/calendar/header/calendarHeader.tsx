@@ -1,10 +1,9 @@
 import React from 'react'
 import { CalendarHeaderControlsWrapperStyled, CalendarHeaderMainButtonStyled, CalendarHeaderStyled, CalendarHeaderButtonTodayStyled, CalendarHeaderWrapperStyled } from './calendarHeader.style'
-import { Button, IconButton } from '@mui/material'
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import { IconButton } from '@mui/material'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import { UseCalendarFuncsReturn, UseCalendarStateReturn } from '../types'
-import { createDate } from '../useCalendar/helpers'
 
 interface CalendarHeaderProps {
   state: UseCalendarStateReturn

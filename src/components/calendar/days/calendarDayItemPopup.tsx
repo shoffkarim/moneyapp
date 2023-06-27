@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { DayItem, DayItemActionsPopupStyled, DayItemActionStyled, DayItemCommentPopupStyled, DayItemDateStyled, DayItemInfoWrapperPopupStyled, DayItemPopupClose, DayItemPopupContainer, DayItemPopupStyled, DayItemsList, DayItemsListPopupStyled, DayItemTagItemStyled, DayItemTagListStyled, DayItemTopPopupStyled, DayItemWrapperPopupStyled, DayTotalContainerStyled } from './calendarDays.style'
+import { DayItemActionsPopupStyled, DayItemActionStyled, DayItemCommentPopupStyled, DayItemDateStyled, DayItemInfoWrapperPopupStyled, DayItemPopupClose, DayItemPopupContainer, DayItemPopupStyled, DayItemsListPopupStyled, DayItemTagItemStyled, DayItemTagListStyled, DayItemTopPopupStyled, DayItemWrapperPopupStyled, DayTotalContainerStyled } from './calendarDayPopup.styled'
 import { Backdrop, Typography } from '@mui/material'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import EditIcon from '@mui/icons-material/Edit'
@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from 'hooks'
 import { RootState } from '__data__/store'
 import { closeCalendarDayPoup } from '__data__/reducers/calendarDayPopup'
 import CloseIcon from '@mui/icons-material/Close'
-import { DeleteDialog } from 'components/deleteDialog/deleteDialog'
+import { DeleteDialog } from 'components/deleteDialog'
 import { formateDate } from '../utils'
 
 export const CalendarDayItemPopup: React.FC = () => {
@@ -236,7 +236,7 @@ export const CalendarDayItemPopup: React.FC = () => {
           <Typography>{"total"}</Typography>
           <Typography>{"1000000$"}</Typography>
         </DayTotalContainerStyled>
-        {day.items &&
+        {/* {day.items &&
               <DayItemsList>
                 {day.items.map((item, index) => {
                   return (
@@ -247,7 +247,7 @@ export const CalendarDayItemPopup: React.FC = () => {
                   )
                 })}
               </DayItemsList>
-        }
+        } */}
         {day.description &&
               <DayTotalContainerStyled>
                 <Typography>{day.description?.title}</Typography>

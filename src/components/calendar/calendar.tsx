@@ -1,26 +1,18 @@
-import React, { useCallback, useEffect } from 'react'
-import { useCalendar } from './useCalendar'
-import CalendarHeader from './header/calendarHeader'
-import CalendarDaysMode from './days/calendarDaysMode'
-import CalendarMonthesMode from './monthes/calendarMonthesMode'
-import CalendarYearsMode from './years/calendarYearsMode'
-import { CalendarDataType, CalendarStateReturn, UseCalendarFuncsReturn, UseCalendarStateReturn } from './types'
-import { assignData } from './utils/assignData'
-import { handleStateApi } from './utils/handleStateApi'
+import React from 'react'
+import { CalendarHeader } from './header'
+import { CalendarDaysMode } from './days'
+import { CalendarMonthesMode } from './monthes'
+import { CalendarYearsMode }  from './years'
+import { UseCalendarFuncsReturn, UseCalendarStateReturn } from './types'
+
 
 interface CalendarProps {
   state: UseCalendarStateReturn,
   functions: UseCalendarFuncsReturn
   selectDate: (date: Date) => void
-  // sendParams: (state: CalendarStateReturn) => CalendarStateReturn | void
 }
 
 export const Calendar: React.FC<CalendarProps> = ({ state, functions, selectDate }) => {
-
-  // useEffect(() => {
-  //   const returnState = handleStateApi(state)
-  //   sendParams(returnState)
-  // }, [state])
 
   return (
     state && <div>

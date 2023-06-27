@@ -4,14 +4,14 @@ import { TransactionContainer } from "components/transactionContainer"
 import { MainStyled, WrapperStyled } from "./main.styled"
 import { useQuery } from "@apollo/client"
 import { GET_USER_CARDS } from "__data__/queries/cards"
+import { CreatePopup } from "components/popups"
+import { EditPopup } from "components/popups"
+import { AlertContainer } from "components/alerts"
+import { MainButton } from "components/mainButton"
 import 'swiper/css'
 import "swiper/css/grid"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
-import { CreatePopup } from "components/popups/createPopup"
-import { EditPopup } from "components/popups/editPopup"
-import { AlertContainer } from "components/alerts/alertContainer"
-import { MainButton } from "components/mainButton/mainButton"
 
 export const Main: React.FC = () => {
 

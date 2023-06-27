@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { UseCalendarFuncsReturn, UseCalendarStateReturn } from '../../components/calendar/types'
 import { useQuery } from '@apollo/client'
 import { GET_CALENDAR_DATA } from '__data__/queries/calendar'
-import { Calendar } from '../../components/calendar/calendar'
+import { Calendar } from '../../components/calendar'
 import { assignData } from '../../components/calendar/utils/assignData'
 
 interface CalendarWrapperProps {

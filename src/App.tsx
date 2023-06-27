@@ -1,10 +1,9 @@
 import React from 'react'
 import { TopBar } from 'components'
-import { HistoryPage } from 'pages/history'
+// TODO: move to another file
 import { ContainerStyled, PageWrapperStyled } from 'pages/main/main.styled'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Main, SignUpPage, SignInPage } from './pages'
-import { CalendarPage } from 'pages/calendar/calendarPage'
+import { Main, SignUpPage, SignInPage, CalendarPage, HistoryPage } from './pages'
 import { useQuery } from '@apollo/client'
 import { GET_USER_TOTAL } from '__data__/queries/total'
 

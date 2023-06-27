@@ -16,6 +16,7 @@ export const TransactionContainer: React.FC<TransactionContainerProps> = ({ tran
       {transactionOpen && (
         <Transaction handleTransactionOpen={handleTransactionOpen} handleAlert={setTransactionAlert}/>
       )}
+      {/* TODO: change to alert */}
       <TransactionAlert handleAlert={setTransactionAlert} transactionAlert={transactionAlert}/>
     </>
   )

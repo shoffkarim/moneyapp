@@ -8,7 +8,7 @@ import { themeColor } from "components/utils/color"
 import { TransactionItem } from "./types"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import EditIcon from '@mui/icons-material/Edit'
-import { DeleteDialog } from "components/deleteDialog/deleteDialog"
+import { DeleteDialog } from "components/deleteDialog"
 
 
 export interface IMainIcon {

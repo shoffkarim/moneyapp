@@ -1,5 +1,5 @@
 import React from 'react'
-import { Total } from 'components'
+import { Total } from './total'
 import { NavLinkStyled, RightMenuStyled, ToolbarStyled } from './topbar.styled'
 import { AppBar, IconButton, Menu, MenuItem } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
