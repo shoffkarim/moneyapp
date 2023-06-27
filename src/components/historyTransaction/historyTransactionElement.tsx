@@ -105,7 +105,7 @@ export const HistoryTransactionElement: React.FC<TransactionItem> = ({
             <EditIcon htmlColor="#fff" fontSize="small" />
           </HistoryItemAction>
           <IconButton onClick={handleOpenDeleteDialog}>
-            <DeleteForeverIcon htmlColor="#d32f2f" />
+            <DeleteForeverIcon htmlColor="#fff" />
           </IconButton>
         </HistoryItemActionsWrapper>
         <DeleteDialog
