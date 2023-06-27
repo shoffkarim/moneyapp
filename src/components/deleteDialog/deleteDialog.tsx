@@ -14,11 +14,11 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />
 })
 
-type HistoryTransactionDeleteDialogProps = {
+type DeleteDialogProps = {
   open: boolean
   handleClose: () => void
 }
-export const HistoryTransactionDeleteDialog: React.FC<HistoryTransactionDeleteDialogProps> = ({ open, handleClose }) => {
+export const DeleteDialog: React.FC<DeleteDialogProps> = ({ open, handleClose }) => {
   return (
     <Dialog
       open={open}

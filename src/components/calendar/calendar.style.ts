@@ -79,7 +79,8 @@ export const CalendarItemInfoStyled = styled.div(() => css`
 
 export const CalendarItemTopStyled = styled.div(() => css`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
 `)
 
 export const CalendarItemAdditionalStyled = styled.div(() => css`

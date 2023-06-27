@@ -8,7 +8,7 @@ import { themeColor } from "components/utils/color"
 import { TransactionItem } from "./types"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import EditIcon from '@mui/icons-material/Edit'
-import { HistoryTransactionDeleteDialog } from "./historyTransactionDeleteDialog"
+import { DeleteDialog } from "components/deleteDialog/deleteDialog"
 
 
 export interface IMainIcon {
@@ -108,7 +108,7 @@ export const HistoryTransactionElement: React.FC<TransactionItem> = ({
             <DeleteForeverIcon htmlColor="#d32f2f" />
           </IconButton>
         </HistoryItemActionsWrapper>
-        <HistoryTransactionDeleteDialog
+        <DeleteDialog
           open={openDeleteDialog}
           handleClose={handleCloseDeleteDialog}
         />

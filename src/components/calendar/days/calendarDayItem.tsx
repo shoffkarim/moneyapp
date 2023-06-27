@@ -1,9 +1,10 @@
 import { Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React from 'react'
 import { CalendarItemNumberStyled, CalendarItemTopStyled, CalendarItemAdditionalStyled } from '../calendar.style'
-import { DayItem, DayItemHaveMore, DayItemPopupOverlayStyled, DayItemsList, DayStyled, DayItemTextStyled } from './calendarDays.style'
+import { DayItem, DayItemHaveMore, DayItemsList, DayStyled, DayItemTextStyled } from './calendarDays.style'
 import { CreateDateReturn, UseCalendarFuncsReturn } from '../types'
-import CalendarDayItemPopup from './calendarDayItemPopup'
+import { useAppDispatch } from 'hooks'
+import { openCalendarDayPopup } from '__data__/reducers/calendarDayPopup'
 
 interface CalendarDayItemProps {
   isAdditionalDay: boolean
@@ -15,10 +16,10 @@ interface CalendarDayItemProps {
 }
 
 export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDay, isToday, isSelectedDay, functions, selectDate, day }) => {
-  const [visibleDayPopup, setVisibleDayPopup] = useState(false)
 
-  const handleVisiblePopup = (val: boolean) => {
-    setVisibleDayPopup(val)
+  const dispatch = useAppDispatch()
+  const handleVisiblePopup = (val: boolean, day: CreateDateReturn) => {
+    dispatch(openCalendarDayPopup({ open: val, day: day }))
   }
 
   return (
@@ -30,11 +31,9 @@ export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDa
         onClick={() => {
           functions.setSelectedDate(day)
           selectDate(day.date)
-          handleVisiblePopup(true)
+          handleVisiblePopup(true, day)
         }}
       >
-        {/* <CalendarItemBorderTopStyled />
-        <CalendarItemBorderBottomStyled /> */}
         <CalendarItemTopStyled>
           <CalendarItemNumberStyled
             isToday={isToday}
@@ -70,14 +69,7 @@ export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDa
               <Typography fontSize="14px" fontWeight="600">{day.description?.subTitle}</Typography>
             </CalendarItemAdditionalStyled>
         }
-        {visibleDayPopup &&
-          <CalendarDayItemPopup day={day}/>
-        }
       </DayStyled>
-      {visibleDayPopup &&
-        <DayItemPopupOverlayStyled
-          onClick={() => handleVisiblePopup(false)} />
-      }
     </>
   )
 }

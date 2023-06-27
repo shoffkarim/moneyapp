@@ -3,7 +3,8 @@ import { CalendarWrapperModeStyled, WeekDayNameStyled, WeekDaysNameContainerStyl
 import { DaysContainerStyled } from './calendarDays.style'
 import CalendarDayItem from './calendarDayItem'
 import { checkDateIsEqual, checkIsToday } from '../utils'
-import { CalendarDataType, UseCalendarFuncsReturn, UseCalendarStateReturn } from '../types'
+import { UseCalendarFuncsReturn, UseCalendarStateReturn } from '../types'
+import CalendarDayItemPopup from './calendarDayItemPopup'
 
 interface CalendarDaysModeProps {
   state: UseCalendarStateReturn
@@ -41,6 +42,7 @@ export const CalendarDaysMode: React.FC<CalendarDaysModeProps> = ({ state, funct
               />
           })}
         </DaysContainerStyled>
+        <CalendarDayItemPopup />
       </CalendarWrapperModeStyled>
     )
   }
