@@ -23,6 +23,8 @@ export const INCOMES = "incomes"
 export const EXPENSES = "expenses"
 export const BALANCE = "BALANCE"
 
+export const SUCCESS = 'success'
+export const ERROR = 'error'
 export const SIZE_OF_CARDS = 11
 export const SIZE_OF_EXPENSES_CARDS = 22
 

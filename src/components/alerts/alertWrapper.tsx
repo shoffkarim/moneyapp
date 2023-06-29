@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react'
 import { Alert } from '@mui/material'
-import CheckIcon from '@mui/icons-material/Check'
 import { AlertWrapperStyled } from "./alerts.styled"
 import { useAppDispatch } from 'hooks'
 import { closeSuccessAlert } from '__data__/reducers/alerts'
 
 
-type SuccessAlertProps = {
+type AlertWrapperProps = {
   text: string
+  type: 'success' | 'error'
 }
-export const SuccessAlert: React.FC<SuccessAlertProps> = ({ text }) => {
+export const AlertWrapper: React.FC<AlertWrapperProps> = ({ text, type }) => {
 
   const dispatch = useAppDispatch()
 
@@ -21,7 +21,7 @@ export const SuccessAlert: React.FC<SuccessAlertProps> = ({ text }) => {
 
   return (
     <AlertWrapperStyled visible={true}>
-      <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">{text}</Alert>
+      <Alert severity={type}>{text}</Alert>
     </AlertWrapperStyled>
   )
 }

@@ -1,13 +1,13 @@
 import React from 'react'
 import {  useAppSelector } from 'hooks'
 import { RootState } from '__data__/store'
-import { SuccessAlert } from './successAlert'
+import { AlertWrapper } from './alertWrapper'
 
 export const AlertContainer: React.FC = () => {
 
-  const { open, text } = useAppSelector((state: RootState) => state.successAlert)
+  const { open, text, type } = useAppSelector((state: RootState) => state.alerts)
 
   return (
-    open ? <SuccessAlert text={text}/> : null
+    open ? <AlertWrapper text={text} type={type as 'success' | 'error'}/> : null
   )
 }

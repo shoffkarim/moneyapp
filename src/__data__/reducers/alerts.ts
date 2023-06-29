@@ -1,19 +1,36 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { ERROR, SUCCESS } from "components/constants"
 
 
 const initialState = {
   open: false,
-  text: ''
+  text: '',
+  type: ''
 }
 
-const successAlert = createSlice({
-  name: 'createAlert',
+const alerts = createSlice({
+  name: 'alerts',
   initialState,
   reducers: {
-    openSuccessAlert: (state, action) => state = action.payload,
+    openSuccessAlert: (state, action) => {
+      state.open = action.payload.open
+      state.text = action.payload.text
+      state.type = SUCCESS
+    },
     closeSuccessAlert: (state) => {
       state.open = false
       state.text = ''
+      state.type = ''
+    },
+    openErrorAlert: (state, action) => {
+      state.open = action.payload.open
+      state.text = action.payload.text
+      state.type = ERROR
+    },
+    closeErrorAlert: (state) => {
+      state.open = false
+      state.text = ''
+      state.type = ''
     }
   },
 })
@@ -21,7 +38,7 @@ const successAlert = createSlice({
 export const {
   openSuccessAlert,
   closeSuccessAlert,
-} = successAlert.actions
+} = alerts.actions
 
 
-export default successAlert.reducer
+export default alerts.reducer
