@@ -45,7 +45,7 @@ export const Card: React.FC<ICard> = ({ id, name, icon, color, value, type }) =>
             ref={drag}
             style={{ backgroundColor: theme }}
           >
-            <DragPreviewImage connect={preview} src="moneySvg.svg"/>
+            <DragPreviewImage connect={preview} src="moneyIcon.png"/>
             <MainIcon.Icon {...iconProps} />
           </CardIconStyled>
           <CardValueStyled>
