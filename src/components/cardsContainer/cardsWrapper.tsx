@@ -6,9 +6,10 @@ import { Typography } from "@mui/material"
 import { Pagination } from "swiper"
 import { BoxLabelStyled, BoxStyled, SwiperStyled, SwiperSlideStyled, SwiperSlideExpensesStyled } from './cardContainers.style'
 import { CardsSkeleton } from "./cardsSkeleton"
-import { separateItems } from "./separateItems"
+import { separateItems } from "../utils/separateItems"
 import { EXPENSES, SIZE_OF_CARDS, SIZE_OF_EXPENSES_CARDS } from "components/constants"
 import { SwiperNavigation } from "./swiperNavigation"
+import { CardTransactionProps } from "components/card/cardTransaction/cardTransaction"
 
 interface CardsWrapperProps {
   transactionOpen: (
@@ -49,11 +50,11 @@ export const CardsWrapper: React.FC<CardsWrapperProps> = ({
           paddingBottom={((items?.length && items?.length > size) || items.length % size === 0)}
         >
           {handledArray && handledArray.length > 0 &&
-          handledArray.map((subArray: Array<ICard>, index: number) => {
+          handledArray.map((subArray: Array<ICard | CardTransactionProps>, index: number) => {
 
             return (
               <SlideComponent key={`${subArray[0].id} - ${Math.random()}`}>
-                {subArray && subArray.map((item: ICard) => {
+                {subArray && subArray.map((item: ICard | CardTransactionProps) => {
                   return (
                     <CardDropWrapper
                       key={item.id}
@@ -82,7 +83,7 @@ export const CardsWrapper: React.FC<CardsWrapperProps> = ({
               />
             </SlideComponent>
           }
-          { (items.length > size || (items.length === size && items.length % size === 0)) && <SwiperNavigation/> }
+          { (items.length > size || (items.length === size && items.length % size === 0)) && <SwiperNavigation color="#fff"/> }
         </SwiperStyled>
         : <CardsSkeleton/>
       }

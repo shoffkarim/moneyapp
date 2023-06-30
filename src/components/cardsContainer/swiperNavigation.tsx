@@ -4,7 +4,10 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import { SwiperButtonNextStyled, SwiperButtonPrevStyled } from './cardContainers.style'
 
-export const SwiperNavigation = () => {
+type SwiperNavigationProps = {
+  color: string
+}
+export const SwiperNavigation: React.FC<SwiperNavigationProps> = ({ color }) => {
   const swiper = useSwiper()
   const handleMouseOnPrev = () => {
     setTimeout(() => {
@@ -22,13 +25,13 @@ export const SwiperNavigation = () => {
         onClick={() => swiper.slidePrev()}
         onDragOver={handleMouseOnPrev}
       >
-        <ArrowBackIosNewIcon htmlColor="#fff"/>
+        <ArrowBackIosNewIcon htmlColor={color}/>
       </SwiperButtonPrevStyled>
       <SwiperButtonNextStyled
         onClick={() => swiper.slideNext()}
         onDragOver={handleMouseOnNext}
       >
-        <ArrowForwardIosIcon htmlColor="#fff"/>
+        <ArrowForwardIosIcon htmlColor={color}/>
       </SwiperButtonNextStyled>
     </>
   )

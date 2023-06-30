@@ -4,7 +4,7 @@ import { Comment } from "./comment"
 import { TransactionDate } from "./transactionDate"
 import { Tags } from "./tags"
 import { Value } from "./value"
-import { TransactionContainerStyled, TransactionOverlayStyled, TransactionStyled, CloseButtonStyled } from "./transaction.styled"
+import { TransactionContainerStyled, TransactionOverlayStyled, TransactionStyled, CloseButtonStyled, TransactionWrapperStyled } from "./transaction.styled"
 import { Button } from '@mui/material'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { TransactionValues } from './utils'
@@ -82,7 +82,9 @@ export const Transaction: React.FC<TransactionProps> = ({ handleTransactionOpen,
           <TransactionDate control={control}/>
           <Comment control={control}/>
           <Tags control={control}/>
-          <Button variant='contained' type="submit">Submit</Button>
+          <TransactionWrapperStyled>
+            <Button variant='contained' type="submit">Submit</Button>
+          </TransactionWrapperStyled>
         </form>
       </TransactionContainerStyled>
     </TransactionStyled>

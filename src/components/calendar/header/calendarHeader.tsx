@@ -38,7 +38,7 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({ state, functions
         <CalendarHeaderButtonTodayStyled
           variant='text'
           onClick={() => {
-            console.log(functions.backToToday())
+            functions.backToToday()
           }}>Today</CalendarHeaderButtonTodayStyled>
         <IconButton onClick={() => functions.onClickArrow('right')}>
           <ArrowForwardIosIcon htmlColor="white"/>

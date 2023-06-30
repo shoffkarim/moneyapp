@@ -14,7 +14,7 @@ interface CalendarDayItemProps {
   day: CreateDateReturn
 }
 
-export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDay, isToday, isSelectedDay, functions, day }) => {
+export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDay, isToday, isSelectedDay, day }) => {
 
   const dispatch = useAppDispatch()
   const handleVisiblePopup = (day: CreateDateReturn) => {

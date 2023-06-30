@@ -24,6 +24,8 @@ const transaction = createSlice({
     },
     setTransactionCardIDFrom: (state, action) => { state.idFrom = action.payload },
     setTransactionCardIDTo: (state, action) => { state.idTo = action.payload },
+    setTransactionCardTypeFrom: (state, action) => { state.typeFrom = action.payload },
+    setTransactionCardTypeTo: (state, action) => { state.typeTo = action.payload },
   },
 })
 
@@ -32,6 +34,8 @@ export const {
   setTransactionStart,
   setTransactionCardIDFrom,
   setTransactionCardIDTo,
+  setTransactionCardTypeFrom,
+  setTransactionCardTypeTo
 } = transaction.actions
 
 

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { css } from "@emotion/react"
 import { IconButton } from '@mui/material'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 export const TransactionStyled = styled.div(() => css`
   position: fixed;
@@ -29,17 +30,20 @@ export const TransactionContainerStyled = styled.div(() => css`
   height: auto;
   background-color: #fff;
   z-index: 12;
-  padding: 30px 30px;
+  padding: 30px 0px;
   position: relative;
+  max-width: 1000px;
 `)
 
 export const TransactionWrapperStyled = styled.div(() => css`
   margin-bottom: 20px;
+  padding: 0 30px;
 `)
 
 export const TransactionTitleStyled = styled.div(() => css`
   font-size: 24px;
   background-color: #fff;
+  margin-right: 25px;
 `)
 
 export const TransactionCardWrapperStyled = styled.div(() => css`
@@ -99,4 +103,33 @@ export const CloseButtonStyled = styled(IconButton)(() => css`
   top: -15px;
   right: -85px;
   z-index: 50;
+`)
+
+export const TransactionCardsTopStyled = styled.div(() => css`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 30px;
+`)
+
+export type SwiperStyledProps = {
+  paddingBottom?: boolean | 0
+}
+
+export const SwiperTransactionStyled = styled(Swiper, {
+  shouldForwardProp: prop => prop !== 'paddingBottom'
+})<SwiperStyledProps>(({ paddingBottom }) => css`
+  padding: ${paddingBottom ? '10px 0px 40px 0px' : '10px 0px 10px 0px'};
+  width: 100%;
+`)
+
+export const SwiperSlideTransactionStyled = styled(SwiperSlide)(() => css`
+
+`)
+
+export const SwiperSlideTransactionWrapper = styled.div(() => css`
+  display: flex;
+  gap: 0px 27px;
+  padding: 0px 45px;
 `)
