@@ -34,6 +34,7 @@ export const CardsWrapper: React.FC<CardsWrapperProps> = ({
 
   const SlideComponent = type == EXPENSES ? SwiperSlideExpensesStyled : SwiperSlideStyled
 
+  console.log(items?.length, size)
   return (
     <BoxStyled sx={{ backgroundColor: 'primary.dark' }}>
       <BoxLabelStyled>
@@ -46,7 +47,7 @@ export const CardsWrapper: React.FC<CardsWrapperProps> = ({
           pagination={{ clickable: true }}
           modules={[ Pagination ]}
           className="mySwiper"
-          paddingBottom={items?.length && items?.length > 12}
+          paddingBottom={((items?.length && items?.length > size) || items.length % size === 0)}
         >
           {handledArray && handledArray.length > 0 &&
           handledArray.map((subArray: Array<ICard>, index: number) => {
@@ -67,7 +68,7 @@ export const CardsWrapper: React.FC<CardsWrapperProps> = ({
                     />
                   )
                 })}
-                {index === handledArray.length - 1 &&
+                {index === handledArray.length - 1 && items.length % size !== 0 &&
                   <CardNew
                     type={type}
                   />
@@ -75,7 +76,14 @@ export const CardsWrapper: React.FC<CardsWrapperProps> = ({
               </SlideComponent>
             )
           })}
-          <SwiperNavigation/>
+          {items.length % size === 0 &&
+            <SlideComponent key={`${type}-add- ${Math.random()}`}>
+              <CardNew
+                type={type}
+              />
+            </SlideComponent>
+          }
+          { (items.length > size || (items.length === size && items.length % size === 0)) && <SwiperNavigation/> }
         </SwiperStyled>
         : <CardsSkeleton/>
       }

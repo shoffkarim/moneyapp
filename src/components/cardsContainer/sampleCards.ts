@@ -89,30 +89,7 @@ export const sampleCards: SampleCardsType = {
       value: 1000,
       type: 'incomes'
     },
-    {
-      id: 11,
-      name: 'saaaalary',
-      icon: 'bank',
-      color: '#f57c00',
-      value: 1000,
-      type: 'incomes'
-    },
-    {
-      id: 12,
-      name: 'cashbak',
-      icon: 'bank',
-      color: '#1976d2',
-      value: 1000,
-      type: 'incomes'
-    },
-    {
-      id: 13,
-      name: 'cash',
-      icon: 'trophy',
-      color: '#616161',
-      value: 1000,
-      type: 'incomes'
-    },
+
   ],
   accounts: [
     {
@@ -200,22 +177,6 @@ export const sampleCards: SampleCardsType = {
       name: 'saaaalary',
       icon: 'bank',
       color: '#f57c00',
-      value: 1000,
-      type: 'accounts'
-    },
-    {
-      id: 12,
-      name: 'cashbak',
-      icon: 'bank',
-      color: '#1976d2',
-      value: 1000,
-      type: 'accounts'
-    },
-    {
-      id: 13,
-      name: 'cash',
-      icon: 'trophy',
-      color: '#616161',
       value: 1000,
       type: 'accounts'
     },
@@ -388,46 +349,6 @@ export const sampleCards: SampleCardsType = {
       name: 'saaaalary',
       icon: 'bank',
       color: '#f57c00',
-      value: 1000,
-      type: 'expenses'
-    },
-    {
-      id: 22,
-      name: 'cashbak',
-      icon: 'bank',
-      color: '#1976d2',
-      value: 1000,
-      type: 'expenses'
-    },
-    {
-      id: 23,
-      name: 'cash',
-      icon: 'trophy',
-      color: '#616161',
-      value: 1000,
-      type: 'expenses'
-    },
-    {
-      id: 24,
-      name: 'saaaalary',
-      icon: 'bank',
-      color: '#f57c00',
-      value: 1000,
-      type: 'expenses'
-    },
-    {
-      id: 25,
-      name: 'cashbak',
-      icon: 'bank',
-      color: '#1976d2',
-      value: 1000,
-      type: 'expenses'
-    },
-    {
-      id: 26,
-      name: 'cash',
-      icon: 'trophy',
-      color: '#616161',
       value: 1000,
       type: 'expenses'
     },

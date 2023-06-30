@@ -31,7 +31,7 @@ export type SwiperStyled = {
 export const SwiperStyled = styled(Swiper, {
   shouldForwardProp: prop => prop !== 'paddingBottom'
 })<SwiperStyled>(({ paddingBottom }) => css`
-  padding: ${paddingBottom ? '10px 0px 40px 50px' : '10px 0px 10px 25px'};
+  padding: ${paddingBottom ? '10px 0px 40px 50px' : '10px 0px 10px 50px'};
   width: 100%;
 `)
 
