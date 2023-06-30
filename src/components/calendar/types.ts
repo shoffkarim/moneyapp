@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
+import { Tag } from 'types'
 
 interface CalendarDataDayType {
   date: Date,
@@ -19,7 +20,9 @@ interface CalendarDataDayItemsType {
   title: string
   backgroundColor: string
   value: string
-  subItems: Array<CalendarDataDaySubItemsType>
+  subItems?: Array<CalendarDataDaySubItemsType>
+  comment: string
+  tags: Array<Tag>
 }
 
 export interface CalendarDataType {

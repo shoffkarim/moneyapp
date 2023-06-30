@@ -5,7 +5,6 @@ export const assignData = (state: UseCalendarStateReturn, data: any): any => {
     // return day
     if(data?.days) {
       return data.days.map((dataDay: any) => {
-
         if (checkDateIsEqual(day.date, dataDay.date)) {
           return Object.assign(day, dataDay)
         }

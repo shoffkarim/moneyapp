@@ -23,7 +23,9 @@ export const CalendarData: CalendarDataType = {
               title: 'Meet',
               value: '9$'
             },
-          ]
+          ],
+          comment: 'Lor',
+          tags: []
         },
         {
           id: '123asfdsf',
@@ -39,7 +41,9 @@ export const CalendarData: CalendarDataType = {
               title: 'Taxi',
               value: '4$'
             },
-          ]
+          ],
+          comment: 'Lor',
+          tags: []
         },
         {
           id: '123asfdsf',
@@ -55,7 +59,9 @@ export const CalendarData: CalendarDataType = {
               title: 'Meet',
               value: '9$'
             },
-          ]
+          ],
+          comment: 'Lor',
+          tags: []
         },
         {
           id: '123asfdsf',
@@ -71,7 +77,9 @@ export const CalendarData: CalendarDataType = {
               title: 'Taxi',
               value: '4$'
             },
-          ]
+          ],
+          comment: 'Lor',
+          tags: []
         },
         {
           id: '123asfdsf',
@@ -87,7 +95,9 @@ export const CalendarData: CalendarDataType = {
               title: 'Meet',
               value: '9$'
             },
-          ]
+          ],
+          comment: 'Lor',
+          tags: []
         },
         {
           id: '123asfdsf',
@@ -103,7 +113,9 @@ export const CalendarData: CalendarDataType = {
               title: 'Taxi',
               value: '4$'
             },
-          ]
+          ],
+          comment: 'Lor',
+          tags: []
         }
       ]
     },
@@ -128,7 +140,9 @@ export const CalendarData: CalendarDataType = {
               title: 'Meet',
               value: '9$'
             },
-          ]
+          ],
+          comment: 'Lor',
+          tags: []
         },
         {
           id: '123asfdsf',
@@ -144,7 +158,9 @@ export const CalendarData: CalendarDataType = {
               title: 'Taxi',
               value: '4$'
             },
-          ]
+          ],
+          comment: 'Lor',
+          tags: []
         },
         {
           id: '123asfdsf',
@@ -160,7 +176,9 @@ export const CalendarData: CalendarDataType = {
               title: 'Meet',
               value: '9$'
             },
-          ]
+          ],
+          comment: 'Lor',
+          tags: []
         },
         {
           id: '123asfdsf',
@@ -176,7 +194,9 @@ export const CalendarData: CalendarDataType = {
               title: 'Taxi',
               value: '4$'
             },
-          ]
+          ],
+          comment: 'Lor',
+          tags: []
         },
         {
           id: '123asfdsf',
@@ -192,7 +212,9 @@ export const CalendarData: CalendarDataType = {
               title: 'Meet',
               value: '9$'
             },
-          ]
+          ],
+          comment: 'Lor',
+          tags: []
         },
         {
           id: '123asfdsf',
@@ -208,7 +230,9 @@ export const CalendarData: CalendarDataType = {
               title: 'Taxi',
               value: '4$'
             },
-          ]
+          ],
+          comment: 'Lor',
+          tags: []
         }
       ]
     },

@@ -9,7 +9,8 @@ interface CreateDateParams {
 export const createDate = (params?: CreateDateParams): CreateDateReturn => {
   const locale = params?.locale ?? 'default'
 
-  const date = params?.date ?? new Date()
+  const date = new Date(params?.date ?? new Date())
+  console.log(date)
   const dayNumber = date.getDate()
   const day = date.toLocaleDateString(locale, { weekday: 'long' })
   const dayNumberInWeek = date.getDay() + 1

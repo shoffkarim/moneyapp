@@ -11,15 +11,14 @@ interface CalendarDayItemProps {
   isToday: boolean
   isSelectedDay: boolean
   functions: UseCalendarFuncsReturn
-  selectDate: (date: Date) => void
   day: CreateDateReturn
 }
 
-export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDay, isToday, isSelectedDay, functions, selectDate, day }) => {
+export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDay, isToday, isSelectedDay, functions, day }) => {
 
   const dispatch = useAppDispatch()
-  const handleVisiblePopup = (val: boolean, day: CreateDateReturn) => {
-    dispatch(openCalendarDayPopup({ open: val, day: day }))
+  const handleVisiblePopup = (day: CreateDateReturn) => {
+    dispatch(openCalendarDayPopup({ open: true, day: day }))
   }
 
   return (
@@ -29,9 +28,7 @@ export const CalendarDayItem: React.FC<CalendarDayItemProps> = ({ isAdditionalDa
         isToday={isToday}
         isSelectedDay={isSelectedDay}
         onClick={() => {
-          functions.setSelectedDate(day)
-          selectDate(day.date)
-          handleVisiblePopup(true, day)
+          handleVisiblePopup(day)
         }}
       >
         <CalendarItemTopStyled>

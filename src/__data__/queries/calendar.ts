@@ -13,6 +13,11 @@ export const GET_CALENDAR_DATA = gql`
         title
         backgroundColor
         value
+        tags {
+          tagId
+          name
+        }
+        comment
       }
     }
   }

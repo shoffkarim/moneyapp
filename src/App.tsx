@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Main, SignUpPage, SignInPage, CalendarPage, HistoryPage } from './pages'
 import { useQuery } from '@apollo/client'
 import { GET_USER_TOTAL } from '__data__/queries/total'
+import { CalendarWrapper } from 'pages/calendar'
 
 
 const App: React.FC = () => {
@@ -32,7 +33,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path='/' Component={Main}/>
             <Route path='history' Component={HistoryPage}/>
-            <Route path='calendar' Component={CalendarPage}/>
+            <Route path='calendar' Component={CalendarWrapper}/>
             <Route path='signup' Component={SignUpPage}/>
             <Route path='signin' Component={SignInPage}/>
           </Routes>

@@ -34,7 +34,6 @@ export const CardsWrapper: React.FC<CardsWrapperProps> = ({
 
   const SlideComponent = type == EXPENSES ? SwiperSlideExpensesStyled : SwiperSlideStyled
 
-  console.log(items?.length, size)
   return (
     <BoxStyled sx={{ backgroundColor: 'primary.dark' }}>
       <BoxLabelStyled>

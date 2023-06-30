@@ -9,16 +9,20 @@ import { UseCalendarFuncsReturn, UseCalendarStateReturn } from './types'
 interface CalendarProps {
   state: UseCalendarStateReturn,
   functions: UseCalendarFuncsReturn
-  selectDate: (date: Date) => void
+  // selectDate: (date: Date) => void
 }
 
-export const Calendar: React.FC<CalendarProps> = ({ state, functions, selectDate }) => {
+export const Calendar: React.FC<CalendarProps> = ({ state, functions }) => {
 
   return (
     state && <div>
       <CalendarHeader state={state} functions={functions} />
       {state.mode === 'days' && state && state.calendarDays &&
-        <CalendarDaysMode state={state} functions={functions} selectDate={selectDate} />
+        <CalendarDaysMode
+          state={state}
+          functions={functions}
+          // selectDate={selectDate}
+        />
       }
 
       {state.mode === 'monthes' &&

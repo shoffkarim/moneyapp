@@ -9,10 +9,10 @@ import CalendarDayItemPopup from './calendarDayItemPopup'
 interface CalendarDaysModeProps {
   state: UseCalendarStateReturn
   functions: UseCalendarFuncsReturn
-  selectDate: (date: Date) => void
+  // selectDate: (date: Date) => void
 }
 
-export const CalendarDaysMode: React.FC<CalendarDaysModeProps> = ({ state, functions, selectDate }) => {
+export const CalendarDaysMode: React.FC<CalendarDaysModeProps> = ({ state, functions }) => {
 
   if (state && state.calendarDays) {
     return (
@@ -37,7 +37,7 @@ export const CalendarDaysMode: React.FC<CalendarDaysModeProps> = ({ state, funct
                 isAdditionalDay={isAdditionalDay}
                 isSelectedDay={isSelectedDay}
                 functions={functions}
-                selectDate={selectDate}
+                // selectDate={selectDate}
                 day={day}
               />
           })}

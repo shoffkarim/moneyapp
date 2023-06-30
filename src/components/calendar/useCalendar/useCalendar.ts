@@ -6,14 +6,15 @@ export const DAYS_IN_WEEK = 7
 
 interface UseCalendarParams {
   locale?: string
-  selectedDate: Date
+  // selectedDate: Date
   firstWeekDay?: number
 }
 
 
-export const useCalendar = ({ locale = 'default', selectedDate: date, firstWeekDay = 2 }: UseCalendarParams): UseCalendarReturn => {
+export const useCalendar = ({ locale = 'default', firstWeekDay = 2 }: UseCalendarParams): UseCalendarReturn => {
+  const today = new Date()
   const [mode, setMode] = useState<'days' | 'monthes' | 'years'>('days')
-  const [selectedDate, setSelectedDate] = useState(createDate({ date }))
+  const [selectedDate, setSelectedDate] = useState(createDate({ date: today }))
   const [selectedMonth, setSelectedMonth] = useState(createMonth({ locale, date: new Date(selectedDate.year, selectedDate.monthIndex) }))
   const [selectedYear, setSelectedYear] = useState(selectedDate.year)
 

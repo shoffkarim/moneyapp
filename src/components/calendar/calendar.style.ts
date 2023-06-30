@@ -84,8 +84,9 @@ export const CalendarItemTopStyled = styled.div(() => css`
 `)
 
 export const CalendarItemAdditionalStyled = styled.div(() => css`
-  padding: 5px 12px 5px 12px;
+  padding: 0px 12px 5px 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: auto;
 `)

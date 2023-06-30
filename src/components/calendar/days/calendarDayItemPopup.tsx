@@ -48,211 +48,53 @@ export const CalendarDayItemPopup: React.FC = () => {
             {formateDate(day.date, 'DD-MM-YYYY')}
           </DayItemDateStyled>
         </DayItemTopPopupStyled>
-        <DayItemsListPopupStyled>
-          <DayItemPopupStyled backgroundColor={"#00796b"}>
-            <DayItemInfoWrapperPopupStyled>
-              <Typography fontSize="18px">{"food"}</Typography>
-              <DayItemCommentPopupStyled
-                onClick={() => setShowComment(!showComment)}
-                show={showComment ? 'initial' : 'nowrap'}
-                fontSize="14px"
-              >Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos voluptates soluta illo quam ex dolorum sapiente assumenda ea doloremque? Esse minus odio magnam quis sequi molestiae, reprehenderit ut expedita sint.</DayItemCommentPopupStyled>
-              <DayItemTagListStyled>
-                <DayItemTagItemStyled>
-                  <Typography fontSize="14px">{"bank"}</Typography>
-                </DayItemTagItemStyled>
-                <DayItemTagItemStyled>
-                  <Typography fontSize="14px">{"Business lunch"}</Typography>
-                </DayItemTagItemStyled>
-                <DayItemTagItemStyled>
-                  <Typography fontSize="14px">{"bank"}</Typography>
-                </DayItemTagItemStyled>
-                <DayItemTagItemStyled>
-                  <Typography fontSize="14px">{"Business lunch"}</Typography>
-                </DayItemTagItemStyled>
-              </DayItemTagListStyled>
-            </DayItemInfoWrapperPopupStyled>
-            <DayItemWrapperPopupStyled>
-              <Typography fontSize="18px">{"14$"}</Typography>
-              <DayItemActionsPopupStyled>
-                <DayItemActionStyled>
-                  <EditIcon htmlColor="#fff" fontSize="small" />
-                </DayItemActionStyled>
-                <DayItemActionStyled onClick={handleOpenDeleteDialog}>
-                  <DeleteForeverIcon htmlColor="#fff" fontSize='small' />
-                </DayItemActionStyled>
-              </DayItemActionsPopupStyled>
-            </DayItemWrapperPopupStyled>
-          </DayItemPopupStyled>
-          <DayItemPopupStyled backgroundColor={"#d32f2f"}>
-            <DayItemInfoWrapperPopupStyled>
-              <Typography fontSize="18px">{"food"}</Typography>
-              <DayItemCommentPopupStyled
-                onClick={() => setShowComment(!showComment)}
-                show={showComment ? 'initial' : 'nowrap'}
-                fontSize="14px"
-              >Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos voluptates soluta illo quam ex dolorum sapiente assumenda ea doloremque? Esse minus odio magnam quis sequi molestiae, reprehenderit ut expedita sint.</DayItemCommentPopupStyled>
-            </DayItemInfoWrapperPopupStyled>
-            <DayItemWrapperPopupStyled>
-              <Typography fontSize="18px">{"14$"}</Typography>
-              <DayItemActionsPopupStyled>
-                <DayItemActionStyled>
-                  <EditIcon htmlColor="#fff" fontSize="small" />
-                </DayItemActionStyled>
-                <DayItemActionStyled onClick={handleOpenDeleteDialog}>
-                  <DeleteForeverIcon htmlColor="#fff" fontSize='small' />
-                </DayItemActionStyled>
-              </DayItemActionsPopupStyled>
-            </DayItemWrapperPopupStyled>
-          </DayItemPopupStyled>
-          <DayItemPopupStyled backgroundColor={"#455a64"}>
-            <DayItemInfoWrapperPopupStyled>
-              <Typography fontSize="18px">{"food"}</Typography>
-              <DayItemTagListStyled>
-                <DayItemTagItemStyled>
-                  <Typography fontSize="14px">{"bank"}</Typography>
-                </DayItemTagItemStyled>
-              </DayItemTagListStyled>
-            </DayItemInfoWrapperPopupStyled>
-            <DayItemWrapperPopupStyled>
-              <Typography fontSize="18px">{"14$"}</Typography>
-              <DayItemActionsPopupStyled>
-                <DayItemActionStyled>
-                  <EditIcon htmlColor="#fff" fontSize="small" />
-                </DayItemActionStyled>
-                <DayItemActionStyled onClick={handleOpenDeleteDialog}>
-                  <DeleteForeverIcon htmlColor="#fff" fontSize='small' />
-                </DayItemActionStyled>
-              </DayItemActionsPopupStyled>
-            </DayItemWrapperPopupStyled>
-          </DayItemPopupStyled>
-          <DayItemPopupStyled backgroundColor={"#00796b"}>
-            <DayItemInfoWrapperPopupStyled>
-              <Typography fontSize="18px">{"food"}</Typography>
-              <DayItemCommentPopupStyled
-                onClick={() => setShowComment(!showComment)}
-                show={showComment ? 'initial' : 'nowrap'}
-                fontSize="14px"
-              >Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos voluptates soluta illo quam ex dolorum sapiente assumenda ea doloremque? Esse minus odio magnam quis sequi molestiae, reprehenderit ut expedita sint.</DayItemCommentPopupStyled>
-              <DayItemTagListStyled>
-                <DayItemTagItemStyled>
-                  <Typography fontSize="14px">{"bank"}</Typography>
-                </DayItemTagItemStyled>
-                <DayItemTagItemStyled>
-                  <Typography fontSize="14px">{"Business lunch"}</Typography>
-                </DayItemTagItemStyled>
-                <DayItemTagItemStyled>
-                  <Typography fontSize="14px">{"bank"}</Typography>
-                </DayItemTagItemStyled>
-                <DayItemTagItemStyled>
-                  <Typography fontSize="14px">{"Business lunch"}</Typography>
-                </DayItemTagItemStyled>
-              </DayItemTagListStyled>
-            </DayItemInfoWrapperPopupStyled>
-            <DayItemWrapperPopupStyled>
-              <Typography fontSize="18px">{"14$"}</Typography>
-              <DayItemActionsPopupStyled>
-                <DayItemActionStyled>
-                  <EditIcon htmlColor="#fff" fontSize="small" />
-                </DayItemActionStyled>
-                <DayItemActionStyled onClick={handleOpenDeleteDialog}>
-                  <DeleteForeverIcon htmlColor="#fff" fontSize='small' />
-                </DayItemActionStyled>
-              </DayItemActionsPopupStyled>
-            </DayItemWrapperPopupStyled>
-          </DayItemPopupStyled>
-          <DayItemPopupStyled backgroundColor={"#d32f2f"}>
-            <DayItemInfoWrapperPopupStyled>
-              <Typography fontSize="18px">{"food"}</Typography>
-              <DayItemCommentPopupStyled
-                onClick={() => setShowComment(!showComment)}
-                show={showComment ? 'initial' : 'nowrap'}
-                fontSize="14px"
-              >Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos voluptates soluta illo quam ex dolorum sapiente assumenda ea doloremque? Esse minus odio magnam quis sequi molestiae, reprehenderit ut expedita sint.</DayItemCommentPopupStyled>
-              <DayItemTagListStyled>
-                <DayItemTagItemStyled>
-                  <Typography fontSize="14px">{"bank"}</Typography>
-                </DayItemTagItemStyled>
-                <DayItemTagItemStyled>
-                  <Typography fontSize="14px">{"Business lunch"}</Typography>
-                </DayItemTagItemStyled>
-                <DayItemTagItemStyled>
-                  <Typography fontSize="14px">{"bank"}</Typography>
-                </DayItemTagItemStyled>
-                <DayItemTagItemStyled>
-                  <Typography fontSize="14px">{"Business lunch"}</Typography>
-                </DayItemTagItemStyled>
-              </DayItemTagListStyled>
-            </DayItemInfoWrapperPopupStyled>
-            <DayItemWrapperPopupStyled>
-              <Typography fontSize="18px">{"14$"}</Typography>
-              <DayItemActionsPopupStyled>
-                <DayItemActionStyled>
-                  <EditIcon htmlColor="#fff" fontSize="small" />
-                </DayItemActionStyled>
-                <DayItemActionStyled onClick={handleOpenDeleteDialog}>
-                  <DeleteForeverIcon htmlColor="#fff" fontSize='small' />
-                </DayItemActionStyled>
-              </DayItemActionsPopupStyled>
-            </DayItemWrapperPopupStyled>
-          </DayItemPopupStyled>
-          <DayItemPopupStyled backgroundColor={"#455a64"}>
-            <DayItemInfoWrapperPopupStyled>
-              <Typography fontSize="18px">{"food"}</Typography>
-              <DayItemCommentPopupStyled
-                onClick={() => setShowComment(!showComment)}
-                show={showComment ? 'initial' : 'nowrap'}
-                fontSize="14px"
-              >Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos voluptates soluta illo quam ex dolorum sapiente assumenda ea doloremque? Esse minus odio magnam quis sequi molestiae, reprehenderit ut expedita sint.</DayItemCommentPopupStyled>
-              <DayItemTagListStyled>
-                <DayItemTagItemStyled>
-                  <Typography fontSize="14px">{"bank"}</Typography>
-                </DayItemTagItemStyled>
-                <DayItemTagItemStyled>
-                  <Typography fontSize="14px">{"Business lunch"}</Typography>
-                </DayItemTagItemStyled>
-                <DayItemTagItemStyled>
-                  <Typography fontSize="14px">{"bank"}</Typography>
-                </DayItemTagItemStyled>
-                <DayItemTagItemStyled>
-                  <Typography fontSize="14px">{"Business lunch"}</Typography>
-                </DayItemTagItemStyled>
-              </DayItemTagListStyled>
-            </DayItemInfoWrapperPopupStyled>
-            <DayItemWrapperPopupStyled>
-              <Typography fontSize="18px">{"14$"}</Typography>
-              <DayItemActionsPopupStyled>
-                <DayItemActionStyled>
-                  <EditIcon htmlColor="#fff" fontSize="small" />
-                </DayItemActionStyled>
-                <DayItemActionStyled onClick={handleOpenDeleteDialog}>
-                  <DeleteForeverIcon htmlColor="#fff" fontSize='small' />
-                </DayItemActionStyled>
-              </DayItemActionsPopupStyled>
-            </DayItemWrapperPopupStyled>
-          </DayItemPopupStyled>
-        </DayItemsListPopupStyled>
-        <DayTotalContainerStyled>
-          <Typography>{"total"}</Typography>
-          <Typography>{"1000000$"}</Typography>
-        </DayTotalContainerStyled>
-        {/* {day.items &&
-              <DayItemsList>
-                {day.items.map((item, index) => {
-                  return (
-                    <DayItem backgroundColor={item.backgroundColor} key={`${item.title}-${index}`}>
-                      <Typography fontSize="14px">{item.title}</Typography>
-                      <Typography fontSize="14px">{item.value}</Typography>
-                    </DayItem>
-                  )
-                })}
-              </DayItemsList>
-        } */}
+        {day.items &&
+          <DayItemsListPopupStyled>
+            {day.items.map((item) => {
+              return (
+                <DayItemPopupStyled backgroundColor={item.backgroundColor} key={item.id}>
+                  <DayItemInfoWrapperPopupStyled>
+                    <Typography fontSize="18px">{item.title}</Typography>
+                    <DayItemCommentPopupStyled
+                      onClick={() => setShowComment(!showComment)}
+                      show={showComment ? 'initial' : 'nowrap'}
+                      fontSize="14px"
+                    >{item.comment}</DayItemCommentPopupStyled>
+                    {item.tags &&
+                      <DayItemTagListStyled>
+                        {item.tags.map((tag) => {
+                          return (
+                            <DayItemTagItemStyled key={tag.tagId}>
+                              <Typography fontSize="14px">{tag.name}</Typography>
+                            </DayItemTagItemStyled>
+                          )
+                        })}
+                      </DayItemTagListStyled>
+                    }
+
+                  </DayItemInfoWrapperPopupStyled>
+                  <DayItemWrapperPopupStyled>
+                    <Typography fontSize="18px">{item.value}</Typography>
+                    <DayItemActionsPopupStyled>
+                      <DayItemActionStyled>
+                        <EditIcon htmlColor="#fff" fontSize="small" />
+                      </DayItemActionStyled>
+                      <DayItemActionStyled onClick={handleOpenDeleteDialog}>
+                        <DeleteForeverIcon htmlColor="#fff" fontSize='small' />
+                      </DayItemActionStyled>
+                    </DayItemActionsPopupStyled>
+                  </DayItemWrapperPopupStyled>
+                </DayItemPopupStyled>
+              )
+            })}
+          </DayItemsListPopupStyled>
+        }
         {day.description &&
-              <DayTotalContainerStyled>
-                <Typography>{day.description?.title}</Typography>
-                <Typography>{day.description?.subTitle}</Typography>
-              </DayTotalContainerStyled>
+        // TODO: fix shadow
+          <DayTotalContainerStyled>
+            <Typography>{day.description?.title}</Typography>
+            <Typography>{day.description?.subTitle}</Typography>
+          </DayTotalContainerStyled>
         }
       </DayItemPopupContainer>
       <DeleteDialog
