@@ -1,6 +1,6 @@
 // TODO: separate Card and transaction card
 export interface ICard {
-  id: number;
+  id: number | string;
   name: string;
   icon: string;
   color: string;
@@ -8,15 +8,15 @@ export interface ICard {
   type: string;
   transactionOpen?: (
     open: boolean,
-    idFrom: number,
-    idWhere: number,
+    idFrom: number | string,
+    idWhere: number | string,
     typeFrom: string,
     typeWhere: string
   ) => void
 }
 
 export interface ICardDND {
-  id: number;
+  id: number | string;
   name: string;
   icon: string;
   color: string;
@@ -24,8 +24,8 @@ export interface ICardDND {
   type: string;
   transactionOpen: (
     open: boolean,
-    idFrom: number,
-    idWhere: number,
+    idFrom: number | string,
+    idWhere: number | string,
     typeFrom: string,
     typeWhere: string
   ) => void

@@ -83,7 +83,7 @@ export const Transaction: React.FC<TransactionProps> = ({ handleTransactionOpen,
           <Comment control={control}/>
           <Tags control={control}/>
           <TransactionWrapperStyled>
-            <Button variant='contained' type="submit">Submit</Button>
+            <Button variant="contained" disabled={idFrom === "" || idTo === ""} type="submit">Submit</Button>
           </TransactionWrapperStyled>
         </form>
       </TransactionContainerStyled>

@@ -8,13 +8,13 @@ import { CardNameStyled, CardStyled, CardValueStyled, CardWrapperStyled, CardIco
 import { CheckContainerStyled } from "../../transactionContainer/transaction/transaction.styled"
 
 export interface CardTransactionProps {
-  id: number
+  id: number | string
   name: string
   icon: string
   color: string
   value: number
   check: boolean
-  handlerClick: (id: number) => void
+  handlerClick: (id: number | string) => void
 }
 
 export interface IMainIcon {

@@ -24,8 +24,8 @@ export const CardsContainer: React.FC<CardsContainerProps> = ({
 
   const transactionHandler = (
     open: boolean,
-    idFrom: number,
-    idTo: number,
+    idFrom: number | string,
+    idTo: number | string,
     typeFrom: string,
     typeTo: string
   ) => {

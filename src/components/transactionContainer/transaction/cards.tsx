@@ -34,10 +34,10 @@ export const Cards: React.FC = () => {
   const itemsTo = typeToState === ACCOUNTS ? data.user.accounts : data.user.expenses
 
   const dispatch = useAppDispatch()
-  const handlerCardIdFrom = (id: number) => {
+  const handlerCardIdFrom = (id: number | string) => {
     dispatch(setTransactionCardIDFrom(id))
   }
-  const handlerCardIdTo = (id: number) => {
+  const handlerCardIdTo = (id: number | string) => {
     dispatch(setTransactionCardIDTo(id))
   }
 

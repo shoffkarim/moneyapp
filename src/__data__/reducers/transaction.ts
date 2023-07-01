@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  idFrom: 0,
+  idFrom: '',
   typeFrom: "",
-  idTo: 0,
+  idTo: '',
   typeTo: "",
   value: 0,
   date: "",

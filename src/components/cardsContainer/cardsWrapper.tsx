@@ -14,8 +14,8 @@ import { CardTransactionProps } from "components/card/cardTransaction/cardTransa
 interface CardsWrapperProps {
   transactionOpen: (
     open: boolean,
-    idFrom: number,
-    idTo: number,
+    idFrom: number | string,
+    idTo: number | string,
     typeFrom: string,
     typeTo: string
   ) => void
