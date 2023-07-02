@@ -8,3 +8,11 @@ export const SET_TRANSACTION = gql`
     }
   }
 `
+
+export const DELETE_TRANSACTION = gql`
+  mutation deleteTransaction ($id: ID!, $transactionId: ID!, $idFrom: ID!, $idTo: ID!, $typeFrom: String!, $typeTo: String!, $value: Float!,){
+    deleteTransaction(id: $id, transactionId: $transactionId, idFrom: $idFrom, idTo: $idTo, typeFrom: $typeFrom, typeTo: $typeTo, value: $value) {
+      id
+    }
+  }
+`

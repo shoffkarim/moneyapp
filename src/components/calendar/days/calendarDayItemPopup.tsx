@@ -100,6 +100,7 @@ export const CalendarDayItemPopup: React.FC = () => {
       <DeleteDialog
         open={openDeleteDialog}
         handleClose={handleCloseDeleteDialog}
+        handleCloseYes={() => console.log(1)}
       />
     </Backdrop>
   )

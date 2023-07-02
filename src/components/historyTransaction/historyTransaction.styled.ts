@@ -44,7 +44,7 @@ type HistoryItemTagItemStyledProps = {
   white: boolean
 }
 
-export const HistoryItemTagItemStyled = styled.li<HistoryItemTagItemStyledProps>(({ white }) => css`
+export const HistoryItemTagItemStyled = styled('li', { shouldForwardProp: prop => prop !== 'white' })<HistoryItemTagItemStyledProps>(({ white }) => css`
   padding: 5px 10px;
   background-color: ${white ? "#fff" : "#1976d2"};
   color: ${white ? "#1976d2" : "#fff"};
@@ -62,7 +62,7 @@ type HistoryItemCommentProps = {
   show: string
   white: boolean
 }
-export const HistoryItemCommentStyled = styled(Typography)<HistoryItemCommentProps>(({ show, white }) => css`
+export const HistoryItemCommentStyled = styled(Typography, { shouldForwardProp: prop => prop !== 'white' && prop !== 'show' })<HistoryItemCommentProps>(({ show, white }) => css`
   max-width: 220px;
   width: 100%;
   overflow: hidden;
@@ -80,7 +80,7 @@ type HistoryItemDateStyledProps = {
   white: boolean
 }
 
-export const HistoryItemTextStyled = styled(Typography)<HistoryItemDateStyledProps>(({ white }) => css`
+export const HistoryItemTextStyled = styled(Typography, { shouldForwardProp: prop => prop !== 'white' })<HistoryItemDateStyledProps>(({ white }) => css`
   color: ${white ? '#fff' : '#000'};
 `)
 

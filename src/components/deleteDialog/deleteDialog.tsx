@@ -17,8 +17,9 @@ const Transition = React.forwardRef(function Transition(
 type DeleteDialogProps = {
   open: boolean
   handleClose: () => void
+  handleCloseYes: () => void
 }
-export const DeleteDialog: React.FC<DeleteDialogProps> = ({ open, handleClose }) => {
+export const DeleteDialog: React.FC<DeleteDialogProps> = ({ open, handleClose, handleCloseYes }) => {
   return (
     <Dialog
       open={open}
@@ -30,7 +31,7 @@ export const DeleteDialog: React.FC<DeleteDialogProps> = ({ open, handleClose })
       <DialogTitle>{"Are you sure you want to delete the transaction?"}</DialogTitle>
       <DialogActions>
         <Button onClick={handleClose}>No</Button>
-        <Button onClick={handleClose}>Yes</Button>
+        <Button onClick={handleCloseYes}>Yes</Button>
       </DialogActions>
     </Dialog>
   )

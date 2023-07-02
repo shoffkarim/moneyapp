@@ -9,6 +9,9 @@ import { TransactionItem } from "./types"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import EditIcon from '@mui/icons-material/Edit'
 import { DeleteDialog } from "components/deleteDialog"
+import { useMutation } from "@apollo/client"
+import { DELETE_TRANSACTION } from "__data__/mutations/transactions"
+import { GET_USER_TRANSACTIONS } from "__data__/queries/transactions"
 
 
 export interface IMainIcon {
@@ -34,6 +37,11 @@ export const HistoryTransactionElement: React.FC<TransactionItem> = ({
   cardFrom,
   cardTo,
   index,
+  id,
+  typeFrom,
+  idFrom,
+  typeTo,
+  idTo
 }) => {
   const [showComment, setShowComment] = useState<boolean>(false)
   const formatedDate = format(new Date(date), 'MM-dd-yyyy')
@@ -50,8 +58,37 @@ export const HistoryTransactionElement: React.FC<TransactionItem> = ({
     setOpenDeleteDialog(true)
   }
 
+  const [deleteTransaction] = useMutation(DELETE_TRANSACTION)
+
   const handleCloseDeleteDialog = () => {
     setOpenDeleteDialog(false)
+  }
+
+  const handleDelete = () => {
+    deleteTransaction({
+      variables: {
+        id: "647db351529d7960cb8ce476",
+        transactionId: id,
+        idFrom,
+        idTo,
+        typeFrom,
+        typeTo,
+        value
+      },
+      refetchQueries: [
+        {
+          query: GET_USER_TRANSACTIONS,
+          variables: {
+            id: '647db351529d7960cb8ce476'
+          }
+        }
+      ]
+    })
+  }
+
+  const handleSubmit = () => {
+    handleDelete()
+    handleCloseDeleteDialog()
   }
 
   return (
@@ -102,15 +139,16 @@ export const HistoryTransactionElement: React.FC<TransactionItem> = ({
       <TableCell>
         <HistoryItemActionsWrapper>
           <HistoryItemAction>
-            <EditIcon htmlColor="#fff" fontSize="small" />
+            <EditIcon htmlColor={textColor ? "#fff" : "#1976d2"} fontSize="small" />
           </HistoryItemAction>
           <IconButton onClick={handleOpenDeleteDialog}>
-            <DeleteForeverIcon htmlColor="#fff" />
+            <DeleteForeverIcon htmlColor={textColor ? "#fff" : "#1976d2"} />
           </IconButton>
         </HistoryItemActionsWrapper>
         <DeleteDialog
           open={openDeleteDialog}
           handleClose={handleCloseDeleteDialog}
+          handleCloseYes={handleSubmit}
         />
       </TableCell>
     </HistoryItemStyled>

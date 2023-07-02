@@ -17,40 +17,19 @@ export const HistoryTransaction: React.FC<HistoryTransactionProps> = ({ items })
       id: '647db351529d7960cb8ce476'
     } })
 
-  const processedItems = assignItemsWithCards(items, data)
+  const processedItems = assignItemsWithCards(items, data).reverse()
 
   return (
     <Table stickyHeader aria-label="sticky table">
       <HistoryTableHeader />
       <TableBody>
-        <HistoryTransactionElement
-          value={100}
-          comment="dsafdsf dsafdsf dsafdsfsadfdas dsafdsf asdfasd adsafdsf s dsafdsf"
-          index={0}
-          tags={[
-            {
-              tagId: '1',
-              name: "bank"
-            },
-            {
-              tagId: '2',
-              name: "asdfsadfadsf"
-            },
-          ]}
-          id="142341234"
-          date={'10-10-2022'}
-          idFrom="1"
-          idTo='2'
-          typeFrom='incomes'
-          typeTo='accounts'
-        />
-        {/* {processedItems && processedItems.map((item: TransactionItem, index: number) =>
+        {processedItems && processedItems.map((item: TransactionItem, index: number) =>
           <HistoryTransactionElement
             key={item.id}
             {...item}
             index={index}
           />
-        )} */}
+        )}
       </TableBody>
     </Table>
   )
