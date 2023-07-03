@@ -9,61 +9,120 @@ import { Button } from '@mui/material'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { TransactionValues } from './utils'
 import { useMutation } from '@apollo/client'
-import { SET_TRANSACTION } from '__data__/mutations/transactions'
+import { EDIT_TRANSACTION, SET_TRANSACTION } from '__data__/mutations/transactions'
 import CloseIcon from '@mui/icons-material/Close'
 import { useSelector } from 'react-redux'
 import { RootState } from '__data__/store'
 import { GET_USER_CARDS } from '__data__/queries/cards'
 import { GET_USER_TOTAL } from '__data__/queries/total'
+import { useAppDispatch } from 'hooks'
+import { closeTransactionPopup } from '__data__/reducers/transaction'
+import { CardsEdit } from './cardsEdit'
+import { GET_USER_TRANSACTIONS } from '__data__/queries/transactions'
 
 
 interface TransactionProps {
-  handleTransactionOpen: (value: boolean) => void
   handleAlert: (value: boolean) => void
 }
 
-export const Transaction: React.FC<TransactionProps> = ({ handleTransactionOpen, handleAlert }) => {
+export const Transaction: React.FC<TransactionProps> = ({ handleAlert }) => {
 
-  const { idFrom, typeFrom, idTo, typeTo } = useSelector((state: RootState) => state.transaction)
+  const { idFrom, typeFrom, idTo, typeTo, value, comment, date, tags, status, transactionId } = useSelector((state: RootState) => state.transaction)
+
+
+  const dispatch = useAppDispatch()
+  const handleClosePopup = () => {
+    dispatch(closeTransactionPopup())
+  }
 
   const { control, handleSubmit, formState: { errors } } = useForm<TransactionValues>()
 
   const [setTransaction] = useMutation(SET_TRANSACTION)
+  const [editTransaction] = useMutation(EDIT_TRANSACTION)
 
   const handleOnSubmit: SubmitHandler<TransactionValues> = (data) => {
     try {
-      setTransaction(
-        {
-          variables: {
-            id: '647db351529d7960cb8ce476',
-            idFrom,
-            typeFrom,
-            idTo,
-            typeTo,
-            value: Number(data.value),
-            comment: data.comment,
-            date: data.date,
-            tags: data.tags
-          },
-          refetchQueries: [
-            {
-              query: GET_USER_CARDS,
-              variables: {
-                id: '647db351529d7960cb8ce476'
-              }
+      if(status === "new") {
+        setTransaction(
+          {
+            variables: {
+              id: '647db351529d7960cb8ce476',
+              idFrom,
+              typeFrom,
+              idTo,
+              typeTo,
+              value: Number(data.value),
+              comment: data.comment,
+              date: data.date,
+              tags: data.tags
             },
-            {
-              query: GET_USER_TOTAL,
-              variables: {
-                id: '647db351529d7960cb8ce476'
+            refetchQueries: [
+              {
+                query: GET_USER_CARDS,
+                variables: {
+                  id: '647db351529d7960cb8ce476'
+                }
+              },
+              {
+                query: GET_USER_TOTAL,
+                variables: {
+                  id: '647db351529d7960cb8ce476'
+                }
+              },
+              {
+                query: GET_USER_TRANSACTIONS,
+                variables: {
+                  id: '647db351529d7960cb8ce476'
+                }
               }
+            ]
+          }
+        ).then(() => {
+          handleClosePopup()
+          handleAlert(true)
+        })
+      }
+      if(status === "edit") {
+        editTransaction(
+          {
+            variables: {
+              id: '647db351529d7960cb8ce476',
+              transactionId,
+              idFrom,
+              typeFrom,
+              idTo,
+              typeTo,
+              value: Number(data.value),
+              comment: data.comment,
+              date: data.date,
+              tags: data.tags,
             },
-          ]
-        }
-      ).then(() => {
-        handleTransactionOpen(false)
-        handleAlert(true)
-      })
+            refetchQueries: [
+              {
+                query: GET_USER_CARDS,
+                variables: {
+                  id: '647db351529d7960cb8ce476'
+                }
+              },
+              {
+                query: GET_USER_TOTAL,
+                variables: {
+                  id: '647db351529d7960cb8ce476'
+                }
+              },
+              {
+                query: GET_USER_TRANSACTIONS,
+                variables: {
+                  id: '647db351529d7960cb8ce476'
+                }
+              }
+            ]
+          }
+        ).then(() => {
+          handleClosePopup()
+          handleAlert(true)
+        })
+      }
     } catch (error) {
       console.log(errors)
     }
@@ -73,15 +132,16 @@ export const Transaction: React.FC<TransactionProps> = ({ handleTransactionOpen,
     <TransactionStyled>
       <TransactionOverlayStyled/>
       <TransactionContainerStyled>
-        <CloseButtonStyled aria-label="close" onClick={() => handleTransactionOpen(false)}>
+        <CloseButtonStyled aria-label="close" onClick={() => handleClosePopup()}>
           <CloseIcon htmlColor="#fff" fontSize='large' />
         </CloseButtonStyled>
         <form onSubmit={handleSubmit(handleOnSubmit)}>
-          <Cards/>
-          <Value control={control}/>
-          <TransactionDate control={control}/>
-          <Comment control={control}/>
-          <Tags control={control}/>
+          {status === "new" && <Cards/>}
+          {status === "edit" && <CardsEdit/>}
+          <Value control={control} defaultValue={value}/>
+          <TransactionDate control={control} defaultValue={date}/>
+          <Comment control={control} defaultValue={comment}/>
+          <Tags control={control} defaultValue={tags}/>
           <TransactionWrapperStyled>
             <Button variant="contained" disabled={idFrom === "" || idTo === ""} type="submit">Submit</Button>
           </TransactionWrapperStyled>

@@ -8,15 +8,16 @@ interface CommentProps {
   // vendor library
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<TransactionValues, any>
+  defaultValue: string
 }
 
-export const Comment: React.FC<CommentProps> = ({ control  }) => {
+export const Comment: React.FC<CommentProps> = ({ control, defaultValue  }) => {
   return (
     <TransactionWrapperStyled>
       <Controller
         name="comment"
         control={control}
-        defaultValue=""
+        defaultValue={defaultValue}
         render={({ field }) => (
           <TextField
             {...field}

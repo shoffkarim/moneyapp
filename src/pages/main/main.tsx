@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { CardsContainer } from "components/cardsContainer"
 import { TransactionContainer } from "components/transactionContainer"
 import { MainStyled, WrapperStyled } from "./main.styled"
@@ -22,8 +22,6 @@ export const Main: React.FC = () => {
   )
   // TODO: 3 first render
 
-  const [transactionOpen, setTransactionOpen] = useState<boolean>(false)
-
 
   return (
     <MainStyled>
@@ -32,11 +30,9 @@ export const Main: React.FC = () => {
           accounts={data?.user.accounts}
           expenses={data?.user.expenses}
           incomes={data?.user.incomes}
-          handleTransactionOpen={setTransactionOpen}
         />
       </WrapperStyled>
-      <TransactionContainer transactionOpen={transactionOpen} handleTransactionOpen={setTransactionOpen}/>
-      <MainButton action={setTransactionOpen}/>
+      <MainButton />
       <CreatePopup/>
       <EditPopup/>
       <AlertContainer/>

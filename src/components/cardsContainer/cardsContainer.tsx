@@ -11,13 +11,11 @@ export interface CardsContainerProps {
   accounts?: Array<ICard>
   expenses?: Array<ICard>
   incomes?: Array<ICard>
-  handleTransactionOpen: (value: boolean) => void
 }
 export const CardsContainer: React.FC<CardsContainerProps> = ({
   accounts,
   expenses,
   incomes,
-  handleTransactionOpen,
 }) => {
 
   const dispatch = useAppDispatch()
@@ -29,8 +27,7 @@ export const CardsContainer: React.FC<CardsContainerProps> = ({
     typeFrom: string,
     typeTo: string
   ) => {
-    dispatch(setTransactionStart({ idFrom, typeFrom, idTo, typeTo }))
-    handleTransactionOpen(open)
+    dispatch(setTransactionStart({ idFrom, typeFrom, idTo, typeTo, open }))
   }
 
   return (

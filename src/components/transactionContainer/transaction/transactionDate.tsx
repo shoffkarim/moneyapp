@@ -10,9 +10,10 @@ interface TransactionDateProps {
   // vendor library
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<TransactionValues, any>
+  defaultValue: Date
 }
 
-export const TransactionDate: React.FC<TransactionDateProps> = ({ control }) => {
+export const TransactionDate: React.FC<TransactionDateProps> = ({ control, defaultValue }) => {
 
   return (
     <TransactionWrapperStyled>
@@ -20,7 +21,7 @@ export const TransactionDate: React.FC<TransactionDateProps> = ({ control }) => 
         <Controller
           name="date"
           control={control}
-          defaultValue={new Date()}
+          defaultValue={new Date(defaultValue) || new Date()}
           rules={{ required: true }}
           render={({ field }) => (
             <DatePicker {...field} label="Date"/>

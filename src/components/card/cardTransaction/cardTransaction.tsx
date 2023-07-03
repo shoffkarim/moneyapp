@@ -14,7 +14,7 @@ export interface CardTransactionProps {
   color: string
   value: number
   check: boolean
-  handlerClick: (id: number | string) => void
+  handlerClick?: (id: number | string) => void
 }
 
 export interface IMainIcon {
@@ -50,7 +50,9 @@ export const CardTransaction: React.FC<CardTransactionProps> = ({
     <>
       <CardStyled
         onClick={() => {
-          handlerClick(id)
+          if(handlerClick) {
+            handlerClick(id)
+          }
         }}
       >
         <CardWrapperStyled>

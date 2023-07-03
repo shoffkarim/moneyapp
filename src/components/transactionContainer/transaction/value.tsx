@@ -9,16 +9,17 @@ interface ValueProps {
   // vendor library
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<TransactionValues, any>
+  defaultValue: string
 }
 
-export const Value: React.FC<ValueProps> = ({ control }) => {
+export const Value: React.FC<ValueProps> = ({ control, defaultValue }) => {
 
   return (
     <TransactionWrapperStyled>
       <Controller
         name="value"
         control={control}
-        defaultValue=""
+        defaultValue={defaultValue !== "0" ? defaultValue : ""}
         rules={{ required: true, pattern: /^\d+$/ }}
         render={({ field, fieldState: { error } }) => (
           <TextField

@@ -1,20 +1,18 @@
 import React, { useState } from "react"
 import { Transaction } from "components/transactionContainer/transaction"
 import { TransactionAlert } from "./transactionAlert"
+import { useAppSelector } from "hooks"
+import { RootState } from "__data__/store"
 
 
-interface TransactionContainerProps {
-  transactionOpen: boolean
-  handleTransactionOpen: (value: boolean) => void
-}
-
-export const TransactionContainer: React.FC<TransactionContainerProps> = ({ transactionOpen, handleTransactionOpen }) => {
+export const TransactionContainer: React.FC = () => {
   const [transactionAlert, setTransactionAlert] = useState<boolean>(false)
+  const { open } = useAppSelector((state: RootState) => state.transaction)
 
   return (
     <>
-      {transactionOpen && (
-        <Transaction handleTransactionOpen={handleTransactionOpen} handleAlert={setTransactionAlert}/>
+      {open && (
+        <Transaction handleAlert={setTransactionAlert}/>
       )}
       {/* TODO: change to alert */}
       <TransactionAlert handleAlert={setTransactionAlert} transactionAlert={transactionAlert}/>

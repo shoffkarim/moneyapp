@@ -25,7 +25,6 @@ export const EditPopup: React.FC = () => {
 
   const { open, id, iconName, color, name, value, type } = useAppSelector((state: RootState) => state.editPopup)
 
-  console.log(name)
   const title = getPopupTitle('edit', type)
   const { control, handleSubmit, formState: { errors }, reset } = useForm<EditCard>()
 

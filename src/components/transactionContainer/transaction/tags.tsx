@@ -23,24 +23,27 @@ interface TagsProps {
   // vendor library
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: Control<TransactionValues, any>
+  defaultValue: Array<Tag>
 }
 
-export const Tags: React.FC<TagsProps> = ({ control }) => {
+export const Tags: React.FC<TagsProps> = ({ control, defaultValue }) => {
 
-  const [activeTags, setActiveTags] = useState<Array<string>>([])
+  const [activeTags, setActiveTags] = useState<Array<Tag>>(defaultValue)
+
 
   const handleActiveTag = (item: Tag, field: ControllerRenderProps<TransactionValues, "tags">) => {
-    if(activeTags.includes(item.tagId)) {
-      const filteredTags = activeTags.filter((activeItem) => activeItem !== item.tagId)
+    if(activeTags.find((activeItem) => item.tagId === activeItem.tagId)) {
+      const filteredTags = activeTags.filter((activeItem) => activeItem.tagId !== item.tagId)
       const filteredValue = field.value.filter((activeValue) => activeValue.tagId !== item.tagId)
       field.onChange(filteredValue)
       setActiveTags(filteredTags)
     } else {
       field.onChange([
         ...field.value,
-        item
+        { tagId: item.tagId, name: item.name }
       ])
-      setActiveTags([...activeTags, item.tagId])
+      setActiveTags([...activeTags, item])
+
     }
   }
 
@@ -50,13 +53,13 @@ export const Tags: React.FC<TagsProps> = ({ control }) => {
         <Controller
           name="tags"
           control={control}
-          defaultValue={[]}
+          defaultValue={defaultValue}
           render={({ field }) => (
             <>
               {TagsData.map((item) =>
                 <TransactionsTagsLabelStyled
                   key={item.tagId}
-                  active={activeTags.includes(item.tagId)}
+                  active={Boolean(activeTags.find((activeItem) => item.tagId === activeItem.tagId))}
                 >
                   <span>{item.name}</span>
                   <TransactionTagsItemStyled

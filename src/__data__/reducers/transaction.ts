@@ -5,10 +5,13 @@ const initialState = {
   typeFrom: "",
   idTo: '',
   typeTo: "",
-  value: 0,
-  date: "",
+  value: "0",
+  date: new Date(),
   comment: "",
   tags: [],
+  open: false,
+  status: "new",
+  transactionId: ''
 }
 
 const transaction = createSlice({
@@ -26,6 +29,7 @@ const transaction = createSlice({
     setTransactionCardIDTo: (state, action) => { state.idTo = action.payload },
     setTransactionCardTypeFrom: (state, action) => { state.typeFrom = action.payload },
     setTransactionCardTypeTo: (state, action) => { state.typeTo = action.payload },
+    closeTransactionPopup: (state) => state = initialState
   },
 })
 
@@ -35,7 +39,8 @@ export const {
   setTransactionCardIDFrom,
   setTransactionCardIDTo,
   setTransactionCardTypeFrom,
-  setTransactionCardTypeTo
+  setTransactionCardTypeTo,
+  closeTransactionPopup
 } = transaction.actions
 
 

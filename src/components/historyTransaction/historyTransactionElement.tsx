@@ -12,6 +12,8 @@ import { DeleteDialog } from "components/deleteDialog"
 import { useMutation } from "@apollo/client"
 import { DELETE_TRANSACTION } from "__data__/mutations/transactions"
 import { GET_USER_TRANSACTIONS } from "__data__/queries/transactions"
+import { useDispatch } from "react-redux"
+import { setTransactionStart } from "__data__/reducers/transaction"
 
 
 export interface IMainIcon {
@@ -51,6 +53,32 @@ export const HistoryTransactionElement: React.FC<TransactionItem> = ({
   const IconTo: IMainIconObj = icons(cardTo?.icon || '')
   const iconBackgroundTo: string = themeColor(cardTo?.color || '')
   const textColor = index % 2 === 0
+
+  const processedTags = tags.map((itemTag) => {
+    return {
+      tagId: itemTag.tagId,
+      name: itemTag.name
+    }
+  })
+
+  const dispatch = useDispatch()
+
+  const handleEditTransaction = () => {
+    dispatch(setTransactionStart({
+      open: true,
+      typeFrom,
+      idFrom,
+      typeTo,
+      idTo,
+      value,
+      comment,
+      date,
+      tags: processedTags,
+      transactionId: id,
+      status: "edit"
+    }))
+  }
+
 
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false)
 
@@ -138,7 +166,7 @@ export const HistoryTransactionElement: React.FC<TransactionItem> = ({
       </TableCell>
       <TableCell>
         <HistoryItemActionsWrapper>
-          <HistoryItemAction>
+          <HistoryItemAction onClick={handleEditTransaction}>
             <EditIcon htmlColor={textColor ? "#fff" : "#1976d2"} fontSize="small" />
           </HistoryItemAction>
           <IconButton onClick={handleOpenDeleteDialog}>

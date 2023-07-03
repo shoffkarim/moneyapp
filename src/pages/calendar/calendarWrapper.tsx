@@ -24,8 +24,6 @@ export const CalendarWrapper: React.FC = () => {
       lastDay: state.calendarDays?.[state.calendarDays.length - 1].date
     } })
 
-  console.log(state)
-  console.log(data)
   const getData = useCallback(() => {
     if(data && data.calendarItems.length > 0) {
       return assignData(state, { days: data.calendarItems })

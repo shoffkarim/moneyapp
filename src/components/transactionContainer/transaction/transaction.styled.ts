@@ -9,7 +9,7 @@ export const TransactionStyled = styled.div(() => css`
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 10;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,4 +132,14 @@ export const SwiperSlideTransactionWrapper = styled.div(() => css`
   display: flex;
   gap: 0px 27px;
   padding: 0px 45px;
+`)
+
+export const CardsEditContainer = styled.div(() => css`
+  display: flex;
+  margin-bottom: 20px;
+`)
+
+export const CardsEditWrapper = styled.div(() => css`
+  display: flex;
+  flex-direction: column;
 `)
