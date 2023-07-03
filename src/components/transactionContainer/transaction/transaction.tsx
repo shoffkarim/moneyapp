@@ -19,13 +19,10 @@ import { useAppDispatch } from 'hooks'
 import { closeTransactionPopup } from '__data__/reducers/transaction'
 import { CardsEdit } from './cardsEdit'
 import { GET_USER_TRANSACTIONS } from '__data__/queries/transactions'
+import { openErrorAlert, openSuccessAlert } from '__data__/reducers/alerts'
 
 
-interface TransactionProps {
-  handleAlert: (value: boolean) => void
-}
-
-export const Transaction: React.FC<TransactionProps> = ({ handleAlert }) => {
+export const Transaction: React.FC = () => {
 
   const { idFrom, typeFrom, idTo, typeTo, value, comment, date, tags, status, transactionId } = useSelector((state: RootState) => state.transaction)
 
@@ -79,7 +76,10 @@ export const Transaction: React.FC<TransactionProps> = ({ handleAlert }) => {
           }
         ).then(() => {
           handleClosePopup()
-          handleAlert(true)
+          dispatch(openSuccessAlert({
+            open: true,
+            text: 'Transaction has been added'
+          }))
         })
       }
       if(status === "edit") {
@@ -120,11 +120,18 @@ export const Transaction: React.FC<TransactionProps> = ({ handleAlert }) => {
           }
         ).then(() => {
           handleClosePopup()
-          handleAlert(true)
+          dispatch(openSuccessAlert({
+            open: true,
+            text: 'Transaction has been edited'
+          }))
         })
       }
     } catch (error) {
       console.log(errors)
+      dispatch(openErrorAlert({
+        open: true,
+        text: 'Something went wrong'
+      }))
     }
   }
 

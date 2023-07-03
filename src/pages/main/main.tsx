@@ -35,7 +35,7 @@ export const Main: React.FC = () => {
       <MainButton />
       <CreatePopup/>
       <EditPopup/>
-      <AlertContainer/>
+      
     </MainStyled>
   )
 }

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Alert } from '@mui/material'
 import { AlertWrapperStyled } from "./alerts.styled"
 import { useAppDispatch } from 'hooks'
-import { closeSuccessAlert } from '__data__/reducers/alerts'
+import { closeAlert } from '__data__/reducers/alerts'
 
 
 type AlertWrapperProps = {
@@ -15,7 +15,7 @@ export const AlertWrapper: React.FC<AlertWrapperProps> = ({ text, type }) => {
 
   useEffect(() => {
     setTimeout(() => {
-      dispatch(closeSuccessAlert())
+      dispatch(closeAlert())
     }, 3000)
   }, [])
 

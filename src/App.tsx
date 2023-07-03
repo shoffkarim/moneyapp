@@ -8,6 +8,7 @@ import { useQuery } from '@apollo/client'
 import { GET_USER_TOTAL } from '__data__/queries/total'
 import { CalendarWrapper } from 'pages/calendar'
 import { TransactionContainer } from 'components/transactionContainer'
+import { AlertContainer } from 'components/alerts'
 
 
 const App: React.FC = () => {
@@ -40,6 +41,7 @@ const App: React.FC = () => {
           </Routes>
         </PageWrapperStyled>
         <TransactionContainer />
+        <AlertContainer/>
       </ContainerStyled>
     </BrowserRouter>
   )

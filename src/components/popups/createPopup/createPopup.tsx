@@ -15,7 +15,7 @@ import { Typography } from "@mui/material"
 import { closeCreatePoup } from "__data__/reducers/createPopup"
 import { useAppDispatch, useAppSelector } from "hooks"
 import { RootState } from "__data__/store"
-import { openSuccessAlert } from "__data__/reducers/alerts"
+import { openErrorAlert, openSuccessAlert } from "__data__/reducers/alerts"
 import { GET_USER_CARDS } from "__data__/queries/cards"
 import { GET_USER_TOTAL } from "__data__/queries/total"
 
@@ -90,6 +90,10 @@ export const CreatePopup: React.FC = () => {
       })
     } catch (error) {
       console.log(errors)
+      dispatch(openErrorAlert({
+        open: true,
+        text: 'Something went wrong'
+      }))
     }
   }
 

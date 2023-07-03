@@ -14,6 +14,7 @@ import { DELETE_TRANSACTION } from "__data__/mutations/transactions"
 import { GET_USER_TRANSACTIONS } from "__data__/queries/transactions"
 import { useDispatch } from "react-redux"
 import { setTransactionStart } from "__data__/reducers/transaction"
+import { openErrorAlert, openSuccessAlert } from "__data__/reducers/alerts"
 
 
 export interface IMainIcon {
@@ -93,25 +94,41 @@ export const HistoryTransactionElement: React.FC<TransactionItem> = ({
   }
 
   const handleDelete = () => {
-    deleteTransaction({
-      variables: {
-        id: "647db351529d7960cb8ce476",
-        transactionId: id,
-        idFrom,
-        idTo,
-        typeFrom,
-        typeTo,
-        value
-      },
-      refetchQueries: [
+    try {
+      deleteTransaction(
         {
-          query: GET_USER_TRANSACTIONS,
           variables: {
-            id: '647db351529d7960cb8ce476'
-          }
+            id: "647db351529d7960cb8ce476",
+            transactionId: id,
+            idFrom,
+            idTo,
+            typeFrom,
+            typeTo,
+            value
+          },
+          refetchQueries: [
+            {
+              query: GET_USER_TRANSACTIONS,
+              variables: {
+                id: '647db351529d7960cb8ce476'
+              }
+            }
+          ]
         }
-      ]
-    })
+      ).then(() => {
+        dispatch(openSuccessAlert({
+          open: true,
+          text: 'Transaction has been deleted'
+        }))
+      })
+    }
+    catch (error) {
+      console.log(error)
+      dispatch(openErrorAlert({
+        open: true,
+        text: 'Something went wrong'
+      }))
+    }
   }
 
   const handleSubmit = () => {

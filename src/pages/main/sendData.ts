@@ -62,5 +62,6 @@ export const handleRequest = async () => {
 
   } catch (error) {
     console.log("Request Error", error)
+    
   }
 }

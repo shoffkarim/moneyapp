@@ -17,17 +17,12 @@ const alerts = createSlice({
       state.text = action.payload.text
       state.type = SUCCESS
     },
-    closeSuccessAlert: (state) => {
-      state.open = false
-      state.text = ''
-      state.type = ''
-    },
     openErrorAlert: (state, action) => {
       state.open = action.payload.open
       state.text = action.payload.text
       state.type = ERROR
     },
-    closeErrorAlert: (state) => {
+    closeAlert: (state) => {
       state.open = false
       state.text = ''
       state.type = ''
@@ -37,7 +32,8 @@ const alerts = createSlice({
 
 export const {
   openSuccessAlert,
-  closeSuccessAlert,
+  openErrorAlert,
+  closeAlert
 } = alerts.actions
 
 
